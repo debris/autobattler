@@ -11,7 +11,10 @@ func _execute(query: BattleQuery) -> Array[Log]:
 	
 	var result: Array[Log] = [LogSkillUsed.new(unit, name)]
 	for enemy_unit in enemy_battle_team.members:
-		var value = enemy_unit.def * 10 / 100
-		enemy_unit.def -= value
-		result.push_back(LogDefAdd.new(enemy_unit, -value))
+		# TODO: unit death?
+		if enemy_unit.def > 0:
+			var value = max(1, enemy_unit.def * 10 / 100)
+			enemy_unit.def -= value
+			result.push_back(LogDefAdd.new(enemy_unit, -value))
+		
 	return result

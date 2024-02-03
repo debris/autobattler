@@ -6,4 +6,4 @@ func _init():
 	texture = load("res://Assets/Units/viking_warrior.png")
 	dmg = 10
 	def = 10
-	skill = Skill.new()
+	skill = SkillWarcry.new()

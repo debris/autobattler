@@ -45,6 +45,13 @@ func get_my_position() -> BattleUnitPosition:
 		return position
 	return position_in_team.call(battle_state.team_b)
 
+func get_opposite_unit() -> BattleUnit:
+	var position = get_my_position()
+	var enemy_team = get_enemy_team()
+	if position.index >= enemy_team.members.size():
+		return null
+	return enemy_team.members[position.index]
+
 # returns unit on the right hand side or null if there is none
 # or we are the rightmost unit
 func get_next_unit() -> BattleUnit:
@@ -54,6 +61,13 @@ func get_next_unit() -> BattleUnit:
 
 	# may also be null
 	return position.battle_team.members[position.index + 1]
+
+func get_prev_unit() -> BattleUnit:
+	var position = get_my_position()
+	if position.index == 0:
+		return null
+	
+	return position.battle_team.members[position.index - 1]
 
 func get_logs(skip: int = 0) -> Array[Log]:
 	var result: Array[Log] = []
