@@ -20,6 +20,7 @@ const MAX_ROTATION: float = 2.0
 var battle_unit: BattleUnit
 var processed_logs = 0
 var processed_round = -1
+var processed_phase = 0
 var default_modulate
 
 func _ready():
@@ -53,17 +54,18 @@ func _process(delta):
 
 	default_modulate = Color.WHITE
 	if !battle_query.is_on_schedule():
-		default_modulate = Color.DIM_GRAY
+		default_modulate = Color(Color.WHITE, 0.4)
 
-	if processed_round != battle_query.get_round():
+	if processed_round != battle_query.get_round() || processed_phase != battle_query.get_phase():
 		control.modulate = default_modulate
 		processed_round = battle_query.get_round()
+		processed_phase = battle_query.get_phase()
 
 	for log in battle_query.get_logs(processed_logs):
 		_process_log(log)
 
 	processed_logs = battle_query.get_total_log_count()
-	active_control.visible = battle_query.is_active()
+	active_control.visible = battle_query.is_active() && battle_query.is_on_schedule()
 
 # private
 func _process_log(action: Log):

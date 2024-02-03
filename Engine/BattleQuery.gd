@@ -18,13 +18,15 @@ func get_this_unit() -> BattleUnit:
 func get_round() -> int:
 	return battle_state.round
 
+func get_phase() -> int:
+	return battle_state.phase
+
 func is_active() -> bool:
 	return root.def_schedule_pointer.active || root.skill_schedule_pointer.active || root.dmg_schedule_pointer.active
 
-# returns true if unit is on schedule this turn
+# returns true if unit is on schedule this round and phase
 func is_on_schedule() -> bool:
-	var round = battle_state.round
-	return root.unit.def_schedule.at(round) || root.unit.dmg_schedule.at(round) || root.unit.skill_schedule.at(round)
+	return root.schedule(battle_state.phase).at(battle_state.round)
 
 # returns all units from team a and team b
 func get_all_units() -> Array[BattleUnit]:

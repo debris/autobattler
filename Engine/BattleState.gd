@@ -5,12 +5,14 @@ signal action_executed
 signal _internal_proceed
 
 var round: int
+var phase: int
 var team_a: BattleTeam
 var team_b: BattleTeam
 var logs: Array[Log]
 
 func _init(a: Team, b: Team):
 	round = 0
+	phase = 0
 	team_a = BattleTeam.new(a)
 	team_b = BattleTeam.new(b)
 
@@ -24,7 +26,8 @@ func execute_round():
 	assert(team_a.members.size() == team_b.members.size())
 	var size = team_a.members.size()
 	var phases = 3
-	for phase in phases:
+	for p in phases:
+		phase = p
 		for i in size:
 			var run_skill_for_team = func(team):
 				var battle_unit = team.members[i]
@@ -38,6 +41,7 @@ func execute_round():
 			await run_skill_for_team.call(team_a)
 			await run_skill_for_team.call(team_b)
 
+	phase = 0
 	round += 1
 
 func proceed():
