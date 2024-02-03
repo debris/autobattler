@@ -1,6 +1,6 @@
-# Increase dmg be certain value
+# Increase def by certain value
 extends Log
-class_name LogDmgAdd
+class_name LogDefAdd
 
 var value: int
 

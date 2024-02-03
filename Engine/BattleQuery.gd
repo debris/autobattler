@@ -26,6 +26,12 @@ func get_my_team() -> BattleTeam:
 	var position = get_my_position()
 	return position.battle_team
 
+func get_enemy_team() -> BattleTeam:
+	var position = get_my_position()
+	if position.battle_team.get_instance_id() == battle_state.team_a.get_instance_id():
+		return battle_state.team_b
+	return battle_state.team_a
+
 # returns position in a team
 func get_my_position() -> BattleUnitPosition:
 	var position_in_team = func(team):
