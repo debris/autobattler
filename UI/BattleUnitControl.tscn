@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.141176, 0.141176, 0.141176, 1)
+color = Color(0.117647, 0.117647, 0.117647, 1)
 
 [node name="ImageRect" type="Control" parent="Control"]
 process_mode = 4
@@ -35,29 +35,32 @@ script = ExtResource("3_jydyn")
 
 [node name="Name" type="Label" parent="Control"]
 layout_mode = 0
-offset_top = 128.0
+offset_left = 8.0
+offset_top = 136.0
 offset_right = 128.0
-offset_bottom = 152.0
+offset_bottom = 160.0
 text = "Name"
-vertical_alignment = 1
 
 [node name="Def" type="Label" parent="Control"]
 layout_mode = 0
-offset_top = 176.0
-offset_right = 128.0
-offset_bottom = 201.0
-theme_override_font_sizes/font_size = 10
+offset_left = 56.0
+offset_top = 152.0
+offset_right = 120.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 24
 text = "Def:"
-vertical_alignment = 1
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="Dmg" type="Label" parent="Control"]
 layout_mode = 0
+offset_left = 8.0
 offset_top = 152.0
-offset_right = 128.0
-offset_bottom = 175.0
-theme_override_font_sizes/font_size = 10
+offset_right = 72.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 24
 text = "Dmg:"
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="GridContainer" type="GridContainer" parent="Control"]
 layout_mode = 0
@@ -74,15 +77,18 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_moluy")
+the_color = null
 
 [node name="ScheduleDef" type="Control" parent="Control/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_moluy")
+the_color = null
 
 [node name="ScheduleSkill" type="Control" parent="Control/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_moluy")
+the_color = null
