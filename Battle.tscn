@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://dxvn6rx8m3xcl"]
+[gd_scene load_steps=3 format=3 uid="uid://dxvn6rx8m3xcl"]
+
+[ext_resource type="Script" path="res://Battle.gd" id="1_w871l"]
+[ext_resource type="PackedScene" uid="uid://cdnpjps8d0c6u" path="res://UI/BattleTeamControl.tscn" id="2_w07n4"]
 
 [node name="Battle" type="Node2D"]
+script = ExtResource("1_w871l")
+
+[node name="TeamA" parent="." instance=ExtResource("2_w07n4")]
+
+[node name="TeamB" parent="." instance=ExtResource("2_w07n4")]
+offset_top = 256.0
+offset_bottom = 456.0
+
+[node name="Round" type="Label" parent="."]
+offset_left = 688.0
+offset_top = 216.0
+offset_right = 728.0
+offset_bottom = 239.0
+text = "Round"

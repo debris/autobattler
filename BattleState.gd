@@ -2,6 +2,7 @@ extends Resource
 class_name BattleState
 
 signal action_executed(Action)
+signal _internal_proceed
 
 var round: int
 var team_a: BattleTeam
@@ -13,9 +14,13 @@ func _init(a: Team, b: Team):
 	team_b = BattleTeam.new(b)
 
 func execute_round():
-	_execute_skills()
-	_execute_def()
-	_execute_dmg()
+	await _execute_skills()
+	await _execute_def()
+	await _execute_dmg()
+	round += 1
+
+func proceed():
+	_internal_proceed.emit()
 
 # private
 func _execute_def():
@@ -23,22 +28,26 @@ func _execute_def():
 		if battle_unit.unit.is_def_active_at_round(round):
 			team_a.power += battle_unit.def
 			action_executed.emit(ActionTeamDefend.new(battle_unit, team_a, battle_unit.def))
+			await _internal_proceed
 
 	for battle_unit in team_b.members:
 		if battle_unit.unit.is_def_active_at_round(round):
 			team_b.power += battle_unit.def
 			action_executed.emit(ActionTeamDefend.new(battle_unit, team_b, battle_unit.def))
+			await _internal_proceed
 
 func _execute_dmg():
 	for battle_unit in team_a.members:
 		if battle_unit.unit.is_dmg_active_at_round(round):
 			team_b.power -= battle_unit.dmg
 			action_executed.emit(ActionTeamAttack.new(battle_unit, team_a, battle_unit.dmg))
+			await _internal_proceed
 
 	for battle_unit in team_b.members:
 		if battle_unit.unit.is_dmg_active_at_round(round):
 			team_a.power -= battle_unit.dmg
 			action_executed.emit(ActionTeamAttack.new(battle_unit, team_b, battle_unit.dmg))
+			await _internal_proceed
 
 # private
 func _execute_skills():
@@ -57,7 +66,9 @@ func _execute_skills():
 	for action in team_a_actions:
 		action._execute()
 		action_executed.emit(action)
+		await _internal_proceed
 	
 	for action in team_b_actions:
 		action._execute()
 		action_executed.emit(action)
+		await _internal_proceed

@@ -1,5 +1,5 @@
 extends Skill
-class_name BloodRage
+class_name SkillBloodRage
 
 func _init():
 	name = "BloodRage"

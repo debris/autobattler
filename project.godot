@@ -14,3 +14,7 @@ config/name="Autobattler"
 run/main_scene="res://Battle.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
