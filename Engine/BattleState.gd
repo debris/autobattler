@@ -21,72 +21,27 @@ func team_b_query() -> BattleTeamQuery:
 	return BattleTeamQuery.new(team_b, self)
 
 func execute_round():
-	await _execute_skills()
-	await _execute_def()
-	await _execute_dmg()
+	assert(team_a.members.size() == team_b.members.size())
+	var size = team_a.members.size()
+	var phases = 3
+	for phase in phases:
+		for i in size:
+			var run_skill_for_team = func(team):
+				var battle_unit = team.members[i]
+				if battle_unit.schedule(phase).at(round):
+					var skill = battle_unit.skill(phase)
+					var logs = skill._execute(BattleQuery.new(battle_unit, self))
+					await _display(battle_unit, battle_unit.schedule_pointer(phase), logs)
+				else:
+					await _display_none(battle_unit.schedule_pointer(phase))
+			
+			await run_skill_for_team.call(team_a)
+			await run_skill_for_team.call(team_b)
+
 	round += 1
 
 func proceed():
 	_internal_proceed.emit()
-
-# private
-func _execute_def():
-	for battle_unit in team_a.members:
-		if battle_unit.unit.def_schedule.at(round):
-			var value = battle_unit.def + battle_unit.def_bonus
-			team_a.power += value
-			battle_unit.def_bonus = 0
-			await _display(battle_unit, battle_unit.def_schedule_pointer, [LogDefend.new(battle_unit, value)])
-		else:
-			await _display_none(battle_unit.def_schedule_pointer)
-
-	for battle_unit in team_b.members:
-		if battle_unit.unit.def_schedule.at(round):
-			var value = battle_unit.def + battle_unit.def_bonus
-			team_b.power += value
-			battle_unit.def_bonus = 0
-			await _display(battle_unit, battle_unit.def_schedule_pointer, [LogDefend.new(battle_unit, value)])
-		else:
-			await _display_none(battle_unit.def_schedule_pointer)
-
-func _execute_dmg():
-	for battle_unit in team_a.members:
-		if battle_unit.unit.dmg_schedule.at(round):
-			var value = battle_unit.dmg + battle_unit.dmg_bonus
-			team_b.power -= value
-			battle_unit.dmg_bonus = 0
-			await _display(battle_unit, battle_unit.dmg_schedule_pointer, [LogAttack.new(battle_unit, value)])
-		else:
-			await _display_none(battle_unit.dmg_schedule_pointer)
-
-	for battle_unit in team_b.members:
-		if battle_unit.unit.dmg_schedule.at(round):
-			var value = battle_unit.dmg + battle_unit.dmg_bonus
-			team_a.power -= value
-			battle_unit.dmg_bonus = 0
-			await _display(battle_unit, battle_unit.dmg_schedule_pointer, [LogAttack.new(battle_unit, value)])
-		else:
-			await _display_none(battle_unit.dmg_schedule_pointer)
-
-# private
-func _execute_skills():
-	for battle_unit in team_a.members:
-		if battle_unit.unit.skill_schedule.at(round):
-			for i in 1 + battle_unit.skill_bonus_casts:
-				var actions = battle_unit.unit.skill._execute(BattleQuery.new(battle_unit, self))
-				await _display(battle_unit, battle_unit.skill_schedule_pointer, actions)
-			battle_unit.skill_bonus_casts -= 1
-		else:
-			await _display_none(battle_unit.skill_schedule_pointer)
-	
-	for battle_unit in team_b.members:
-		if battle_unit.unit.skill_schedule.at(round):
-			for i in 1 + battle_unit.skill_bonus_casts:
-				var actions = battle_unit.unit.skill._execute(BattleQuery.new(battle_unit, self))
-				await _display(battle_unit, battle_unit.skill_schedule_pointer, actions)
-			battle_unit.skill_bonus_casts -= 1
-		else:
-			await _display_none(battle_unit.skill_schedule_pointer)
 
 # private
 func _display(battle_unit, schedule_pointer, actions):

@@ -27,3 +27,38 @@ func _init(u: OwnedUnit):
 	dmg_bonus = 0
 	def_bonus = 0
 	skill_bonus_casts = 0
+
+# 0, 1, 2
+func skill(phase: int) -> Skill:
+	if phase == 0:
+		return unit.base.skill
+	elif phase == 1:
+		return SkillDefend.new()
+	elif phase == 2:
+		return SkillAttack.new()
+		
+	assert("logic error, we should never get here")
+	return Skill.new()
+		
+
+func schedule(phase: int) -> Schedule:
+	if phase == 0:
+		return unit.skill_schedule
+	elif phase == 1:
+		return unit.def_schedule
+	elif phase == 2:
+		return unit.dmg_schedule
+	
+	assert("logic error, we should never get here")
+	return Schedule.new()
+
+func schedule_pointer(phase: int) -> SchedulePointer:
+	if phase == 0:
+		return skill_schedule_pointer
+	if phase == 1:
+		return def_schedule_pointer
+	elif phase == 2:
+		return dmg_schedule_pointer
+
+	assert("logic error, we should never be here")
+	return SchedulePointer.new()
