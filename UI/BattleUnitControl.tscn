@@ -21,8 +21,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.117647, 0.117647, 0.117647, 1)
 
-[node name="ImageRect" type="Control" parent="Control"]
-process_mode = 4
+[node name="ActiveControl" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 40.0
+color = Color(0.5, 0.458333, 0.25, 1)
+
+[node name="Control" type="Control" parent="Control"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,6 +37,16 @@ offset_top = 40.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ImageRect" type="Control" parent="Control/Control"]
+process_mode = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(80, 80)
 mouse_filter = 2
 script = ExtResource("3_jydyn")
 
@@ -108,3 +124,23 @@ theme_override_colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
 theme_override_font_sizes/font_size = 24
 text = "Dmg:"
 vertical_alignment = 1
+
+[node name="DmgBonus" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 200.0
+offset_right = 64.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "x"
+
+[node name="DefBonus" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 200.0
+offset_right = 160.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "x"
+horizontal_alignment = 2

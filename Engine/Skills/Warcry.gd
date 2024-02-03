@@ -15,12 +15,18 @@ func _execute(query: BattleQuery) -> Array[Log]:
 		enemy_unit.dmg -= value
 		result.push_back(LogDmgAdd.new(enemy_unit, -value))
 		
+		var double_value = value
+		unit.dmg_bonus += double_value
+		result.push_back(LogDmgAdd.new(unit, double_value))
+
 		var next_unit = query.get_next_unit()
 		if next_unit != null:
-			next_unit.dmg_bonus += 2 * value
+			next_unit.dmg_bonus += double_value
+			result.push_back(LogDmgBonusAdd.new(next_unit, double_value))
 			
 		var prev_unit = query.get_prev_unit()
 		if prev_unit != null:
-			prev_unit.dmg_bonus ++ 2 * value
+			prev_unit.dmg_bonus += double_value
+			result.push_back(LogDmgBonusAdd.new(prev_unit, double_value))
 	
 	return result

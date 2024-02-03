@@ -72,15 +72,19 @@ func _execute_dmg():
 func _execute_skills():
 	for battle_unit in team_a.members:
 		if battle_unit.unit.skill_schedule.at(round):
-			var actions = battle_unit.unit.skill._execute(BattleQuery.new(battle_unit, self))
-			await _display(battle_unit, battle_unit.skill_schedule_pointer, actions)
+			for i in 1 + battle_unit.skill_bonus_casts:
+				var actions = battle_unit.unit.skill._execute(BattleQuery.new(battle_unit, self))
+				await _display(battle_unit, battle_unit.skill_schedule_pointer, actions)
+			battle_unit.skill_bonus_casts -= 1
 		else:
 			await _display_none(battle_unit.skill_schedule_pointer)
 	
 	for battle_unit in team_b.members:
 		if battle_unit.unit.skill_schedule.at(round):
-			var actions = battle_unit.unit.skill._execute(BattleQuery.new(battle_unit, self))
-			await _display(battle_unit, battle_unit.skill_schedule_pointer, actions)
+			for i in 1 + battle_unit.skill_bonus_casts:
+				var actions = battle_unit.unit.skill._execute(BattleQuery.new(battle_unit, self))
+				await _display(battle_unit, battle_unit.skill_schedule_pointer, actions)
+			battle_unit.skill_bonus_casts -= 1
 		else:
 			await _display_none(battle_unit.skill_schedule_pointer)
 

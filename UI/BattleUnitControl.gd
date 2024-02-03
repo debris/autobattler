@@ -5,10 +5,13 @@ const MAX_ROTATION: float = 2.0
 @export var battle_query: BattleQuery
 
 @onready var control = $Control
-@onready var image_rect = $Control/ImageRect
+@onready var active_control = $Control/ActiveControl
+@onready var image_rect = $Control/Control/ImageRect
 @onready var name_label = $Control/Name
 @onready var def_label = $Control/Def
 @onready var dmg_label = $Control/Dmg
+@onready var dmg_bonus_label = $Control/DmgBonus
+@onready var def_bonus_label = $Control/DefBonus
 
 @onready var dmg_schedule_control = $Control/GridContainer/ScheduleDmg
 @onready var def_schedule_control = $Control/GridContainer/ScheduleDef
@@ -16,6 +19,8 @@ const MAX_ROTATION: float = 2.0
 
 var battle_unit: BattleUnit
 var processed_logs = 0
+var processed_round = -1
+var default_modulate
 
 func _ready():
 	#control.rotation = deg_to_rad(randf_range(-MAX_ROTATION, MAX_ROTATION))
@@ -34,41 +39,75 @@ func _ready():
 	skill_schedule_control.the_color = GameColors.blue()
 
 func _process(delta):
-	def_label.text = "" + str(battle_unit.def)
-	dmg_label.text = "" + str(battle_unit.dmg)
+	def_label.text = str(battle_unit.def)
+	dmg_label.text = str(battle_unit.dmg)
+	if battle_unit.dmg_bonus == 0:
+		dmg_bonus_label.text = ""
+	else:
+		dmg_bonus_label.text = "x"
+			
+	if battle_unit.def_bonus == 0:
+		def_bonus_label.text = ""
+	else:
+		def_bonus_label.text = "x"
+
+	default_modulate = Color.WHITE
+	if !battle_query.is_on_schedule():
+		default_modulate = Color.DIM_GRAY
+
+	if processed_round != battle_query.get_round():
+		control.modulate = default_modulate
+		processed_round = battle_query.get_round()
 
 	for log in battle_query.get_logs(processed_logs):
 		_process_log(log)
 
 	processed_logs = battle_query.get_total_log_count()
+	active_control.visible = battle_query.is_active()
 
 # private
 func _process_log(action: Log):
 	if action is LogAttack:
-		_display_notification("ATTACK: " + str(action.value), GameColors.red())
+		_display_notification("ATTACK", GameColors.red())
 		_shake()
 	
 	if action is LogDefend:
-		_display_notification("DEFEND: " + str(action.value), GameColors.green())
+		_display_notification("DEFEND", GameColors.green())
 		_spring()
 	
 	if action is LogSkillUsed:
 		_display_notification(str(action.name), GameColors.blue())
+	
+	if action is LogDmgAdd || action is LogDmgBonusAdd || action is LogDefAdd || action is LogDefBonusAdd:
+		var color = GameColors.green()
+		if action.value < 0:
+			color = GameColors.red()
+		
+		var tween = create_tween()
+		tween.tween_property(control, "modulate", color, 0.25).set_ease(Tween.EASE_IN)
+		tween.tween_property(control, "modulate", default_modulate, 0.25).set_ease(Tween.EASE_OUT)
 
 # private
 func _shake():
+	var offset = Vector2(0, 32.0)
 	var tween = create_tween()
-	tween.tween_property(control, "position", control.position + Vector2(0, 16.0), 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
-	tween.tween_property(control, "position", control.position, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	
+	# bottom half of the screen
+	if global_position.y > (648 / 2):
+		offset *= -1
+	
+	image_rect.scale = Vector2(1.1, 1.1)
+	control.position = control.position + offset
+	tween.tween_property(control, "position", Vector2.ZERO, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	tween.parallel().tween_property(image_rect, "scale", Vector2.ONE, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 
 # private
 func _spring():
 	var tween = create_tween()
-	control.pivot_offset = Vector2(size.x / 2, size.y / 2)
-	#tween.tween_property(control, "scale", Vector2(1.1, 1.1), 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
-	control.scale = Vector2(1.1, 1.1)
-	tween.tween_property(control, "scale", Vector2.ONE, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	image_rect.scale = Vector2(1.1, 1.1)
+	tween.tween_property(image_rect, "scale", Vector2.ONE, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 
+# private
 func _display_notification(text: String, color: Color):
 	var label = Label.new()
 	label.add_theme_color_override("font_color", color)
@@ -81,3 +120,4 @@ func _display_notification(text: String, color: Color):
 	await get_tree().create_timer(2.0).timeout
 	if label != null:
 		label.queue_free()
+
