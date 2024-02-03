@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://nooylmpe7l5w"]
+[gd_scene load_steps=3 format=3 uid="uid://nooylmpe7l5w"]
 
 [ext_resource type="Script" path="res://UI/BattleUnitControl.gd" id="1_rf7mt"]
+[ext_resource type="Script" path="res://UI/ScheduleControl.gd" id="2_moluy"]
 
 [node name="BattleUnitControl" type="ColorRect"]
 custom_minimum_size = Vector2(128, 200)
@@ -34,3 +35,27 @@ offset_bottom = 175.0
 theme_override_font_sizes/font_size = 10
 text = "Dmg:"
 vertical_alignment = 1
+
+[node name="ScheduleDmg" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 176.0
+offset_right = 128.0
+offset_bottom = 184.0
+script = ExtResource("2_moluy")
+
+[node name="ScheduleDef" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 184.0
+offset_right = 128.0
+offset_bottom = 192.0
+script = ExtResource("2_moluy")
+
+[node name="ScheduleSkill" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 128.0
+offset_bottom = 200.0
+script = ExtResource("2_moluy")

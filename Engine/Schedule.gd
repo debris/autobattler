@@ -17,3 +17,6 @@ class_name Schedule
 
 func at(round: int) -> bool:
 	return data[round % data.size()]
+
+func normalize(round: int) -> int:
+	return round % data.size()

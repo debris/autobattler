@@ -25,8 +25,8 @@ func _ready():
 		print("END OF ROUND: ", battle_state.round)
 		await get_tree().create_timer(3.0).timeout
 
-func log_state(a, battle_state):
-	print_debug("LOG action: ", a)
+func log_state(battle_state):
+	print_debug("LOG action")
 	await get_tree().create_timer(0.5).timeout
 	battle_state.proceed()
 
