@@ -5,10 +5,11 @@ func _init():
 	name = "Blood Rage"
 	description = "Increase *damage* by 20%."
 
-func _execute(query: BattleQuery) -> Array[Action]:
+func _execute(query: BattleQuery) -> Array[Log]:
 	# increase unit dmg by 20%
 	var unit = query.get_this_unit()
-	unit.dmg += unit.dmg * 20 / 100
+	var value = unit.dmg * 20 / 100
+	unit.dmg += value
 	
 	# TODO: actions are basically logs at this point
-	return [ActionSkillUsed.new(unit, name), ActionIncreaseDmg.new(unit, 20)]
+	return [LogSkillUsed.new(unit, name), LogDmgAdd.new(unit, value)]

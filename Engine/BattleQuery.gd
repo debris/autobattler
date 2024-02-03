@@ -49,8 +49,8 @@ func get_next_unit() -> BattleUnit:
 	# may also be null
 	return position.battle_team.members[position.index + 1]
 
-func get_logs(skip: int = 0) -> Array[Action]:
-	var result: Array[Action] = []
+func get_logs(skip: int = 0) -> Array[Log]:
+	var result: Array[Log] = []
 	for i in battle_state.logs.size() - skip:
 		var index_to_check = i + skip
 		var log_to_check = battle_state.logs[index_to_check]

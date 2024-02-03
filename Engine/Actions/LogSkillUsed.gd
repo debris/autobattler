@@ -1,5 +1,5 @@
-extends Action
-class_name ActionSkillUsed
+extends Log
+class_name LogSkillUsed
 
 var name: String
 var success: bool

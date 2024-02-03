@@ -1,5 +1,5 @@
-extends Action
-class_name ActionTeamAttack
+extends Log
+class_name LogDefend
 
 var value: int
 

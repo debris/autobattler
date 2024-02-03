@@ -7,7 +7,7 @@ signal _internal_proceed
 var round: int
 var team_a: BattleTeam
 var team_b: BattleTeam
-var logs: Array[Action]
+var logs: Array[Log]
 
 func _init(a: Team, b: Team):
 	round = 0
@@ -36,7 +36,7 @@ func _execute_def():
 			var value = battle_unit.def + battle_unit.def_bonus
 			team_a.power += value
 			battle_unit.def_bonus = 0
-			await _display(battle_unit, battle_unit.def_schedule_pointer, [ActionTeamDefend.new(battle_unit, value)])
+			await _display(battle_unit, battle_unit.def_schedule_pointer, [LogDefend.new(battle_unit, value)])
 		else:
 			await _display_none(battle_unit.def_schedule_pointer)
 
@@ -45,7 +45,7 @@ func _execute_def():
 			var value = battle_unit.def + battle_unit.def_bonus
 			team_b.power += value
 			battle_unit.def_bonus = 0
-			await _display(battle_unit, battle_unit.def_schedule_pointer, [ActionTeamDefend.new(battle_unit, value)])
+			await _display(battle_unit, battle_unit.def_schedule_pointer, [LogDefend.new(battle_unit, value)])
 		else:
 			await _display_none(battle_unit.def_schedule_pointer)
 
@@ -55,7 +55,7 @@ func _execute_dmg():
 			var value = battle_unit.dmg + battle_unit.dmg_bonus
 			team_b.power -= value
 			battle_unit.dmg_bonus = 0
-			await _display(battle_unit, battle_unit.dmg_schedule_pointer, [ActionTeamAttack.new(battle_unit, value)])
+			await _display(battle_unit, battle_unit.dmg_schedule_pointer, [LogAttack.new(battle_unit, value)])
 		else:
 			await _display_none(battle_unit.dmg_schedule_pointer)
 
@@ -64,7 +64,7 @@ func _execute_dmg():
 			var value = battle_unit.dmg + battle_unit.dmg_bonus
 			team_a.power -= value
 			battle_unit.dmg_bonus = 0
-			await _display(battle_unit, battle_unit.dmg_schedule_pointer, [ActionTeamAttack.new(battle_unit, value)])
+			await _display(battle_unit, battle_unit.dmg_schedule_pointer, [LogAttack.new(battle_unit, value)])
 		else:
 			await _display_none(battle_unit.dmg_schedule_pointer)
 

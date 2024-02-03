@@ -1,6 +1,6 @@
 # Increase dmg by certain amount %
-extends Action
-class_name ActionIncreaseDmg
+extends Log
+class_name LogDmgAdd
 
 var increase: int
 

@@ -39,26 +39,21 @@ func _process(delta):
 
 	for log in battle_query.get_logs(processed_logs):
 		_process_log(log)
-		
-	#for i in battle_unit.logs.size() - processed_logs:
-		#var index_to_process = i + processed_logs
-		#_process_log(battle_unit.logs[index_to_process])
 
 	processed_logs = battle_query.get_total_log_count()
-	#print("-- processed logs: ", processed_logs)
 
 # private
-func _process_log(action: Action):
-	if action is ActionTeamAttack:
+func _process_log(action: Log):
+	if action is LogAttack:
 		_display_notification("ATTACK: " + str(action.value), GameColors.red())
 		_shake()
 	
-	if action is ActionTeamDefend:
+	if action is LogDefend:
 		_display_notification("DEFEND: " + str(action.value), GameColors.green())
 		_spring()
 	
-	if action is ActionIncreaseDmg:
-		_display_notification("DMG: " + str(action.increase), GameColors.blue())
+	if action is LogSkillUsed:
+		_display_notification(str(action.name), GameColors.blue())
 
 # private
 func _shake():

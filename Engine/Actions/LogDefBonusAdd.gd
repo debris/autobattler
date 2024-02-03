@@ -1,5 +1,5 @@
-extends Action
-class_name ActionAddDefBonus
+extends Log
+class_name LogDefBonusAdd
 
 var value: int
 

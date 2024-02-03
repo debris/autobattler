@@ -1,4 +1,4 @@
 extends Resource
-class_name Action
+class_name Log
 
 var unit: BattleUnit
