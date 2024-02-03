@@ -11,10 +11,12 @@ config_version=5
 [application]
 
 config/name="Autobattler"
-run/main_scene="res://Battle.tscn"
+run/main_scene="res://UI/Battle.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/window_width_override=2304
+window/size/window_height_override=1296
 window/stretch/mode="canvas_items"

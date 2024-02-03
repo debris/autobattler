@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var team_a_control = $TeamA
-@onready var team_b_control = $TeamB
+@onready var team_a_control = $CenterContainer/GridContainer/TeamA
+@onready var team_b_control = $CenterContainer/GridContainer/TeamB
 @onready var round_label = $Round
 
 var battle_state: BattleState
@@ -34,12 +34,7 @@ func _process(delta):
 	round_label.text = "ROUND: " + str(battle_state.round)
 
 func random_unit() -> OwnedUnit:
-	var unit = Unit.new()
-	unit.name = "Orc Warrior"
-	unit.dmg = 10
-	unit.def = 10
-	unit.skill = SkillBloodRage.new()
-	
+	var unit = [UnitOrcWarrior.new(), UnitElfArcher.new(), UnitVikingWarrior.new()].pick_random()
 	var owned_unit = claim_unit(unit)
 	return owned_unit
 
@@ -50,11 +45,13 @@ func claim_unit(unit: Unit) -> OwnedUnit:
 	owned_unit.def = unit.def
 	owned_unit.skill = unit.skill
 	
-	owned_unit.dmg_rounds = random_rounds()
-	owned_unit.def_rounds = random_rounds()
-	owned_unit.skill_rounds = random_rounds()
+	owned_unit.dmg_schedule = random_schedule()
+	owned_unit.def_schedule = random_schedule()
+	owned_unit.skill_schedule = random_schedule()
 	return owned_unit
 
-func random_rounds() -> Array[bool]:
+func random_schedule() -> Schedule:
 	# TODO: do it properly
-	return [true, false, false]
+	var schedule = Schedule.new()
+	schedule.data = [true, false, false] as Array[bool]
+	return schedule

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxvn6rx8m3xcl"]
+
+[ext_resource type="Script" path="res://UI/Battle.gd" id="1_w871l"]
+[ext_resource type="PackedScene" uid="uid://cdnpjps8d0c6u" path="res://UI/BattleTeamControl.tscn" id="2_w07n4"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_w871l")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="TeamA" parent="CenterContainer/GridContainer" instance=ExtResource("2_w07n4")]
+layout_mode = 2
+
+[node name="TeamB" parent="CenterContainer/GridContainer" instance=ExtResource("2_w07n4")]
+layout_mode = 2
+
+[node name="Round" type="Label" parent="."]
+offset_left = 1000.0
+offset_top = 304.0
+offset_right = 1136.0
+offset_bottom = 328.0
+text = "Round"
+horizontal_alignment = 2

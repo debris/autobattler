@@ -3,33 +3,34 @@
 [ext_resource type="Script" path="res://UI/BattleUnitControl.gd" id="1_rf7mt"]
 
 [node name="BattleUnitControl" type="ColorRect"]
-custom_minimum_size = Vector2(160, 200)
-offset_right = 160.0
+custom_minimum_size = Vector2(128, 200)
+offset_right = 128.0
 offset_bottom = 200.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_rf7mt")
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
-offset_right = 160.0
-offset_bottom = 24.0
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 152.0
 text = "Name"
 vertical_alignment = 1
 
 [node name="Def" type="Label" parent="."]
 layout_mode = 0
-offset_top = 23.0
-offset_right = 160.0
-offset_bottom = 48.0
+offset_top = 176.0
+offset_right = 128.0
+offset_bottom = 201.0
 theme_override_font_sizes/font_size = 10
 text = "Def:"
 vertical_alignment = 1
 
 [node name="Dmg" type="Label" parent="."]
 layout_mode = 0
-offset_top = 48.0
-offset_right = 160.0
-offset_bottom = 71.0
+offset_top = 152.0
+offset_right = 128.0
+offset_bottom = 175.0
 theme_override_font_sizes/font_size = 10
 text = "Dmg:"
 vertical_alignment = 1

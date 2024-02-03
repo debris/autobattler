@@ -25,26 +25,26 @@ func proceed():
 # private
 func _execute_def():
 	for battle_unit in team_a.members:
-		if battle_unit.unit.is_def_active_at_round(round):
+		if battle_unit.unit.def_schedule.at(round):
 			team_a.power += battle_unit.def
 			action_executed.emit(ActionTeamDefend.new(battle_unit, team_a, battle_unit.def))
 			await _internal_proceed
 
 	for battle_unit in team_b.members:
-		if battle_unit.unit.is_def_active_at_round(round):
+		if battle_unit.unit.def_schedule.at(round):
 			team_b.power += battle_unit.def
 			action_executed.emit(ActionTeamDefend.new(battle_unit, team_b, battle_unit.def))
 			await _internal_proceed
 
 func _execute_dmg():
 	for battle_unit in team_a.members:
-		if battle_unit.unit.is_dmg_active_at_round(round):
+		if battle_unit.unit.dmg_schedule.at(round):
 			team_b.power -= battle_unit.dmg
 			action_executed.emit(ActionTeamAttack.new(battle_unit, team_a, battle_unit.dmg))
 			await _internal_proceed
 
 	for battle_unit in team_b.members:
-		if battle_unit.unit.is_dmg_active_at_round(round):
+		if battle_unit.unit.dmg_schedule.at(round):
 			team_a.power -= battle_unit.dmg
 			action_executed.emit(ActionTeamAttack.new(battle_unit, team_b, battle_unit.dmg))
 			await _internal_proceed
@@ -53,13 +53,13 @@ func _execute_dmg():
 func _execute_skills():
 	var team_a_actions = []
 	for battle_unit in team_a.members:
-		if battle_unit.unit.is_skill_active_at_round(round):
+		if battle_unit.unit.skill_schedule.at(round):
 			var action = battle_unit.unit.skill._execute(battle_unit, team_a, self)
 			team_a_actions.push_back(action)
 	
 	var team_b_actions = []
 	for battle_unit in team_b.members:
-		if battle_unit.unit.is_skill_active_at_round(round):
+		if battle_unit.unit.skill_schedule.at(round):
 			var action = battle_unit.unit.skill._execute(battle_unit, team_b, self)
 			team_b_actions.push_back(action)
 	

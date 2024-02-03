@@ -1,4 +1,4 @@
-extends ColorRect
+extends Control
 
 @onready var team_grid = $TeamGrid
 @onready var power_label = $Power
