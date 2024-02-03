@@ -1,19 +1,26 @@
 extends Control
 
+const MAX_ROTATION: float = 5.0
+
 @export var battle_unit: BattleUnit
 
-@onready var name_label = $Name
-@onready var def_label = $Def
-@onready var dmg_label = $Dmg
+@onready var control = $Control
+@onready var image_rect = $Control/ImageRect
+@onready var name_label = $Control/Name
+@onready var def_label = $Control/Def
+@onready var dmg_label = $Control/Dmg
 
-@onready var dmg_schedule_control = $ScheduleDmg
-@onready var def_schedule_control = $ScheduleDef
-@onready var skill_schedule_control = $ScheduleSkill
+@onready var dmg_schedule_control = $Control/GridContainer/ScheduleDmg
+@onready var def_schedule_control = $Control/GridContainer/ScheduleDef
+@onready var skill_schedule_control = $Control/GridContainer/ScheduleSkill
 
 var processed_logs = 0
 
 func _ready():
+	#control.rotation = deg_to_rad(randf_range(-MAX_ROTATION, MAX_ROTATION))
+	#control.pivot_offset.x = randf_range(0, size.x)
 	name_label.text = battle_unit.unit.base.name
+	image_rect.texture = battle_unit.unit.base.texture
 	dmg_schedule_control.schedule = battle_unit.unit.dmg_schedule
 	dmg_schedule_control.schedule_pointer = battle_unit.dmg_schedule_pointer
 	def_schedule_control.schedule = battle_unit.unit.def_schedule
@@ -30,9 +37,6 @@ func _process(delta):
 		_process_log(battle_unit.logs[index_to_process])
 
 	processed_logs = battle_unit.logs.size()
-
-func _draw():
-	draw_texture_rect(battle_unit.unit.base.texture, Rect2(Vector2(0, 0), Vector2(size.x, size.x)), false)
 
 # private
 func _process_log(action: Action):

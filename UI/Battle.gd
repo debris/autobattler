@@ -10,7 +10,7 @@ func _ready():
 	var team_a = Team.new()
 	var team_b = Team.new()
 	
-	for i in 3:
+	for i in 6:
 		team_a.members.push_back(random_unit())
 		team_b.members.push_back(random_unit())
 
@@ -23,7 +23,7 @@ func _ready():
 	while true:
 		await battle_state.execute_round()
 		print("END OF ROUND: ", battle_state.round)
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(0.5).timeout
 
 func log_state(battle_state):
 	print_debug("LOG action")
@@ -45,13 +45,9 @@ func claim_unit(unit: Unit) -> OwnedUnit:
 	owned_unit.def = unit.def
 	owned_unit.skill = unit.skill
 	
-	owned_unit.dmg_schedule = random_schedule()
-	owned_unit.def_schedule = random_schedule()
-	owned_unit.skill_schedule = random_schedule()
+	var generator = Generator.new(randi())
+	
+	owned_unit.dmg_schedule = generator.rand_schedule()
+	owned_unit.def_schedule = generator.rand_schedule()
+	owned_unit.skill_schedule = generator.rand_schedule()
 	return owned_unit
-
-func random_schedule() -> Schedule:
-	# TODO: do it properly
-	var schedule = Schedule.new()
-	schedule.data = [true, false, false] as Array[bool]
-	return schedule
