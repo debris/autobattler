@@ -19,8 +19,9 @@ func _draw():
 	const background_color = Color.TRANSPARENT #Color(Color.DIM_GRAY, 0.5)
 	const frame_color = Color.TRANSPARENT #Color.BLACK
 	const negative_color = Color(Color.GRAY, 0.3)
-	var active_color = Color(Color.DIM_GRAY, 0.4) #Color(Color.RED, 0.4)
-	var waiting_color = Color(Color.DIM_GRAY, 0.4)
+	#var active_color = Color(Color.DIM_GRAY, 0.4) #Color(Color.RED, 0.4)
+	var active_color = Color.YELLOW
+	var waiting_color = Color.TRANSPARENT #Color(Color.DIM_GRAY, 0.4)
 	const line_color = Color(Color.DIM_GRAY, 1.0)
 	var positive_color = Color(the_color, 0.4) #Color(Color.DARK_GREEN, 0.4)
 	

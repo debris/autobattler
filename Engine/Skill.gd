@@ -2,6 +2,7 @@ extends Resource
 class_name Skill
 
 var name: String
+var description: String
 
-func _execute(_unit: BattleUnit, _team: BattleTeam, _battle_state: BattleState) -> Action:
-	return Action.new()
+func _execute(_query: BattleQuery) -> Array[Action]:
+	return []

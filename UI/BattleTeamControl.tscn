@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://UI/BattleTeamControl.gd" id="1_r0ohk"]
 
 [node name="ColorRect" type="Control"]
-custom_minimum_size = Vector2(768, 256)
+custom_minimum_size = Vector2(768, 240)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 600.0
-offset_bottom = 256.0
+offset_right = 768.0
+offset_bottom = 240.0
 script = ExtResource("1_r0ohk")
 
 [node name="TeamGrid" type="GridContainer" parent="."]
@@ -16,12 +16,6 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 200.0
 grow_horizontal = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 0
 columns = 6
-
-[node name="Power" type="Label" parent="."]
-layout_mode = 0
-offset_top = 200.0
-offset_right = 240.0
-offset_bottom = 256.0
-text = "Power
-"
