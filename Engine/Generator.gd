@@ -33,4 +33,5 @@ func rand_schedule() -> Schedule:
 
 	var schedule = Schedule.new()
 	schedule.data = data
+	schedule.kind = inner.randi_range(0, 2) as Schedule.Kind
 	return schedule

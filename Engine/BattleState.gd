@@ -47,7 +47,7 @@ func execute_round():
 		for i in size:
 			var run_skill_for_team = func(team):
 				var battle_unit = team.members[i]
-				if battle_unit.schedule(phase).at(round):
+				if battle_unit.schedules[phase].at(round):
 					var skill = battle_unit.skill_at(phase)
 					var to_execute: Array[ExecutionEnv] = [ExecutionEnv.new(battle_unit, skill)]
 					var executed = 0
@@ -70,10 +70,10 @@ func execute_round():
 							# applies changes to the state
 							if log.valid:
 								log._finalize(self)
-						await _display(env.battle_unit, env.battle_unit.schedule_pointer(phase), logs)
+						await _display(env.battle_unit, logs)
 						executed += 1
 				else:
-					await _display_none(battle_unit.schedule_pointer(phase))
+					await _display_none(battle_unit.schedule_pointer)
 			
 			await run_skill_for_team.call(team_a)
 			await run_skill_for_team.call(team_b)
@@ -85,23 +85,25 @@ func proceed():
 	_internal_proceed.emit()
 
 # private
-func _display(battle_unit, schedule_pointer, actions):
-	schedule_pointer.active = true
-	schedule_pointer.round = round
+func _display(battle_unit, actions):
+	battle_unit.schedule_pointer.active = true
+	battle_unit.schedule_pointer.round = round
+	battle_unit.schedule_pointer.phase = phase
 
 	logs.append_array(actions)
 	
 	action_executed.emit()
 	await _internal_proceed
-	schedule_pointer.active = false
-	# point at the next round
-	schedule_pointer.round += 1
+	battle_unit.schedule_pointer.active = false
+	# point at the next round (?)
+	#battle_unit.schedule_pointer.round += 1
 
 func _display_none(schedule_pointer):
 	schedule_pointer.active = true
 	schedule_pointer.round = round
+	schedule_pointer.phase = phase
 	action_executed.emit()
 	await _internal_proceed
 	schedule_pointer.active = false
-	# point at the next round
-	schedule_pointer.round += 1
+	# point at the next round (?)
+	#schedule_pointer.round += 1

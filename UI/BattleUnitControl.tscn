@@ -59,7 +59,7 @@ offset_bottom = 42.0
 theme_override_font_sizes/font_size = 20
 text = "Name"
 
-[node name="GridContainer" type="GridContainer" parent="Control"]
+[node name="Schedules" type="GridContainer" parent="Control"]
 layout_mode = 0
 offset_left = 42.0
 offset_top = 42.0
@@ -70,23 +70,26 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 metadata/_edit_group_ = true
 
-[node name="ScheduleDmg" type="Control" parent="Control/GridContainer"]
+[node name="Schedule2" type="Control" parent="Control/Schedules"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_moluy")
+phase = null
 
-[node name="ScheduleDef" type="Control" parent="Control/GridContainer"]
+[node name="Schedule1" type="Control" parent="Control/Schedules"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_moluy")
+phase = null
 
-[node name="ScheduleSkill" type="Control" parent="Control/GridContainer"]
+[node name="Schedule0" type="Control" parent="Control/Schedules"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_moluy")
+phase = null
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 0

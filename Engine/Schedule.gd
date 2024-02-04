@@ -15,6 +15,14 @@ class_name Schedule
 
 @export var data: Array[bool]
 
+enum Kind {
+	SKILL,
+	DEF,
+	DMG,
+}
+
+@export var kind = Kind.SKILL
+
 func at(round: int) -> bool:
 	return data[round % data.size()]
 

@@ -2,6 +2,12 @@
 extends Control
 class_name ScheduleControl
 
+@export var phase: int:
+	set(value):
+		if value != phase:
+			phase = value
+			queue_redraw()
+
 @export var schedule: Schedule:
 	set(value):
 		if value != schedule:
@@ -19,6 +25,8 @@ class_name ScheduleControl
 var active = false
 
 func _process(_delta):
+	# TODO: what if we only change phases and after being in a phase X the same unit is active in phase 1 in the same round?
+	# kind of corner case tho, and not so possible now
 	if schedule_pointer != null && schedule_pointer.active != active:
 		active = schedule_pointer.active
 		queue_redraw()
@@ -55,7 +63,7 @@ func _draw():
 				draw_rect(Rect2(Vector2(cell_x * i, 0) + cell_offset, cell_size - cell_offset * 2), negative_color, true)
 			
 			if schedule_pointer != null && i == schedule.normalize(schedule_pointer.round):
-				if schedule_pointer.active:
+				if schedule_pointer.active && schedule_pointer.phase == phase:
 					# draw currently executed cell
 					draw_rect(Rect2(Vector2(cell_x * i, 0) + cell_offset, cell_size - cell_offset * 2), active_color, true)
 				else:

@@ -13,9 +13,10 @@ const MAX_ROTATION: float = 2.0
 @onready var dmg_bonus_label = $Control/DmgBonus
 @onready var def_bonus_label = $Control/DefBonus
 
-@onready var dmg_schedule_control = $Control/GridContainer/ScheduleDmg
-@onready var def_schedule_control = $Control/GridContainer/ScheduleDef
-@onready var skill_schedule_control = $Control/GridContainer/ScheduleSkill
+@onready var schedules_list = $Control/Schedules
+@onready var schedule_control2 = $Control/Schedules/Schedule2
+@onready var schedule_control1 = $Control/Schedules/Schedule1
+@onready var schedule_control0 = $Control/Schedules/Schedule0
 
 var battle_unit: BattleUnit
 var processed_logs = 0
@@ -32,15 +33,14 @@ func _process(delta):
 	name_label.text = battle_unit.unit.base.name
 	image_rect.texture = battle_unit.texture
 	
-	dmg_schedule_control.schedule = battle_unit.unit.dmg_schedule
-	dmg_schedule_control.schedule_pointer = battle_unit.dmg_schedule_pointer
-	dmg_schedule_control.the_color = GameColors.red()
-	def_schedule_control.schedule = battle_unit.unit.def_schedule
-	def_schedule_control.schedule_pointer = battle_unit.def_schedule_pointer
-	def_schedule_control.the_color = GameColors.green()
-	skill_schedule_control.schedule = battle_unit.unit.skill_schedule
-	skill_schedule_control.schedule_pointer = battle_unit.skill_schedule_pointer
-	skill_schedule_control.the_color = GameColors.blue()
+	# always 3 schedules, let's grab them in reverse because of the rotation
+	for i in 3:
+		var index = 2 - i
+		var schedule_control = schedules_list.get_child(index)
+		schedule_control.schedule = battle_unit.schedules[i]
+		schedule_control.phase = i
+		schedule_control.schedule_pointer = battle_unit.schedule_pointer
+		schedule_control.the_color = GameColors.schedule_color(battle_unit.schedules[i].kind)
 
 	def_label.text = str(battle_unit.def)
 	dmg_label.text = str(battle_unit.dmg)

@@ -51,7 +51,8 @@ func random_unit() -> OwnedUnit:
 		UnitOfficerJoe.new(),
 		UnitMystique.new(),
 		UnitLoki.new(),
-		UnitPrime.new()
+		UnitPrime.new(),
+		UnitHarmony.new()
 	].pick_random()
 	var owned_unit = claim_unit(unit)
 	return owned_unit
@@ -64,8 +65,9 @@ func claim_unit(unit: Unit) -> OwnedUnit:
 	owned_unit.skill = unit.skill
 	
 	var generator = Generator.new(randi())
-	
-	owned_unit.dmg_schedule = generator.rand_schedule()
-	owned_unit.def_schedule = generator.rand_schedule()
-	owned_unit.skill_schedule = generator.rand_schedule()
+
+	owned_unit.schedules = [generator.rand_schedule(), generator.rand_schedule(), generator.rand_schedule()] as Array[Schedule]
+	#owned_unit.dmg_schedule = generator.rand_schedule()
+	#owned_unit.def_schedule = generator.rand_schedule()
+	#owned_unit.skill_schedule = generator.rand_schedule()
 	return owned_unit

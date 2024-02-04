@@ -1,6 +1,14 @@
 extends Resource
 class_name GameColors
 
+static func schedule_color(schedule_kind: Schedule.Kind) -> Color:
+	match schedule_kind:
+		Schedule.Kind.SKILL: return GameColors.blue()
+		Schedule.Kind.DEF: return GameColors.green()
+		Schedule.Kind.DMG: return GameColors.red()
+	assert(false)
+	return Color.WHITE
+
 static func red() -> Color:
 	var color = Color(1, 0, 0)
 	color.s = 0.5
