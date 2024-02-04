@@ -7,6 +7,7 @@ var unit: OwnedUnit
 var texture: Texture2D
 var dmg: int
 var def: int
+var skill: Skill
 var dmg_schedule_pointer: SchedulePointer
 var def_schedule_pointer: SchedulePointer
 var skill_schedule_pointer: SchedulePointer
@@ -24,6 +25,7 @@ func _init(u: OwnedUnit):
 	texture = u.base.texture
 	dmg = u.dmg
 	def = u.def
+	skill = u.skill
 	dmg_schedule_pointer = SchedulePointer.new()
 	def_schedule_pointer = SchedulePointer.new()
 	skill_schedule_pointer = SchedulePointer.new()
@@ -48,9 +50,9 @@ func swap_with(other: BattleUnit):
 	copy_fields.call(other, tmp)
 
 # 0, 1, 2
-func skill(phase: int) -> Skill:
+func skill_at(phase: int) -> Skill:
 	if phase == 0:
-		return unit.base.skill
+		return skill
 	elif phase == 1:
 		return SkillDefend.new()
 	elif phase == 2:
