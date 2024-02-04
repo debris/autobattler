@@ -50,7 +50,8 @@ func random_unit() -> OwnedUnit:
 		UnitJackCross.new(),
 		UnitOfficerJoe.new(),
 		UnitMystique.new(),
-		UnitLoki.new()
+		UnitLoki.new(),
+		UnitPrime.new()
 	].pick_random()
 	var owned_unit = claim_unit(unit)
 	return owned_unit
