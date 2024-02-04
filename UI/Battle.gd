@@ -46,7 +46,8 @@ func random_unit() -> OwnedUnit:
 		UnitPrincessBhalu.new(),
 		UnitAzureDragon.new(),
 		UnitRubyAssassin.new(),
-		UnitBeeMech.new()
+		UnitBeeMech.new(),
+		UnitJackCross.new()
 	].pick_random()
 	var owned_unit = claim_unit(unit)
 	return owned_unit

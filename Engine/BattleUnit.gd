@@ -14,9 +14,7 @@ var skill_schedule_pointer: SchedulePointer
 var dmg_bonus: int
 # bonus def is set to zero once it's used
 var def_bonus: int
-
 var skill_bonus_casts: int
-
 # hashset with all battle tags
 var tags: Dictionary
 
@@ -34,6 +32,18 @@ func _init(u: OwnedUnit):
 	tags = {}
 	for tag in u.base.tags:
 		tags[tag] = null
+
+func swap_with(other: BattleUnit):
+	var tmp = inst_to_dict(self)
+	var tmp2 = inst_to_dict(other)
+	
+	var copy_fields = func(unit: BattleUnit, fields):
+		for key in fields.keys():
+			if !key.begins_with("@"):
+				unit[key] = fields[key]
+
+	copy_fields.call(self, tmp2)
+	copy_fields.call(other, tmp)
 
 # 0, 1, 2
 func skill(phase: int) -> Skill:

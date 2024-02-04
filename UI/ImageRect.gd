@@ -4,8 +4,9 @@ class_name ImageRect
 
 @export var texture: Texture2D:
 	set(value):
-		texture = value
-		queue_redraw()
+		if texture != value:
+			texture = value
+			queue_redraw()
 
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_IGNORE

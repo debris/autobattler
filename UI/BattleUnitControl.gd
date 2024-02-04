@@ -27,8 +27,11 @@ func _ready():
 	#control.rotation = deg_to_rad(randf_range(-MAX_ROTATION, MAX_ROTATION))
 	#control.pivot_offset.x = randf_range(0, size.x)
 	battle_unit = battle_query.get_this_unit()
+
+func _process(delta):
 	name_label.text = battle_unit.unit.base.name
 	image_rect.texture = battle_unit.unit.base.texture
+	
 	dmg_schedule_control.schedule = battle_unit.unit.dmg_schedule
 	dmg_schedule_control.schedule_pointer = battle_unit.dmg_schedule_pointer
 	dmg_schedule_control.the_color = GameColors.red()
@@ -39,7 +42,6 @@ func _ready():
 	skill_schedule_control.schedule_pointer = battle_unit.skill_schedule_pointer
 	skill_schedule_control.the_color = GameColors.blue()
 
-func _process(delta):
 	def_label.text = str(battle_unit.def)
 	dmg_label.text = str(battle_unit.dmg)
 	if battle_unit.dmg_bonus == 0:
