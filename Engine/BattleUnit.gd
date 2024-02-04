@@ -4,6 +4,7 @@ extends Resource
 class_name BattleUnit
 
 var unit: OwnedUnit
+var texture: Texture2D
 var dmg: int
 var def: int
 var dmg_schedule_pointer: SchedulePointer
@@ -20,6 +21,7 @@ var tags: Dictionary
 
 func _init(u: OwnedUnit):
 	unit = u
+	texture = u.base.texture
 	dmg = u.dmg
 	def = u.def
 	dmg_schedule_pointer = SchedulePointer.new()

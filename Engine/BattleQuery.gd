@@ -30,7 +30,7 @@ func is_on_schedule(round = battle_state.round, phase = battle_state.phase) -> b
 
 # returns all units from team a and team b
 func get_all_units() -> Array[BattleUnit]:
-	var all = []
+	var all: Array[BattleUnit] = []
 	all.append_array(battle_state.team_a.members)
 	all.append_array(battle_state.team_b.members)
 	return all

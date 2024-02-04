@@ -30,7 +30,7 @@ func _ready():
 
 func _process(delta):
 	name_label.text = battle_unit.unit.base.name
-	image_rect.texture = battle_unit.unit.base.texture
+	image_rect.texture = battle_unit.texture
 	
 	dmg_schedule_control.schedule = battle_unit.unit.dmg_schedule
 	dmg_schedule_control.schedule_pointer = battle_unit.dmg_schedule_pointer
