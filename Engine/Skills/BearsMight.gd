@@ -9,7 +9,6 @@ func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()
 	var next_unit = query.get_next_unit()
 	if next_unit != null && next_unit.unit.def_schedule.at(query.get_round()):
-		next_unit.def_bonus += unit.def
-		return [LogSkillUsed.new(unit, name), LogDefBonusAdd.new(next_unit, unit.def)]
+		return [LogSkillUsed.new(unit, self), LogDefBonusAdd.new(next_unit, unit.def)]
 		
-	return [LogSkillUsed.new(unit, name, false)]
+	return [LogSkillUsed.new(unit, self, false)]

@@ -1,3 +1,11 @@
+# Battle State
+#
+# Skill execution consists of 3 phases
+# 
+# 0. PREPARE - Skill is being prepared and transformed into a Log
+# 1. PROCESS - Process Logs, multiply its values, schedule Skills that should be executed after
+# 2. FINALIZE - Apply Log values to the state
+
 extends Resource
 class_name BattleState
 
@@ -9,12 +17,17 @@ var phase: int
 var team_a: BattleTeam
 var team_b: BattleTeam
 var logs: Array[Log]
+var processors: Array[Processor]
 
 func _init(a: Team, b: Team):
 	round = 0
 	phase = 0
 	team_a = BattleTeam.new(a)
 	team_b = BattleTeam.new(b)
+	logs = []
+	processors = [
+		ProcessorExtraCast.new()
+	]
 
 func team_a_query() -> BattleTeamQuery:
 	return BattleTeamQuery.new(team_a, self)
@@ -33,8 +46,23 @@ func execute_round():
 				var battle_unit = team.members[i]
 				if battle_unit.schedule(phase).at(round):
 					var skill = battle_unit.skill(phase)
-					var logs = skill._execute(BattleQuery.new(battle_unit, self))
-					await _display(battle_unit, battle_unit.schedule_pointer(phase), logs)
+					var to_execute: Array[ExecutionEnv] = [ExecutionEnv.new(battle_unit, skill)]
+					var executed = 0
+					while executed < to_execute.size():
+						var env = to_execute[executed]
+						# PREPARE
+						var logs = env.skill._execute(BattleQuery.new(env.battle_unit, self))
+						# PROCESS
+						for log in logs:
+							for processor in processors:
+								var envs = processor._process_log(log, self)
+								# TODO: envs should be inserted not appended
+								to_execute.append_array(envs)
+							# FINALIZE
+							# applies changes to the state
+							log._finalize(self)
+						await _display(env.battle_unit, env.battle_unit.schedule_pointer(phase), logs)
+						executed += 1
 				else:
 					await _display_none(battle_unit.schedule_pointer(phase))
 			

@@ -7,3 +7,4 @@ func _init():
 	dmg = 9
 	def = 11
 	skill = SkillAzureMomentum.new()
+	# TODO, extra casts dont work properly

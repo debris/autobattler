@@ -38,7 +38,14 @@ func _process(delta):
 	round_label.text = "ROUND: " + str(battle_state.round)
 
 func random_unit() -> OwnedUnit:
-	var unit = [UnitOrcWarrior.new(), UnitElfArcher.new(), UnitVikingWarrior.new(), UnitPrincessBhalu.new(), UnitAzureDragon.new()].pick_random()
+	var unit = [
+		UnitOrcWarrior.new(), 
+		UnitElfArcher.new(), 
+		UnitVikingWarrior.new(),
+		UnitPrincessBhalu.new(),
+		UnitAzureDragon.new(),
+		UnitRubyAssasin.new()
+	].pick_random()
 	var owned_unit = claim_unit(unit)
 	return owned_unit
 

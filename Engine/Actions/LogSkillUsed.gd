@@ -1,10 +1,13 @@
 extends Log
 class_name LogSkillUsed
 
-var name: String
+var skill: Skill
 var success: bool
 
-func _init(u, n, s = true):
+func _init(u, n: Skill, s = true):
 	unit = u
-	name = n
+	skill = n
 	success = s
+
+func _finalize(_battle_state: BattleState):
+	pass

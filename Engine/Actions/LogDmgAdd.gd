@@ -7,3 +7,6 @@ var value: int
 func _init(u: BattleUnit, v: int):
 	unit = u
 	value = v
+
+func _finalize(_battle_state: BattleState):
+	unit.dmg = max(unit.dmg + value, 0)

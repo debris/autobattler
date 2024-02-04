@@ -8,17 +8,15 @@ func _init():
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()
 	
-	var result: Array[Log] = [LogSkillUsed.new(unit, name)]
+	var result: Array[Log] = [LogSkillUsed.new(unit, self)]
 	
 	var next_unit = query.get_next_unit()
 	if next_unit != null:
 		if next_unit.unit.skill_schedule.at(query.get_round()):
-			next_unit.skill_bonus_casts += 1
-			result.push_back(LogSkillCastBonus.new(unit, 1))
+			result.push_back(LogSkillCastBonus.new(next_unit, 1))
 	
 		next_unit = query.with_root(next_unit).get_next_unit()
 		if next_unit != null && next_unit.unit.skill_schedule.at(query.get_round()):
-			next_unit.skill_bonus_casts += 1
-			result.push_back(LogSkillCastBonus.new(unit, 1))
+			result.push_back(LogSkillCastBonus.new(next_unit, 1))
 
 	return result

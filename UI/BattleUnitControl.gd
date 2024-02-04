@@ -78,7 +78,7 @@ func _process_log(action: Log):
 		_spring()
 	
 	if action is LogSkillUsed:
-		_display_notification(str(action.name), GameColors.blue())
+		_display_notification(str(action.skill.name), GameColors.blue())
 	
 	if action is LogDmgAdd || action is LogDmgBonusAdd || action is LogDefAdd || action is LogDefBonusAdd:
 		var color = GameColors.green()
