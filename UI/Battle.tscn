@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dxvn6rx8m3xcl"]
 
+[ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_erpvb"]
 [ext_resource type="Script" path="res://UI/Battle.gd" id="1_w871l"]
-[ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="2_nbq83"]
 [ext_resource type="PackedScene" uid="uid://cdnpjps8d0c6u" path="res://UI/BattleTeamControl.tscn" id="2_w07n4"]
 [ext_resource type="Texture2D" uid="uid://etft2yunyq3v" path="res://Assets/Landscapes/forest0.png" id="3_qtwel"]
 [ext_resource type="Script" path="res://UI/TeamPowerControl.gd" id="4_mhi2i"]
@@ -12,7 +12,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-theme = ExtResource("2_nbq83")
+theme = ExtResource("1_erpvb")
 script = ExtResource("1_w871l")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -66,7 +66,7 @@ grow_horizontal = 2
 script = ExtResource("4_mhi2i")
 
 [node name="TeamBPower" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_top = 584.0
 offset_right = 1152.0
@@ -75,3 +75,32 @@ script = ExtResource("4_mhi2i")
 
 [node name="ConsoleLogs" parent="." instance=ExtResource("6_tcwyr")]
 visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 944.0
+offset_top = 576.0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+theme = ExtResource("1_erpvb")
+
+[node name="Pause" type="Button" parent="CanvasLayer/Control"]
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 193.0
+offset_bottom = 54.0
+text = "PAUSE"
+
+[node name="Console" type="Button" parent="CanvasLayer/Control"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 99.0
+offset_bottom = 54.0
+text = "CONSOLE"
+
+[connection signal="pressed" from="CanvasLayer/Control/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Console" to="." method="_on_console_pressed"]

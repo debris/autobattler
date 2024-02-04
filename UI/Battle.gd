@@ -6,8 +6,11 @@ extends Control
 @onready var team_b_power = $TeamBPower
 @onready var round_label = $Round
 @onready var console_logs = $ConsoleLogs
+@onready var pause_button = $CanvasLayer/Control/Pause
 
 var battle_state: BattleState
+
+var paused = false
 
 func _ready():
 	var team_a = Team.new()
@@ -33,7 +36,8 @@ func _ready():
 
 func log_state(state: BattleState):
 	await get_tree().create_timer(0.5).timeout
-	state.proceed()
+	if !paused:
+		state.proceed()
 
 func _process(_delta):
 	round_label.text = "ROUND: " + str(battle_state.round)
@@ -68,3 +72,16 @@ func claim_unit(unit: Unit) -> OwnedUnit:
 
 	owned_unit.schedules = [generator.rand_schedule(), generator.rand_schedule(), generator.rand_schedule()] as Array[Schedule]
 	return owned_unit
+
+
+func _on_pause_pressed():
+	paused = !paused
+	if !paused:
+		battle_state.proceed()
+		pause_button.text = "PAUSE"
+	else:
+		pause_button.text = "PLAY"
+
+
+func _on_console_pressed():
+	console_logs.visible = !console_logs.visible

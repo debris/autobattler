@@ -22,6 +22,6 @@ func _display_log(text: String):
 	label.text = text
 	label.custom_minimum_size = Vector2(0, 20)
 	label.add_theme_color_override("font_color", Color.WHITE)
-	label.add_theme_font_size_override("font_size", 14)
+	label.add_theme_font_size_override("font_size", 18)
+	label.add_theme_font_override("font", preload("res://Assets/Fonts/data-latin.ttf"))
 	list_control.add_child(label)
-	list_control.move_child(label, 0)

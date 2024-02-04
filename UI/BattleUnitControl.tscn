@@ -75,21 +75,18 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_moluy")
-phase = null
 
 [node name="Schedule1" type="Control" parent="Control/Schedules"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_moluy")
-phase = null
 
 [node name="Schedule0" type="Control" parent="Control/Schedules"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_moluy")
-phase = null
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 0
