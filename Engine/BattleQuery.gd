@@ -5,7 +5,7 @@ class_name BattleQuery
 var root: BattleUnit
 var battle_state: BattleState
 
-func _init(r, s):
+func _init(r: BattleUnit, s: BattleState):
 	root = r
 	battle_state = s
 
@@ -25,8 +25,8 @@ func is_active() -> bool:
 	return root.def_schedule_pointer.active || root.skill_schedule_pointer.active || root.dmg_schedule_pointer.active
 
 # returns true if unit is on schedule this round and phase
-func is_on_schedule() -> bool:
-	return root.schedule(battle_state.phase).at(battle_state.round)
+func is_on_schedule(round = battle_state.round, phase = battle_state.phase) -> bool:
+	return root.schedule(phase).at(round)
 
 # returns all units from team a and team b
 func get_all_units() -> Array[BattleUnit]:

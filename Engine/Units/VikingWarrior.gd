@@ -7,3 +7,4 @@ func _init():
 	dmg = 10
 	def = 10
 	skill = SkillWarcry.new()
+	passive = PassiveEmpty.new()

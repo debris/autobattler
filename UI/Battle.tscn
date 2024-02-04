@@ -74,3 +74,4 @@ offset_bottom = 648.0
 script = ExtResource("4_mhi2i")
 
 [node name="ConsoleLogs" parent="." instance=ExtResource("6_tcwyr")]
+visible = false

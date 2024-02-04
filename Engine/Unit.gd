@@ -7,3 +7,4 @@ var texture: Texture2D
 var dmg: int
 var def: int
 var skill: Skill
+var passive: Passive

@@ -32,7 +32,6 @@ func _ready():
 		await get_tree().create_timer(0.5).timeout
 
 func log_state(battle_state):
-	print_debug("LOG")
 	await get_tree().create_timer(0.5).timeout
 	battle_state.proceed()
 
@@ -46,7 +45,7 @@ func random_unit() -> OwnedUnit:
 		UnitVikingWarrior.new(),
 		UnitPrincessBhalu.new(),
 		UnitAzureDragon.new(),
-		UnitRubyAssasin.new()
+		UnitRubyAssassin.new()
 	].pick_random()
 	var owned_unit = claim_unit(unit)
 	return owned_unit

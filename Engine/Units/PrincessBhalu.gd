@@ -7,3 +7,4 @@ func _init():
 	dmg = 7
 	def = 13
 	skill = SkillBearsMight.new()
+	passive = PassiveEmpty.new()

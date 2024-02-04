@@ -26,7 +26,8 @@ func _init(a: Team, b: Team):
 	team_b = BattleTeam.new(b)
 	logs = []
 	processors = [
-		ProcessorExtraCast.new()
+		ProcessorExtraCast.new(),
+		ProcessorShadowStrike.new()
 	]
 
 func team_a_query() -> BattleTeamQuery:

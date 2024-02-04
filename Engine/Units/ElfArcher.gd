@@ -7,3 +7,4 @@ func _init():
 	dmg = 12
 	def = 8
 	skill = SkillArrowBarrage.new()
+	passive = PassiveEmpty.new()
