@@ -8,3 +8,4 @@ func _init():
 	def = 10
 	skill = SkillWarcry.new()
 	passive = PassiveEmpty.new()
+	tags = ["viking", "warrior"]

@@ -17,6 +17,9 @@ var def_bonus: int
 
 var skill_bonus_casts: int
 
+# hashset with all battle tags
+var tags: Dictionary
+
 func _init(u: OwnedUnit):
 	unit = u
 	dmg = u.dmg
@@ -27,6 +30,10 @@ func _init(u: OwnedUnit):
 	dmg_bonus = 0
 	def_bonus = 0
 	skill_bonus_casts = 0
+	
+	tags = {}
+	for tag in u.base.tags:
+		tags[tag] = null
 
 # 0, 1, 2
 func skill(phase: int) -> Skill:

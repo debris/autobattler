@@ -8,3 +8,4 @@ func _init():
 	def = 13
 	skill = SkillBearsMight.new()
 	passive = PassiveEmpty.new()
+	tags = ["princess"]

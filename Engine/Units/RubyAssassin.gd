@@ -8,3 +8,4 @@ func _init():
 	def = 4
 	skill = SkillEmpty.new()
 	passive = PassiveShadowStrike.new()
+	tags = ["assassin"]

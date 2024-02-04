@@ -27,7 +27,8 @@ func _init(a: Team, b: Team):
 	logs = []
 	processors = [
 		ProcessorExtraCast.new(),
-		ProcessorShadowStrike.new()
+		ProcessorShadowStrike.new(),
+		ProcessorAutoHive.new()
 	]
 
 func team_a_query() -> BattleTeamQuery:
@@ -57,8 +58,13 @@ func execute_round():
 						for log in logs:
 							for processor in processors:
 								var envs = processor._process_log(log, self)
-								# TODO: envs should be inserted not appended
-								to_execute.append_array(envs)
+								# TODO: optimize insertions?
+								# also check if its ok that actions from the last processor are
+								# inserted first
+								# its probably ok, but better check
+								for e in envs.size():
+									var new_env = envs[e]
+									to_execute.insert(executed + 1 + e, new_env)
 							# FINALIZE
 							# applies changes to the state
 							log._finalize(self)

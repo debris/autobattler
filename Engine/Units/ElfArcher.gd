@@ -8,3 +8,4 @@ func _init():
 	def = 8
 	skill = SkillArrowBarrage.new()
 	passive = PassiveEmpty.new()
+	tags = ["elf", "archer"]

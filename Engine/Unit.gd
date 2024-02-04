@@ -8,3 +8,4 @@ var dmg: int
 var def: int
 var skill: Skill
 var passive: Passive
+var tags: Array[String]

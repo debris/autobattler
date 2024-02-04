@@ -8,3 +8,4 @@ func _init():
 	def = 10
 	skill = SkillBloodRage.new()
 	passive = PassiveEmpty.new()
+	tags = ["orc", "warrior"]
