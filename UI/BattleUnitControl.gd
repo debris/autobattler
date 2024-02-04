@@ -29,7 +29,7 @@ func _ready():
 	#control.pivot_offset.x = randf_range(0, size.x)
 	battle_unit = battle_query.get_this_unit()
 
-func _process(delta):
+func _process(_delta):
 	name_label.text = battle_unit.unit.base.name
 	image_rect.texture = battle_unit.texture
 	

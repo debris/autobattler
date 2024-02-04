@@ -44,10 +44,10 @@ func swap_with(other: BattleUnit):
 	var tmp = inst_to_dict(self)
 	var tmp2 = inst_to_dict(other)
 	
-	var copy_fields = func(unit: BattleUnit, fields):
+	var copy_fields = func(battle_unit: BattleUnit, fields):
 		for key in fields.keys():
 			if !key.begins_with("@"):
-				unit[key] = fields[key]
+				battle_unit[key] = fields[key]
 
 	copy_fields.call(self, tmp2)
 	copy_fields.call(other, tmp)

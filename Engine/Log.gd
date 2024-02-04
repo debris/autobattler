@@ -4,7 +4,7 @@ class_name Log
 var unit: BattleUnit
 var valid: bool = true
 
-func _finalize(battle_state: BattleState):
+func _finalize(_battle_state: BattleState):
 	print_debug("UNIMPLEMENTED: Log 'finalize'")
 	assert(false)
 

@@ -31,11 +31,11 @@ func _ready():
 		print("END OF ROUND: ", battle_state.round)
 		await get_tree().create_timer(0.5).timeout
 
-func log_state(battle_state):
+func log_state(state: BattleState):
 	await get_tree().create_timer(0.5).timeout
-	battle_state.proceed()
+	state.proceed()
 
-func _process(delta):
+func _process(_delta):
 	round_label.text = "ROUND: " + str(battle_state.round)
 
 func random_unit() -> OwnedUnit:
@@ -67,7 +67,4 @@ func claim_unit(unit: Unit) -> OwnedUnit:
 	var generator = Generator.new(randi())
 
 	owned_unit.schedules = [generator.rand_schedule(), generator.rand_schedule(), generator.rand_schedule()] as Array[Schedule]
-	#owned_unit.dmg_schedule = generator.rand_schedule()
-	#owned_unit.def_schedule = generator.rand_schedule()
-	#owned_unit.skill_schedule = generator.rand_schedule()
 	return owned_unit
