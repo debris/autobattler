@@ -1,5 +1,5 @@
 extends Log
-class_name LogDefend
+class_name LogAttack
 
 var value: int
 
@@ -9,6 +9,9 @@ func _init(u: BattleUnit, v: int):
 
 func _finalize(battle_state: BattleState):
 	var battle_query = BattleQuery.new(unit, battle_state)
-	var team = battle_query.get_my_team()
-	team.power += value
+	var enemy_team = battle_query.get_enemy_team()
+	enemy_team.power -= value
 	unit.dmg_bonus = 0
+
+func _to_string() -> String:
+	return unit.unit.base.name + " ATTACKs enemy team for " + str(value)

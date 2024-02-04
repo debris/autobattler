@@ -10,3 +10,6 @@ func _init(u: BattleUnit, v: int):
 
 func _finalize(_battle_state: BattleState):
 	unit.dmg = max(unit.dmg + value, 0)
+
+func _to_string() -> String:
+	return unit.unit.base.name + " ADDs " + str(value) + " DMG"

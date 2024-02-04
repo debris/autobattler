@@ -5,6 +5,7 @@ extends Control
 @onready var team_a_power = $TeamAPower
 @onready var team_b_power = $TeamBPower
 @onready var round_label = $Round
+@onready var console_logs = $ConsoleLogs
 
 var battle_state: BattleState
 
@@ -23,6 +24,7 @@ func _ready():
 	team_b_power.battle_team = battle_state.team_b
 	
 	battle_state.action_executed.connect(log_state.bind(battle_state))
+	console_logs.battle_state = battle_state
 	
 	while true:
 		await battle_state.execute_round()

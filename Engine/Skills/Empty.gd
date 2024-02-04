@@ -5,3 +5,8 @@ class_name SkillEmpty
 func _init():
 	name = "Empty"
 	description = ""
+
+func _execute(query: BattleQuery) -> Array[Log]:
+	# use the skill to not accumulate extra casts
+	var unit = query.get_this_unit()
+	return [LogSkillUsed.new(unit, self)]

@@ -79,8 +79,7 @@ func proceed():
 func _display(battle_unit, schedule_pointer, actions):
 	schedule_pointer.active = true
 	schedule_pointer.round = round
-	
-	print_debug("actions: ", actions)
+
 	logs.append_array(actions)
 	
 	action_executed.emit()
