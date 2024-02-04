@@ -28,7 +28,8 @@ func _init(a: Team, b: Team):
 	processors = [
 		ProcessorExtraCast.new(),
 		ProcessorShadowStrike.new(),
-		ProcessorAutoHive.new()
+		ProcessorAutoHive.new(),
+		ProcessorTricksterDetainment.new()
 	]
 
 func team_a_query() -> BattleTeamQuery:
@@ -67,7 +68,8 @@ func execute_round():
 									to_execute.insert(executed + 1 + e, new_env)
 							# FINALIZE
 							# applies changes to the state
-							log._finalize(self)
+							if log.valid:
+								log._finalize(self)
 						await _display(env.battle_unit, env.battle_unit.schedule_pointer(phase), logs)
 						executed += 1
 				else:

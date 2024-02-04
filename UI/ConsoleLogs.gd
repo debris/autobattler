@@ -13,7 +13,7 @@ func _process(delta):
 	
 	while displayed_logs < battle_state.logs.size():
 		var log = battle_state.logs[displayed_logs]
-		_display_log(log._to_string())
+		_display_log(log._to_string() + log._display_is_valid())
 		displayed_logs += 1
 
 # private

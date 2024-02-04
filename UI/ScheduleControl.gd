@@ -2,8 +2,18 @@
 extends Control
 class_name ScheduleControl
 
-@export var schedule: Schedule
-@export var schedule_pointer: SchedulePointer
+@export var schedule: Schedule:
+	set(value):
+		if value != schedule:
+			schedule = value
+			queue_redraw()
+
+@export var schedule_pointer: SchedulePointer:
+	set(value):
+		if value != schedule_pointer:
+			schedule_pointer = value
+			queue_redraw()
+
 @export var the_color: Color = Color.DIM_GRAY
 
 var active = false
