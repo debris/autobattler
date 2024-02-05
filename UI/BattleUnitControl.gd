@@ -35,13 +35,14 @@ func _ready():
 	
 	display_settings = DisplaySettings.default()
 	battle_unit = battle_query.get_this_unit()
+	
+	focus_mode = Control.FOCUS_ALL
 
-func _process(_delta):
 	#if should_display_as_enemy():
 		#var upside_down = deg_to_rad(180.0)
 		#control.rotation = upside_down
 		#image_rect.rotation = upside_down
-	
+
 	name_label.text = battle_unit.unit.base.name
 	image_rect.texture = battle_unit.texture
 	
@@ -81,7 +82,16 @@ func _process(_delta):
 
 	processed_logs = battle_query.get_total_log_count()
 	active_control.visible = battle_query.is_active() && battle_query.is_on_schedule()
-	no_schedule_control.visible = false #!battle_query.is_on_schedule()
+	no_schedule_control.visible = !battle_query.is_on_schedule()
+
+func _input(event):
+	if event.is_action_released("LeftClick"):
+		var mouse_position = get_local_mouse_position()
+		var rect = get_rect()
+		if rect.has_point(mouse_position):
+			var details = preload("res://UI/BattleUnitDetails.tscn").instantiate()
+			var scene = get_tree().current_scene
+			scene.add_child(details)
 
 # private
 func _process_log(action: Log):
