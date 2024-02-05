@@ -59,7 +59,8 @@ func random_unit() -> OwnedUnit:
 		UnitPrime.new(),
 		UnitHarmony.new(),
 		UnitTinten.new(),
-		UnitJanitor.new()
+		UnitJanitor.new(),
+		UnitBeeNinja.new()
 	].pick_random()
 	var owned_unit = claim_unit(unit)
 	return owned_unit

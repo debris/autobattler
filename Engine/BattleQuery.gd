@@ -82,6 +82,10 @@ func get_prev_unit() -> BattleUnit:
 	
 	return position.battle_team.members[position.index - 1]
 
+func get_first_unit() -> BattleUnit:
+	var team = get_my_team()
+	return team.members[0]
+
 func get_logs(skip: int = 0) -> Array[Log]:
 	var result: Array[Log] = []
 	for i in battle_state.logs.size() - skip:
