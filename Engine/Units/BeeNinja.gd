@@ -8,4 +8,4 @@ func _init():
 	def = 8
 	skill = SkillEmpty.new()
 	passive = PassiveJumpAttack.new()
-	tags = ["bee", "ninja"]
+	tags = ["bee", "assassin"]

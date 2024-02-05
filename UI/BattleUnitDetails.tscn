@@ -46,6 +46,22 @@ offset_top = 88.0
 offset_right = 1076.0
 offset_bottom = 568.0
 
+[node name="Tags" type="Label" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.25, 1)
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 28
+text = "Tags"
+
+[node name="TagsContent" type="Label" parent="Control"]
+custom_minimum_size = Vector2(500, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 24
+text = "TAGS CONTENT"
+autowrap_mode = 2
+
 [node name="PassiveName" type="Label" parent="Control"]
 custom_minimum_size = Vector2(2.08165e-12, 20)
 layout_mode = 2

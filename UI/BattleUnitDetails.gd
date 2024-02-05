@@ -7,6 +7,7 @@ extends Control
 			battle_unit_control.battle_query = battle_query
 
 @onready var battle_unit_control = $CenterContainer/Control/BattleUnitControl
+@onready var tags_content = $Control/TagsContent
 @onready var skill_name = $Control/SkillName
 @onready var skill_description = $Control/SkillDescription
 @onready var passive_name = $Control/PassiveName
@@ -19,6 +20,7 @@ func _ready():
 	
 	var unit = battle_query.get_this_unit()
 	
+	tags_content.text = ", ".join(unit.unit.base.tags)
 	skill_name.text = "Active: " + unit.skill.name
 	skill_description.text = unit.skill.description
 	passive_name.text = "Passive: " + unit.unit.base.passive.name
