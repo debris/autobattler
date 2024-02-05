@@ -25,10 +25,12 @@ class_name ScheduleControl
 var active = false
 
 func _process(_delta):
-	# TODO: what if we only change phases and after being in a phase X the same unit is active in phase 1 in the same round?
-	# kind of corner case tho, and not so possible now
-	if schedule_pointer != null && schedule_pointer.active != active:
-		active = schedule_pointer.active
+	## TODO: what if we only change phases and after being in a phase X the same unit is active in phase 1 in the same round?
+	## kind of corner case tho, and not so possible now
+	#if schedule_pointer != null && schedule_pointer.active != active:
+		#active = schedule_pointer.active
+		
+	# for not always redraw
 		queue_redraw()
 
 func _draw():

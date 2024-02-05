@@ -9,4 +9,3 @@ func _init():
 	skill = SkillAzureMomentum.new()
 	passive = PassiveEmpty.new()
 	tags = ["dragon"]
-	# TODO, extra casts dont work properly

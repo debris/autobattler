@@ -26,5 +26,15 @@ enum Kind {
 func at(round: int) -> bool:
 	return data[round % data.size()]
 
+func set_active(round: int, active: bool):
+	data[round % data.size()] = active
+
 func normalize(round: int) -> int:
 	return round % data.size()
+
+func copy() -> Schedule:
+	var result = Schedule.new()
+	result.data = []
+	result.data.append_array(data)
+	result.kind = kind
+	return result
