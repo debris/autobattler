@@ -1,11 +1,81 @@
-[gd_scene format=3 uid="uid://cmqmsbr11cdeb"]
+[gd_scene load_steps=4 format=3 uid="uid://cmqmsbr11cdeb"]
 
-[node name="BattleUnitDetails" type="CanvasLayer"]
+[ext_resource type="Script" path="res://UI/BattleUnitDetails.gd" id="1_28edc"]
+[ext_resource type="PackedScene" uid="uid://nooylmpe7l5w" path="res://UI/BattleUnitControl.tscn" id="2_4cosj"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="3_vb625"]
 
-[node name="Control" type="Control" parent="."]
+[node name="BattleUnitDetails" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_28edc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.901961)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CenterContainer"]
+custom_minimum_size = Vector2(320, 480)
+layout_mode = 2
+
+[node name="BattleUnitControl" parent="CenterContainer/Control" instance=ExtResource("2_4cosj")]
+layout_mode = 2
+scale = Vector2(2, 2)
+
+[node name="Control" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 88.0
+offset_right = 1076.0
+offset_bottom = 568.0
+
+[node name="PassiveName" type="Label" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 28
+text = "Passive Name"
+
+[node name="PassiveDescription" type="Label" parent="Control"]
+custom_minimum_size = Vector2(500, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 24
+text = "Passive
+"
+autowrap_mode = 2
+
+[node name="SkillName" type="Label" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 28
+text = "Skill Name"
+
+[node name="SkillDescription" type="Label" parent="Control"]
+custom_minimum_size = Vector2(500, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 24
+text = "Skill
+"
+autowrap_mode = 2

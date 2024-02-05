@@ -10,12 +10,21 @@ extends Control
 @onready var pause_button = $CanvasLayer/Control/Pause
 
 var battle_state: BattleState
+var battle_controller: BattleController
 var paused = false
 
 func _ready():
+	battle_controller = BattleController.default()
+	battle_controller.show_details.connect(func(battle_query):
+		paused = true
+		var details = load("res://UI/BattleUnitDetails.tscn").instantiate()
+		details.battle_query = battle_query
+		add_child(details)
+	)
+
 	var team_a = Team.new()
 	var team_b = Team.new()
-	
+
 	for i in 6:
 		team_a.members.push_back(random_unit())
 		team_b.members.push_back(random_unit())
@@ -25,10 +34,10 @@ func _ready():
 	team_b_control.battle_team_query = battle_state.team_b_query()
 	team_a_power.battle_team = battle_state.team_a
 	team_b_power.battle_team = battle_state.team_b
-	
+
 	battle_state.action_executed.connect(log_state.bind(battle_state))
 	console_logs.battle_state = battle_state
-	
+
 	while true:
 		await battle_state.execute_round()
 		print("END OF ROUND: ", battle_state.round)

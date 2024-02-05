@@ -3,6 +3,8 @@ extends Control
 const MAX_ROTATION: float = 2.0
 
 @export var battle_query: BattleQuery
+@export var click_to_show_details = true
+@export var with_battle_logs = true
 
 @onready var control = $Control
 @onready var active_control = $Control/ActiveControl
@@ -30,22 +32,14 @@ func should_display_as_enemy() -> bool:
 	return global_position.y < (648 / 2)
 
 func _ready():
-	#control.rotation = deg_to_rad(randf_range(-MAX_ROTATION, MAX_ROTATION))
-	control.pivot_offset = size / 2
-	
 	display_settings = DisplaySettings.default()
-	battle_unit = battle_query.get_this_unit()
-	
 	focus_mode = Control.FOCUS_ALL
 
-	#if should_display_as_enemy():
-		#var upside_down = deg_to_rad(180.0)
-		#control.rotation = upside_down
-		#image_rect.rotation = upside_down
-
+func _process(_delta):
+	battle_unit = battle_query.get_this_unit()
 	name_label.text = battle_unit.unit.base.name
 	image_rect.texture = battle_unit.texture
-	
+
 	# always 3 schedules, let's grab them in reverse because of the rotation
 	for i in 3:
 		var index = 2 - i
@@ -67,6 +61,11 @@ func _ready():
 	else:
 		def_bonus_label.text = "x"
 
+	if !with_battle_logs:
+		active_control.visible = false
+		no_schedule_control.visible = false
+		return
+
 	default_modulate = Color.WHITE
 	if !battle_query.is_on_schedule():
 		default_modulate = Color.WHITE
@@ -85,13 +84,12 @@ func _ready():
 	no_schedule_control.visible = !battle_query.is_on_schedule()
 
 func _input(event):
-	if event.is_action_released("LeftClick"):
-		var mouse_position = get_local_mouse_position()
-		var rect = get_rect()
+	if click_to_show_details && event.is_action_released("LeftClick"):
+		var mouse_position = get_global_mouse_position()
+		var rect = get_global_rect()
 		if rect.has_point(mouse_position):
-			var details = preload("res://UI/BattleUnitDetails.tscn").instantiate()
-			var scene = get_tree().current_scene
-			scene.add_child(details)
+			accept_event()
+			BattleController.default().show_details.emit(battle_query)
 
 # private
 func _process_log(action: Log):
