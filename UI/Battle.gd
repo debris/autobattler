@@ -5,11 +5,11 @@ extends Control
 @onready var team_a_power = $TeamAPower
 @onready var team_b_power = $TeamBPower
 @onready var round_label = $Round
+@onready var phase_label = $Phase
 @onready var console_logs = $ConsoleLogs
 @onready var pause_button = $CanvasLayer/Control/Pause
 
 var battle_state: BattleState
-
 var paused = false
 
 func _ready():
@@ -32,15 +32,16 @@ func _ready():
 	while true:
 		await battle_state.execute_round()
 		print("END OF ROUND: ", battle_state.round)
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(DisplaySettings.default().step_time).timeout
 
 func log_state(state: BattleState):
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(DisplaySettings.default().step_time).timeout
 	if !paused:
 		state.proceed()
 
 func _process(_delta):
-	round_label.text = "ROUND: " + str(battle_state.round)
+	round_label.text = str(battle_state.round)
+	phase_label.text = str(battle_state.phase + 1) + " of 3"
 
 func random_unit() -> OwnedUnit:
 	var unit = [
@@ -65,14 +66,13 @@ func claim_unit(unit: Unit) -> OwnedUnit:
 	var owned_unit = OwnedUnit.new()
 	owned_unit.base = unit
 	owned_unit.dmg = unit.dmg
-	owned_unit.def = unit.def	
+	owned_unit.def = unit.def
 	owned_unit.skill = unit.skill
 	
 	var generator = Generator.new(randi())
 
 	owned_unit.schedules = [generator.rand_schedule(), generator.rand_schedule(), generator.rand_schedule()] as Array[Schedule]
 	return owned_unit
-
 
 func _on_pause_pressed():
 	paused = !paused
@@ -82,6 +82,8 @@ func _on_pause_pressed():
 	else:
 		pause_button.text = "PLAY"
 
-
 func _on_console_pressed():
 	console_logs.visible = !console_logs.visible
+
+func _on_step_pressed():
+	battle_state.proceed()

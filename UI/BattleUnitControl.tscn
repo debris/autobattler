@@ -27,6 +27,12 @@ offset_right = 160.0
 offset_bottom = 40.0
 color = Color(0.5, 0.458333, 0.25, 1)
 
+[node name="NoScheduleControl" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 240.0
+color = Color(0.921569, 0.917647, 0.894118, 0.470588)
+
 [node name="Control" type="Control" parent="Control"]
 clip_contents = true
 layout_mode = 1

@@ -20,11 +20,21 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Forest0" type="Sprite2D" parent="."]
-modulate = Color(0.823529, 0.823529, 0.823529, 0.196078)
+modulate = Color(0.823529, 0.823529, 0.823529, 0.588235)
 position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("3_qtwel")
 centered = false
@@ -40,7 +50,7 @@ grow_vertical = 2
 [node name="GridContainer" type="GridContainer" parent="CenterContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 32
+theme_override_constants/v_separation = 64
 
 [node name="TeamA" parent="CenterContainer/GridContainer" instance=ExtResource("2_w07n4")]
 layout_mode = 2
@@ -50,25 +60,60 @@ layout_mode = 2
 
 [node name="Round" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1000.0
-offset_top = 304.0
-offset_right = 1136.0
-offset_bottom = 328.0
+offset_left = 1072.0
+offset_top = 288.0
+offset_right = 1144.0
+offset_bottom = 320.0
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoundTitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 256.0
+offset_right = 1144.0
+offset_bottom = 288.0
+theme_override_font_sizes/font_size = 20
 text = "Round"
-horizontal_alignment = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Phase" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 360.0
+offset_right = 1144.0
+offset_bottom = 392.0
+theme_override_font_sizes/font_size = 20
+text = "1 of 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PhaseTitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 328.0
+offset_right = 1144.0
+offset_bottom = 360.0
+theme_override_font_sizes/font_size = 20
+text = "Phase"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TeamAPower" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 64.0
+offset_bottom = 48.0
 grow_horizontal = 2
 script = ExtResource("4_mhi2i")
 
 [node name="TeamBPower" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 584.0
+offset_top = 600.0
 offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("4_mhi2i")
@@ -81,26 +126,35 @@ visible = false
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 944.0
-offset_top = 576.0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 theme = ExtResource("1_erpvb")
 
+[node name="Console" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
+text = "\"'"
+
+[node name="Step" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 552.0
+offset_right = 1144.0
+offset_bottom = 592.0
+text = "STEP"
+
 [node name="Pause" type="Button" parent="CanvasLayer/Control"]
-offset_left = 112.0
-offset_top = 16.0
-offset_right = 193.0
-offset_bottom = 54.0
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 600.0
+offset_right = 1144.0
+offset_bottom = 640.0
 text = "PAUSE"
 
-[node name="Console" type="Button" parent="CanvasLayer/Control"]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 99.0
-offset_bottom = 54.0
-text = "CONSOLE"
-
-[connection signal="pressed" from="CanvasLayer/Control/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Console" to="." method="_on_console_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Step" to="." method="_on_step_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Pause" to="." method="_on_pause_pressed"]

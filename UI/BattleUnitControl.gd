@@ -6,6 +6,7 @@ const MAX_ROTATION: float = 2.0
 
 @onready var control = $Control
 @onready var active_control = $Control/ActiveControl
+@onready var no_schedule_control = $Control/NoScheduleControl
 @onready var image_rect = $Control/Control/ImageRect
 @onready var name_label = $Control/Name
 @onready var def_label = $Control/Def
@@ -18,15 +19,20 @@ const MAX_ROTATION: float = 2.0
 @onready var schedule_control1 = $Control/Schedules/Schedule1
 @onready var schedule_control0 = $Control/Schedules/Schedule0
 
+var display_settings: DisplaySettings
 var battle_unit: BattleUnit
 var processed_logs = 0
 var processed_round = -1
 var processed_phase = 0
 var default_modulate
 
+func should_display_as_enemy() -> bool:
+	return global_position.y > (648 / 2)
+
 func _ready():
 	#control.rotation = deg_to_rad(randf_range(-MAX_ROTATION, MAX_ROTATION))
 	#control.pivot_offset.x = randf_range(0, size.x)
+	display_settings = DisplaySettings.default()
 	battle_unit = battle_query.get_this_unit()
 
 func _process(_delta):
@@ -56,7 +62,8 @@ func _process(_delta):
 
 	default_modulate = Color.WHITE
 	if !battle_query.is_on_schedule():
-		default_modulate = Color(Color.WHITE, 0.4)
+		default_modulate = Color.WHITE
+		#default_modulate = Color(Color.WHITE, 0.4)
 
 	if processed_round != battle_query.get_round() || processed_phase != battle_query.get_phase():
 		control.modulate = default_modulate
@@ -68,19 +75,21 @@ func _process(_delta):
 
 	processed_logs = battle_query.get_total_log_count()
 	active_control.visible = battle_query.is_active() && battle_query.is_on_schedule()
+	no_schedule_control.visible = !battle_query.is_on_schedule()
 
 # private
 func _process_log(action: Log):
 	if action is LogAttack:
 		_display_notification("ATTACK", GameColors.red())
-		_shake()
+		_attack_animation()
 	
 	if action is LogDefend:
 		_display_notification("DEFEND", GameColors.green())
-		_spring()
+		_defend_animation()
 	
 	if action is LogSkillUsed:
 		_display_notification(str(action.skill.name), GameColors.blue())
+		_skill_animation()
 	
 	if action is LogDmgAdd || action is LogDmgBonusAdd || action is LogDefAdd || action is LogDefBonusAdd:
 		var color = GameColors.green()
@@ -88,28 +97,31 @@ func _process_log(action: Log):
 			color = GameColors.red()
 		
 		var tween = create_tween()
-		tween.tween_property(control, "modulate", color, 0.25).set_ease(Tween.EASE_IN)
-		tween.tween_property(control, "modulate", default_modulate, 0.25).set_ease(Tween.EASE_OUT)
+		tween.tween_property(control, "modulate", color, display_settings.step_time / 2).set_ease(Tween.EASE_IN)
+		tween.tween_property(control, "modulate", default_modulate, display_settings.step_time / 2).set_ease(Tween.EASE_OUT)
 
 # private
-func _shake():
-	var offset = Vector2(0, 32.0)
+func _attack_animation():
+	var offset = Vector2(0, -32.0)
 	var tween = create_tween()
 	
-	# bottom half of the screen
-	if global_position.y > (648 / 2):
+	if should_display_as_enemy():
 		offset *= -1
 	
 	image_rect.scale = Vector2(1.1, 1.1)
-	control.position = control.position + offset
-	tween.tween_property(control, "position", Vector2.ZERO, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
-	tween.parallel().tween_property(image_rect, "scale", Vector2.ONE, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	control.position = control.position - offset
+	tween.tween_property(control, "position", Vector2.ZERO, display_settings.step_time / 2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	tween.parallel().tween_property(image_rect, "scale", Vector2.ONE, display_settings.step_time / 2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 
 # private
-func _spring():
+func _defend_animation():
 	var tween = create_tween()
 	image_rect.scale = Vector2(1.1, 1.1)
-	tween.tween_property(image_rect, "scale", Vector2.ONE, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	tween.tween_property(image_rect, "scale", Vector2.ONE, display_settings.step_time).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+
+# private
+func _skill_animation():
+	pass
 
 # private
 func _display_notification(text: String, color: Color):
@@ -121,7 +133,7 @@ func _display_notification(text: String, color: Color):
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.text = text
 	control.add_child(label)
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(display_settings.step_time).timeout
 	if label != null:
 		label.queue_free()
 
