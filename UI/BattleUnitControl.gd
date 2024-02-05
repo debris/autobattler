@@ -27,15 +27,21 @@ var processed_phase = 0
 var default_modulate
 
 func should_display_as_enemy() -> bool:
-	return global_position.y > (648 / 2)
+	return global_position.y < (648 / 2)
 
 func _ready():
 	#control.rotation = deg_to_rad(randf_range(-MAX_ROTATION, MAX_ROTATION))
-	#control.pivot_offset.x = randf_range(0, size.x)
+	control.pivot_offset = size / 2
+	
 	display_settings = DisplaySettings.default()
 	battle_unit = battle_query.get_this_unit()
 
 func _process(_delta):
+	#if should_display_as_enemy():
+		#var upside_down = deg_to_rad(180.0)
+		#control.rotation = upside_down
+		#image_rect.rotation = upside_down
+	
 	name_label.text = battle_unit.unit.base.name
 	image_rect.texture = battle_unit.texture
 	
@@ -75,7 +81,7 @@ func _process(_delta):
 
 	processed_logs = battle_query.get_total_log_count()
 	active_control.visible = battle_query.is_active() && battle_query.is_on_schedule()
-	no_schedule_control.visible = !battle_query.is_on_schedule()
+	no_schedule_control.visible = false #!battle_query.is_on_schedule()
 
 # private
 func _process_log(action: Log):
@@ -102,7 +108,7 @@ func _process_log(action: Log):
 
 # private
 func _attack_animation():
-	var offset = Vector2(0, -32.0)
+	var offset = Vector2(0, 32.0)
 	var tween = create_tween()
 	
 	if should_display_as_enemy():

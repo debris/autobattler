@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://nooylmpe7l5w"]
+[gd_scene load_steps=5 format=3 uid="uid://nooylmpe7l5w"]
 
 [ext_resource type="Script" path="res://UI/BattleUnitControl.gd" id="1_rf7mt"]
 [ext_resource type="Script" path="res://UI/ScheduleControl.gd" id="2_moluy"]
 [ext_resource type="Script" path="res://UI/ImageRect.gd" id="3_jydyn"]
+[ext_resource type="Script" path="res://UI/Frame.gd" id="4_uqtft"]
 
 [node name="BattleUnitControl" type="ColorRect"]
 custom_minimum_size = Vector2(160, 240)
@@ -94,20 +95,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_moluy")
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 0
-offset_top = 200.0
-offset_right = 160.0
-offset_bottom = 201.0
-color = Color(0.0588235, 0.0588235, 0.0588235, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="Control"]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 160.0
-offset_bottom = 41.0
-color = Color(0.0588235, 0.0588235, 0.0588235, 1)
-
 [node name="Def" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 80.0
@@ -150,3 +137,33 @@ theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "x"
 horizontal_alignment = 2
+
+[node name="MainFrame" type="Control" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_uqtft")
+
+[node name="TopFrame" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_uqtft")
+
+[node name="BottomFrame" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_uqtft")
