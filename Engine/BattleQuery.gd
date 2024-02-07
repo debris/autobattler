@@ -86,14 +86,5 @@ func get_first_unit() -> BattleUnit:
 	var team = get_my_team()
 	return team.members[0]
 
-func get_logs(skip: int = 0) -> Array[Log]:
-	var result: Array[Log] = []
-	for i in battle_state.logs.size() - skip:
-		var index_to_check = i + skip
-		var log_to_check = battle_state.logs[index_to_check]
-		if log_to_check.unit.get_instance_id() == root.get_instance_id():
-			result.push_back(log_to_check)
-	return result
-
-func get_total_log_count() -> int:
-	return battle_state.logs.size()
+func get_logs_iterator() -> LogsIterator:
+	return LogsIterator.new(battle_state, root)

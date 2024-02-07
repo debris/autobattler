@@ -25,10 +25,12 @@ const MAX_ROTATION: float = 2.0
 
 var display_settings: DisplaySettings
 var battle_unit: BattleUnit
-var processed_logs = 0
+var logs_iterator: LogsIterator
 var processed_round = -1
 var processed_phase = 0
 var default_modulate
+
+var initialized: bool = false
 
 func should_display_as_enemy() -> bool:
 	return global_position.y < (648 / 2)
@@ -37,11 +39,18 @@ func _ready():
 	display_settings = DisplaySettings.default()
 	focus_mode = Control.FOCUS_ALL
 
-func _process(_delta):
+func _ensure_initialized():
+	if initialized == true:
+		return
+
+	initialized = true
 	battle_unit = battle_query.get_this_unit()
+	logs_iterator = battle_query.get_logs_iterator()
 	name_label.text = battle_unit.unit.base.name
 	image_rect.texture = battle_unit.texture
 
+func _process(_delta):
+	_ensure_initialized()
 	# always 3 schedules, let's grab them in reverse because of the rotation
 	for i in 3:
 		var index = 2 - i
@@ -77,10 +86,11 @@ func _process(_delta):
 		processed_round = battle_query.get_round()
 		processed_phase = battle_query.get_phase()
 
-	for log in battle_query.get_logs(processed_logs):
+	var log = logs_iterator.next()
+	while log != null:
 		_process_log(log)
+		log = logs_iterator.next()
 
-	processed_logs = battle_query.get_total_log_count()
 	active_control.visible = battle_query.is_active()
 
 func _input(event):
