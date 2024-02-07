@@ -8,5 +8,5 @@ func _init():
 	def = 10
 	skill = SkillShapeshift.new()
 	passive = PassiveEmpty.new()
-	tags = ["druid"]
+	tags = ["elf", "druid"]
 	# TODO, extra casts dont work properly

@@ -13,4 +13,5 @@ func _finalize(battle_state: BattleState):
 	team.power -= value
 
 func _to_string() -> String:
-	return unit.unit.base.name + " is exhaused and it hurts his own team for " + str(value)
+	return unit.unit.base.name + " is exhaused and hurt own team for " + str(value)
+	

@@ -109,6 +109,9 @@ func _process_log(action: Log):
 		_display_notification(str(action.skill.name), GameColors.blue())
 		_skill_animation()
 	
+	if action is LogExhaustion:
+		_display_notification("EXHAUSTED", GameColors.red())
+	
 	if action is LogDmgAdd || action is LogDmgBonusAdd || action is LogDefAdd || action is LogDefBonusAdd:
 		var color = GameColors.green()
 		if action.value < 0:
