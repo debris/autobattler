@@ -26,6 +26,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.117647, 0.117647, 0.117647, 0)
 
+[node name="OnHover" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 162.0
+offset_bottom = 242.0
+color = Color(0.752941, 0.752941, 0.752941, 1)
+
 [node name="ActiveControl" type="ColorRect" parent="Control"]
 layout_mode = 0
 offset_left = -2.0

@@ -30,7 +30,8 @@ func _init(a: Team, b: Team):
 		ProcessorShadowStrike.new(),
 		ProcessorAutoHive.new(),
 		ProcessorTricksterDetainment.new(),
-		ProcessorJumpAttack.new()
+		ProcessorJumpAttack.new(),
+		ProcessorExhaustion.new()
 	]
 
 func team_a_query() -> BattleTeamQuery:
@@ -52,6 +53,11 @@ func execute_round():
 					var skill = battle_unit.skill_at(phase)
 					var to_execute: Array[ExecutionEnv] = [ExecutionEnv.new(battle_unit, skill)]
 					var executed = 0
+					
+					# units should start getting exhaused at some point
+					if round > ProcessorExhaustion.ROUND:
+						battle_unit.exhausted = true
+					
 					while executed < to_execute.size():
 						var env = to_execute[executed]
 						# PREPARE
@@ -71,6 +77,7 @@ func execute_round():
 							# applies changes to the state
 							if log.valid:
 								log._finalize(self)
+
 						await _display(env.battle_unit, logs)
 						executed += 1
 				else:

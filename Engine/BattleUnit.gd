@@ -18,6 +18,8 @@ var def_bonus: int
 var skill_bonus_casts: int
 # hashset with all battle tags
 var tags: Dictionary
+# indicates whether units action should trigger exhaustion dmg
+var exhausted: bool
 
 func _init(u: OwnedUnit):
 	unit = u
@@ -39,6 +41,8 @@ func _init(u: OwnedUnit):
 	tags = {}
 	for tag in u.base.tags:
 		tags[tag] = null
+
+	exhausted = false
 
 func swap_with(other: BattleUnit):
 	var tmp = inst_to_dict(self)

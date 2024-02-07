@@ -35,9 +35,9 @@ func _ready():
 		passive_description.visible = false
 
 func _input(event):
-	if event.is_action_released("LeftClick"):
-		var mouse_position = get_global_mouse_position()
-		var rect = get_global_rect()
-		if rect.has_point(mouse_position):
-			accept_event()
+	var mouse_position = get_global_mouse_position()
+	var rect = get_global_rect()
+	if rect.has_point(mouse_position):
+		accept_event()
+		if event.is_action_released("LeftClick"):
 			queue_free()

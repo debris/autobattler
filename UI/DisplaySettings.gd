@@ -2,7 +2,7 @@ extends Resource
 class_name DisplaySettings
 
 # How long each step of the game should take. Affects the animation time
-@export var step_time: float = 1.0
+@export var step_time: float = 0.2
 
 static var singleton
 

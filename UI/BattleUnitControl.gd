@@ -7,6 +7,7 @@ const MAX_ROTATION: float = 2.0
 @export var with_battle_logs = true
 
 @onready var control = $Control
+@onready var on_hover = $Control/OnHover
 @onready var active_control = $Control/ActiveControl
 @onready var image_rect = $Control/Control/ImageRect
 @onready var name_label = $Control/Name
@@ -83,12 +84,16 @@ func _process(_delta):
 	active_control.visible = battle_query.is_active()
 
 func _input(event):
-	if click_to_show_details && event.is_action_released("LeftClick"):
+	if click_to_show_details:
 		var mouse_position = get_global_mouse_position()
 		var rect = get_global_rect()
 		if rect.has_point(mouse_position):
-			accept_event()
-			BattleController.default().show_details.emit(battle_query)
+			on_hover.visible = true
+			if event.is_action_released("LeftClick"):
+				accept_event()
+				BattleController.default().show_details.emit(battle_query)
+		else:
+			on_hover.visible = false
 
 # private
 func _process_log(action: Log):
