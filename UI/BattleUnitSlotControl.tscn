@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://blu2gfxxx2d3h"]
+
+[ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="1_53ygb"]
+
+[node name="BattleUnitSlotControl" type="Control"]
+custom_minimum_size = Vector2(160, 240)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 240.0
+
+[node name="ConcreteTile" type="Sprite2D" parent="."]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+scale = Vector2(0.610687, 0.634921)
+texture = ExtResource("1_53ygb")
+centered = false
+region_enabled = true
+region_rect = Rect2(513, 373, 262, 378)

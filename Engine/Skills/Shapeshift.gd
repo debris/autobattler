@@ -12,11 +12,11 @@ func _execute(query: BattleQuery) -> Array[Log]:
 
 	if query.get_round() % 2 == 0:
 		for unit in all_units:
-			if unit.def > target.def:
+			if unit != null && (unit.def > target.def):
 				target = unit
 	else:
 		for unit in all_units:
-			if unit.dmg > target.dmg:
+			if unit != null && (unit.dmg > target.dmg):
 				target = unit
 	
 	if battle_unit.get_instance_id() == target.get_instance_id():

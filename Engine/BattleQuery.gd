@@ -1,5 +1,5 @@
 # Allows battle unit to query different nodes on the battlefield
-extends Resource
+extends Query
 class_name BattleQuery
 
 var root: BattleUnit

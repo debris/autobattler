@@ -1,0 +1,2 @@
+extends Query
+class_name BattleQueryNull

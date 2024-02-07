@@ -11,12 +11,12 @@ func _process_log(log: Log, battle_state: BattleState) -> Array[ExecutionEnv]:
 		if team.power >= 2 * enemy_team.power:
 			var proceed = false
 			for battle_unit in enemy_team.members:
-				if battle_unit.unit.base.passive is PassiveAutoHive:
+				if battle_unit != null && battle_unit.unit.base.passive is PassiveAutoHive:
 					proceed = true
 					break
 			if proceed:
 				for battle_unit in enemy_team.members:
-					if battle_unit.tags.has("bee") || battle_unit.tags.has("mech"):
+					if battle_unit != null && (battle_unit.tags.has("bee") || battle_unit.tags.has("mech")):
 						result.push_back(ExecutionEnv.new(battle_unit, SkillAttack.new()))
 
 	return result

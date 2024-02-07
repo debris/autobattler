@@ -12,7 +12,7 @@ func _execute(query: BattleQuery) -> Array[Log]:
 	var find_highest_dmg = func(t) -> BattleUnit:
 		var target = t.members[0]
 		for i in t.members.size() - 1:
-			if t.members[i + 1].dmg > target.dmg:
+			if target == null || (t.members[i + 1] != null && (t.members[i + 1].dmg > target.dmg)):
 				target = t.members[i + 1]
 		return target
 	

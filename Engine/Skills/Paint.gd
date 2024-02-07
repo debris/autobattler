@@ -17,5 +17,6 @@ func _execute(query: BattleQuery) -> Array[Log]:
 	var all_units = query.get_all_units()
 	var result: Array[Log] = [LogSkillUsed.new(unit, self)]
 	for battle_unit in all_units:
-		result.push_back(LogSetSchedulePhaseOn.new(battle_unit, query.get_round(), query.get_phase(), on))
+		if battle_unit != null:
+			result.push_back(LogSetSchedulePhaseOn.new(battle_unit, query.get_round(), query.get_phase(), on))
 	return result

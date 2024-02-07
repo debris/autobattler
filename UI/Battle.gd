@@ -28,9 +28,12 @@ func _ready():
 	var team_a = Team.new()
 	var team_b = Team.new()
 
-	var generator = Generator.new()
-	for i in 6:
+	var generator = Generator.new(6)
+	for i in 3:
 		team_a.members.push_back(generator.random_unit())
+		team_a.members.push_back(null)
+		
+	for i in 6:
 		team_b.members.push_back(generator.random_unit())
 
 	battle_state = BattleState.new(team_a, team_b)

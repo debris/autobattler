@@ -1,4 +1,4 @@
-# Increase dmg be certain value
+# paint schedule LPto be (in)active
 extends Log
 class_name LogSetSchedulePhaseOn
 

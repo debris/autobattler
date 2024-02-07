@@ -7,10 +7,14 @@ extends Control
 		for child in team_grid.get_children():
 			child.queue_free()
 
-		for battle_query in battle_team_query.get_member_queries():
-			var control = preload("res://UI/BattleUnitControl.tscn").instantiate()
-			control.battle_query = battle_query
-			team_grid.add_child(control)
+		for query in battle_team_query.get_member_queries():
+			if query is BattleQueryNull:
+				var control = preload("res://UI/BattleUnitSlotControl.tscn").instantiate()
+				team_grid.add_child(control)
+			else:
+				var control = preload("res://UI/BattleUnitControl.tscn").instantiate()
+				control.battle_query = query
+				team_grid.add_child(control)
 
 @onready var team_grid = $TeamGrid
 

@@ -10,7 +10,7 @@ func _execute(query: BattleQuery) -> Array[Log]:
 	var enemy_unit = query.get_opposite_unit()
 	
 	var result: Array[Log] = [LogSkillUsed.new(unit, self)]
-	if enemy_unit.dmg > 0:
+	if enemy_unit != null && enemy_unit.dmg > 0:
 		var value = max(1, enemy_unit.dmg * 10 / 100)
 		result.push_back(LogDmgAdd.new(enemy_unit, -value))
 		

@@ -49,6 +49,8 @@ func execute_round():
 		for i in size:
 			var run_skill_for_team = func(team):
 				var battle_unit = team.members[i]
+				if battle_unit == null:
+					return
 				if battle_unit.schedules[phase].at(round):
 					var skill = battle_unit.skill_at(phase)
 					var to_execute: Array[ExecutionEnv] = [ExecutionEnv.new(battle_unit, skill)]
