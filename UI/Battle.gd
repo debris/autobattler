@@ -8,6 +8,9 @@ extends Control
 @onready var phase_label = $Phase
 @onready var console_logs = $ConsoleLogs
 @onready var pause_button = $CanvasLayer/Control/Pause
+@onready var step_button = $CanvasLayer/Control/Step
+@onready var start_button = $Start
+@onready var victory_label = $VictoryLabel
 
 var battle_state: BattleState
 var battle_controller: BattleController
@@ -35,21 +38,38 @@ func _ready():
 	team_a_power.battle_team = battle_state.team_a
 	team_b_power.battle_team = battle_state.team_b
 
-	battle_state.action_executed.connect(log_state.bind(battle_state))
+	battle_state.action_executed.connect(_wait_for_display)
 	console_logs.battle_state = battle_state
 
-	while true:
-		await battle_state.execute_round()
-		print("END OF ROUND: ", battle_state.round)
-		await get_tree().create_timer(DisplaySettings.default().step_time).timeout
-
-func log_state(state: BattleState):
+# private
+func _wait_for_display():
 	await get_tree().create_timer(DisplaySettings.default().step_time).timeout
+	
+	var victory = battle_state.team_a.power <= 0
+	var defeat = battle_state.team_b.power <= 0
+	var draw = victory && defeat
+	
+	if draw:
+		return on_battle_end("draw")
+	
+	if victory:
+		return on_battle_end("victory")
+
+	if defeat:
+		return on_battle_end("defeat")
+	
 	if !paused:
-		state.proceed()
+		battle_state.proceed()
+
+func on_battle_end(result):
+	victory_label.visible = true
+	victory_label.text = result
+	step_button.visible = false
+	pause_button.visible = false
+	paused = true
 
 func _process(_delta):
-	round_label.text = str(battle_state.round)
+	round_label.text = str(battle_state.round + 1)
 	phase_label.text = str(battle_state.phase + 1) + " of 3"
 	
 	if !paused:
@@ -101,3 +121,11 @@ func _on_console_pressed():
 
 func _on_step_pressed():
 	battle_state.proceed()
+
+func _on_start_pressed():
+	start_button.visible = false
+	step_button.visible = true
+	pause_button.visible = true
+
+	while true:
+		await battle_state.execute_round()

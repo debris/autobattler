@@ -42,9 +42,9 @@ size_flags_horizontal = 3
 [node name="LogsLabel" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 960.0
-offset_top = 16.0
+offset_top = 8.0
 offset_right = 1136.0
-offset_bottom = 80.0
+offset_bottom = 72.0
 theme_override_fonts/font = ExtResource("2_fxkrm")
 theme_override_font_sizes/font_size = 40
 text = "LOGS"

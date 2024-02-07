@@ -188,6 +188,7 @@ offset_bottom = 56.0
 text = "\"'"
 
 [node name="Step" type="Button" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 0
 offset_left = 992.0
 offset_top = 592.0
@@ -196,6 +197,7 @@ offset_bottom = 640.0
 text = "STEP"
 
 [node name="Pause" type="Button" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 0
 offset_left = 1072.0
 offset_top = 592.0
@@ -208,6 +210,34 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 text = "PAUSE"
 
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 288.0
+offset_right = 568.0
+offset_bottom = 352.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "START"
+
+[node name="VictoryLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 320.0
+offset_top = 280.0
+offset_right = 704.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Victory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="CanvasLayer/Control/Console" to="." method="_on_console_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Step" to="." method="_on_step_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
