@@ -28,9 +28,10 @@ func _ready():
 	var team_a = Team.new()
 	var team_b = Team.new()
 
+	var generator = Generator.new()
 	for i in 6:
-		team_a.members.push_back(random_unit())
-		team_b.members.push_back(random_unit())
+		team_a.members.push_back(generator.random_unit())
+		team_b.members.push_back(generator.random_unit())
 
 	battle_state = BattleState.new(team_a, team_b)
 	team_a_control.battle_team_query = battle_state.team_a_query()
@@ -77,41 +78,6 @@ func _process(_delta):
 	else:
 		pause_button.text = "PLAY"
 
-func random_unit() -> OwnedUnit:
-	var unit = [
-		UnitOrcWarrior.new(), 
-		UnitElfArcher.new(), 
-		UnitVikingWarrior.new(),
-		UnitPrincessBhalu.new(),
-		UnitAzureDragon.new(),
-		UnitRubyAssassin.new(),
-		UnitBeeMech.new(),
-		UnitJackCross.new(),
-		UnitOfficerJoe.new(),
-		UnitMystique.new(),
-		UnitLoki.new(),
-		UnitPrime.new(),
-		UnitHarmony.new(),
-		UnitTinten.new(),
-		UnitJanitor.new(),
-		UnitBeeNinja.new(),
-		UnitTimeTraveller.new()
-	].pick_random()
-	var owned_unit = claim_unit(unit)
-	return owned_unit
-
-func claim_unit(unit: Unit) -> OwnedUnit:
-	var owned_unit = OwnedUnit.new()
-	owned_unit.base = unit
-	owned_unit.dmg = unit.dmg
-	owned_unit.def = unit.def
-	owned_unit.skill = unit.skill
-	
-	var generator = Generator.new(randi())
-
-	owned_unit.schedules = [generator.rand_schedule(), generator.rand_schedule(), generator.rand_schedule()] as Array[Schedule]
-	return owned_unit
-
 func _on_pause_pressed():
 	paused = !paused
 	if !paused:
@@ -124,6 +90,7 @@ func _on_step_pressed():
 	battle_state.proceed()
 
 func _on_start_pressed():
+	paused = false
 	start_button.visible = false
 	step_button.visible = true
 	pause_button.visible = true

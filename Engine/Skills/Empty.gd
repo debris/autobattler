@@ -3,7 +3,7 @@ extends Skill
 class_name SkillEmpty
 
 func _init():
-	name = "No Skill"
+	name = "No Active Skill"
 	description = ""
 
 func _execute(query: BattleQuery) -> Array[Log]:

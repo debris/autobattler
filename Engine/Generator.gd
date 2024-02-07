@@ -35,3 +35,22 @@ func rand_schedule() -> Schedule:
 	schedule.data = data
 	schedule.kind = inner.randi_range(0, 2) as Schedule.Kind
 	return schedule
+
+func rand_schedules() -> Array[Schedule]:
+	var schedules: Array[Schedule] = [rand_schedule(), rand_schedule(), rand_schedule()]
+	# normalize schedule kind so there is always dmg, def and skill
+	var direction = (inner.randi_range(0, 1) * 2) - 1
+	schedules[1].kind = (schedules[0].kind as int + direction + 3) % 3 as Schedule.Kind
+	schedules[2].kind = (schedules[1].kind as int + direction + 3) % 3 as Schedule.Kind
+	return schedules
+	
+func random_unit() -> OwnedUnit:
+	var max_index = Units.all.size() - 1 
+	var unit = Units.all[inner.randi_range(0, max_index)]
+	var owned_unit = OwnedUnit.new()
+	owned_unit.base = unit
+	owned_unit.dmg = unit.dmg
+	owned_unit.def = unit.def
+	owned_unit.skill = unit.skill
+	owned_unit.schedules = rand_schedules()
+	return owned_unit
