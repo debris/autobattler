@@ -46,11 +46,12 @@ func _ensure_initialized():
 	initialized = true
 	battle_unit = battle_query.get_this_unit()
 	logs_iterator = battle_query.get_logs_iterator()
-	name_label.text = battle_unit.unit.base.name
-	image_rect.texture = battle_unit.texture
 
 func _process(_delta):
 	_ensure_initialized()
+	name_label.text = battle_unit.unit.base.name
+	image_rect.texture = battle_unit.texture
+
 	# always 3 schedules, let's grab them in reverse because of the rotation
 	for i in 3:
 		var index = 2 - i
