@@ -1,7 +1,7 @@
 extends Control
 
-@onready var team_a_control = $CenterContainer/GridContainer/TeamA
-@onready var team_b_control = $CenterContainer/GridContainer/TeamB
+@onready var team_a_control = $TeamA
+@onready var team_b_control = $TeamB
 @onready var team_a_power = $TeamAPower
 @onready var team_b_power = $TeamBPower
 @onready var round_label = $Round
@@ -51,6 +51,11 @@ func log_state(state: BattleState):
 func _process(_delta):
 	round_label.text = str(battle_state.round)
 	phase_label.text = str(battle_state.phase + 1) + " of 3"
+	
+	if !paused:
+		pause_button.text = "PAUSE"
+	else:
+		pause_button.text = "PLAY"
 
 func random_unit() -> OwnedUnit:
 	var unit = [
@@ -90,9 +95,6 @@ func _on_pause_pressed():
 	paused = !paused
 	if !paused:
 		battle_state.proceed()
-		pause_button.text = "PAUSE"
-	else:
-		pause_button.text = "PLAY"
 
 func _on_console_pressed():
 	console_logs.visible = !console_logs.visible

@@ -16,6 +16,6 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 200.0
 grow_horizontal = 2
-theme_override_constants/h_separation = 4
+theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 0
 columns = 6

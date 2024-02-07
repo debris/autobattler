@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://nooylmpe7l5w"]
+[gd_scene load_steps=7 format=3 uid="uid://nooylmpe7l5w"]
 
 [ext_resource type="Script" path="res://UI/BattleUnitControl.gd" id="1_rf7mt"]
+[ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="2_4by50"]
 [ext_resource type="Script" path="res://UI/ScheduleControl.gd" id="2_moluy"]
+[ext_resource type="Shader" path="res://UI/AvatarShader.gdshader" id="3_bodmc"]
 [ext_resource type="Script" path="res://UI/ImageRect.gd" id="3_jydyn"]
-[ext_resource type="Script" path="res://UI/Frame.gd" id="4_uqtft"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axxnt"]
+shader = ExtResource("3_bodmc")
 
 [node name="BattleUnitControl" type="ColorRect"]
 custom_minimum_size = Vector2(160, 240)
@@ -20,19 +24,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.117647, 0.117647, 0.117647, 1)
+color = Color(0.117647, 0.117647, 0.117647, 0)
 
 [node name="ActiveControl" type="ColorRect" parent="Control"]
 layout_mode = 0
-offset_right = 160.0
-offset_bottom = 40.0
-color = Color(0.5, 0.458333, 0.25, 1)
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 162.0
+offset_bottom = 242.0
+color = Color(1, 1, 0, 1)
 
-[node name="NoScheduleControl" type="ColorRect" parent="Control"]
-layout_mode = 0
-offset_right = 160.0
-offset_bottom = 240.0
-color = Color(0.921569, 0.917647, 0.894118, 0.470588)
+[node name="ConcreteTile" type="Sprite2D" parent="Control"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+scale = Vector2(0.610687, 0.634921)
+texture = ExtResource("2_4by50")
+centered = false
+region_enabled = true
+region_rect = Rect2(513, 373, 262, 378)
 
 [node name="Control" type="Control" parent="Control"]
 clip_contents = true
@@ -47,6 +55,7 @@ grow_vertical = 2
 
 [node name="ImageRect" type="Control" parent="Control/Control"]
 process_mode = 4
+material = SubResource("ShaderMaterial_axxnt")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,9 +78,9 @@ text = "Name"
 [node name="Schedules" type="GridContainer" parent="Control"]
 layout_mode = 0
 offset_left = 42.0
-offset_top = 42.0
+offset_top = 41.0
 offset_right = 146.0
-offset_bottom = 83.0
+offset_bottom = 82.0
 rotation = 1.5708
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
@@ -137,33 +146,3 @@ theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "x"
 horizontal_alignment = 2
-
-[node name="MainFrame" type="Control" parent="Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_uqtft")
-
-[node name="TopFrame" type="Control" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -200.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_uqtft")
-
-[node name="BottomFrame" type="Control" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_uqtft")

@@ -10,7 +10,8 @@ var frame = Frame
 
 func _ready():
 	background = ColorRect.new()
-	background.color = Color(30.0/255.0, 30.0/255.0, 30.0/255.0)
+	#background.color = Color(30.0/255.0, 30.0/255.0, 30.0/255.0)
+	background.color = Color(Color.BLACK, 180.0/255.0)
 	add_child(background)
 	
 	frame = Frame.new()

@@ -8,7 +8,6 @@ const MAX_ROTATION: float = 2.0
 
 @onready var control = $Control
 @onready var active_control = $Control/ActiveControl
-@onready var no_schedule_control = $Control/NoScheduleControl
 @onready var image_rect = $Control/Control/ImageRect
 @onready var name_label = $Control/Name
 @onready var def_label = $Control/Def
@@ -20,6 +19,8 @@ const MAX_ROTATION: float = 2.0
 @onready var schedule_control2 = $Control/Schedules/Schedule2
 @onready var schedule_control1 = $Control/Schedules/Schedule1
 @onready var schedule_control0 = $Control/Schedules/Schedule0
+
+@onready var concrete_tile = $Control/ConcreteTile
 
 var display_settings: DisplaySettings
 var battle_unit: BattleUnit
@@ -63,7 +64,6 @@ func _process(_delta):
 
 	if !with_battle_logs:
 		active_control.visible = false
-		no_schedule_control.visible = false
 		return
 
 	default_modulate = Color.WHITE
@@ -80,8 +80,7 @@ func _process(_delta):
 		_process_log(log)
 
 	processed_logs = battle_query.get_total_log_count()
-	active_control.visible = battle_query.is_active() && battle_query.is_on_schedule()
-	no_schedule_control.visible = !battle_query.is_on_schedule()
+	active_control.visible = battle_query.is_active()
 
 func _input(event):
 	if click_to_show_details && event.is_action_released("LeftClick"):
