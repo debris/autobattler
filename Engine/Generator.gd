@@ -1,8 +1,6 @@
 extends Resource
 class_name Generator
 
-static var singleton: Generator = Generator.new()
-
 var inner: RandomNumberGenerator
 
 func _init(seed: int = 0):
@@ -54,3 +52,12 @@ func random_unit() -> OwnedUnit:
 	owned_unit.skill = unit.skill
 	owned_unit.schedules = rand_schedules()
 	return owned_unit
+
+func random_team(units: int) -> Team:
+	var team = Team.new()
+	for i in units:
+		team.members.push_back(random_unit())
+
+	while team.members.size() < 6:
+		team.members.push_back(null)
+	return team

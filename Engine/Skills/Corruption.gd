@@ -7,6 +7,9 @@ func _init():
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()
+	var result: Array[Log] = [LogSkillUsed.new(unit, self)]
 	var opposite_unit = query.get_opposite_unit()
-	var value = opposite_unit.def * 20 / 100
-	return [LogSkillUsed.new(unit, self), LogDefAdd.new(opposite_unit, -value)]
+	if opposite_unit != null:
+		var value = opposite_unit.def * 20 / 100
+		result.push_back(LogDefAdd.new(opposite_unit, -value))
+	return result

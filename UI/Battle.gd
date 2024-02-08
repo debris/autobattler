@@ -1,11 +1,14 @@
 extends Control
 
+@export var player_team: Team
+@export var enemy_team: Team
+
 @onready var team_a_control = $TeamA
 @onready var team_b_control = $TeamB
 @onready var team_a_power = $TeamAPower
 @onready var team_b_power = $TeamBPower
-@onready var round_label = $Round
-@onready var phase_label = $Phase
+@onready var round_label = $RightPanel/Round
+@onready var phase_label = $RightPanel/Phase
 @onready var console_logs = $ConsoleLogs
 @onready var pause_button = $CanvasLayer/Control/Pause
 @onready var step_button = $CanvasLayer/Control/Step
@@ -18,6 +21,9 @@ var battle_controller: BattleController
 var paused = false
 
 func _ready():
+	assert(player_team.members.size() == 6)
+	assert(enemy_team.members.size() == 6)
+	
 	battle_controller = BattleController.default()
 	battle_controller.show_details.connect(func(battle_query):
 		paused = true
@@ -42,16 +48,16 @@ func _ready():
 			team_b_control.refresh()
 	)
 
-	var team_a = Team.new()
-	var team_b = Team.new()
+	var team_a = enemy_team
+	var team_b = player_team
 
-	var generator = Generator.new(10)
-	for i in 6:
-		team_a.members.push_back(generator.random_unit())
-		#team_a.members.push_back(null)
-		
-	for i in 6:
-		team_b.members.push_back(generator.random_unit())
+	#var generator = Generator.new(10)
+	#for i in 6:
+		#team_a.members.push_back(generator.random_unit())
+		##team_a.members.push_back(null)
+		#
+	#for i in 6:
+		#team_b.members.push_back(generator.random_unit())
 
 	battle_state = BattleState.new(team_a, team_b)
 	team_a_control.battle_team_query = battle_state.team_a_query()

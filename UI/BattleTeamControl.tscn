@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/BattleTeamControl.gd" id="1_r0ohk"]
 
-[node name="ColorRect" type="Control"]
+[node name="BattleTeamControl" type="Control"]
 custom_minimum_size = Vector2(768, 240)
 layout_mode = 3
 anchors_preset = 0
