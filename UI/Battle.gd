@@ -11,6 +11,7 @@ extends Control
 @onready var step_button = $CanvasLayer/Control/Step
 @onready var start_button = $Start
 @onready var victory_label = $VictoryLabel
+@onready var change_grid = $ChangeGrid
 
 var battle_state: BattleState
 var battle_controller: BattleController
@@ -23,6 +24,22 @@ func _ready():
 		var details = load("res://UI/BattleUnitDetails.tscn").instantiate()
 		details.battle_query = battle_query
 		add_child(details)
+	)
+	battle_controller.move_unit_left.connect(func(i): 
+		if i > 0:
+			var members = battle_state.team_b.members
+			var tmp = members[i - 1]
+			members[i - 1] = members[i]
+			members[i] = tmp
+			team_b_control.refresh()
+	)
+	battle_controller.move_unit_right.connect(func(i): 
+		var members = battle_state.team_b.members
+		if i < members.size() - 1:
+			var tmp = members[i + 1]
+			members[i + 1] = members[i]
+			members[i] = tmp
+			team_b_control.refresh()
 	)
 
 	var team_a = Team.new()
@@ -97,6 +114,7 @@ func _on_start_pressed():
 	start_button.visible = false
 	step_button.visible = true
 	pause_button.visible = true
+	change_grid.visible = false
 
 	while true:
 		await battle_state.execute_round()

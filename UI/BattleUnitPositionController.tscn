@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcc60h5gjui3p"]
+
+[ext_resource type="Script" path="res://UI/BattleUnitPositionController.gd" id="1_ogd3v"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_ac4sj"]
+
+[node name="BattleUnitPositionController" type="Control"]
+custom_minimum_size = Vector2(160, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 32.0
+script = ExtResource("1_ogd3v")
+
+[node name="Left" type="Button" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("2_ac4sj")
+text = "<"
+
+[node name="Right" type="Button" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 160.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("2_ac4sj")
+text = ">"
+
+[node name="Change" type="Button" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 120.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("2_ac4sj")
+text = "Change"
+
+[connection signal="pressed" from="Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="Right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="Change" to="." method="_on_change_pressed"]
