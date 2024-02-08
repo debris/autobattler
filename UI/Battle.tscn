@@ -51,7 +51,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_mvys2")
 centered = false
 region_enabled = true
-region_rect = Rect2(2.08165e-12, 244, 2304, 1296)
+region_rect = Rect2(256, 244, 2304, 1296)
 
 [node name="TeamA" parent="." instance=ExtResource("2_w07n4")]
 custom_minimum_size = Vector2(960, 240)

@@ -19,5 +19,6 @@ static var all = [
 	UnitJanitor.new(),
 	UnitBeeNinja.new(),
 	UnitTimeTraveller.new(),
-	UnitOrcArcher.new()
+	UnitOrcArcher.new(),
+	UnitLesserDemon.new()
 ]
