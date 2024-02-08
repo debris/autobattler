@@ -2,9 +2,11 @@ extends Control
 
 signal selected_units(units: Array[OwnedUnit])
 
+@export var generator: Generator
 @export var to_select: int = 2
 @export var out_of: int = 6
 
+@onready var select_label = $SelectLabel
 @onready var battle_team_control = $BattleTeamControl
 @onready var select_button_grid = $SelectButtonGrid
 
@@ -12,6 +14,7 @@ var displayed_team: BattleTeam
 var selected: Array[OwnedUnit] = []
 
 func _ready():
+	select_label.text = "Select " + str(to_select)
 	var battle_controller = BattleController.default()
 	battle_controller.show_details.connect(func(battle_query):
 		var details = load("res://UI/BattleUnitDetails.tscn").instantiate()
@@ -20,7 +23,6 @@ func _ready():
 	)
 	
 	var team = Team.new()
-	var generator = Generator.new(10)
 	for i in out_of:
 		team.members.push_back(generator.random_unit())
 	

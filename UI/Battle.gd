@@ -1,5 +1,13 @@
 extends Control
 
+enum Result {
+	VICTORY,
+	DEFEAT,
+	TIE,
+}
+
+signal battle_finished(result)
+
 @export var player_team: Team
 @export var enemy_team: Team
 
@@ -15,10 +23,12 @@ extends Control
 @onready var start_button = $Start
 @onready var victory_label = $VictoryLabel
 @onready var change_grid = $ChangeGrid
+@onready var continue_button = $Continue
 
 var battle_state: BattleState
 var battle_controller: BattleController
 var paused = false
+var result: Result
 
 func _ready():
 	assert(player_team.members.size() == 6)
@@ -77,20 +87,26 @@ func _wait_for_display():
 	var tie = victory && defeat
 	
 	if tie:
-		return on_battle_end("tie")
+		return on_battle_end(Result.TIE)
 	
 	if victory:
-		return on_battle_end("victory")
+		return on_battle_end(Result.VICTORY)
 
 	if defeat:
-		return on_battle_end("defeat")
+		return on_battle_end(Result.DEFEAT)
 	
 	if !paused:
 		battle_state.proceed()
 
-func on_battle_end(result):
+func on_battle_end(battle_result):
+	result = battle_result
+	match result:
+		Result.VICTORY: victory_label.text = "victory"
+		Result.DEFEAT: victory_label.text = "defeat"
+		Result.TIE: victory_label.text = "tie"
+	
+	continue_button.visible = true
 	victory_label.visible = true
-	victory_label.text = result
 	step_button.visible = false
 	pause_button.visible = false
 	paused = true
@@ -124,3 +140,6 @@ func _on_start_pressed():
 
 	while true:
 		await battle_state.execute_round()
+
+func _on_continue_pressed():
+	battle_finished.emit(result)

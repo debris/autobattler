@@ -34,7 +34,6 @@ func normalize(round: int) -> int:
 
 func copy() -> Schedule:
 	var result = Schedule.new()
-	result.data = []
 	result.data.append_array(data)
 	result.kind = kind
 	return result

@@ -32,7 +32,7 @@ func _init(u: OwnedUnit):
 	# during the battle
 	schedules = []
 	for i in u.schedules:
-		schedules.push_back(i)
+		schedules.push_back(i.copy())
 	schedule_pointer = SchedulePointer.new()
 	dmg_bonus = 0
 	def_bonus = 0
