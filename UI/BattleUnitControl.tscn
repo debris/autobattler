@@ -41,6 +41,14 @@ offset_left = -2.0
 offset_top = -2.0
 offset_right = 162.0
 offset_bottom = 242.0
+color = Color(0.501961, 0.501961, 0.25098, 1)
+
+[node name="ActiveOnSchedule" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 162.0
+offset_bottom = 242.0
 color = Color(1, 1, 0, 1)
 
 [node name="ConcreteTile" type="Sprite2D" parent="Control"]

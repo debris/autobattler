@@ -9,5 +9,5 @@ func _init(l: Log, n: String, d: String):
 	name = n
 	description = d
 
-func _execute(query: BattleQuery) -> Array[Log]:
+func _execute(_query: BattleQuery) -> Array[Log]:
 	return [log]

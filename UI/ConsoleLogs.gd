@@ -6,7 +6,7 @@ extends CanvasLayer
 
 var displayed_logs = 0
 
-func _process(delta):
+func _process(_delta):
 	if displayed_logs < battle_state.logs.size():
 		_display_log("=========================")
 		_display_log("ROUND: " + str(battle_state.round) + ", PHASE: " + str(battle_state.phase))

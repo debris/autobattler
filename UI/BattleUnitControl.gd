@@ -9,6 +9,7 @@ const MAX_ROTATION: float = 2.0
 @onready var control = $Control
 @onready var on_hover = $Control/OnHover
 @onready var active_control = $Control/ActiveControl
+@onready var active_on_schedule = $Control/ActiveOnSchedule
 @onready var image_rect = $Control/Control/ImageRect
 @onready var name_label = $Control/Name
 @onready var def_label = $Control/Def
@@ -33,7 +34,7 @@ var default_modulate
 var initialized: bool = false
 
 func should_display_as_enemy() -> bool:
-	return global_position.y < (648 / 2)
+	return global_position.y < 324
 
 func _ready():
 	display_settings = DisplaySettings.default()
@@ -93,14 +94,18 @@ func _process(_delta):
 		log = logs_iterator.next()
 
 	active_control.visible = battle_query.is_active()
+	active_on_schedule.visible = battle_query.is_active() && battle_query.is_on_schedule()
 
 func _input(event):
 	if click_to_show_details:
 		var mouse_position = get_global_mouse_position()
 		var rect = get_global_rect()
 		if rect.has_point(mouse_position):
+			if !on_hover.visible:
+				Sounds.play_hover()
 			on_hover.visible = true
 			if event.is_action_released("LeftClick"):
+				Sounds.play_button_press()
 				accept_event()
 				BattleController.default().show_details.emit(battle_query)
 		else:
@@ -111,17 +116,21 @@ func _process_log(action: Log):
 	if action is LogAttack:
 		_display_notification("ATTACK", GameColors.red())
 		_attack_animation()
+		Sounds.play_action()
 	
 	if action is LogDefend:
 		_display_notification("DEFEND", GameColors.green())
 		_defend_animation()
+		Sounds.play_action()
 	
 	if action is LogSkillUsed:
 		_display_notification(str(action.skill.name), GameColors.blue())
 		_skill_animation()
+		Sounds.play_action()
 	
 	if action is LogExhaustion:
 		_display_notification("EXHAUSTED", GameColors.red())
+		Sounds.play_action()
 	
 	if action is LogDmgAdd || action is LogDmgBonusAdd || action is LogDefAdd || action is LogDefBonusAdd:
 		var color = GameColors.green()

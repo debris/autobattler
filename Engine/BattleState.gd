@@ -63,11 +63,11 @@ func execute_round():
 					while executed < to_execute.size():
 						var env = to_execute[executed]
 						# PREPARE
-						var logs = env.skill._execute(BattleQuery.new(env.battle_unit, self))
+						var logs_to_process = env.skill._execute(BattleQuery.new(env.battle_unit, self))
 						# PROCESS
-						for log in logs:
+						for log_to_process in logs_to_process:
 							for processor in processors:
-								var envs = processor._process_log(log, self)
+								var envs = processor._process_log(log_to_process, self)
 								# TODO: optimize insertions?
 								# also check if its ok that actions from the last processor are
 								# inserted first
@@ -77,10 +77,10 @@ func execute_round():
 									to_execute.insert(executed + 1 + e, new_env)
 							# FINALIZE
 							# applies changes to the state
-							if log.valid:
-								log._finalize(self)
+							if log_to_process.valid:
+								log_to_process._finalize(self)
 
-						await _display(env.battle_unit, logs)
+						await _display(env.battle_unit, logs_to_process)
 						executed += 1
 				else:
 					await _display_none(battle_unit.schedule_pointer)

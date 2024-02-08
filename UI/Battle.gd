@@ -68,10 +68,10 @@ func _wait_for_display():
 	
 	var victory = battle_state.team_a.power <= 0
 	var defeat = battle_state.team_b.power <= 0
-	var draw = victory && defeat
+	var tie = victory && defeat
 	
-	if draw:
-		return on_battle_end("draw")
+	if tie:
+		return on_battle_end("tie")
 	
 	if victory:
 		return on_battle_end("victory")

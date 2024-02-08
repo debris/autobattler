@@ -10,14 +10,14 @@ func _init(seed: int = 0):
 	inner.seed = seed
 
 func rand_schedule() -> Schedule:
-	var fill_n_positions = func(data, n):
-		assert(n < data.size())
+	var fill_n_positions = func(d, n):
+		assert(n < d.size())
 		for _i in n:
-			var position = inner.randi_range(0, data.size() - 1)
+			var position = inner.randi_range(0, d.size() - 1)
 			# regenerate positions that are already occupied 
-			while data[position] == true:
-				position = inner.randi_range(0, data.size() - 1)
-			data[position] = true
+			while d[position] == true:
+				position = inner.randi_range(0, d.size() - 1)
+			d[position] = true
 	
 	var length = inner.randi_range(3, 8)
 	var data: Array[bool] = []
