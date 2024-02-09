@@ -14,7 +14,7 @@ func _ready():
 	
 	# TODO: load team
 	team = Team.new()
-	generator.random_team(6)
+	generator.random_team(56)
 	bench = [] as Array[OwnedUnit]
 	enemy_team_size = 0
 

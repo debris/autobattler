@@ -45,12 +45,7 @@ func rand_schedules() -> Array[Schedule]:
 func random_unit() -> OwnedUnit:
 	var max_index = Units.all.size() - 1 
 	var unit = Units.all[inner.randi_range(0, max_index)]
-	var owned_unit = OwnedUnit.new()
-	owned_unit.base = unit
-	owned_unit.dmg = unit.dmg
-	owned_unit.def = unit.def
-	owned_unit.skill = unit.skill
-	owned_unit.schedules = rand_schedules()
+	var owned_unit = OwnedUnit.new(unit, rand_schedules())
 	return owned_unit
 
 func random_team(units: int) -> Team:

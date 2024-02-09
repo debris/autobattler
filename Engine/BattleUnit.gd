@@ -4,6 +4,7 @@ extends Resource
 class_name BattleUnit
 
 var unit: OwnedUnit
+var name: String
 var texture: Texture2D
 var dmg: int
 var def: int
@@ -23,6 +24,7 @@ var exhausted: bool
 
 func _init(u: OwnedUnit):
 	unit = u
+	name = u.base.name
 	texture = u.base.texture
 	dmg = u.dmg
 	def = u.def

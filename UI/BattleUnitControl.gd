@@ -50,7 +50,7 @@ func _ensure_initialized():
 
 func _process(_delta):
 	_ensure_initialized()
-	name_label.text = battle_unit.unit.base.name
+	name_label.text = battle_unit.name
 	image_rect.texture = battle_unit.texture
 
 	# always 3 schedules, let's grab them in reverse because of the rotation
