@@ -12,6 +12,7 @@ signal selected_location
 @onready var icon = $Content/Icon
 @onready var possible_control = $Content/PossibleControl
 @onready var current_control = $Content/CurrentControl
+@onready var inactive_control = $Content/InactiveControl
 
 var hovered = false
 
@@ -26,17 +27,20 @@ func _ready():
 	for child in content.get_children():
 		if "mouse_filter" in child:
 			child.mouse_filter = MOUSE_FILTER_IGNORE
-	
-	if !location is LocationEmpty:
+
+	if map.is_valid_destination(map_position):
 		mouse_entered.connect(func():
-			if map.is_valid_destination(map_position):
-				possible_control.visible = true
-				hovered = true
-				Sounds.play_hover()
+			possible_control.visible = true
+			hovered = true
+			Sounds.play_hover()
 		)
 		mouse_exited.connect(func():
 			possible_control.visible = false
+			hovered = false
 		)
+	else:
+		# make inactive contol visible for everyone not on the path except current location
+		inactive_control.visible = !map.map_position == map_position
 
 func _gui_input(event):
 	if hovered && event.is_action_pressed("LeftClick"):

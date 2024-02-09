@@ -16,14 +16,14 @@ func _init():
 	map_position = START_POSITION
 
 func is_valid_destination(destination: Vector2i) -> bool:
-	if map_position == START_POSITION && destination.y == 0:
-		return true
-	
 	if destination == BOSS_POSITION && map_position.y == rows.size() - 1:
 		return true
 	
 	if rows[destination.y][destination.x] is LocationEmpty:
 		return false
+
+	if map_position == START_POSITION && destination.y == 0:
+		return true
 
 	if map_position.y + 1 == destination.y && destination.x >= map_position.x - 1 && destination.x <= map_position.x + 1:
 		return true
