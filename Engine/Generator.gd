@@ -62,6 +62,15 @@ func random_team(units: int) -> Team:
 		team.members.push_back(null)
 	return team
 
+func random_treasure() -> Treasure:
+	var max_index = Treasures.all.size() - 1
+	var treasure = Treasures.all[inner.randi_range(0, max_index)]
+	var reroll_value = inner.randi_range(1, 99)
+	while reroll_value <= treasure.reroll:
+		treasure = Treasures.all[inner.randi_range(0, max_index)]
+		reroll_value = inner.randi_range(1, 99)
+	return treasure
+
 func random_location() -> Location:
 	var max_index = Locations.all.size() - 1
 	var location = Locations.all[inner.randi_range(0, max_index)]

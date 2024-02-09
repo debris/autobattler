@@ -58,7 +58,8 @@ func _ready():
 			map = generator.random_map(Map.COLUMNS, Map.ROWS)
 
 		if current_location is LocationTreasure:
-			pass
+			var _treasure = generator.random_treasure()
+			
 		
 		if current_location is LocationEvent:
 			pass
