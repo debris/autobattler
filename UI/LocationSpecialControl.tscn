@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cishw7lk1ijaa"]
+[gd_scene load_steps=8 format=3 uid="uid://cishw7lk1ijaa"]
 
 [ext_resource type="Script" path="res://UI/LocationControl.gd" id="1_o4rkf"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="3_i0x3w"]
+[ext_resource type="Shader" path="res://UI/IconPlayerShader.gdshader" id="4_tt257"]
+[ext_resource type="Script" path="res://UI/ImageRect.gd" id="5_2atdv"]
+[ext_resource type="Texture2D" uid="uid://bon14hoca0ad5" path="res://Assets/Icons/player.png" id="6_2ueo3"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="7_7662v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fnye"]
+shader = ExtResource("4_tt257")
 
 [node name="LocationControl" type="Control"]
 custom_minimum_size = Vector2(80, 80)
@@ -38,20 +44,6 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 0, 1)
-
-[node name="CurrentControl" type="ColorRect" parent="Content"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 1, 1)
 
 [node name="Frame" type="Control" parent="Content"]
 layout_mode = 1
@@ -99,3 +91,17 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.705882)
+
+[node name="CurrentControl" type="Control" parent="Content"]
+process_mode = 4
+visible = false
+material = SubResource("ShaderMaterial_3fnye")
+layout_mode = 3
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 48.0
+offset_bottom = 48.0
+mouse_filter = 2
+script = ExtResource("5_2atdv")
+texture = ExtResource("6_2ueo3")

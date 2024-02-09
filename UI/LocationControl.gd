@@ -9,7 +9,6 @@ signal selected_location
 
 @onready var content = $Content
 @onready var name_label = $Content/NameLabel
-@onready var icon = $Content/Icon
 @onready var possible_control = $Content/PossibleControl
 @onready var current_control = $Content/CurrentControl
 @onready var inactive_control = $Content/InactiveControl
@@ -19,7 +18,7 @@ var hovered = false
 func _ready():
 	content.visible = !location is LocationEmpty
 	if location.icon != null:
-		icon.texture = location.icon
+		content.get_node("Icon").texture = location.icon
 	name_label.text = location.name
 	current_control.visible = map.map_position == map_position
 	
