@@ -20,3 +20,4 @@ func _ready():
 			location_control.location = x
 			#location_control.map_position = Vector2i
 			locations_grid.add_child(location_control)
+

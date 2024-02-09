@@ -31,6 +31,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="PossibleControl" type="ColorRect" parent="Content"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
 [node name="ConcreteTile" type="Sprite2D" parent="Content"]
 modulate = Color(0.454902, 0.454902, 0.454902, 1)
 scale = Vector2(0.30888, 0.294118)
