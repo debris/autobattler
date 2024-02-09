@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://dr0dc7idr7cvr"]
+
+[ext_resource type="Script" path="res://UI/LocationControl.gd" id="1_n8w8j"]
+[ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="2_2cmxt"]
+[ext_resource type="Script" path="res://UI/ImageRect.gd" id="2_5b3hp"]
+[ext_resource type="Script" path="res://UI/Frame.gd" id="2_6migv"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="3_rwavq"]
+[ext_resource type="Shader" path="res://UI/IconShader.gdshader" id="4_ntixf"]
+[ext_resource type="Texture2D" uid="uid://cnr5ef2xgjvow" path="res://Assets/Icons/event.png" id="5_fsxle"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_amulv"]
+shader = ExtResource("4_ntixf")
+
+[node name="LocationControl" type="Control"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1072.0
+offset_bottom = -568.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n8w8j")
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConcreteTile" type="Sprite2D" parent="Content"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+scale = Vector2(0.30888, 0.294118)
+texture = ExtResource("2_2cmxt")
+centered = false
+region_enabled = true
+region_rect = Rect2(513, 752, 259, 272)
+
+[node name="Frame" type="Control" parent="Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_6migv")
+
+[node name="Background" type="ColorRect" parent="Content"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="Icon" type="Control" parent="Content"]
+process_mode = 4
+material = SubResource("ShaderMaterial_amulv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_5b3hp")
+texture = ExtResource("5_fsxle")
+
+[node name="NameLabel" type="Label" parent="Content"]
+layout_mode = 0
+offset_top = 80.0
+offset_right = 80.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("3_rwavq")
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
