@@ -10,7 +10,7 @@ const MAX_ROTATION: float = 2.0
 @onready var on_hover = $Control/OnHover
 @onready var active_control = $Control/ActiveControl
 @onready var active_on_schedule = $Control/ActiveOnSchedule
-@onready var image_rect = $Control/Control/ImageRect
+@onready var image_rect = $Control/ImageRect
 @onready var name_label = $Control/Name
 @onready var def_label = $Control/Def
 @onready var dmg_label = $Control/Dmg
@@ -38,7 +38,14 @@ func should_display_as_enemy() -> bool:
 
 func _ready():
 	display_settings = DisplaySettings.default()
-	focus_mode = Control.FOCUS_ALL
+	
+	mouse_entered.connect(func():
+		Sounds.play_hover()
+		on_hover.visible = true
+	)
+	mouse_exited.connect(func():
+		on_hover.visible = false
+	)
 
 func _ensure_initialized():
 	if initialized == true:
@@ -90,26 +97,18 @@ func _process(_delta):
 
 	var log = logs_iterator.next()
 	while log != null:
-		_process_log(log)
+		if log.valid:
+			_process_log(log)
 		log = logs_iterator.next()
 
 	active_control.visible = battle_query.is_active()
 	active_on_schedule.visible = battle_query.is_active() && battle_query.is_on_schedule()
 
-func _input(event):
-	if click_to_show_details:
-		var mouse_position = get_global_mouse_position()
-		var rect = get_global_rect()
-		if rect.has_point(mouse_position):
-			if !on_hover.visible:
-				Sounds.play_hover()
-			on_hover.visible = true
-			if event.is_action_released("LeftClick"):
-				Sounds.play_button_press()
-				accept_event()
-				BattleController.default().show_details.emit(battle_query)
-		else:
-			on_hover.visible = false
+func _gui_input(event):
+	if click_to_show_details && on_hover.visible && event.is_action_released("LeftClick"):
+		accept_event()
+		Sounds.play_button_press()
+		BattleController.default().show_details.emit(battle_query)
 
 # private
 func _process_log(action: Log):

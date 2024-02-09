@@ -24,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.117647, 0.117647, 0.117647, 0)
 
 [node name="OnHover" type="ColorRect" parent="Control"]
@@ -33,6 +34,7 @@ offset_left = -2.0
 offset_top = -2.0
 offset_right = 162.0
 offset_bottom = 242.0
+mouse_filter = 2
 color = Color(0.752941, 0.752941, 0.752941, 1)
 
 [node name="ActiveControl" type="ColorRect" parent="Control"]
@@ -41,6 +43,7 @@ offset_left = -2.0
 offset_top = -2.0
 offset_right = 162.0
 offset_bottom = 242.0
+mouse_filter = 2
 color = Color(0.501961, 0.501961, 0.25098, 1)
 
 [node name="ActiveOnSchedule" type="ColorRect" parent="Control"]
@@ -49,6 +52,7 @@ offset_left = -2.0
 offset_top = -2.0
 offset_right = 162.0
 offset_bottom = 242.0
+mouse_filter = 2
 color = Color(1, 1, 0, 1)
 
 [node name="ConcreteTile" type="Sprite2D" parent="Control"]
@@ -59,24 +63,15 @@ centered = false
 region_enabled = true
 region_rect = Rect2(513, 373, 262, 378)
 
-[node name="Control" type="Control" parent="Control"]
-clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 40.0
-offset_bottom = -40.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ImageRect" type="Control" parent="Control/Control"]
+[node name="ImageRect" type="Control" parent="Control"]
 process_mode = 4
 material = SubResource("ShaderMaterial_axxnt")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 40.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(80, 80)
@@ -99,6 +94,7 @@ offset_top = 41.0
 offset_right = 146.0
 offset_bottom = 82.0
 rotation = 1.5708
+mouse_filter = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 metadata/_edit_group_ = true
@@ -107,18 +103,21 @@ metadata/_edit_group_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("2_moluy")
 
 [node name="Schedule1" type="Control" parent="Control/Schedules"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("2_moluy")
 
 [node name="Schedule0" type="Control" parent="Control/Schedules"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("2_moluy")
 
 [node name="Def" type="Label" parent="Control"]

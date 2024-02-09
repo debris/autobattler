@@ -5,13 +5,14 @@
 [ext_resource type="Script" path="res://UI/ImageRect.gd" id="2_5b3hp"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_6migv"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="3_rwavq"]
-[ext_resource type="Shader" path="res://UI/IconShader.gdshader" id="4_ntixf"]
+[ext_resource type="Shader" path="res://UI/AvatarShader.gdshader" id="4_cukmc"]
 [ext_resource type="Texture2D" uid="uid://cnr5ef2xgjvow" path="res://Assets/Icons/event.png" id="5_fsxle"]
 [ext_resource type="Shader" path="res://UI/IconPlayerShader.gdshader" id="8_r2iw3"]
 [ext_resource type="Texture2D" uid="uid://bon14hoca0ad5" path="res://Assets/Icons/player.png" id="9_a75gy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_amulv"]
-shader = ExtResource("4_ntixf")
+resource_local_to_scene = true
+shader = ExtResource("4_cukmc")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t4ely"]
 shader = ExtResource("8_r2iw3")
@@ -89,16 +90,6 @@ mouse_filter = 2
 script = ExtResource("2_5b3hp")
 texture = ExtResource("5_fsxle")
 
-[node name="NameLabel" type="Label" parent="Content"]
-layout_mode = 0
-offset_top = 80.0
-offset_right = 80.0
-offset_bottom = 103.0
-theme_override_fonts/font = ExtResource("3_rwavq")
-text = "Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="InactiveControl" type="ColorRect" parent="Content"]
 visible = false
 layout_mode = 1
@@ -112,6 +103,16 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.705882)
+
+[node name="NameLabel" type="Label" parent="Content"]
+layout_mode = 0
+offset_top = 56.0
+offset_right = 80.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("3_rwavq")
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CurrentControl" type="Control" parent="Content"]
 process_mode = 4

@@ -34,7 +34,7 @@ func _ready():
 		passive_name.visible = false
 		passive_description.visible = false
 
-func _input(event):
+func _gui_input(event):
 	var mouse_position = get_global_mouse_position()
 	var rect = get_global_rect()
 	if rect.has_point(mouse_position):

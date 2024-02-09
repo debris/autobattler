@@ -20,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.901961)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -30,14 +31,17 @@ anchor_bottom = 1.0
 offset_right = -576.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Control" type="Control" parent="CenterContainer"]
 custom_minimum_size = Vector2(320, 480)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="BattleUnitControl" parent="CenterContainer/Control" instance=ExtResource("2_4cosj")]
 layout_mode = 2
 scale = Vector2(2, 2)
+mouse_filter = 2
 
 [node name="Control" type="GridContainer" parent="."]
 layout_mode = 0
@@ -45,6 +49,7 @@ offset_left = 576.0
 offset_top = 88.0
 offset_right = 1076.0
 offset_bottom = 568.0
+mouse_filter = 2
 
 [node name="Tags" type="Label" parent="Control"]
 custom_minimum_size = Vector2(2.08165e-12, 20)
