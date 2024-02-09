@@ -51,6 +51,12 @@ func _ready():
 		if current_location is LocationBattle:
 			await display_battle()
 
+		if current_location is LocationBoss:
+			# TODO: display a different kind of battle?
+			await display_battle()
+			# progress to the new map
+			map = generator.random_map(Map.COLUMNS, Map.ROWS)
+
 		if current_location is LocationTreasure:
 			pass
 		

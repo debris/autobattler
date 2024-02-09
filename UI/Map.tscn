@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnkmc23o7l0gg"]
+[gd_scene load_steps=3 format=3 uid="uid://dnkmc23o7l0gg"]
 
 [ext_resource type="Script" path="res://UI/Map.gd" id="1_kaxd2"]
 [ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="2_3dhri"]
-[ext_resource type="Script" path="res://UI/Frame.gd" id="3_vp4oi"]
-[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="4_dg52h"]
 
 [node name="Map" type="Control"]
 layout_mode = 3
@@ -36,80 +34,8 @@ layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 32
 
-[node name="Boss" type="Control" parent="CenterContainer/List"]
-custom_minimum_size = Vector2(2.08165e-12, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/List/Boss"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.705882)
-
-[node name="Frame" type="Control" parent="CenterContainer/List/Boss"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_vp4oi")
-
-[node name="Start" type="Label" parent="CenterContainer/List/Boss/Frame"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_dg52h")
-theme_override_font_sizes/font_size = 24
-text = "Boss"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="LocationsGrid" type="GridContainer" parent="CenterContainer/List"]
 layout_mode = 2
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 32
 columns = 5
-
-[node name="Start" type="Control" parent="CenterContainer/List"]
-custom_minimum_size = Vector2(2.08165e-12, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/List/Start"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.705882)
-
-[node name="Frame" type="Control" parent="CenterContainer/List/Start"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_vp4oi")
-
-[node name="Start" type="Label" parent="CenterContainer/List/Start/Frame"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_dg52h")
-theme_override_font_sizes/font_size = 24
-text = "Start"
-horizontal_alignment = 1
-vertical_alignment = 1

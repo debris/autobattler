@@ -1,7 +1,7 @@
 extends Location
-class_name LocationBoss
+class_name LocationStart
 
 func _init():
-	name = "Boss"
+	name = "Start"
 	reroll = 100
 	icon = null

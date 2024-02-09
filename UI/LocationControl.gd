@@ -5,6 +5,7 @@ signal selected_location
 @export var location: Location
 @export var map_position: Vector2i
 @export var map: Map
+@export var display_icon: bool = true
 
 @onready var content = $Content
 @onready var name_label = $Content/NameLabel
@@ -16,7 +17,8 @@ var hovered = false
 
 func _ready():
 	content.visible = !location is LocationEmpty
-	icon.texture = location.icon
+	if location.icon != null:
+		icon.texture = location.icon
 	name_label.text = location.name
 	current_control.visible = map.map_position == map_position
 	
@@ -38,5 +40,6 @@ func _ready():
 
 func _gui_input(event):
 	if hovered && event.is_action_pressed("LeftClick"):
+		accept_event()
 		map.map_position = map_position
 		selected_location.emit()
