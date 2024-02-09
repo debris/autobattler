@@ -10,6 +10,7 @@ signal battle_finished(result)
 
 @export var player_team: Team
 @export var enemy_team: Team
+@export var bench: Array[OwnedUnit]
 
 @onready var team_a_control = $TeamA
 @onready var team_b_control = $TeamB
@@ -47,6 +48,10 @@ func _ready():
 			var tmp = members[i - 1]
 			members[i - 1] = members[i]
 			members[i] = tmp
+			
+			# update the upstream team
+			player_team.members[i] = members[i].unit
+			player_team.members[i - 1] = members[i - 1].unit
 			team_b_control.refresh()
 	)
 	battle_controller.move_unit_right.connect(func(i): 
@@ -55,7 +60,26 @@ func _ready():
 			var tmp = members[i + 1]
 			members[i + 1] = members[i]
 			members[i] = tmp
+			
+			# update the upstream team
+			player_team.members[i] = members[i].unit
+			player_team.members[i + 1] = members[i + 1].unit
 			team_b_control.refresh()
+	)
+	battle_controller.change_pressed.connect(func(i):
+		var list = preload("res://UI/UnitList.tscn").instantiate()
+		list.units = bench
+		list.selected_unit.connect(func(index):
+			var members = battle_state.team_b.members
+			var tmp = bench[index]
+			bench[index] = members[i].unit
+			members[i] = BattleUnit.new(tmp)
+
+			player_team.members[i] = tmp
+			team_b_control.refresh()
+			list.queue_free()
+		)
+		add_child(list)
 	)
 
 	var team_a = enemy_team

@@ -8,24 +8,26 @@ func _ready():
 	var generator = Generator.new()
 	
 	# TODO: load team
-	var team = Team.new()
+	#var team = Team.new()
+	var team = generator.random_team(6)
 	var bench: Array[OwnedUnit] = [] as Array[OwnedUnit]
 
-	# if there is no team to load, select new
-	var select_units = preload("res://UI/SelectUnits.tscn").instantiate()
-	select_units.generator = generator
-	select_units.to_select = 2
-	select_units.selected_units.connect(func(units):
-		team.members = units
-		while team.members.size() < 6:
-			team.members.push_back(null)
-		select_units.queue_free()
-		player_team_ready.emit()
-	)
-	add_child(select_units)
-	await player_team_ready
-	
-	
+	if team.members.size() == 0:
+		# if there is no team to load, select new
+		var select_units = preload("res://UI/SelectUnits.tscn").instantiate()
+		select_units.generator = generator
+		select_units.to_select = 2
+		select_units.selected_units.connect(func(units):
+			team.members = units
+			while team.members.size() < 6:
+				team.members.push_back(null)
+			select_units.queue_free()
+			player_team_ready.emit()
+		)
+		add_child(select_units)
+		await player_team_ready
+
+
 	# game screen loop
 	var enemy_team_size = 0
 	while true:
@@ -33,6 +35,7 @@ func _ready():
 		enemy_team_size = min(6, enemy_team_size + 1)
 		var battle = preload("res://UI/Battle.tscn").instantiate()
 		battle.player_team = team
+		battle.bench = bench
 		battle.enemy_team = generator.random_team(enemy_team_size)
 		battle.battle_finished.connect(func(_result):
 			# TODO: depending on the result display different screens?

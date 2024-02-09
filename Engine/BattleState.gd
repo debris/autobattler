@@ -83,7 +83,8 @@ func execute_round():
 						await _display(env.battle_unit, logs_to_process)
 						executed += 1
 				else:
-					await _display_none(battle_unit.schedule_pointer)
+					pass
+					#await _display_none(battle_unit.schedule_pointer)
 			
 			await run_skill_for_team.call(team_a)
 			await run_skill_for_team.call(team_b)

@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://jlf00hl8a4y5"]
+
+[ext_resource type="Script" path="res://UI/UnitList.gd" id="1_qsus6"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_qlmkt"]
+
+[node name="UnitList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qsus6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.745098)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 64.0
+offset_top = 16.0
+offset_right = 1152.0
+offset_bottom = 632.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="UnitsLabel" type="Label" parent="."]
+offset_left = 960.0
+offset_top = 8.0
+offset_right = 1136.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("2_qlmkt")
+theme_override_font_sizes/font_size = 40
+text = "Units"
+horizontal_alignment = 2
