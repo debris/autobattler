@@ -2,9 +2,8 @@ extends Control
 
 signal selected_units(units: Array[OwnedUnit])
 
-@export var generator: Generator
 @export var to_select: int = 2
-@export var out_of: int = 6
+@export var out_of: Team
 
 @onready var select_label = $SelectLabel
 @onready var battle_team_control = $BattleTeamControl
@@ -22,11 +21,7 @@ func _ready():
 		add_child(details)
 	)
 	
-	var team = Team.new()
-	for i in out_of:
-		team.members.push_back(generator.random_unit())
-	
-	var battle_state = BattleState.new(team, Team.null_team())
+	var battle_state = BattleState.new(out_of, Team.null_team())
 	displayed_team = battle_state.team_a
 	battle_team_control.battle_team_query = battle_state.team_a_query()
 	

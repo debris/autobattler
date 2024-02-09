@@ -42,16 +42,16 @@ func rand_schedules() -> Array[Schedule]:
 	schedules[2].kind = (schedules[1].kind as int + direction + 3) % 3 as Schedule.Kind
 	return schedules
 	
-func random_unit() -> OwnedUnit:
-	var max_index = Units.all.size() - 1 
-	var unit = Units.all[inner.randi_range(0, max_index)]
+func random_unit(collection: Array[Unit] = Units.all) -> OwnedUnit:
+	var max_index = collection.size() - 1 
+	var unit = collection[inner.randi_range(0, max_index)]
 	var owned_unit = OwnedUnit.new(unit, rand_schedules())
 	return owned_unit
 
-func random_team(units: int) -> Team:
+func random_team(units: int, collection: Array[Unit] = Units.all) -> Team:
 	var team = Team.new()
 	for i in units:
-		team.members.push_back(random_unit())
+		team.members.push_back(random_unit(collection))
 
 	while team.members.size() < 6:
 		team.members.push_back(null)

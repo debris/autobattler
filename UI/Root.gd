@@ -14,15 +14,16 @@ func _ready():
 	
 	# TODO: load team
 	team = Team.new()
-	generator.random_team(56)
+	generator.random_team(0)
 	bench = [] as Array[OwnedUnit]
 	enemy_team_size = 0
 
 	if team.members.size() == 0:
 		# if there is no team to load, select new
 		var select_units = preload("res://UI/SelectUnits.tscn").instantiate()
-		select_units.generator = generator
+		#select_units.generator = generator
 		select_units.to_select = 2
+		select_units.out_of = generator.random_team(6)
 		select_units.selected_units.connect(func(units):
 			team.members = units
 			while team.members.size() < 6:
@@ -49,29 +50,28 @@ func _ready():
 		var current_location = map.current_location()
 		
 		if current_location is LocationBattle:
-			await display_battle()
+			await display_battle(current_location.enemies_pool)
 
 		if current_location is LocationBoss:
 			# TODO: display a different kind of battle?
-			await display_battle()
+			await display_battle(Units.all)
 			# progress to the new map
 			map = generator.random_map(Map.COLUMNS, Map.ROWS)
 
 		if current_location is LocationTreasure:
 			var _treasure = generator.random_treasure()
-			
 		
 		if current_location is LocationEvent:
 			pass
 
 
-func display_battle():
+func display_battle(collection: Array[Unit]):
 	# lets fight with our team
 	enemy_team_size = min(6, enemy_team_size + 1)
 	var battle = preload("res://UI/Battle.tscn").instantiate()
 	battle.player_team = team
 	battle.bench = bench
-	battle.enemy_team = generator.random_team(enemy_team_size)
+	battle.enemy_team = generator.random_team(enemy_team_size, collection)
 	battle.battle_finished.connect(func(_result):
 		# TODO: depending on the result display different screens?
 		battle.queue_free()
@@ -83,8 +83,9 @@ func display_battle():
 
 	# after the fight lets get some rewards
 	var select_reward = preload("res://UI/SelectUnits.tscn").instantiate()
-	select_reward.generator = generator
+	#select_reward.generator = generator
 	select_reward.to_select = 1
+	select_reward.out_of = generator.random_team(6, collection)
 	select_reward.selected_units.connect(func(units):
 		assert(units.size() == 1)
 		var added = false

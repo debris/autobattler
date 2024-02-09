@@ -1,7 +1,7 @@
 extends Resource
 class_name Units
 
-static var all = [
+static var all: Array[Unit] = [
 	UnitOrcWarrior.new(), 
 	UnitElfArcher.new(), 
 	UnitVikingWarrior.new(),
@@ -23,4 +23,14 @@ static var all = [
 	UnitLesserDemon.new(),
 	UnitDefenceCoach.new(),
 	UnitDefenceSub.new()
+]
+
+static var orcs: Array[Unit] = [
+	UnitOrcWarrior.new(),
+	UnitOrcArcher.new()
+]
+
+static var bees: Array[Unit] = [
+	UnitBeeMech.new(),
+	UnitBeeNinja.new()
 ]

@@ -1,8 +1,8 @@
 extends Resource
 class_name Map
 
-const ROWS: int = 4
-const COLUMNS: int = 6
+const ROWS: int = 5
+const COLUMNS: int = 5
 const START_POSITION = Vector2i(-1, -1)
 const BOSS_POSITION = Vector2i(-1, -2)
 

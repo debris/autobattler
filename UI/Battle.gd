@@ -50,8 +50,15 @@ func _ready():
 			members[i] = tmp
 			
 			# update the upstream team
-			player_team.members[i] = members[i].unit
-			player_team.members[i - 1] = members[i - 1].unit
+			if members[i] != null:
+				player_team.members[i] = members[i].unit
+			else:
+				player_team.members[i] = null
+			
+			if members[i - 1] != null:
+				player_team.members[i - 1] = members[i - 1].unit
+			else:
+				player_team.members[i - 1] = null
 			team_b_control.refresh()
 	)
 	battle_controller.move_unit_right.connect(func(i): 
@@ -62,8 +69,15 @@ func _ready():
 			members[i] = tmp
 			
 			# update the upstream team
-			player_team.members[i] = members[i].unit
-			player_team.members[i + 1] = members[i + 1].unit
+			if members[i] != null:
+				player_team.members[i] = members[i].unit
+			else:
+				player_team.members[i] = null
+			
+			if members[i + 1] != null:
+				player_team.members[i + 1] = members[i + 1].unit
+			else:
+				player_team.members[i + 1] = null
 			team_b_control.refresh()
 	)
 	battle_controller.change_pressed.connect(func(i):
