@@ -4,13 +4,19 @@ signal player_team_ready
 signal battle_finished
 signal reward_selected
 
+var generator: Generator
+var team: Team
+var bench: Array[OwnedUnit]
+var enemy_team_size
+
 func _ready():
-	var generator = Generator.new()
+	generator = Generator.new()
 	
 	# TODO: load team
-	#var team = Team.new()
-	var team = generator.random_team(6)
-	var bench: Array[OwnedUnit] = [] as Array[OwnedUnit]
+	team = Team.new()
+	generator.random_team(6)
+	bench = [] as Array[OwnedUnit]
+	enemy_team_size = 0
 
 	if team.members.size() == 0:
 		# if there is no team to load, select new
@@ -30,38 +36,60 @@ func _ready():
 
 	# game screen loop
 	var enemy_team_size = 0
+	var map = generator.random_map(Map.COLUMNS, Map.ROWS)
 	while true:
-		# lets fight with our team
-		enemy_team_size = min(6, enemy_team_size + 1)
-		var battle = preload("res://UI/Battle.tscn").instantiate()
-		battle.player_team = team
-		battle.bench = bench
-		battle.enemy_team = generator.random_team(enemy_team_size)
-		battle.battle_finished.connect(func(_result):
-			# TODO: depending on the result display different screens?
-			battle.queue_free()
-			battle_finished.emit()
+		var map_control = preload("res://UI/Map.tscn").instantiate()
+		map_control.map = map
+		map_control.selected_location.connect(func():
+			map_control.queue_free()
 		)
-		add_child(battle)
-		await battle_finished
+		add_child(map_control)
+		await map_control.selected_location
 		
+		var current_location = map.current_location()
 		
-		# after the fight lets get some rewards
-		var select_reward = preload("res://UI/SelectUnits.tscn").instantiate()
-		select_reward.generator = generator
-		select_reward.to_select = 1
-		select_reward.selected_units.connect(func(units):
-			assert(units.size() == 1)
-			var added = false
-			for i in team.members.size():
-				if team.members[i] == null:
-					team.members[i] = units[0]
-					added = true
-					break
-			if !added:
-				bench.push_back(units[0])
-			select_reward.queue_free()
-			reward_selected.emit()
-		)
-		add_child(select_reward)
-		await reward_selected
+		if current_location is LocationBattle:
+			await display_battle()
+
+		if current_location is LocationTreasure:
+			pass
+		
+		if current_location is LocationEvent:
+			pass
+
+
+func display_battle():
+	# lets fight with our team
+	enemy_team_size = min(6, enemy_team_size + 1)
+	var battle = preload("res://UI/Battle.tscn").instantiate()
+	battle.player_team = team
+	battle.bench = bench
+	battle.enemy_team = generator.random_team(enemy_team_size)
+	battle.battle_finished.connect(func(_result):
+		# TODO: depending on the result display different screens?
+		battle.queue_free()
+		battle_finished.emit()
+	)
+	add_child(battle)
+	await battle_finished
+
+
+	# after the fight lets get some rewards
+	var select_reward = preload("res://UI/SelectUnits.tscn").instantiate()
+	select_reward.generator = generator
+	select_reward.to_select = 1
+	select_reward.selected_units.connect(func(units):
+		assert(units.size() == 1)
+		var added = false
+		for i in team.members.size():
+			if team.members[i] == null:
+				team.members[i] = units[0]
+				added = true
+				break
+		if !added:
+			bench.push_back(units[0])
+		select_reward.queue_free()
+		reward_selected.emit()
+	)
+	add_child(select_reward)
+	await reward_selected

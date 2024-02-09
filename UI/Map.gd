@@ -1,23 +1,24 @@
 extends Control
 
-const ROWS: int = 4
-const COLUMNS: int = 6
+signal selected_location
 
-signal selected_location(location: Location)
+@export var map: Map
 
 @onready var locations_grid = $CenterContainer/List/LocationsGrid
 
 func _ready():
-	locations_grid.columns = COLUMNS
-	var generator = Generator.new()
-	var map = generator.random_map(COLUMNS, ROWS)
-	
-	for i in map.size():
-		# reverse, so it's easier to navigate
-		var y = map[map.size() - 1 - i]
-		for x in y:
+	locations_grid.columns = Map.COLUMNS
+
+	for i in map.rows.size():
+		# we display it from the bottom of the screen
+		var y = map.rows[map.rows.size() - 1 - i]
+		for ii in y.size():
+			var x = y[ii]
 			var location_control = preload("res://UI/LocationControl.tscn").instantiate()
 			location_control.location = x
-			#location_control.map_position = Vector2i
+			location_control.map = map
+			location_control.map_position = Vector2i(ii, map.rows.size() - 1 - i)
+			location_control.selected_location.connect(func():
+				selected_location.emit()
+			)
 			locations_grid.add_child(location_control)
-
