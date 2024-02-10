@@ -22,7 +22,10 @@ class_name ScheduleControl
 
 @export var the_color: Color = Color.DIM_GRAY
 
-var active = false
+var drawn_round = 0
+var drawn_phase = 0
+var drawn_active = false
+
 
 func _process(_delta):
 	## TODO: what if we only change phases and after being in a phase X the same unit is active in phase 1 in the same round?
@@ -31,9 +34,16 @@ func _process(_delta):
 		#active = schedule_pointer.active
 		
 	# for not always redraw
-		queue_redraw()
+	if schedule_pointer != null:
+		if schedule_pointer.active != drawn_active || schedule_pointer.round != drawn_round || schedule_pointer.phase != drawn_phase:
+			queue_redraw()
 
 func _draw():
+	if schedule_pointer != null:
+		drawn_active = schedule_pointer.active
+		drawn_round = schedule_pointer.round
+		drawn_phase = schedule_pointer.phase
+	
 	const cells = 8
 	const cell_offset = Vector2(1, 1)
 	const background_color = Color.TRANSPARENT #Color(Color.DIM_GRAY, 0.5)
