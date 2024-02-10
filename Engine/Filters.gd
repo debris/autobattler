@@ -23,6 +23,10 @@ static func tag(tag: String):
 	return func(battle_unit):
 		return battle_unit.tags.has(tag)
 
+static func no_tag(tag: String):
+	return func(battle_unit):
+		return !battle_unit.tags.has(tag)
+
 static func passive(passive_type):
 	return func(battle_unit):
 		return is_instance_of(battle_unit.unit.base.passive, passive_type)

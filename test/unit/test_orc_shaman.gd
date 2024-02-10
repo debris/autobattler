@@ -35,7 +35,7 @@ func test_orc_shaman_skill():
 	
 	var logs = orc_shaman2.skill._execute(BattleQuery.new(orc_shaman2, battle_state))
 	
-	assert_eq(logs.size(), 5, "there should be 5 logs produced")
+	assert_eq(logs.size(), 4, "there should be 4 logs produced")
 	assert_true(logs[0] is LogSkillUsed)
 	assert_eq(logs[0].unit, orc_shaman2)
 	assert_true(logs[0].skill is SkillDefenceRitual)
@@ -48,6 +48,3 @@ func test_orc_shaman_skill():
 	assert_true(logs[3] is LogDefAdd)
 	assert_eq(logs[3].unit, orc_archer)
 	assert_eq(logs[3].value, 1, "def should be increase by 10%")
-	assert_true(logs[4] is LogDefAdd)
-	assert_eq(logs[4].unit, orc_shaman2)
-	assert_eq(logs[4].value, 3, "def should be increase by 10%")

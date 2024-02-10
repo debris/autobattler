@@ -20,7 +20,7 @@ func _ready():
 	
 	var unit = battle_query.get_this_unit()
 	
-	tags_content.text = ", ".join(unit.unit.base.tags)
+	tags_content.text = ", ".join(unit.tags.keys())
 	skill_name.text = "Active: " + unit.skill.name
 	skill_description.text = unit.skill.description
 	passive_name.text = "Passive: " + unit.unit.base.passive.name
