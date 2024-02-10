@@ -13,6 +13,9 @@ func limit(number: int) -> LimitIterator:
 func peekable() -> PeekIterator:
 	return PeekIterator.new(self)
 
+func first() -> Option:
+	return Option.new(next())
+
 func for_each(for_each_function):
 	var item = next()
 	while item != null:

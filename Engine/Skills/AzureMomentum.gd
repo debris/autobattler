@@ -10,11 +10,11 @@ func _execute(query: BattleQuery) -> Array[Log]:
 	
 	var result: Array[Log] = [LogSkillUsed.new(unit, self)]
 
-	query.get_next_units().limit(2).filter(func(battle_unit):
-		var schedule = battle_unit.schedules[query.get_phase()]
-		return schedule.is_skill() && schedule.at(query.get_round())
-	).for_each(func(battle_unit):
-		result.push_back(LogSkillCastBonus.new(battle_unit, 1))
-	)
+	query.get_next_units()\
+		.limit(2)\
+		.filter(Filters.phase_skill(query))\
+		.for_each(func(battle_unit):
+			result.push_back(LogSkillCastBonus.new(battle_unit, 1))\
+		)
 
 	return result

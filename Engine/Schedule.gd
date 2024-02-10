@@ -26,6 +26,9 @@ enum Kind {
 func is_skill() -> bool:
 	return kind == Schedule.Kind.SKILL
 
+func is_defence() -> bool:
+	return kind == Schedule.Kind.DEF
+
 func at(round: int) -> bool:
 	return data[round % data.size()]
 
