@@ -73,9 +73,18 @@ func get_next_unit() -> BattleUnit:
 	# may also be null
 	return position.battle_team.members[position.index + 1]
 
-func get_next_units() -> ArrayIterator:
-	var position = get_my_position()
-	return ArrayIterator.new(position.battle_team.members.slice(position.index + 1))
+func get_next_units() -> Iterator:
+	var iterator = ArrayIterator.new(battle_state.team_a.members)\
+		.skip_until(Filters.this_unit(root))\
+		.skip(1)\
+		.peekable()
+	
+	if iterator.peek() != null:
+		return iterator
+	
+	return ArrayIterator.new(battle_state.team_b.members)\
+		.skip_until(Filters.this_unit(root))\
+		.skip(1)
 
 func get_prev_unit() -> BattleUnit:
 	var position = get_my_position()
