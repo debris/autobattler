@@ -14,3 +14,7 @@ static func phase_defence(battle_query: BattleQuery):
 static func this_unit(unit: BattleUnit):
 	return func(battle_unit):
 		return battle_unit.get_instance_id() == unit.get_instance_id()
+
+static func tag(tag: String):
+	return func(battle_unit):
+		return battle_unit.tags.has(tag)

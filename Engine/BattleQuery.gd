@@ -36,8 +36,15 @@ func get_all_units() -> Array[BattleUnit]:
 	return all
 
 func get_my_team() -> BattleTeam:
-	var position = get_my_position()
-	return position.battle_team
+	var found = battle_state.team_a.iterator()\
+		.find(Filters.this_unit(root))\
+		.is_some()
+	
+	if found:
+		return battle_state.team_a
+	
+	# then it must be the other team, right?
+	return battle_state.team_b
 
 func get_enemy_team() -> BattleTeam:
 	var position = get_my_position()
@@ -74,11 +81,13 @@ func get_next_unit() -> BattleUnit:
 	return position.battle_team.members[position.index + 1]
 
 func get_next_units() -> Iterator:
-	var iterator = ArrayIterator.new(battle_state.team_a.members)\
+	var iterator = battle_state.team_a.iterator()\
 		.skip_until(Filters.this_unit(root))\
 		.skip(1)\
 		.peekable()
 	
+	# peek may be false also for the last element, but that does
+	# not change the output of this function
 	if iterator.peek() != null:
 		return iterator
 	

@@ -10,3 +10,6 @@ func next():
 	var result = value
 	value = null
 	return result
+
+func is_some() -> bool:
+	return value != null

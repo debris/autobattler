@@ -18,3 +18,6 @@ func _init(team: Team):
 			members.push_back(null)
 
 	power *= START_POWER_MULTIPLIER
+
+func iterator() -> Iterator:
+	return ArrayIterator.new(members)

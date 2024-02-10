@@ -27,3 +27,20 @@ func for_each(for_each_function):
 	while item != null:
 		for_each_function.call(item)
 		item = next()
+
+func reduce(accumulator, callable):
+	var item = next()
+	while item != null:
+		accumulator = callable.call(accumulator, item)
+		item = next()
+	return accumulator
+
+func find(pattern) -> Option:
+	return skip_until(pattern).first()
+
+func count(pattern = null) -> int:
+	return reduce(0, func(accumulator, item):
+		if pattern == null || pattern.call(item):
+			return accumulator + 1
+		return accumulator
+	)
