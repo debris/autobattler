@@ -25,6 +25,10 @@ window/size/window_width_override=2304
 window/size/window_height_override=1296
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
 [input]
 
 LeftClick={

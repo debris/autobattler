@@ -28,12 +28,9 @@ var drawn_active = false
 
 
 func _process(_delta):
-	## TODO: what if we only change phases and after being in a phase X the same unit is active in phase 1 in the same round?
-	## kind of corner case tho, and not so possible now
-	#if schedule_pointer != null && schedule_pointer.active != active:
-		#active = schedule_pointer.active
-		
-	# for not always redraw
+	
+	# we cannot redraw all the time cause the game may freeze
+	# this limits the amount of redraws
 	if schedule_pointer != null:
 		if schedule_pointer.active != drawn_active || schedule_pointer.round != drawn_round || schedule_pointer.phase != drawn_phase:
 			queue_redraw()
