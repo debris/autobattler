@@ -73,6 +73,10 @@ func get_next_unit() -> BattleUnit:
 	# may also be null
 	return position.battle_team.members[position.index + 1]
 
+func get_next_units() -> ArrayIterator:
+	var position = get_my_position()
+	return ArrayIterator.new(position.battle_team.members.slice(position.index + 1))
+
 func get_prev_unit() -> BattleUnit:
 	var position = get_my_position()
 	if position.index == 0:

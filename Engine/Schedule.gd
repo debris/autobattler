@@ -23,6 +23,9 @@ enum Kind {
 
 @export var kind = Kind.SKILL
 
+func is_skill() -> bool:
+	return kind == Schedule.Kind.SKILL
+
 func at(round: int) -> bool:
 	return data[round % data.size()]
 
