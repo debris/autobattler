@@ -16,15 +16,14 @@ func _execute(query: BattleQuery) -> Array[Log]:
 		result.push_back(LogDmgAdd.new(enemy_unit, -value))
 		
 		var double_value = value
-		result.push_back(LogDmgAdd.new(unit, double_value))
+		result.push_back(LogDmgBonusAdd.new(unit, double_value))
 
-		var next_unit = query.get_next_unit()
-		if next_unit != null:
-			result.push_back(LogDmgBonusAdd.new(next_unit, double_value))
-			
-		var prev_unit = query.get_prev_unit()
-		if prev_unit != null:
-			result.push_back(LogDmgBonusAdd.new(prev_unit, double_value))
+		query.get_next_units()\
+			.first()\
+			.concat(query.get_prev_units().first())\
+			.for_each(func(next_unit):\
+				result.push_back(LogDmgBonusAdd.new(next_unit, double_value))
+		)
 	)
 	
 	return result

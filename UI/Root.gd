@@ -10,7 +10,7 @@ var bench: Array[OwnedUnit]
 var enemy_team_size
 
 func _ready():
-	generator = Generator.new(3)
+	generator = Generator.new(4)
 	
 	# TODO: load team
 	team = Team.new()

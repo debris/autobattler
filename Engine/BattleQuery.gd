@@ -58,27 +58,15 @@ func get_opposite_unit() -> Option:
 	var enemy_team = get_enemy_team()
 	return Option.new(enemy_team.members[position.index])
 
-# returns unit on the right hand side or null if there is none
-# or we are the rightmost unit
-func get_next_unit() -> BattleUnit:
-	var position = get_my_position()
-	if position.is_last():
-		return null
-
-	# may also be null
-	return position.battle_team.members[position.index + 1]
-
 func get_next_units() -> Iterator:
 	return get_my_team().iterator()\
 		.skip_until(Filters.this_unit(root))\
 		.skip(1)
 
-func get_prev_unit() -> BattleUnit:
+func get_prev_units() -> Iterator:
 	var position = get_my_position()
-	if position.index == 0:
-		return null
-	
-	return position.battle_team.members[position.index - 1]
+	var reverse_slice = position.battle_team.members.slice(position.index, -position.battle_team.members.size() - 1, -1)
+	return ArrayIterator.new(reverse_slice).skip(1)
 
 func get_logs_iterator() -> LogsIterator:
 	return LogsIterator.new(battle_state, root)

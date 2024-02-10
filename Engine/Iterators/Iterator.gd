@@ -22,6 +22,9 @@ func skip(number) -> SkipIterator:
 func skip_until(pattern) -> SkipUntilIterator:
 	return SkipUntilIterator.new(self, pattern)
 
+func concat(other_iterator: Iterator) -> ConcatIterator:
+	return ConcatIterator.new(self, other_iterator)
+
 func first() -> Option:
 	return Option.new(next())
 
