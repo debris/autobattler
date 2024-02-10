@@ -82,17 +82,7 @@ func get_next_unit() -> BattleUnit:
 	return position.battle_team.members[position.index + 1]
 
 func get_next_units() -> Iterator:
-	var iterator = battle_state.team_a.iterator()\
-		.skip_until(Filters.this_unit(root))\
-		.skip(1)\
-		.peekable()
-	
-	# peek may be false also for the last element, but that does
-	# not change the output of this function
-	if iterator.peek() != null:
-		return iterator
-	
-	return ArrayIterator.new(battle_state.team_b.members)\
+	return get_my_team().iterator()\
 		.skip_until(Filters.this_unit(root))\
 		.skip(1)
 
@@ -102,10 +92,6 @@ func get_prev_unit() -> BattleUnit:
 		return null
 	
 	return position.battle_team.members[position.index - 1]
-
-func get_first_unit() -> BattleUnit:
-	var team = get_my_team()
-	return team.members[0]
 
 func get_logs_iterator() -> LogsIterator:
 	return LogsIterator.new(battle_state, root)
