@@ -21,8 +21,11 @@ var skill_bonus_casts: int
 var tags: Dictionary
 # indicates whether units action should trigger exhaustion dmg
 var exhausted: bool
+# memorized team_level
+var team_level: int
 
-func _init(u: OwnedUnit, team_level: int = 0):
+func _init(u: OwnedUnit, tl: int = 0):
+	team_level = tl
 	unit = u
 	name = u.base.name
 	texture = u.base.texture
