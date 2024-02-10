@@ -10,11 +10,10 @@ func _execute(query: BattleQuery) -> Array[Log]:
 	var team = query.get_my_team()
 	
 	var result: Array[Log] = [LogSkillUsed.new(unit, self)]
-	var multipliers = 0
-	for battle_unit in team.members:
-		if battle_unit != null && battle_unit.get_instance_id() != unit.get_instance_id() && battle_unit.tags.has("archer"):
-			multipliers += 1
-	
+	var multipliers = query.count_my_team(func(battle_unit):
+		return battle_unit.tags.has("archer")
+	, false)
+
 	if multipliers != 0:
 		var value = multipliers * unit.dmg * 10 / 100
 		result.push_back(LogDmgAdd.new(unit, value))

@@ -61,8 +61,6 @@ func get_my_position() -> BattleUnitPosition:
 func get_opposite_unit() -> BattleUnit:
 	var position = get_my_position()
 	var enemy_team = get_enemy_team()
-	if position.index >= enemy_team.members.size():
-		return null
 	return enemy_team.members[position.index]
 
 # returns unit on the right hand side or null if there is none
@@ -85,6 +83,15 @@ func get_prev_unit() -> BattleUnit:
 func get_first_unit() -> BattleUnit:
 	var team = get_my_team()
 	return team.members[0]
+
+func count_my_team(count, include_self) -> int:
+	var team = get_my_team()
+	var counter = 0
+	for member in team.members:
+		if member != null && count.call(member):
+			if include_self || member.get_instance_id() != root.get_instance_id():
+				counter += 1
+	return counter
 
 func get_logs_iterator() -> LogsIterator:
 	return LogsIterator.new(battle_state, root)

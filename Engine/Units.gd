@@ -22,12 +22,14 @@ static var all: Array[Unit] = [
 	UnitOrcArcher.new(),
 	UnitLesserDemon.new(),
 	UnitDefenceCoach.new(),
-	UnitDefenceSub.new()
+	UnitDefenceSub.new(),
+	UnitOrcShaman.new()
 ]
 
 static var orcs: Array[Unit] = [
 	UnitOrcWarrior.new(),
-	UnitOrcArcher.new()
+	UnitOrcArcher.new(),
+	UnitOrcShaman.new()
 ]
 
 static var bees: Array[Unit] = [
