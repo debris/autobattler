@@ -9,3 +9,4 @@ func _init():
 	skill = SkillEmpty.new()
 	passive = PassiveTricksterDetainment.new()
 	tags = ["police", "officer"]
+	reroll = 0

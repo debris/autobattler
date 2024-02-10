@@ -9,3 +9,4 @@ func _init():
 	skill = SkillPaint.new(true)
 	passive = PassiveEmpty.new()
 	tags = ["water"]
+	reroll = 50

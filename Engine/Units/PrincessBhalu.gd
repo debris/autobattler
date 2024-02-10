@@ -9,3 +9,4 @@ func _init():
 	skill = SkillBearsMight.new()
 	passive = PassiveEmpty.new()
 	tags = ["princess"]
+	reroll = 0

@@ -36,3 +36,8 @@ static var bees: Array[Unit] = [
 	UnitBeeMech.new(),
 	UnitBeeNinja.new()
 ]
+
+static var vikings: Array[Unit] = [
+	UnitVikingWarrior.new(),
+	UnitLoki.new()
+]

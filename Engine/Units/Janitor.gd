@@ -9,3 +9,4 @@ func _init():
 	skill = SkillPaint.new(false)
 	passive = PassiveEmpty.new()
 	tags = []
+	reroll = 0

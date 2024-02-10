@@ -9,3 +9,4 @@ func _init():
 	skill = SkillWarcry.new()
 	passive = PassiveEmpty.new()
 	tags = ["viking", "warrior"]
+	reroll = 0

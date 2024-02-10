@@ -9,3 +9,4 @@ func _init():
 	skill = SkillBloodRage.new()
 	passive = PassiveEmpty.new()
 	tags = ["orc", "warrior"]
+	reroll = 0

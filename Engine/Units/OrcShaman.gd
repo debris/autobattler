@@ -9,3 +9,4 @@ func _init():
 	skill = SkillDefenceRitual.new()
 	passive = PassiveEmpty.new()
 	tags = ["orc", "shaman"]
+	reroll = 0

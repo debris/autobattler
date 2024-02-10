@@ -9,3 +9,4 @@ func _init():
 	skill = SkillLokiSwap.new()
 	passive = PassiveEmpty.new()
 	tags = ["viking", "trickster", "god"]
+	reroll = 50

@@ -9,3 +9,4 @@ func _init():
 	skill = SkillAzureMomentum.new()
 	passive = PassiveEmpty.new()
 	tags = ["dragon"]
+	reroll = 0

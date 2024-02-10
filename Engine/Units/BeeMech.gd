@@ -9,3 +9,4 @@ func _init():
 	skill = SkillEmpty.new()
 	passive = PassiveAutoHive.new()
 	tags = ["bee", "mech"]
+	reroll = 0

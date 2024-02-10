@@ -9,4 +9,5 @@ func _init():
 	skill = SkillShapeshift.new()
 	passive = PassiveEmpty.new()
 	tags = ["elf", "druid"]
+	reroll = 0
 	# TODO, extra casts dont work properly

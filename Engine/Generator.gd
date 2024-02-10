@@ -45,6 +45,10 @@ func rand_schedules() -> Array[Schedule]:
 func random_unit(collection: Array[Unit] = Units.all) -> OwnedUnit:
 	var max_index = collection.size() - 1 
 	var unit = collection[inner.randi_range(0, max_index)]
+	var reroll_value = inner.randi_range(1, 99)
+	while reroll_value <= unit.reroll:
+		unit = collection[inner.randi_range(0, max_index)]
+		reroll_value = inner.randi_range(1, 99)
 	var owned_unit = OwnedUnit.new(unit, rand_schedules())
 	return owned_unit
 

@@ -9,3 +9,4 @@ func _init():
 	skill = SkillTimeTravel.new()
 	passive = PassiveEmpty.new()
 	tags = []
+	reroll = 0

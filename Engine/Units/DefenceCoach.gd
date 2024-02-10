@@ -9,3 +9,4 @@ func _init():
 	skill = SkillSubDefence.new()
 	passive = PassiveEmpty.new()
 	tags = ["coach"]
+	reroll = 0

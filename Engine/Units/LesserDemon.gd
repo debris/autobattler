@@ -9,3 +9,4 @@ func _init():
 	skill = SkillCorruption.new()
 	passive = PassiveEmpty.new()
 	tags = ["demon"]
+	reroll = 0

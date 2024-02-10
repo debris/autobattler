@@ -9,3 +9,4 @@ func _init():
 	skill = SkillUnionize.new()
 	passive = PassiveEmpty.new()
 	tags = ["cyborg"]
+	reroll = 0

@@ -9,4 +9,4 @@ func _init():
 	skill = SkillDoubleCross.new()
 	passive = PassiveEmpty.new()
 	tags = ["trickster"]
-	# TODO, extra casts dont work properly
+	reroll = 0

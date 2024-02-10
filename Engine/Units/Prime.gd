@@ -9,3 +9,4 @@ func _init():
 	skill = SkillSelfcare.new()
 	passive = PassiveEmpty.new()
 	tags = ["cyborg"]
+	reroll = 0

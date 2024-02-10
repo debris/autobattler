@@ -9,3 +9,4 @@ func _init():
 	skill = SkillArcherTraining.new()
 	passive = PassiveEmpty.new()
 	tags = ["orc", "archer"]
+	reroll = 0

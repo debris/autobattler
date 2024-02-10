@@ -9,3 +9,4 @@ var def: int
 var skill: Skill
 var passive: Passive
 var tags: Array[String]
+var reroll: int

@@ -9,3 +9,4 @@ func _init():
 	skill = SkillArrowBarrage.new()
 	passive = PassiveEmpty.new()
 	tags = ["elf", "archer"]
+	reroll = 0

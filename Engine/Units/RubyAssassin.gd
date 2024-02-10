@@ -9,3 +9,4 @@ func _init():
 	skill = SkillEmpty.new()
 	passive = PassiveShadowStrike.new()
 	tags = ["assassin"]
+	reroll = 0

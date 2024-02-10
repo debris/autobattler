@@ -9,3 +9,4 @@ func _init():
 	skill = SkillBlue42.new()
 	passive = PassiveEmpty.new()
 	tags = ["athlete", "defender"]
+	reroll = 0

@@ -9,3 +9,4 @@ func _init():
 	skill = SkillEmpty.new()
 	passive = PassiveJumpAttack.new()
 	tags = ["bee", "assassin"]
+	reroll = 0
