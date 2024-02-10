@@ -7,10 +7,11 @@ func _init():
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()
-	var enemy_unit = query.get_opposite_unit()
+	var enemy_unit_option = query.get_opposite_unit().filter(func(u): return u.dmg > 0)
 	
 	var result: Array[Log] = [LogSkillUsed.new(unit, self)]
-	if enemy_unit != null && enemy_unit.dmg > 0:
+	
+	enemy_unit_option.for_each(func(enemy_unit): 
 		var value = max(1, enemy_unit.dmg * 10 / 100)
 		result.push_back(LogDmgAdd.new(enemy_unit, -value))
 		
@@ -24,5 +25,6 @@ func _execute(query: BattleQuery) -> Array[Log]:
 		var prev_unit = query.get_prev_unit()
 		if prev_unit != null:
 			result.push_back(LogDmgBonusAdd.new(prev_unit, double_value))
+	)
 	
 	return result

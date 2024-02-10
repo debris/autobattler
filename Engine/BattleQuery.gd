@@ -53,10 +53,10 @@ func get_my_position() -> BattleUnitPosition:
 	var index = team.iterator().until(Filters.this_unit(root)).count()
 	return BattleUnitPosition.new(team, index)
 
-func get_opposite_unit() -> BattleUnit:
+func get_opposite_unit() -> Option:
 	var position = get_my_position()
 	var enemy_team = get_enemy_team()
-	return enemy_team.members[position.index]
+	return Option.new(enemy_team.members[position.index])
 
 # returns unit on the right hand side or null if there is none
 # or we are the rightmost unit
