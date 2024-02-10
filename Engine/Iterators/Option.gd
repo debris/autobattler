@@ -19,3 +19,13 @@ func is_null() -> bool:
 
 func get_value():
 	return value
+
+func map(callable):
+	if value != null:
+		return Option.new(callable.call(value))
+	return self
+
+func unwrap_or(or_value):
+	if value != null:
+		return value
+	return or_value

@@ -36,35 +36,22 @@ func get_all_units() -> Array[BattleUnit]:
 	return all
 
 func get_my_team() -> BattleTeam:
-	var found = battle_state.team_a.iterator()\
+	return battle_state.team_a.iterator()\
 		.find(Filters.this_unit(root))\
-		.is_some()
-	
-	if found:
-		return battle_state.team_a
-	
-	# then it must be the other team, right?
-	return battle_state.team_b
+		.map(func(_v): return battle_state.team_a)\
+		.unwrap_or(battle_state.team_b)
 
 func get_enemy_team() -> BattleTeam:
-	var position = get_my_position()
-	if position.battle_team.get_instance_id() == battle_state.team_a.get_instance_id():
-		return battle_state.team_b
-	return battle_state.team_a
+	return battle_state.team_a.iterator()\
+		.find(Filters.this_unit(root))\
+		.map(func(_v): return battle_state.team_b)\
+		.unwrap_or(battle_state.team_a)
 
 # returns position in a team
 func get_my_position() -> BattleUnitPosition:
-	var position_in_team = func(team):
-		#return team.iterator().index(Filters.this_unit(root))
-		for i in team.members.size():
-			var member = team.members[i]
-			if member != null && member.get_instance_id() == root.get_instance_id():
-				return BattleUnitPosition.new(team, i)
-		
-	var position = position_in_team.call(battle_state.team_a)
-	if position != null:
-		return position
-	return position_in_team.call(battle_state.team_b)
+	var team = get_my_team()
+	var index = team.iterator().until(Filters.this_unit(root)).count()
+	return BattleUnitPosition.new(team, index)
 
 func get_opposite_unit() -> BattleUnit:
 	var position = get_my_position()
