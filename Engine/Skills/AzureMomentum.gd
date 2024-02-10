@@ -3,7 +3,7 @@ class_name SkillAzureMomentum
 
 func _init():
 	name = "Azure Momentum"
-	description = "Grants *bonus skill activations* to the next two creatures if they also activate skill this round and phase."
+	description = "Grants *bonus skill activations* to the next two creatures if they also activate skill this phase."
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

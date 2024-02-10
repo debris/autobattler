@@ -1,7 +1,7 @@
-extends ArrayIterator
+extends Iterator
 class_name FilterIterator
 
-var inner
+var inner: Iterator
 var filter_function
 
 func _init(i, m):

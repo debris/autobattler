@@ -1,7 +1,7 @@
-extends ArrayIterator
+extends Iterator
 class_name LimitIterator
 
-var inner
+var inner: Iterator
 var max: int
 var current: int
 

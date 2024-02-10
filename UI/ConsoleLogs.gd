@@ -1,20 +1,22 @@
 extends CanvasLayer
 
-@export var battle_state: BattleState
+@export var battle_state: BattleState:
+	set(value):
+		battle_state = value
+		logs_iterator = LogsIterator.new(battle_state).peekable()
 
 @onready var list_control = $Control/ScrollContainer/GridContainer
 
-var displayed_logs = 0
+var logs_iterator
 
 func _process(_delta):
-	if displayed_logs < battle_state.logs.size():
+	if logs_iterator.peek() != null:
 		_display_log("=========================")
 		_display_log("ROUND: " + str(battle_state.round) + ", PHASE: " + str(battle_state.phase))
 	
-	while displayed_logs < battle_state.logs.size():
-		var log = battle_state.logs[displayed_logs]
-		_display_log(log._to_string() + log._display_is_valid())
-		displayed_logs += 1
+	logs_iterator.for_each(func(battle_log):
+		_display_log(battle_log._to_string() + battle_log._display_is_valid())
+	)
 
 # private
 func _display_log(text: String):

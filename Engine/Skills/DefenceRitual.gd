@@ -9,10 +9,11 @@ func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()
 	var team = query.get_my_team()
 	var result: Array[Log] = [LogSkillUsed.new(unit, self)]
-	var orc_iterator = ArrayIterator.new(team.members).map(func(battle_unit): return battle_unit.tags.has("orc"))
-	var orc_unit = orc_iterator.next()
-	while orc_unit:
-		var value = max(1, orc_unit.def * 10 / 100)
-		result.push_back(LogDefAdd.new(orc_unit, value))
-		orc_unit = orc_iterator.next()
+	ArrayIterator.new(team.members)\
+		.filter(func(battle_unit): return battle_unit.tags.has("orc"))\
+		.for_each(func(battle_unit): 
+			var value = max(1, battle_unit.def * 10 / 100)
+			result.push_back(LogDefAdd.new(battle_unit, value))\
+		)
+	
 	return result
