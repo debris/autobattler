@@ -36,18 +36,6 @@ func test_defence_sub_skill_no_allies():
 	assert_true(logs[0] is LogSkillUsed)
 	assert_eq(logs[0].unit, defence_sub)
 	assert_true(logs[0].skill is SkillBlue42)
-	#assert_true(logs[1] is LogDefAdd)
-	#assert_eq(logs[1].unit, defence_sub)
-	#assert_eq(logs[1].value, 1, "def should be increase by 10%")
-	#assert_true(logs[2] is LogDefAdd)
-	#assert_eq(logs[2].unit, orc_warrior)
-	#assert_eq(logs[2].value, 2, "def should be increase by 10%")
-	#assert_true(logs[3] is LogDefAdd)
-	#assert_eq(logs[3].unit, orc_archer)
-	#assert_eq(logs[3].value, 1, "def should be increase by 10%")
-	#assert_true(logs[4] is LogDefAdd)
-	#assert_eq(logs[4].unit, orc_shaman2)
-	#assert_eq(logs[4].value, 3, "def should be increase by 10%")
 
 func test_defence_sub_skill_with_allies():
 	defence_sub.def = 10

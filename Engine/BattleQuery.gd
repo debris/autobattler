@@ -106,14 +106,5 @@ func get_first_unit() -> BattleUnit:
 	var team = get_my_team()
 	return team.members[0]
 
-func count_my_team(count, include_self) -> int:
-	var team = get_my_team()
-	var counter = 0
-	for member in team.members:
-		if member != null && count.call(member):
-			if include_self || member.get_instance_id() != root.get_instance_id():
-				counter += 1
-	return counter
-
 func get_logs_iterator() -> LogsIterator:
 	return LogsIterator.new(battle_state, root)

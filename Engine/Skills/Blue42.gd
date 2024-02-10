@@ -11,10 +11,8 @@ func _execute(query: BattleQuery) -> Array[Log]:
 	
 	var result: Array[Log] = [LogSkillUsed.new(unit, self)]
 	var multipliers = team.iterator()\
+		.filter(Filters.not_this_unit(unit))\
 		.count(Filters.tag("defender"))
-	
-	if unit.tags.has("defender"):
-		multipliers -= 1
 
 	if multipliers != 0:
 		var value = multipliers * unit.def * 10 / 100

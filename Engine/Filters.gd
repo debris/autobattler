@@ -15,6 +15,10 @@ static func this_unit(unit: BattleUnit):
 	return func(battle_unit):
 		return battle_unit.get_instance_id() == unit.get_instance_id()
 
+static func not_this_unit(unit: BattleUnit):
+	return func(battle_unit):
+		return battle_unit.get_instance_id() != unit.get_instance_id()
+
 static func tag(tag: String):
 	return func(battle_unit):
 		return battle_unit.tags.has(tag)
