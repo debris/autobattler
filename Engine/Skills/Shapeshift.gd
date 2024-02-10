@@ -7,19 +7,16 @@ func _init():
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var battle_unit = query.get_this_unit()
-	var target = battle_unit
-	var all_units = query.get_all_units()
-
-	if query.get_round() % 2 == 0:
-		for unit in all_units:
-			if unit != null && (unit.def > target.def):
-				target = unit
-	else:
-		for unit in all_units:
-			if unit != null && (unit.dmg > target.dmg):
-				target = unit
+	var result: Array[Log] = [LogSkillUsed.new(battle_unit, self)]
 	
-	if battle_unit.get_instance_id() == target.get_instance_id():
-		return []
+	var compare = null
+	if query.get_round() % 2 == 0:
+		compare = Compare.highest_def
+	else:
+		compare = Compare.highest_dmg
 
-	return [LogSkillUsed.new(battle_unit, self), LogShapeshift.new(battle_unit, target)]
+	var target = query.get_all_units().compare(compare)
+	if battle_unit.get_instance_id() != target.get_instance_id():
+		result.push_back(LogShapeshift.new(battle_unit, target))
+	
+	return result

@@ -50,3 +50,7 @@ func count(pattern = null) -> int:
 			return accumulator + 1
 		return accumulator
 	)
+
+func compare(callable):
+	var item = next()
+	return reduce(item, callable)

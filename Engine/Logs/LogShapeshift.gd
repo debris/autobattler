@@ -13,4 +13,4 @@ func _finalize(_battle_state: BattleState):
 	unit.texture = other_unit.texture
 
 func _to_string() -> String:
-	return unit.unit.base.name + " SHAPESHIFTED into " + str(unit.unit.base.name)
+	return unit.name + " SHAPESHIFTED into " + str(other_unit.name)

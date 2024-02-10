@@ -29,11 +29,8 @@ func is_on_schedule(round = battle_state.round, phase = battle_state.phase) -> b
 	return root.schedules[phase].at(round)
 
 # returns all units from team a and team b
-func get_all_units() -> Array[BattleUnit]:
-	var all: Array[BattleUnit] = []
-	all.append_array(battle_state.team_a.members)
-	all.append_array(battle_state.team_b.members)
-	return all
+func get_all_units() -> Iterator:
+	return battle_state.team_a.iterator().concat(battle_state.team_b.iterator())
 
 func get_my_team() -> BattleTeam:
 	return battle_state.team_a.iterator()\
