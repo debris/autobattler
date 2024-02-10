@@ -35,7 +35,6 @@ func _ready():
 
 
 	# game screen loop
-	var enemy_team_size = 0
 	var map = generator.random_map(Map.COLUMNS, Map.ROWS)
 	while true:
 		var map_control = preload("res://UI/Map.tscn").instantiate()

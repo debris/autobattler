@@ -29,14 +29,14 @@ func is_skill() -> bool:
 func is_defence() -> bool:
 	return kind == Schedule.Kind.DEF
 
-func at(round: int) -> bool:
-	return data[round % data.size()]
+func at(r: int) -> bool:
+	return data[r % data.size()]
 
-func set_active(round: int, active: bool):
-	data[round % data.size()] = active
+func set_active(r: int, active: bool):
+	data[r % data.size()] = active
 
-func normalize(round: int) -> int:
-	return round % data.size()
+func normalize(r: int) -> int:
+	return r % data.size()
 
 func copy() -> Schedule:
 	var result = Schedule.new()

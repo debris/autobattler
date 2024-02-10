@@ -2,16 +2,16 @@ extends Iterator
 class_name LimitIterator
 
 var inner: Iterator
-var max: int
+var end: int
 var current: int
 
 func _init(i, l):
 	inner = i
-	max = l
+	end = l
 	current = 0
 
 func next():
-	if current == max:
+	if current == end:
 		return null
 	
 	var inner_next = inner.next()

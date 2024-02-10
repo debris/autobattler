@@ -3,9 +3,9 @@ class_name Generator
 
 var inner: RandomNumberGenerator
 
-func _init(seed: int = 0):
+func _init(s: int = 0):
 	inner = RandomNumberGenerator.new()
-	inner.seed = seed
+	inner.seed = s
 
 func rand_schedule() -> Schedule:
 	var fill_n_positions = func(d, n):
