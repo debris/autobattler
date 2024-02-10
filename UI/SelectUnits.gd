@@ -4,6 +4,7 @@ signal selected_units(units: Array[OwnedUnit])
 
 @export var to_select: int = 2
 @export var out_of: Team
+@export var player_team_level: int
 
 @onready var select_label = $SelectLabel
 @onready var battle_team_control = $BattleTeamControl
@@ -21,7 +22,7 @@ func _ready():
 		add_child(details)
 	)
 	
-	var battle_state = BattleState.new(out_of, Team.null_team())
+	var battle_state = BattleState.new(BattleTeam.new(out_of, player_team_level), BattleTeam.new(Team.null_team()))
 	displayed_team = battle_state.team_a
 	battle_team_control.battle_team_query = battle_state.team_a_query()
 	

@@ -10,7 +10,9 @@ func before_each():
 	generator = Generator.new()
 	team_a = generator.random_team(6)
 	team_b = generator.random_team(6)
-	battle_state = BattleState.new(team_a, team_b)
+	var battle_team_a = BattleTeam.new(team_a)
+	var battle_team_b = BattleTeam.new(team_a)
+	battle_state = BattleState.new(battle_team_a, battle_team_b)
 	orc_warrior = BattleUnit.new(OwnedUnit.new(UnitOrcWarrior.new(), team_a.members[0].schedules))
 
 func test_orc_warrior_skill():

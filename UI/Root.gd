@@ -8,6 +8,8 @@ var generator: Generator
 var team: Team
 var bench: Array[OwnedUnit]
 var enemy_team_size
+var player_team_level
+var enemy_team_level
 
 func _ready():
 	generator = Generator.new(12)
@@ -16,6 +18,8 @@ func _ready():
 	team = Team.new()
 	bench = [] as Array[OwnedUnit]
 	enemy_team_size = 0
+	player_team_level = 3
+	enemy_team_level = 5
 
 	if team.members.size() == 0:
 		# if there is no team to load, select new
@@ -23,6 +27,7 @@ func _ready():
 		#select_units.generator = generator
 		select_units.to_select = 2
 		select_units.out_of = generator.random_team(6)
+		select_units.player_team_level = player_team_level
 		select_units.selected_units.connect(func(units):
 			team.members = units
 			while team.members.size() < 6:
@@ -55,6 +60,8 @@ func _ready():
 			await display_battle(Units.all)
 			# progress to the new map
 			map = generator.random_map(Map.COLUMNS, Map.ROWS)
+			player_team_level += 1
+			enemy_team_level += 2
 
 		if current_location is LocationTreasure:
 			var _treasure = generator.random_treasure()
@@ -67,6 +74,8 @@ func display_battle(collection: Array[Unit]):
 	# lets fight with our team
 	enemy_team_size = min(6, enemy_team_size + 1)
 	var battle = preload("res://UI/Battle.tscn").instantiate()
+	battle.player_team_level = player_team_level
+	battle.enemy_team_level = enemy_team_level
 	battle.player_team = team
 	battle.bench = bench
 	battle.enemy_team = generator.random_team(enemy_team_size, collection)
@@ -84,6 +93,7 @@ func display_battle(collection: Array[Unit]):
 	#select_reward.generator = generator
 	select_reward.to_select = 1
 	select_reward.out_of = generator.random_team(6, collection)
+	select_reward.player_team_level = player_team_level
 	select_reward.selected_units.connect(func(units):
 		assert(units.size() == 1)
 		var added = false

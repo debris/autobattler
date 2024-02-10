@@ -22,12 +22,12 @@ var tags: Dictionary
 # indicates whether units action should trigger exhaustion dmg
 var exhausted: bool
 
-func _init(u: OwnedUnit):
+func _init(u: OwnedUnit, team_level: int = 0):
 	unit = u
 	name = u.base.name
 	texture = u.base.texture
-	dmg = u.dmg
-	def = u.def
+	dmg = u.dmg + (u.dmg * team_level * 10 / 100)
+	def = u.def + (u.def * team_level * 10 / 100)
 	skill = u.skill
 	
 	# we may need a deep copy here if there are cards that modify the schedule

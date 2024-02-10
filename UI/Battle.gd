@@ -10,6 +10,8 @@ signal battle_finished(result)
 
 @export var player_team: Team
 @export var enemy_team: Team
+@export var player_team_level: int
+@export var enemy_team_level: int
 @export var bench: Array[OwnedUnit]
 
 @onready var team_a_control = $TeamA
@@ -25,6 +27,8 @@ signal battle_finished(result)
 @onready var victory_label = $VictoryLabel
 @onready var change_grid = $ChangeGrid
 @onready var continue_button = $Continue
+@onready var level_a_label = $LevelA
+@onready var level_b_label = $LevelB
 
 var battle_state: BattleState
 var battle_controller: BattleController
@@ -87,7 +91,7 @@ func _ready():
 			var members = battle_state.team_b.members
 			var tmp = bench[index]
 			bench[index] = members[i].unit
-			members[i] = BattleUnit.new(tmp)
+			members[i] = BattleUnit.new(tmp, player_team_level)
 
 			player_team.members[i] = tmp
 			team_b_control.refresh()
@@ -96,18 +100,7 @@ func _ready():
 		add_child(list)
 	)
 
-	var team_a = enemy_team
-	var team_b = player_team
-
-	#var generator = Generator.new(10)
-	#for i in 6:
-		#team_a.members.push_back(generator.random_unit())
-		##team_a.members.push_back(null)
-		#
-	#for i in 6:
-		#team_b.members.push_back(generator.random_unit())
-
-	battle_state = BattleState.new(team_a, team_b)
+	battle_state = BattleState.new(BattleTeam.new(enemy_team, enemy_team_level), BattleTeam.new(player_team, player_team_level))
 	team_a_control.battle_team_query = battle_state.team_a_query()
 	team_b_control.battle_team_query = battle_state.team_b_query()
 	team_a_power.battle_team = battle_state.team_a
@@ -152,6 +145,8 @@ func on_battle_end(battle_result):
 func _process(_delta):
 	round_label.text = str(battle_state.round + 1)
 	phase_label.text = str(battle_state.phase + 1) + " of 3"
+	level_a_label.text = "LEVEL " + str(enemy_team_level + 1)
+	level_b_label.text = "LEVEL " + str(player_team_level + 1)
 	
 	if !paused:
 		pause_button.text = "PAUSE"

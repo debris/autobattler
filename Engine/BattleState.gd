@@ -19,11 +19,11 @@ var team_b: BattleTeam
 var logs: Array[Log]
 var processors: Array[Processor]
 
-func _init(a: Team, b: Team):
+func _init(a: BattleTeam, b: BattleTeam):
 	round = 0
 	phase = 0
-	team_a = BattleTeam.new(a)
-	team_b = BattleTeam.new(b)
+	team_a = a
+	team_b = b
 	logs = []
 	processors = [
 		ProcessorExtraCast.new(),
