@@ -95,11 +95,10 @@ func _process(_delta):
 		processed_round = battle_query.get_round()
 		processed_phase = battle_query.get_phase()
 
-	var log = logs_iterator.next()
-	while log != null:
-		if log.valid:
-			_process_log(log)
-		log = logs_iterator.next()
+	logs_iterator.for_each(func(battle_log):
+		if battle_log.valid:
+			_process_log(battle_log)
+	)
 
 	active_control.visible = battle_query.is_active()
 	active_on_schedule.visible = battle_query.is_active() && battle_query.is_on_schedule()
