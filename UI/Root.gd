@@ -10,11 +10,10 @@ var bench: Array[OwnedUnit]
 var enemy_team_size
 
 func _ready():
-	generator = Generator.new()
+	generator = Generator.new(3)
 	
 	# TODO: load team
 	team = Team.new()
-	generator.random_team(0)
 	bench = [] as Array[OwnedUnit]
 	enemy_team_size = 0
 

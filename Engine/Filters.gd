@@ -22,3 +22,7 @@ static func not_this_unit(unit: BattleUnit):
 static func tag(tag: String):
 	return func(battle_unit):
 		return battle_unit.tags.has(tag)
+
+static func passive(passive_type):
+	return func(battle_unit):
+		return is_instance_of(battle_unit.unit.base.passive, passive_type)
