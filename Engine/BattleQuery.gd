@@ -55,6 +55,7 @@ func get_enemy_team() -> BattleTeam:
 # returns position in a team
 func get_my_position() -> BattleUnitPosition:
 	var position_in_team = func(team):
+		#return team.iterator().index(Filters.this_unit(root))
 		for i in team.members.size():
 			var member = team.members[i]
 			if member != null && member.get_instance_id() == root.get_instance_id():

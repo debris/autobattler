@@ -13,6 +13,9 @@ func limit(number: int) -> LimitIterator:
 func peekable() -> PeekIterator:
 	return PeekIterator.new(self)
 
+func until(pattern) -> UntilIterator:
+	return UntilIterator.new(self, pattern)
+
 func skip(number) -> SkipIterator:
 	return SkipIterator.new(self, number)
 
