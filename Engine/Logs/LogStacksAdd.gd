@@ -17,6 +17,6 @@ func _finalize(_battle_state: BattleState):
 
 func _to_string() -> String:
 	if value > 0:
-		return Stacks.Kind.keys()[kind].to_lower() + " stacks " + " increased by " + str(value)
+		return unit.name + " increases " + Stacks.Kind.keys()[kind].to_lower() + " stacks by " + str(value)
 	else:
-		return Stacks.Kind.keys()[kind].to_lower() + " stacks " + " decreased by " + str(value)
+		return unit.name + " decreases " + Stacks.Kind.keys()[kind].to_lower() + " stacks by " + str(value)

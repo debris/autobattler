@@ -12,7 +12,7 @@ var player_team_level
 var enemy_team_level
 
 func _ready():
-	generator = Generator.new(0)
+	generator = Generator.new(7)
 	
 	# TODO: load team
 	team = Team.new()

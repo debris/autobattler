@@ -33,20 +33,39 @@ func get_all_units() -> Iterator:
 	return battle_state.team_a.iterator().concat(battle_state.team_b.iterator())
 
 func get_my_team() -> BattleTeam:
-	return battle_state.team_a.iterator()\
+	var maybe_a = battle_state.team_a.iterator()\
 		.find(Filters.this_unit(root))\
 		.map(func(_v): return battle_state.team_a)\
-		.unwrap_or(battle_state.team_b)
+		.unwrap_or(null)
+	
+	if maybe_a != null:
+		return maybe_a
 
-func get_enemy_team() -> BattleTeam:
-	return battle_state.team_a.iterator()\
+	return battle_state.team_b.iterator()\
 		.find(Filters.this_unit(root))\
 		.map(func(_v): return battle_state.team_b)\
-		.unwrap_or(battle_state.team_a)
+		.unwrap_or(null)
+
+func get_enemy_team() -> BattleTeam:
+	var my_team = get_my_team()
+	if my_team == null:
+		return null
+	
+	if my_team.get_instance_id() == battle_state.team_a.get_instance_id():
+		return battle_state.team_b
+	
+	return battle_state.team_a
+	
+	#return battle_state.team_a.iterator()\
+		#.find(Filters.this_unit(root))\
+		#.map(func(_v): return battle_state.team_b)\
+		#.unwrap_or(battle_state.team_a)
 
 # returns position in a team
 func get_my_position() -> BattleUnitPosition:
 	var team = get_my_team()
+	if team == null:
+		return null
 	var index = team.iterator().until(Filters.this_unit(root)).count()
 	return BattleUnitPosition.new(team, index)
 

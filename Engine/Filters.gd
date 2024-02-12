@@ -23,6 +23,13 @@ static func tag(tag: String):
 	return func(battle_unit):
 		return battle_unit.tags.has(tag)
 
+static func any_tag(tags: Array[String]):
+	return func(battle_unit):
+		for tag in tags: 
+			if battle_unit.tags.has(tag):
+				return true
+		return false
+
 static func no_tag(tag: String):
 	return func(battle_unit):
 		return !battle_unit.tags.has(tag)

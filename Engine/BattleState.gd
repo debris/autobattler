@@ -56,32 +56,30 @@ func execute_round():
 					var skill = battle_unit.skill_at(phase)
 					var to_execute: Array[ExecutionEnv] = [ExecutionEnv.new(battle_unit, skill)]
 					var executed = 0
-					
-					# units should start getting exhaused at some point
-					if round > ProcessorExhaustion.ROUND:
-						battle_unit.exhausted = true
-					
+
 					while executed < to_execute.size():
 						var env = to_execute[executed]
 						# PREPARE
-						var logs_to_process = env.skill._execute(BattleQuery.new(env.battle_unit, self))
-						# PROCESS
-						for log_to_process in logs_to_process:
+						var changes = env.execute(self)
+						
+						var all_changes = [changes]
+						var all_changes_iterator = ArrayIterator.new(all_changes)
+						var next_changes = all_changes_iterator.next()
+						while next_changes != null:
+							# PROCESS
 							for processor in processors:
-								var envs = processor._process_log(log_to_process, self)
-								# TODO: optimize insertions?
-								# also check if its ok that actions from the last processor are
-								# inserted first
-								# its probably ok, but better check
-								for e in envs.size():
-									var new_env = envs[e]
-									to_execute.insert(executed + 1 + e, new_env)
+							
+								var more_changes = processor._process_changes(next_changes, self)
+								if more_changes != null:
+									all_changes.push_back(more_changes)
+							
 							# FINALIZE
-							# applies changes to the state
-							if log_to_process.valid:
-								log_to_process._finalize(self)
-
-						await _display(env.battle_unit, logs_to_process)
+							for log_to_process in next_changes.execution_logs:
+								if log_to_process.valid:
+									log_to_process._finalize(self)
+						
+							await _display(env.battle_unit, next_changes.execution_logs)
+							next_changes = all_changes_iterator.next()
 						executed += 1
 				else:
 					pass

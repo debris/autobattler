@@ -2,21 +2,21 @@
 extends Processor
 class_name ProcessorAutoHive
 
-func _process_log(log: Log, battle_state: BattleState) -> Array[ExecutionEnv]:
-	var result: Array[ExecutionEnv] = []
-	if log is LogAttack:
-		var battle_query = BattleQuery.new(log.unit, battle_state)
-		var team = battle_query.get_my_team()
-		var enemy_team = battle_query.get_enemy_team()
-		if team.power >= 2 * enemy_team.power:
-			var proceed = false
-			for battle_unit in enemy_team.members:
-				if battle_unit != null && battle_unit.unit.base.passive is PassiveAutoHive:
-					proceed = true
-					break
-			if proceed:
-				for battle_unit in enemy_team.members:
-					if battle_unit != null && (battle_unit.tags.has("bee") || battle_unit.tags.has("mech")):
-						result.push_back(ExecutionEnv.new(battle_unit, SkillAttack.new()))
-
-	return result
+func _process_logs(pl_iterator: ProcessedLogs):
+	pl_iterator.iterator()\
+		.filter(LogFilters.type(LogAttack))\
+		.filter(func(pl): 
+			var team = pl.query().get_my_team()
+			var enemy_team = pl.query().get_enemy_team()
+			return team.power >= 2 * enemy_team.power\
+		)\
+		.filter(func(pl):
+			var enemy_team = pl.query().get_enemy_team()
+			return enemy_team.iterator().filter(Filters.passive(PassiveAutoHive)).first().is_some()\
+		).for_each(func(pl):
+			var enemy_team = pl.query().get_enemy_team()
+			enemy_team.iterator().filter(Filters.any_tag(["bee", "mech"])).for_each(func(battle_unit):
+				pl.reply_next_move(LogPassiveActivated.new(battle_unit, PassiveAutoHive.new()))
+				pl.reply_next_exe(ExecutionEnv.new(battle_unit, SkillAttack.new()))
+			)\
+		)

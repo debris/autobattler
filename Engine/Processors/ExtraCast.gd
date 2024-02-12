@@ -1,11 +1,13 @@
 extends Processor
 class_name ProcessorExtraCast
 
-func _process_log(log: Log, _battle_state: BattleState) -> Array[ExecutionEnv]:
-	var result: Array[ExecutionEnv] = []
-	if log is LogSkillUsed:
-		var bonus_casts = log.unit.skill_bonus_casts
-		for i in bonus_casts:
-			result.push_back(ExecutionEnv.new(log.unit, log.skill))
-			log.unit.skill_bonus_casts -= 1
-	return result
+func _process_logs(pl_iterator: ProcessedLogs):
+	pl_iterator.iterator()\
+		.filter(LogFilters.type(LogSkillUsed))\
+		.for_each(func(pl):
+			var bonus_casts = pl.get_value().unit.skill_bonus_casts
+			for i in bonus_casts:
+				pl.reply_same_move(LogSkillCastBonus.new(pl.get_value().unit, -1))
+				pl.reply_next_exe(ExecutionEnv.new(pl.get_value().unit, pl.get_value().skill))\
+		)
+		

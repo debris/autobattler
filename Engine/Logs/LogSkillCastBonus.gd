@@ -8,7 +8,7 @@ func _init(u, v):
 	value = v
 
 func _finalize(_battle_state: BattleState):
-	unit.skill_bonus_casts += value
+	unit.skill_bonus_casts = max(0, unit.skill_bonus_casts + value)
 
 func _to_string() -> String:
-	return unit.unit.base.name + " ADDs " + str(value) + " SKILL CASTS BONUS"
+	return unit.name + " gets " + str(value) + " extra skill use"
