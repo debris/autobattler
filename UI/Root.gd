@@ -12,14 +12,14 @@ var player_team_level
 var enemy_team_level
 
 func _ready():
-	generator = Generator.new(12)
+	generator = Generator.new(0)
 	
 	# TODO: load team
 	team = Team.new()
 	bench = [] as Array[OwnedUnit]
 	enemy_team_size = 0
-	player_team_level = 3
-	enemy_team_level = 5
+	player_team_level = 0
+	enemy_team_level = 0
 
 	if team.members.size() == 0:
 		# if there is no team to load, select new

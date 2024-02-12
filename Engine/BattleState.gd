@@ -16,8 +16,8 @@ var round: int
 var phase: int
 var team_a: BattleTeam
 var team_b: BattleTeam
-var logs: Array[Log]
 var processors: Array[Processor]
+var logs: Array[Log]
 
 func _init(a: BattleTeam, b: BattleTeam):
 	round = 0
@@ -31,7 +31,8 @@ func _init(a: BattleTeam, b: BattleTeam):
 		ProcessorAutoHive.new(),
 		ProcessorTricksterDetainment.new(),
 		ProcessorJumpAttack.new(),
-		ProcessorExhaustion.new()
+		ProcessorExhaustion.new(),
+		ProcessorVigilant.new()
 	]
 
 func team_a_query() -> BattleTeamQuery:

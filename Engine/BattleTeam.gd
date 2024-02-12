@@ -5,6 +5,7 @@ const START_POWER_MULTIPLIER: int = 3
 
 var power: int
 var members: Array[BattleUnit]
+var stacks: Stacks
 
 func _init(team: Team, team_level: int = 0):
 	power = 0
@@ -18,6 +19,7 @@ func _init(team: Team, team_level: int = 0):
 			members.push_back(null)
 
 	power *= START_POWER_MULTIPLIER
+	stacks = Stacks.new()
 
 func iterator() -> Iterator:
 	return ArrayIterator.new(members)
