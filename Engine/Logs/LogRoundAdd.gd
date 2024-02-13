@@ -11,4 +11,4 @@ func _finalize(battle_state: BattleState):
 	battle_state.round = max(0, battle_state.round + value)
 
 func _to_string() -> String:
-	return unit.unit.base.name + " changed the round number by " + str(value)
+	return unit.name + " changes the round number by " + str(value)

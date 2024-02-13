@@ -11,4 +11,4 @@ func _finalize(_battle_state: BattleState):
 	unit.def_bonus = max(unit.def_bonus + value, 0)
 
 func _to_string() -> String:
-	return unit.unit.base.name + " ADDs " + str(value) + " DEF BONUS"
+	return unit.name + " gets " + str(value) + " DEF BONUS"

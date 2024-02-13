@@ -17,6 +17,6 @@ func _finalize(_battle_state: BattleState):
 
 func _to_string() -> String:
 	if active:
-		return unit.unit.base.name + " got schedule painted"
+		return unit.name + " gets schedule painted"
 	else:
-		return unit.unit.base.name + " got schedule cleaned up"
+		return unit.name + " gets schedule cleaned up"

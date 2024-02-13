@@ -7,7 +7,7 @@ func _init(u, o):
 	unit = u
 	other_unit = o
 
-func _finalize(battle_state: BattleState):
+func _finalize(_battle_state: BattleState):
 	# TODO: change implementation once UI displays data based on slot, not unit
 	#var unit_position = BattleQuery.new(unit, battle_state).get_my_position()
 	#var other_position = BattleQuery.new(other_unit, battle_state).get_my_position()

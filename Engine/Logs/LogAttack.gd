@@ -14,4 +14,4 @@ func _finalize(battle_state: BattleState):
 	unit.dmg_bonus = 0
 
 func _to_string() -> String:
-	return unit.unit.base.name + " ATTACKs enemy team for " + str(value)
+	return unit.name + " ATTACKs enemy team for " + str(value)

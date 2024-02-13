@@ -3,7 +3,7 @@ class_name SkillSelfcare
 
 func _init():
 	name = "Self-Care"
-	description = "Convert this unit's bonuses into pernament improvments at 50% rate."
+	description = "50% of bonuses converts into pernament improvements."
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

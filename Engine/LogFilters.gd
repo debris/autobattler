@@ -16,13 +16,13 @@ static func not_type(log_type):
 	return func(pl: ProcessedLog):
 		return !is_instance_of(pl.get_value(), log_type)
 		
-static func passive_type(passive_type):
+static func passive_type(pt):
 	return func(pl: ProcessedLog):
-		return is_instance_of(pl.get_value().unit.unit.base.passive, passive_type)
+		return is_instance_of(pl.get_value().unit.unit.base.passive, pt)
 
-static func tag(tag: String):
+static func tag(t: String):
 	return func(pl: ProcessedLog):
-		return pl.get_value().unit.tags.has(tag)
+		return pl.get_value().unit.tags.has(t)
 
 static func my_team_stacks_not_zero(kind: Stacks.Kind):
 	return func(pl: ProcessedLog):
@@ -35,3 +35,6 @@ static func enemy_team_stacks_not_zero(kind: Stacks.Kind):
 static func round_greater_than(number):
 	return func(pl: ProcessedLog):
 		return pl.query().get_round() > number
+
+static func is_on_schedule(pl: ProcessedLog):
+	return pl.query().is_on_schedule()

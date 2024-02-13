@@ -14,4 +14,4 @@ func _finalize(battle_state: BattleState):
 	unit.def_bonus = 0
 
 func _to_string() -> String:
-	return unit.unit.base.name + " DEFENDs for " + str(value)
+	return unit.name + " defends for " + str(value)

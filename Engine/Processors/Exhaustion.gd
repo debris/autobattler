@@ -8,6 +8,7 @@ var time_of_last_move_by_unit = {}
 func _process_logs(pl_iterator: ProcessedLogs):
 	pl_iterator.iterator()\
 		.filter(LogFilters.round_greater_than(ROUND))\
+		.filter(LogFilters.is_on_schedule)\
 		.for_each(func(pl):
 			var query = pl.query()
 			var value = pl.get_value()

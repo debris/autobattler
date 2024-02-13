@@ -13,4 +13,4 @@ func _finalize(_battle_state: BattleState):
 	other_unit.skill = tmp
 
 func _to_string() -> String:
-	return unit.unit.base.name + " SWAPPED skills with " + other_unit.unit.base.name
+	return unit.name + " swaps skills with " + other_unit.name

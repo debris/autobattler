@@ -13,4 +13,4 @@ func _finalize(_battle_state: BattleState):
 	pass
 
 func _to_string() -> String:
-	return unit.name + " USED \"" + skill.name + "\" skill"
+	return unit.name + " uses \"" + skill.name + "\" skill"

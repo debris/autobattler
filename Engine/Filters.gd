@@ -19,20 +19,20 @@ static func not_this_unit(unit: BattleUnit):
 	return func(battle_unit):
 		return battle_unit.get_instance_id() != unit.get_instance_id()
 
-static func tag(tag: String):
+static func tag(t: String):
 	return func(battle_unit):
-		return battle_unit.tags.has(tag)
+		return battle_unit.tags.has(t)
 
 static func any_tag(tags: Array[String]):
 	return func(battle_unit):
-		for tag in tags: 
-			if battle_unit.tags.has(tag):
+		for t in tags: 
+			if battle_unit.tags.has(t):
 				return true
 		return false
 
-static func no_tag(tag: String):
+static func no_tag(t: String):
 	return func(battle_unit):
-		return !battle_unit.tags.has(tag)
+		return !battle_unit.tags.has(t)
 
 static func passive(passive_type):
 	return func(battle_unit):

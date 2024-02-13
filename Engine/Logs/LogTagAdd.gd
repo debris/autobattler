@@ -11,4 +11,4 @@ func _finalize(_battle_state: BattleState):
 	unit.tags[tag] = null
 
 func _to_string() -> String:
-	return unit.name + " got TAG " + tag
+	return unit.name + " gets tag " + tag
