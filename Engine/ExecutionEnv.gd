@@ -10,8 +10,4 @@ func _init(u: BattleUnit, s: Skill):
 	skill = s
 
 func execute(battle_state: BattleState) -> ExecutionChanges:
-	return ExecutionChanges.new(
-		battle_unit,
-		skill,
-		skill._execute(BattleQuery.new(battle_unit, battle_state))
-	)
+	return ExecutionChanges.new(skill._execute(BattleQuery.new(battle_unit, battle_state)))

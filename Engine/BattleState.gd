@@ -56,34 +56,24 @@ func execute_round():
 					var skill = battle_unit.skill_at(phase)
 					var to_execute: Array[ExecutionEnv] = [ExecutionEnv.new(battle_unit, skill)]
 					var executed = 0
-
+					
 					while executed < to_execute.size():
 						var env = to_execute[executed]
 						# PREPARE
 						var changes = env.execute(self)
+						# PROCESS
+						for processor in processors:
+							var more_exes = processor._process_changes(changes, self)
+							to_execute.append_array(more_exes)
+						# FINALIZE
+						for log_to_process in changes.execution_logs:
+							if log_to_process.valid:
+								log_to_process._finalize(self)
 						
-						var all_changes = [changes]
-						var all_changes_iterator = ArrayIterator.new(all_changes)
-						var next_changes = all_changes_iterator.next()
-						while next_changes != null:
-							# PROCESS
-							for processor in processors:
-							
-								var more_changes = processor._process_changes(next_changes, self)
-								if more_changes != null:
-									all_changes.push_back(more_changes)
-							
-							# FINALIZE
-							for log_to_process in next_changes.execution_logs:
-								if log_to_process.valid:
-									log_to_process._finalize(self)
-						
-							await _display(env.battle_unit, next_changes.execution_logs)
-							next_changes = all_changes_iterator.next()
+						await _display(env.battle_unit, changes.execution_logs)
 						executed += 1
 				else:
 					pass
-					#await _display_none(battle_unit.schedule_pointer)
 			
 			await run_skill_for_team.call(team_a)
 			await run_skill_for_team.call(team_b)
