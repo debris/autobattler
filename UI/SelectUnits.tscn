@@ -107,5 +107,6 @@ offset_top = 600.0
 offset_right = 1144.0
 offset_bottom = 640.0
 text = "Reroll"
+script = ExtResource("5_sprwv")
 
 [connection signal="pressed" from="RerollButton" to="." method="_on_reroll_button_pressed"]
