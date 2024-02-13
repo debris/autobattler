@@ -47,7 +47,6 @@ func team_b_query() -> BattleTeamQuery:
 
 func execute_round():
 	assert(team_a.members.size() == team_b.members.size())
-	var size = team_a.members.size()
 	var phases = 3
 	for p in phases:
 		phase = p
