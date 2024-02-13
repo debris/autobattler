@@ -10,4 +10,3 @@ func _process_logs(pl_iterator: ProcessedLogs):
 				pl.reply_same_move(LogSkillCastBonus.new(pl.get_unit(), -1))
 				pl.reply_next_exe(ExecutionEnv.new(pl.get_unit(), pl.get_skill()))\
 		)
-		

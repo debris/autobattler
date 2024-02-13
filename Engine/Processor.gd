@@ -9,13 +9,12 @@ func _process_changes(changes: ExecutionChanges, battle_state: BattleState) -> A
 	_process_logs(processed_logs)
 	var new_logs_same_move: Array[Log] = []
 	var new_exes: Array[ExecutionEnv] = []
-	var pl_iterator = processed_logs.iterator()
-	var pl = pl_iterator.next()
-	while pl != null:
-		new_logs_same_move.push_back(pl.get_value())
-		new_logs_same_move.append_array(pl.get_replies_same_move())
-		new_exes.append_array(pl.get_replies_exes())
-		pl = pl_iterator.next()
+	var pl_iterator = processed_logs.iterator()\
+		.for_each(func(pl):
+			new_logs_same_move.push_back(pl.get_value())
+			new_logs_same_move.append_array(pl.get_replies_same_move())
+			new_exes.append_array(pl.get_replies_exes())\
+		)
 	
 	changes.execution_logs = new_logs_same_move
 	return new_exes
