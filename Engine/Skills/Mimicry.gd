@@ -10,11 +10,13 @@ func _execute(query: BattleQuery) -> Array[Log]:
 	var enemy_team = query.get_enemy_team()
 	var result: Array[Log] = [LogSkillUsed.new(unit, self)]
 	var log_of_last_skill = query.get_reverse_all_logs_iterator()\
-		.filter(func(log_to_check):
+		.filter(func(log_to_check): return log_to_check is LogSkillUsed)\
+		.filter(func(log_to_check): return !log_to_check.skill is SkillMimicry)\
+		.find(func(log_to_check):
 			var other_query = BattleQuery.new(log_to_check.unit, query.battle_state)
 			var enemy_team2 = other_query.get_my_team()
 			return enemy_team.get_instance_id() == enemy_team2.get_instance_id()\
-		).find(func(log_to_check): return log_to_check is LogSkillUsed)
+		)
 
 	if log_of_last_skill.is_some():
 		var the_skill = log_of_last_skill.get_value().skill
