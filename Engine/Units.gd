@@ -28,7 +28,8 @@ static var all: Array[Unit] = [
 	UnitHornedOwl.new(),
 	UnitAngelOfWar.new(),
 	UnitPoisonGhoul.new(),
-	UnitVendettaVindicator.new()
+	UnitVendettaVindicator.new(),
+	UnitJesterThylocron.new()
 ]
 
 static var orcs: Array[Unit] = [

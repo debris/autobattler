@@ -55,11 +55,6 @@ func get_enemy_team() -> BattleTeam:
 		return battle_state.team_b
 	
 	return battle_state.team_a
-	
-	#return battle_state.team_a.iterator()\
-		#.find(Filters.this_unit(root))\
-		#.map(func(_v): return battle_state.team_b)\
-		#.unwrap_or(battle_state.team_a)
 
 # returns position in a team
 func get_my_position() -> BattleUnitPosition:
@@ -85,4 +80,15 @@ func get_prev_units() -> Iterator:
 	return ArrayIterator.new(reverse_slice).skip(1)
 
 func get_logs_iterator() -> LogsIterator:
-	return LogsIterator.new(battle_state, root)
+	return LogsIterator.new(battle_state.logs, root)
+
+func get_all_logs_iterator() -> LogsIterator:
+	return LogsIterator.new(battle_state.logs)
+
+func get_reverse_logs_iterator() -> LogsIterator:
+	var logs = battle_state.logs.slice(battle_state.logs.size() - 1, -battle_state.logs.size() - 1, -1)
+	return LogsIterator.new(logs, root)
+
+func get_reverse_all_logs_iterator() -> LogsIterator:
+	var logs = battle_state.logs.slice(battle_state.logs.size() - 1, -battle_state.logs.size() - 1, -1)
+	return LogsIterator.new(logs)

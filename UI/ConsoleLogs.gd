@@ -3,7 +3,7 @@ extends CanvasLayer
 @export var battle_state: BattleState:
 	set(value):
 		battle_state = value
-		logs_iterator = LogsIterator.new(battle_state).peekable()
+		logs_iterator = LogsIterator.new(battle_state.logs).peekable()
 
 @onready var list_control = $Control/ScrollContainer/GridContainer
 
