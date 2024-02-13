@@ -14,6 +14,8 @@ func display_stacks():
 	for stack_key in stacks.inner.keys():
 		var value = stacks.inner[stack_key]
 		var label = Label.new()
+		label.custom_minimum_size = Vector2(0, 16.0)
+		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		grid.add_child(label)
 
 func _process(_delta):
@@ -24,3 +26,4 @@ func _process(_delta):
 		var label = grid.get_child(key_index)
 		label.text = "  " + stack_key + ": " + str(value)
 		label.visible = value != 0
+
