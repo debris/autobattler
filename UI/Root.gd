@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-signal player_team_ready
+signal units_selected
 signal battle_finished
 signal reward_selected
 
@@ -11,8 +11,10 @@ var enemy_team_size
 var player_team_level
 var enemy_team_level
 
+var seed: int = 0
+
 func _ready():
-	generator = Generator.new(13)
+	generator = Generator.new(seed)
 	
 	# TODO: load team
 	team = Team.new()
@@ -21,7 +23,7 @@ func _ready():
 	player_team_level = 0
 	enemy_team_level = 0
 
-	if team.members.size() == 0:
+	while team.members.size() == 0:
 		# if there is no team to load, select new
 		var select_units = preload("res://UI/SelectUnits.tscn").instantiate()
 		#select_units.generator = generator
@@ -29,15 +31,23 @@ func _ready():
 		select_units.out_of = generator.random_team(6)
 		select_units.player_team_level = player_team_level
 		select_units.title_text = "select 2 units"
+		select_units.reroll_button_visible = true
+		select_units.reroll_button_pressed.connect(func():
+			seed += 1
+			select_units.queue_free()
+			# team size is still 0, so we will start over with a different seed
+			units_selected.emit()
+		)
 		select_units.selected_units.connect(func(units):
 			team.members = units
 			while team.members.size() < 6:
 				team.members.push_back(null)
 			select_units.queue_free()
-			player_team_ready.emit()
+			units_selected.emit()
 		)
 		add_child(select_units)
-		await player_team_ready
+			
+		await units_selected
 
 
 	# game screen loop

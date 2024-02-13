@@ -99,3 +99,13 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
 text = "Select"
 script = ExtResource("5_sprwv")
+
+[node name="RerollButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 600.0
+offset_right = 1144.0
+offset_bottom = 640.0
+text = "Reroll"
+
+[connection signal="pressed" from="RerollButton" to="." method="_on_reroll_button_pressed"]
