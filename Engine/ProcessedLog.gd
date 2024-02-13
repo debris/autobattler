@@ -17,6 +17,12 @@ func _init(i: Log, bs: BattleState):
 func get_value() -> Log:
 	return inner
 	
+func get_unit():
+	return inner.unit
+
+func get_skill():
+	return inner.skill
+
 func get_replies_same_move() -> Array[Log]:
 	return replies_same_move
 
@@ -37,3 +43,6 @@ func reply_next_move(reply: Log):
 
 func reply_next_exe(env: ExecutionEnv):
 	replies_exe.push_back(env)
+
+func passive_activated(passive: Passive):
+	reply_same_move(LogPassiveActivated.new(get_unit(), passive))

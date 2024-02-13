@@ -13,6 +13,6 @@ func _process_logs(pl_iterator: ProcessedLogs):
 				unit_to_swap = pl.query().get_my_team().iterator().first()
 			
 			var new_log = LogSwapPlaces.new(pl.get_value().unit, unit_to_swap.get_value())
-			pl.reply_next_move(LogPassiveActivated.new(pl.get_value().unit, PassiveJumpAttack.new()))
+			pl.passive_activated(PassiveJumpAttack.new())
 			pl.reply_next_move(new_log)\
 		)

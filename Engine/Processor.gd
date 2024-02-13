@@ -1,9 +1,6 @@
 extends Object 
 class_name Processor
 
-func _process_log(_log: Log, _battle_state: BattleState) -> Array[ExecutionEnv]:
-	return []
-
 func _process_logs(_pl_iterator: ProcessedLogs):
 	null
 

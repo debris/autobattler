@@ -10,8 +10,9 @@ func _process_logs(pl_iterator: ProcessedLogs):
 		.filter(LogFilters.passive_type(PassiveShadowStrike))\
 		.for_each(func(pl):
 			if pl.query().get_round() > 2:
-				var last_attack_time = time_of_last_attack_by_unit.get(pl.get_value().unit.get_instance_id())
+				var last_attack_time = time_of_last_attack_by_unit.get(pl.get_unit().get_instance_id())
 				if last_attack_time == null || pl.query().get_round() > last_attack_time + 3:
+					pl.passive_activated(PassiveShadowStrike.new())
 					pl.get_value().value *= 3
-			time_of_last_attack_by_unit[pl.get_value().unit.get_instance_id()] = pl.query().get_round()\
+			time_of_last_attack_by_unit[pl.get_unit().get_instance_id()] = pl.query().get_round()\
 		)

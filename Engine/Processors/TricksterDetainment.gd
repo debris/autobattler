@@ -11,5 +11,6 @@ func _process_logs(pl_iterator: ProcessedLogs):
 			if cop_unit.is_some():
 				var cop_unit_query = BattleQuery.new(cop_unit.get_value(), pl.query().battle_state)
 				if cop_unit_query.is_on_schedule():
+					pl.passive_activated(PassiveTricksterDetainment.new())
 					pl.get_value().valid = false\
 		)
