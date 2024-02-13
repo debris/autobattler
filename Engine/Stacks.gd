@@ -3,6 +3,7 @@ class_name Stacks
 
 enum Kind {
 	VIGILANT,
+	POISON,
 }
 
 var inner: Dictionary

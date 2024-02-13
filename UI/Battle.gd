@@ -29,6 +29,8 @@ signal battle_finished(result)
 @onready var continue_button = $Continue
 @onready var level_a_label = $LevelA
 @onready var level_b_label = $LevelB
+@onready var stacks_control_a = $StacksControlA
+@onready var stacks_control_b = $StacksControlB
 
 var battle_state: BattleState
 var battle_controller: BattleController
@@ -105,6 +107,9 @@ func _ready():
 	team_b_control.battle_team_query = battle_state.team_b_query()
 	team_a_power.battle_team = battle_state.team_a
 	team_b_power.battle_team = battle_state.team_b
+	
+	stacks_control_a.stacks = battle_state.team_a.stacks
+	stacks_control_b.stacks = battle_state.team_b.stacks
 
 	battle_state.action_executed.connect(_wait_for_display)
 	console_logs.battle_state = battle_state

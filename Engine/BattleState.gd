@@ -31,9 +31,10 @@ func _init(a: BattleTeam, b: BattleTeam):
 		ProcessorAutoHive.new(),
 		ProcessorTricksterDetainment.new(),
 		ProcessorJumpAttack.new(),
-		ProcessorExhaustion.new(),
 		ProcessorVigilant.new(),
-		ProcessorDoubleStrike.new()
+		ProcessorDoubleStrike.new(),
+		ProcessorPoison.new(),
+		ProcessorExhaustion.new(),
 	]
 
 func team_a_query() -> BattleTeamQuery:

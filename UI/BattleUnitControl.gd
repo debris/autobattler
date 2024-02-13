@@ -130,6 +130,10 @@ func _process_log(action: Log):
 		_display_notification("EXHAUSTED", GameColors.red())
 		Sounds.play_action()
 	
+	if action is LogPoison:
+		_display_notification("POISON", GameColors.red())
+		Sounds.play_action()
+	
 	if action is LogDmgAdd || action is LogDmgBonusAdd || action is LogDefAdd || action is LogDefBonusAdd:
 		var color = GameColors.green()
 		if action.value < 0:

@@ -26,7 +26,8 @@ static var all: Array[Unit] = [
 	UnitOrcShaman.new(),
 	UnitOrcRecruiter.new(),
 	UnitHornedOwl.new(),
-	UnitAngelOfWar.new()
+	UnitAngelOfWar.new(),
+	UnitPoisonGhoul.new(),
 ]
 
 static var orcs: Array[Unit] = [
@@ -44,4 +45,9 @@ static var bees: Array[Unit] = [
 static var vikings: Array[Unit] = [
 	UnitVikingWarrior.new(),
 	UnitLoki.new()
+]
+
+static var demons: Array[Unit] = [
+	UnitLesserDemon.new(),
+	UnitAngelOfWar.new()
 ]
