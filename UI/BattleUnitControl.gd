@@ -85,19 +85,12 @@ func _process(_delta):
 		active_control.visible = false
 		return
 
-	default_modulate = Color.WHITE
-	if !battle_query.is_on_schedule():
-		default_modulate = Color.WHITE
-		#default_modulate = Color(Color.WHITE, 0.4)
-
 	if processed_round != battle_query.get_round() || processed_phase != battle_query.get_phase():
-		control.modulate = default_modulate
 		processed_round = battle_query.get_round()
 		processed_phase = battle_query.get_phase()
 
 	logs_iterator.for_each(func(battle_log):
-		if battle_log.valid:
-			_process_log(battle_log)
+		_process_log(battle_log)
 	)
 
 	active_control.visible = battle_query.is_active()
@@ -111,6 +104,13 @@ func _gui_input(event):
 
 # private
 func _process_log(action: Log):
+	if !action.valid:
+		_display_notification("PREVENTED", GameColors.red())
+		_blink(GameColors.red())
+		Sounds.play_action()
+		# return so no more info is displayed
+		return
+	
 	if action is LogAttack:
 		_display_notification("ATTACK", GameColors.red())
 		_attack_animation()
@@ -128,20 +128,25 @@ func _process_log(action: Log):
 	
 	if action is LogExhaustion:
 		_display_notification("EXHAUSTED", GameColors.red())
+		_blink(GameColors.red())
 		Sounds.play_action()
 	
 	if action is LogPoison:
 		_display_notification("POISON", GameColors.red())
+		_blink(GameColors.red())
 		Sounds.play_action()
 	
 	if action is LogDmgAdd || action is LogDmgBonusAdd || action is LogDefAdd || action is LogDefBonusAdd:
 		var color = GameColors.green()
 		if action.value < 0:
 			color = GameColors.red()
-		
-		var tween = create_tween()
-		tween.tween_property(control, "modulate", color, display_settings.step_time / 2).set_ease(Tween.EASE_IN)
-		tween.tween_property(control, "modulate", default_modulate, display_settings.step_time / 2).set_ease(Tween.EASE_OUT)
+		_blink(color)
+
+
+func _blink(color: Color):
+	var tween = create_tween()
+	tween.tween_property(control, "modulate", color, display_settings.step_time / 2).set_ease(Tween.EASE_IN)
+	tween.tween_property(control, "modulate", Color.WHITE, display_settings.step_time / 2).set_ease(Tween.EASE_OUT)
 
 # private
 func _attack_animation():
