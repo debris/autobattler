@@ -51,36 +51,33 @@ func execute_round():
 	var phases = 3
 	for p in phases:
 		phase = p
-		for i in size:
-			var run_skill_for_team = func(team):
-				var battle_unit = team.members[i]
-				if battle_unit == null:
-					return
-				if battle_unit.schedules[phase].at(round):
-					var skill = battle_unit.skill_at(phase)
-					var to_execute: Array[ExecutionEnv] = [ExecutionEnv.new(battle_unit, skill)]
-					var executed = 0
+
+		var units_iterator = team_a.iterator().alternate(team_b.iterator())
+		var battle_unit = units_iterator.next()
+		
+		while battle_unit != null:
+			if battle_unit.schedules[phase].at(round):
+				var skill = battle_unit.skill_at(phase)
+				var to_execute: Array[ExecutionEnv] = [ExecutionEnv.new(battle_unit, skill)]
+				var executed = 0
 					
-					while executed < to_execute.size():
-						var env = to_execute[executed]
-						# PREPARE
-						var changes = env.execute(self)
-						# PROCESS
-						for processor in processors:
-							var more_exes = processor._process_changes(changes, self)
-							to_execute.append_array(more_exes)
-						# FINALIZE
-						for log_to_process in changes.execution_logs:
-							if log_to_process.valid:
-								log_to_process._finalize(self)
+				while executed < to_execute.size():
+					var env = to_execute[executed]
+					# PREPARE
+					var changes = env.execute(self)
+					# PROCESS
+					for processor in processors:
+						var more_exes = processor._process_changes(changes, self)
+						to_execute.append_array(more_exes)
+					# FINALIZE
+					for log_to_process in changes.execution_logs:
+						if log_to_process.valid:
+							log_to_process._finalize(self)
 						
-						await _display(env.battle_unit, changes.execution_logs)
-						executed += 1
-				else:
-					pass
-			
-			await run_skill_for_team.call(team_a)
-			await run_skill_for_team.call(team_b)
+					await _display(env.battle_unit, changes.execution_logs)
+					executed += 1
+
+			battle_unit = units_iterator.next()
 
 	phase = 0
 	round += 1

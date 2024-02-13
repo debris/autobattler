@@ -25,6 +25,9 @@ func skip_until(pattern) -> SkipUntilIterator:
 func concat(other_iterator: Iterator) -> ConcatIterator:
 	return ConcatIterator.new(self, other_iterator)
 
+func alternate(other_iterator: Iterator) -> AlternateIterator:
+	return AlternateIterator.new(self, other_iterator)
+
 func first() -> Option:
 	return Option.new(next())
 
