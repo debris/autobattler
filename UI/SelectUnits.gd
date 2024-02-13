@@ -5,6 +5,7 @@ signal selected_units(units: Array[OwnedUnit])
 @export var to_select: int = 2
 @export var out_of: Team
 @export var player_team_level: int
+@export var title_text: String
 
 @onready var select_label = $SelectLabel
 @onready var battle_team_control = $BattleTeamControl
@@ -14,7 +15,7 @@ var displayed_team: BattleTeam
 var selected: Array[OwnedUnit] = []
 
 func _ready():
-	select_label.text = "Select " + str(to_select)
+	select_label.text = title_text
 	var battle_controller = BattleController.default()
 	battle_controller.show_details.connect(func(battle_query):
 		var details = load("res://UI/BattleUnitDetails.tscn").instantiate()

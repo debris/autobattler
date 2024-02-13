@@ -12,7 +12,7 @@ var player_team_level
 var enemy_team_level
 
 func _ready():
-	generator = Generator.new(0)
+	generator = Generator.new(13)
 	
 	# TODO: load team
 	team = Team.new()
@@ -28,6 +28,7 @@ func _ready():
 		select_units.to_select = 2
 		select_units.out_of = generator.random_team(6)
 		select_units.player_team_level = player_team_level
+		select_units.title_text = "select 2 units"
 		select_units.selected_units.connect(func(units):
 			team.members = units
 			while team.members.size() < 6:
@@ -94,6 +95,7 @@ func display_battle(collection: Array[Unit]):
 	select_reward.to_select = 1
 	select_reward.out_of = generator.random_team(6, collection)
 	select_reward.player_team_level = player_team_level
+	select_reward.title_text = "select reward"
 	select_reward.selected_units.connect(func(units):
 		assert(units.size() == 1)
 		var added = false
