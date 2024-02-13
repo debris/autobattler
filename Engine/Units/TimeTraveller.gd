@@ -8,5 +8,5 @@ func _init():
 	def = 10
 	skill = SkillTimeTravel.new()
 	passive = PassiveEmpty.new()
-	tags = []
+	tags = ["human"]
 	reroll = 0
