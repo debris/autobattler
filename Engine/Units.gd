@@ -30,7 +30,8 @@ static var all: Array[Unit] = [
 	UnitPoisonGhoul.new(),
 	UnitVendettaVindicator.new(),
 	UnitJesterThylocron.new(),
-	UnitCaptainBlaze.new()
+	UnitCaptainBlaze.new(),
+	UnitLeyla.new()
 ]
 
 static var orcs: Array[Unit] = [
@@ -59,5 +60,6 @@ static var cyborgs: Array[Unit] = [
 	UnitPrime.new(),
 	UnitHarmony.new(),
 	UnitVendettaVindicator.new(),
-	UnitCaptainBlaze.new()
+	UnitCaptainBlaze.new(),
+	UnitLeyla.new()
 ]
