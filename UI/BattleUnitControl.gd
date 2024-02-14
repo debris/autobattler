@@ -1,7 +1,5 @@
 extends Control
 
-const MAX_ROTATION: float = 2.0
-
 @export var battle_query: BattleQuery
 @export var click_to_show_details = true
 @export var with_battle_logs = true
@@ -10,28 +8,23 @@ const MAX_ROTATION: float = 2.0
 @onready var on_hover = $Control/OnHover
 @onready var active_control = $Control/ActiveControl
 @onready var active_on_schedule = $Control/ActiveOnSchedule
-@onready var image_rect = $Control/ImageRect
-@onready var name_label = $Control/Name
-@onready var def_label = $Control/Def
-@onready var dmg_label = $Control/Dmg
-@onready var dmg_bonus_label = $Control/DmgBonus
-@onready var def_bonus_label = $Control/DefBonus
 
-@onready var schedules_list = $Control/Schedules
-@onready var schedule_control2 = $Control/Schedules/Schedule2
-@onready var schedule_control1 = $Control/Schedules/Schedule1
-@onready var schedule_control0 = $Control/Schedules/Schedule0
+@onready var content = $Control/Content
+@onready var image_rect = $Control/Content/ImageRect
+@onready var name_label = $Control/Content/Name
+@onready var def_label = $Control/Content/Def
+@onready var dmg_label = $Control/Content/Dmg
+@onready var dmg_bonus_label = $Control/Content/DmgBonus
+@onready var def_bonus_label = $Control/Content/DefBonus
 
-@onready var concrete_tile = $Control/ConcreteTile
+@onready var schedules_list = $Control/Content/Schedules
+@onready var schedule_control2 = $Control/Content/Schedules/Schedule2
+@onready var schedule_control1 = $Control/Content/Schedules/Schedule1
+@onready var schedule_control0 = $Control/Content/Schedules/Schedule0
 
 var display_settings: DisplaySettings
 var battle_unit: BattleUnit
-var logs_iterator: LogsIterator
-var processed_round = -1
-var processed_phase = 0
-var default_modulate
-
-var initialized: bool = false
+var logs_iterator: Iterator
 
 func should_display_as_enemy() -> bool:
 	return global_position.y < 324
@@ -40,23 +33,37 @@ func _ready():
 	display_settings = DisplaySettings.default()
 	
 	mouse_entered.connect(func():
-		Sounds.play_hover()
-		on_hover.visible = true
+		if battle_unit != null:
+			Sounds.play_hover()
+			on_hover.visible = true
 	)
 	mouse_exited.connect(func():
 		on_hover.visible = false
 	)
 
-func _ensure_initialized():
-	if initialized == true:
+func _process(_delta):
+	# initialize only once
+	if logs_iterator == null:
+		logs_iterator = battle_query.get_all_logs_iterator()\
+			.filter(func(battle_log):
+				return battle_unit != null && (battle_log.unit.get_instance_id() == battle_unit.get_instance_id())\
+			)
+	
+	battle_unit = battle_query.get_this_unit()
+	if battle_unit == null:
+		content.visible == false
+		for content_child in content.get_children():
+			content_child.visible = false
+		active_control.visible = false
+		active_on_schedule.visible = false
+		
 		return
 
-	initialized = true
-	battle_unit = battle_query.get_this_unit()
-	logs_iterator = battle_query.get_logs_iterator()
+	content.visible = true
+	for content_child in content.get_children():
+			content_child.visible = true
+	name_label.visible = true
 
-func _process(_delta):
-	_ensure_initialized()
 	name_label.text = battle_unit.name
 	image_rect.texture = battle_unit.texture
 
@@ -69,25 +76,12 @@ func _process(_delta):
 		schedule_control.schedule_pointer = battle_unit.schedule_pointer
 		schedule_control.the_color = GameColors.schedule_color(battle_unit.schedules[i].kind)
 
-	def_label.text = str(battle_unit.def)
-	dmg_label.text = str(battle_unit.dmg)
-	if battle_unit.dmg_bonus == 0:
-		dmg_bonus_label.text = ""
-	else:
-		dmg_bonus_label.text = "x"
-			
-	if battle_unit.def_bonus == 0:
-		def_bonus_label.text = ""
-	else:
-		def_bonus_label.text = "x"
+	_display_bonuses()
 
 	if !with_battle_logs:
 		active_control.visible = false
+		active_on_schedule.visible = false
 		return
-
-	if processed_round != battle_query.get_round() || processed_phase != battle_query.get_phase():
-		processed_round = battle_query.get_round()
-		processed_phase = battle_query.get_phase()
 
 	logs_iterator.for_each(func(battle_log):
 		_process_log(battle_log)
@@ -101,6 +95,19 @@ func _gui_input(event):
 		accept_event()
 		Sounds.play_button_press()
 		BattleController.default().show_details.emit(battle_query)
+
+func _display_bonuses():
+	def_label.text = str(battle_unit.def)
+	dmg_label.text = str(battle_unit.dmg)
+	if battle_unit.dmg_bonus == 0:
+		dmg_bonus_label.text = ""
+	else:
+		dmg_bonus_label.text = "x"
+			
+	if battle_unit.def_bonus == 0:
+		def_bonus_label.text = ""
+	else:
+		def_bonus_label.text = "x"
 
 # private
 func _process_log(action: Log):

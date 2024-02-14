@@ -10,9 +10,5 @@ func _init(r, s):
 
 func get_member_queries() -> Array[Query]:
 	var result: Array[Query] = []
-	for member in root.members:
-		if member == null:
-			result.push_back(BattleQueryNull.new())
-		else:
-			result.push_back(BattleQuery.new(member, battle_state))
+	result.assign(root.members.map(func(member): return BattleQuery.new(member, battle_state)))
 	return result

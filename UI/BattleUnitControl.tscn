@@ -39,6 +39,7 @@ mouse_filter = 2
 color = Color(0.752941, 0.752941, 0.752941, 1)
 
 [node name="ActiveControl" type="ColorRect" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = -2.0
 offset_top = -2.0
@@ -48,6 +49,7 @@ mouse_filter = 2
 color = Color(0.501961, 0.501961, 0.25098, 1)
 
 [node name="ActiveOnSchedule" type="ColorRect" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = -2.0
 offset_top = -2.0
@@ -64,7 +66,16 @@ centered = false
 region_enabled = true
 region_rect = Rect2(513, 373, 262, 378)
 
-[node name="ImageRect" type="Control" parent="Control"]
+[node name="Content" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ImageRect" type="Control" parent="Control/Content"]
 process_mode = 4
 material = SubResource("ShaderMaterial_axxnt")
 layout_mode = 1
@@ -79,7 +90,7 @@ pivot_offset = Vector2(80, 80)
 mouse_filter = 2
 script = ExtResource("3_jydyn")
 
-[node name="Name" type="Label" parent="Control"]
+[node name="Name" type="Label" parent="Control/Content"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -88,7 +99,7 @@ offset_bottom = 42.0
 theme_override_font_sizes/font_size = 20
 text = "Name"
 
-[node name="Schedules" type="GridContainer" parent="Control"]
+[node name="Schedules" type="GridContainer" parent="Control/Content"]
 layout_mode = 0
 offset_left = 42.0
 offset_top = 41.0
@@ -100,28 +111,28 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 metadata/_edit_group_ = true
 
-[node name="Schedule2" type="Control" parent="Control/Schedules"]
+[node name="Schedule2" type="Control" parent="Control/Content/Schedules"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("2_moluy")
 
-[node name="Schedule1" type="Control" parent="Control/Schedules"]
+[node name="Schedule1" type="Control" parent="Control/Content/Schedules"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("2_moluy")
 
-[node name="Schedule0" type="Control" parent="Control/Schedules"]
+[node name="Schedule0" type="Control" parent="Control/Content/Schedules"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("2_moluy")
 
-[node name="Def" type="Label" parent="Control"]
+[node name="Def" type="Label" parent="Control/Content"]
 layout_mode = 0
 offset_left = 80.0
 offset_top = 200.0
@@ -133,7 +144,7 @@ text = "Def:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Dmg" type="Label" parent="Control"]
+[node name="Dmg" type="Label" parent="Control/Content"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 200.0
@@ -144,7 +155,7 @@ theme_override_font_sizes/font_size = 24
 text = "Dmg:"
 vertical_alignment = 1
 
-[node name="DmgBonus" type="Label" parent="Control"]
+[node name="DmgBonus" type="Label" parent="Control/Content"]
 layout_mode = 0
 offset_top = 200.0
 offset_right = 64.0
@@ -153,7 +164,7 @@ theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "x"
 
-[node name="DefBonus" type="Label" parent="Control"]
+[node name="DefBonus" type="Label" parent="Control/Content"]
 layout_mode = 0
 offset_left = 96.0
 offset_top = 200.0

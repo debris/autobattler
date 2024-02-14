@@ -16,3 +16,6 @@ func next():
 			return result
 	return null
 
+func skip(number) -> SkipIterator:
+	position += number
+	return SkipIterator.new(self, 0)
