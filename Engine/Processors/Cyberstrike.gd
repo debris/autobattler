@@ -7,7 +7,7 @@ func _process_logs(pl_iterator: ProcessedLogs):
 		.filter(LogFilters.type(LogAttack))\
 		.filter(LogFilters.tag("assassin"))\
 		.for_each(func(pl):
-			pl.query().get_my_team().iterator()\
+			pl.query().get_prev_units().first()\
 				.filter(Filters.passive(PassiveCyberstrike))\
 				.filter(Filters.not_this_unit(pl.get_unit()))\
 				.for_each(func(unit):
