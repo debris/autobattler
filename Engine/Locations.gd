@@ -8,5 +8,6 @@ static var all = [
 	LocationTreasure.new(),
 	LocationOrcCamp.new(),
 	LocationBeeHive.new(),
-	LocationVikingBoat.new()
+	LocationVikingBoat.new(),
+	LocationRipperdoc.new()
 ]

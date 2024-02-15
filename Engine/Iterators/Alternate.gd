@@ -13,7 +13,7 @@ func next():
 
 	var tmp = first_iter
 	first_iter = second_iter
-	second_iter = first_iter
+	second_iter = tmp
 
 	if value == null:
 		value = first_iter.next()

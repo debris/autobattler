@@ -12,7 +12,6 @@ func display_stacks():
 		child.queue_free()
 	
 	for stack_key in stacks.inner.keys():
-		var value = stacks.inner[stack_key]
 		var label = Label.new()
 		label.custom_minimum_size = Vector2(0, 16.0)
 		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
