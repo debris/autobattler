@@ -21,3 +21,4 @@ func _play(stream, volume_db: float = 0):
 func start_main_theme_track():
 	while true:
 		await _play(preload("res://Assets/Sounds/main_theme.mp3"), 9.0)
+	
