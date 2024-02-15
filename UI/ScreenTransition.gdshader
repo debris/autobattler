@@ -12,7 +12,7 @@ void fragment() {
 	float value;
 	vec2 uv = UV;
 	uv -= vec2(0.5, 0.5*aspect);
-	float rot = radians(0.0);
+	float rot = radians(45.0);
 	mat2 m = 1.0 * mat2(vec2(cos(rot), -sin(rot)), vec2(sin(rot), cos(rot)));
 	uv  = m * uv;
 	uv += vec2(0.5, 0.5*aspect);
@@ -21,7 +21,7 @@ void fragment() {
 	vec2 rep = fract(pos);
 	float dist = 2.0*min(min(rep.x, 1.0-rep.x), min(rep.y, 1.0-rep.y));
 	vec2 ruv = UV;
-	float squareDist = 1.0 + pow(ruv.x, 3.0);
+	float squareDist = 1.0;// + pow(ruv.x, 3.0);
 	float edge = sin(progress-squareDist*0.5)*0.5+0.5;
 	edge = 2.0*fract(edge*0.5);
 	value = fract (dist*2.0);
@@ -32,6 +32,6 @@ void fragment() {
 	value += squareDist*.1;
 	vec4 x = texture(SCREEN_TEXTURE, SCREEN_UV);
 	COLOR = x;
+	COLOR.rgb = x.rgb * (1.0 - percent);
 	COLOR.a = smoothstep(0.0, 1.0, 1.0 - clamp(value, 0.0, 1.0));
-	//COLOR.a = 0.25*clamp(value, 0.0, 1.0);
 }
