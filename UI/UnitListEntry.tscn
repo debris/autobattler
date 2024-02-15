@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://eagvkhnvorue"]
+[gd_scene load_steps=6 format=3 uid="uid://eagvkhnvorue"]
 
 [ext_resource type="Script" path="res://UI/UnitListEntry.gd" id="1_p8drj"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_ck1m6"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_ipio7"]
+[ext_resource type="Script" path="res://UI/ScheduleControl.gd" id="4_ox5jo"]
 
 [sub_resource type="FontVariation" id="FontVariation_5l4h4"]
 base_font = ExtResource("2_ipio7")
@@ -22,10 +23,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p8drj")
 
+[node name="OnHover" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.745098, 0.745098, 0.745098, 0.745098)
+
 [node name="Frame" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 448.0
 offset_bottom = 64.0
+mouse_filter = 2
 script = ExtResource("2_ck1m6")
 
 [node name="NameLabel" type="Label" parent="."]
@@ -33,17 +46,19 @@ layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 272.0
-offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("2_ipio7")
+offset_bottom = 48.0
 theme_override_font_sizes/font_size = 18
 text = "Name"
+vertical_alignment = 1
 
 [node name="SerialNumberLabel" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 32.0
 offset_right = 192.0
 offset_bottom = 56.0
+mouse_filter = 2
 theme_override_fonts/normal_font = SubResource("FontVariation_5l4h4")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
@@ -57,5 +72,33 @@ offset_right = 432.0
 offset_bottom = 48.0
 theme_override_fonts/font = ExtResource("2_ipio7")
 text = "Select"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 8.0
+offset_right = 288.0
+offset_bottom = 56.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+metadata/_edit_group_ = true
+
+[node name="ScheduleControl" type="Control" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_ox5jo")
+
+[node name="ScheduleControl2" type="Control" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_ox5jo")
+
+[node name="ScheduleControl3" type="Control" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_ox5jo")
 
 [connection signal="pressed" from="Select" to="." method="_on_select_pressed"]

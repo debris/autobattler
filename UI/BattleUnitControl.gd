@@ -18,16 +18,13 @@ extends Control
 @onready var def_bonus_label = $Control/Content/DefBonus
 
 @onready var schedules_list = $Control/Content/Schedules
-@onready var schedule_control2 = $Control/Content/Schedules/Schedule2
-@onready var schedule_control1 = $Control/Content/Schedules/Schedule1
-@onready var schedule_control0 = $Control/Content/Schedules/Schedule0
 
 var display_settings: DisplaySettings
 var battle_unit: BattleUnit
 var logs_iterator: Iterator
 
 func should_display_as_enemy() -> bool:
-	return global_position.y < 324
+	return global_position.y < 160
 
 func _ready():
 	display_settings = DisplaySettings.default()
@@ -40,6 +37,9 @@ func _ready():
 	mouse_exited.connect(func():
 		on_hover.visible = false
 	)
+	
+	if should_display_as_enemy():
+		schedules_list.position.y = content.size.y + 16
 
 func _process(_delta):
 	# initialize only once
@@ -69,12 +69,12 @@ func _process(_delta):
 
 	# always 3 schedules, let's grab them in reverse because of the rotation
 	for i in 3:
-		var index = 2 - i
+		var index = i
 		var schedule_control = schedules_list.get_child(index)
 		schedule_control.schedule = battle_unit.schedules[i]
 		schedule_control.phase = i
 		schedule_control.schedule_pointer = battle_unit.schedule_pointer
-		schedule_control.the_color = GameColors.schedule_color(battle_unit.schedules[i].kind)
+		#schedule_control.the_color = GameColors.schedule_color(battle_unit.schedules[i].kind)
 
 	_display_bonuses()
 

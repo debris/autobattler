@@ -38,8 +38,8 @@ func _ready():
 	# TODO: load team
 	team = Team.new()
 	bench = [] as Array[OwnedUnit]
-	#for i in 10:
-		#bench.push_back(generator.random_unit())
+	for i in 100:
+		bench.push_back(generator.random_unit())
 	enemy_team_size = 0
 	player_team_level = 0
 	enemy_team_level = 0

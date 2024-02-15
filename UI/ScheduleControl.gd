@@ -2,7 +2,7 @@
 extends Control
 class_name ScheduleControl
 
-@export var phase: int:
+@export var phase: int = 0:
 	set(value):
 		if value != phase:
 			phase = value
@@ -14,13 +14,13 @@ class_name ScheduleControl
 			schedule = value
 			queue_redraw()
 
-@export var schedule_pointer: SchedulePointer:
+@export var schedule_pointer: SchedulePointer = SchedulePointer.new():
 	set(value):
 		if value != schedule_pointer:
 			schedule_pointer = value
 			queue_redraw()
 
-@export var the_color: Color = Color.DIM_GRAY
+var the_color: Color = Color.DIM_GRAY
 
 var drawn_round = 0
 var drawn_phase = 0
@@ -28,7 +28,6 @@ var drawn_active = false
 
 
 func _process(_delta):
-	
 	# we cannot redraw all the time cause the game may freeze
 	# this limits the amount of redraws
 	if schedule_pointer != null:
@@ -41,6 +40,9 @@ func _draw():
 		drawn_round = schedule_pointer.round
 		drawn_phase = schedule_pointer.phase
 	
+	if schedule != null:
+		the_color = GameColors.schedule_color(schedule.kind)
+	
 	const cells = 8
 	const cell_offset = Vector2(1, 1)
 	const background_color = Color.TRANSPARENT #Color(Color.DIM_GRAY, 0.5)
@@ -50,7 +52,7 @@ func _draw():
 	var active_color = Color.YELLOW
 	var waiting_color = Color.TRANSPARENT #Color(Color.DIM_GRAY, 0.4)
 	#const line_color = Color(Color.DIM_GRAY, 1.0)
-	var positive_color = Color(the_color, 0.4) #Color(Color.DARK_GREEN, 0.4)
+	var positive_color = Color(the_color, 0.6) #Color(Color.DARK_GREEN, 0.4)
 	
 	var cell_x = size.x / cells
 	var cell_y = size.y

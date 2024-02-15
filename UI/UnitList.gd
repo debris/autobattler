@@ -43,20 +43,21 @@ func _on_name_button_pressed():
 func sort_by(kind: Schedule.Kind):
 	units.sort_custom(func(a, b):
 		var pattern = func(s): return s.kind == kind
+		var to_binary = func(b): if b: return "1" else: return "0"
 		var pos_a = ArrayIterator.new(a.schedules).until(pattern).count()
 		var pos_b = ArrayIterator.new(b.schedules).until(pattern).count()
 		if sort_order:
 			if pos_a == pos_b:
-				var a_str = ArrayIterator.new(a.schedules).find(pattern).get_value().as_string()
-				var b_str = ArrayIterator.new(b.schedules).find(pattern).get_value().as_string()
-				return a_str > b_str
+				var a_str = "".join(ArrayIterator.new(a.schedules).find(pattern).get_value().data.map(to_binary))
+				var b_str = "".join(ArrayIterator.new(b.schedules).find(pattern).get_value().data.map(to_binary))
+				return a_str < b_str
 			else:
 				return pos_a > pos_b
 		else:
 			if pos_a == pos_b:
-				var a_str = ArrayIterator.new(a.schedules).find(pattern).get_value().as_string()
-				var b_str = ArrayIterator.new(b.schedules).find(pattern).get_value().as_string()
-				return a_str < b_str
+				var a_str = "".join(ArrayIterator.new(a.schedules).find(pattern).get_value().data.map(to_binary))
+				var b_str = "".join(ArrayIterator.new(b.schedules).find(pattern).get_value().data.map(to_binary))
+				return a_str > b_str
 			else:
 				return pos_a < pos_b
 	)

@@ -27,14 +27,15 @@ clip_contents = true
 anchors_preset = 0
 offset_left = 64.0
 offset_top = 104.0
-offset_right = 1152.0
+offset_right = 528.0
 offset_bottom = 648.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ScrollBorders"]
 clip_contents = false
 layout_mode = 0
-offset_right = 1088.0
-offset_bottom = 584.0
+offset_top = 8.0
+offset_right = 464.0
+offset_bottom = 528.0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
@@ -124,7 +125,9 @@ offset_left = 64.0
 offset_top = 8.0
 offset_right = 512.0
 offset_bottom = 56.0
+theme_override_constants/line_spacing = 12
 theme_override_fonts/font = ExtResource("2_qlmkt")
+theme_override_font_sizes/font_size = 18
 placeholder_text = "Filter"
 
 [connection signal="pressed" from="TopPanel/MarginContainer/GridContainer/NameButton" to="." method="_on_name_button_pressed"]

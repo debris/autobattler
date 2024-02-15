@@ -101,17 +101,16 @@ text = "Name"
 
 [node name="Schedules" type="GridContainer" parent="Control/Content"]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 41.0
-offset_right = 146.0
-offset_bottom = 82.0
-rotation = 1.5708
+offset_left = 16.0
+offset_top = -64.0
+offset_right = 144.0
+offset_bottom = -16.0
 mouse_filter = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 metadata/_edit_group_ = true
 
-[node name="Schedule2" type="Control" parent="Control/Content/Schedules"]
+[node name="Schedule0" type="Control" parent="Control/Content/Schedules"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -125,7 +124,7 @@ size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("2_moluy")
 
-[node name="Schedule0" type="Control" parent="Control/Content/Schedules"]
+[node name="Schedule2" type="Control" parent="Control/Content/Schedules"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

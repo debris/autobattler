@@ -45,7 +45,7 @@ func show_diff_label(value):
 	var label = Label.new()
 	label.add_theme_font_size_override("font_size", 40)
 	label.add_theme_color_override("font_color", color)
-	label.position = Vector2(size.x + 16, 0)
+	label.position = Vector2(position.x + 32, 0)
 	label.size = size
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.text = str(value)
