@@ -12,7 +12,7 @@ var logs_iterator
 func _process(_delta):
 	if logs_iterator.peek() != null:
 		_display_log("=========================")
-		_display_log("ROUND: " + str(battle_state.round) + ", PHASE: " + str(battle_state.phase))
+		_display_log("ROUND: " + str(battle_state.round + 1) + ", PHASE: " + str(battle_state.phase + 1))
 	
 	logs_iterator.for_each(func(battle_log):
 		_display_log(battle_log._to_string() + battle_log._display_is_valid())

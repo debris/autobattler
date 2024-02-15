@@ -3,5 +3,5 @@ class_name LocationEvent
 
 func _init():
 	name = "Event"
-	reroll = 70
+	reroll = 100
 	icon = load("res://Assets/Icons/event.png")
