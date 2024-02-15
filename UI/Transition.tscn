@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsg4enj8e37ah"]
+
+[ext_resource type="Shader" path="res://UI/ScreenTransition.gdshader" id="1_yephn"]
+[ext_resource type="Script" path="res://UI/Transition.gd" id="2_n47do"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4rb71"]
+shader = ExtResource("1_yephn")
+shader_parameter/percent = 0.0
+
+[sub_resource type="Animation" id="Animation_e2t1o"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/percent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ackdd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/percent")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xnnyr"]
+_data = {
+"RESET": SubResource("Animation_ackdd"),
+"default": SubResource("Animation_e2t1o")
+}
+
+[node name="Transition" type="ColorRect"]
+material = SubResource("ShaderMaterial_4rb71")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0.462745, 1)
+script = ExtResource("2_n47do")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xnnyr")
+}
+autoplay = "default"

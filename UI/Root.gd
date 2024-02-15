@@ -13,6 +13,25 @@ var enemy_team_level
 
 var seed: int = 0
 
+func close_view(view):
+	await get_tree().create_timer(DisplaySettings.default().screen_transition_time).timeout
+	if view != null:
+		view.queue_free()
+
+# fancy screen transition
+func display_view_with_transition(view):
+	var back_buffer_copy = BackBufferCopy.new()
+	back_buffer_copy.copy_mode = BackBufferCopy.COPY_MODE_VIEWPORT
+	var transition = preload("res://UI/Transition.tscn").instantiate()
+	add_child(back_buffer_copy)
+	add_child(view)
+	add_child(transition)
+	await get_tree().create_timer(DisplaySettings.default().screen_transition_time + 0.1).timeout
+	if back_buffer_copy != null:
+		back_buffer_copy.queue_free()
+	if transition != null:
+		transition.queue_free()
+
 func _ready():
 	generator = Generator.new(seed)
 	
@@ -42,7 +61,7 @@ func _ready():
 			team.members = units
 			while team.members.size() < 6:
 				team.members.push_back(null)
-			select_units.queue_free()
+			close_view(select_units)
 			units_selected.emit()
 		)
 		add_child(select_units)
@@ -56,9 +75,9 @@ func _ready():
 		var map_control = preload("res://UI/Map.tscn").instantiate()
 		map_control.map = map
 		map_control.selected_location.connect(func():
-			map_control.queue_free()
+			close_view(map_control)
 		)
-		add_child(map_control)
+		display_view_with_transition(map_control)
 		await map_control.selected_location
 		
 		var current_location = map.current_location()
@@ -92,16 +111,15 @@ func display_battle(collection: Array[Unit]):
 	battle.enemy_team = generator.random_team(enemy_team_size, collection)
 	battle.battle_finished.connect(func(_result):
 		# TODO: depending on the result display different screens?
-		battle.queue_free()
+		close_view(battle)
 		battle_finished.emit()
 	)
-	add_child(battle)
+	display_view_with_transition(battle)
 	await battle_finished
 
 
 	# after the fight lets get some rewards
 	var select_reward = preload("res://UI/SelectUnits.tscn").instantiate()
-	#select_reward.generator = generator
 	select_reward.to_select = 1
 	select_reward.out_of = generator.random_team(6, collection)
 	select_reward.player_team_level = player_team_level
@@ -116,8 +134,8 @@ func display_battle(collection: Array[Unit]):
 				break
 		if !added:
 			bench.push_back(units[0])
-		select_reward.queue_free()
+		close_view(select_reward)
 		reward_selected.emit()
 	)
-	add_child(select_reward)
+	display_view_with_transition(select_reward)
 	await reward_selected
