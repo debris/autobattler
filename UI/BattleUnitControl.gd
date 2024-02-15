@@ -17,7 +17,7 @@ extends Control
 @onready var dmg_bonus_label = $Control/Content/DmgBonus
 @onready var def_bonus_label = $Control/Content/DefBonus
 
-@onready var schedules_list = $Control/Content/Schedules
+@onready var schedules_list = $Schedules
 
 var display_settings: DisplaySettings
 var battle_unit: BattleUnit
@@ -56,9 +56,11 @@ func _process(_delta):
 			content_child.visible = false
 		active_control.visible = false
 		active_on_schedule.visible = false
+		schedules_list.visible = false
 		
 		return
 
+	schedules_list.visible = true
 	content.visible = true
 	for content_child in content.get_children():
 			content_child.visible = true
@@ -86,6 +88,11 @@ func _process(_delta):
 	logs_iterator.for_each(func(battle_log):
 		_process_log(battle_log)
 	)
+
+	if battle_query.is_active():
+		control.scale = Vector2(1.1, 1.1)
+	else:
+		control.scale = Vector2(1.0, 1.0)
 
 	active_control.visible = battle_query.is_active()
 	active_on_schedule.visible = battle_query.is_active() && battle_query.is_on_schedule()

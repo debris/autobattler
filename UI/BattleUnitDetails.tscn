@@ -40,9 +40,9 @@ mouse_filter = 2
 
 [node name="BattleUnitControl" parent="CenterContainer/Control" instance=ExtResource("2_4cosj")]
 layout_mode = 2
-offset_top = -60.0
-offset_bottom = 180.0
-scale = Vector2(2, 2)
+offset_top = -52.0
+offset_bottom = 188.0
+scale = Vector2(1.9, 1.9)
 mouse_filter = 2
 
 [node name="Control" type="GridContainer" parent="."]

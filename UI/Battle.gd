@@ -92,7 +92,10 @@ func _ready():
 		list.selected_unit.connect(func(index):
 			var members = battle_state.team_b.members
 			var tmp = bench[index]
-			bench[index] = members[i].unit
+			if members[i] != null:
+				bench[index] = members[i].unit
+			else:
+				bench.remove_at(index)
 			members[i] = BattleUnit.new(tmp, player_team_level)
 
 			player_team.members[i] = tmp
