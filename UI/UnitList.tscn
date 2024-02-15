@@ -20,22 +20,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.745098)
+color = Color(0, 0, 0, 0.901961)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollBorders" type="Control" parent="."]
+clip_contents = true
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 104.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollBorders"]
 clip_contents = false
 layout_mode = 0
-offset_left = 64.0
-offset_top = 16.0
-offset_right = 1152.0
-offset_bottom = 632.0
+offset_right = 1088.0
+offset_bottom = 584.0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="ScrollBorders/ScrollContainer"]
 layout_mode = 2
 
 [node name="UnitsLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 960.0
 offset_top = 8.0
 offset_right = 1136.0
@@ -44,3 +51,84 @@ theme_override_fonts/font = ExtResource("2_qlmkt")
 theme_override_font_sizes/font_size = 40
 text = "Units"
 horizontal_alignment = 2
+
+[node name="TopPanel" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 56.0
+offset_right = 512.0
+offset_bottom = 104.0
+color = Color(0.745098, 0.745098, 0.745098, 0)
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="TopPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 8
+
+[node name="GridContainer" type="GridContainer" parent="TopPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+columns = 4
+metadata/_edit_group_ = true
+
+[node name="NameButton" type="Button" parent="TopPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_qlmkt")
+text = "Name"
+
+[node name="SkillButton" type="Button" parent="TopPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_qlmkt")
+text = "Skill"
+
+[node name="AttackButton" type="Button" parent="TopPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_qlmkt")
+text = "Attack"
+
+[node name="DefenceButton" type="Button" parent="TopPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_qlmkt")
+text = "Defence"
+
+[node name="ColorRect" type="ColorRect" parent="TopPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="NameFilter" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = 512.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("2_qlmkt")
+placeholder_text = "Filter"
+
+[connection signal="pressed" from="TopPanel/MarginContainer/GridContainer/NameButton" to="." method="_on_name_button_pressed"]
+[connection signal="pressed" from="TopPanel/MarginContainer/GridContainer/SkillButton" to="." method="_on_skill_button_pressed"]
+[connection signal="pressed" from="TopPanel/MarginContainer/GridContainer/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="TopPanel/MarginContainer/GridContainer/DefenceButton" to="." method="_on_defence_button_pressed"]
+[connection signal="text_changed" from="NameFilter" to="." method="_on_name_filter_text_changed"]

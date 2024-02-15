@@ -43,3 +43,9 @@ func copy() -> Schedule:
 	result.data.append_array(data)
 	result.kind = kind
 	return result
+
+func as_string() -> String:
+	var number = 0
+	for i in data.size():
+		number = number | (int(data[i]) << i)
+	return "%x%x%02x" % [kind as int, data.size(), number]

@@ -14,3 +14,13 @@ func _init(b: Unit, ss: Array[Schedule]):
 	def = b.def
 	skill = b.skill
 	schedules = ss
+
+func display_serial_number() -> String:
+	return " ".join(schedules.map(func(s):
+		var color: Color
+		match s.kind:
+			Schedule.Kind.SKILL: color = GameColors.blue()
+			Schedule.Kind.DEF: color = GameColors.green()
+			Schedule.Kind.DMG: color = GameColors.red()
+		return "[color=%s]%s[/color]" % [color.to_html(false), s.as_string()]
+	))

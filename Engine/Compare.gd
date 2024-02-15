@@ -15,4 +15,3 @@ static func highest_dmg(unit_a: BattleUnit, unit_b: BattleUnit):
 	if unit_a.dmg >= unit_b.dmg:
 		return unit_a
 	return unit_b
- 

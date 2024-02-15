@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://eagvkhnvorue"]
+[gd_scene load_steps=5 format=3 uid="uid://eagvkhnvorue"]
 
 [ext_resource type="Script" path="res://UI/UnitListEntry.gd" id="1_p8drj"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_ck1m6"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_ipio7"]
+
+[sub_resource type="FontVariation" id="FontVariation_5l4h4"]
+base_font = ExtResource("2_ipio7")
+variation_embolden = 1.0
+spacing_glyph = 4
+spacing_top = 2
 
 [node name="TeamListEntry" type="Control"]
 custom_minimum_size = Vector2(448, 64)
@@ -24,17 +30,30 @@ script = ExtResource("2_ck1m6")
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 96.0
-offset_right = 352.0
-offset_bottom = 64.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 272.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("2_ipio7")
+theme_override_font_sizes/font_size = 18
 text = "Name"
-vertical_alignment = 1
+
+[node name="SerialNumberLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 56.0
+theme_override_fonts/normal_font = SubResource("FontVariation_5l4h4")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "0000-0000-0000"
 
 [node name="Select" type="Button" parent="."]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 368.0
 offset_top = 16.0
-offset_right = 80.0
+offset_right = 432.0
 offset_bottom = 48.0
 theme_override_fonts/font = ExtResource("2_ipio7")
 text = "Select"
