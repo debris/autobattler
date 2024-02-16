@@ -23,6 +23,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.901961)
 
 [node name="SettingsLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 960.0
 offset_top = 8.0
 offset_right = 1136.0
@@ -47,7 +48,7 @@ size_flags_horizontal = 3
 [node name="DisplayLabel" type="Label" parent="ScrollContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_44dwe")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "Display"
 
 [node name="ColorRect" type="ColorRect" parent="ScrollContainer/GridContainer"]

@@ -10,6 +10,7 @@
 #
 # 3/7 42%
 # 3/8 37.5%
+@tool
 extends Resource
 class_name Schedule
 

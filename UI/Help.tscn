@@ -1,0 +1,512 @@
+[gd_scene load_steps=16 format=3 uid="uid://e8b6pgf2cp7g"]
+
+[ext_resource type="Script" path="res://UI/Help.gd" id="1_jg3qj"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_u002c"]
+[ext_resource type="Script" path="res://UI/ScheduleControl.gd" id="3_ncj4q"]
+[ext_resource type="Script" path="res://Engine/Schedule.gd" id="4_50ru1"]
+[ext_resource type="Script" path="res://Engine/SchedulePointer.gd" id="5_sb5bg"]
+[ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="6_kt0q8"]
+[ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="7_7idkj"]
+[ext_resource type="Texture2D" uid="uid://cosc70fx2btx3" path="res://Assets/Units/prime.png" id="8_ctw6j"]
+[ext_resource type="Shader" path="res://UI/AvatarShader.gdshader" id="8_nyxew"]
+
+[sub_resource type="Resource" id="Resource_xreo6"]
+script = ExtResource("4_50ru1")
+data = Array[bool]([true, false, false])
+kind = 0
+
+[sub_resource type="Resource" id="Resource_qavg4"]
+script = ExtResource("5_sb5bg")
+round = 0
+phase = 0
+active = false
+
+[sub_resource type="Resource" id="Resource_5f5x2"]
+script = ExtResource("4_50ru1")
+data = Array[bool]([false, true, false, false, true])
+kind = 1
+
+[sub_resource type="Resource" id="Resource_i7ork"]
+script = ExtResource("4_50ru1")
+data = Array[bool]([false, false, false, false, false, true, true, true])
+kind = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytha4"]
+shader = ExtResource("8_nyxew")
+
+[sub_resource type="FontVariation" id="FontVariation_bph2l"]
+base_font = ExtResource("2_u002c")
+variation_embolden = 4.16334e-17
+variation_transform = Transform2D(1, 0.5, 2.08165e-12, 1, 2.08165e-12, 2.08165e-12)
+
+[node name="Help" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jg3qj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.901961)
+
+[node name="SettingsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 8.0
+offset_right = 1136.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 40
+text = "Help"
+horizontal_alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 64.0
+offset_top = 16.0
+offset_right = 1152.0
+offset_bottom = 632.0
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 40
+text = "Actions"
+
+[node name="ColorRect4" type="ColorRect" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="Control" type="Control" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 24)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ScheduleControl" type="Control" parent="ScrollContainer/GridContainer/Control"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 16.0
+script = ExtResource("3_ncj4q")
+schedule = SubResource("Resource_xreo6")
+schedule_pointer = SubResource("Resource_qavg4")
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/Control"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
+theme_override_fonts/font = ExtResource("2_u002c")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 24
+text = "uses active skill in rounds: 1, 4, 7, 10, 13 ..."
+
+[node name="Space2" type="Control" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 16)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="Control2" type="Control" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 24)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ScheduleControl" type="Control" parent="ScrollContainer/GridContainer/Control2"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 16.0
+script = ExtResource("3_ncj4q")
+schedule = SubResource("Resource_5f5x2")
+schedule_pointer = SubResource("Resource_qavg4")
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/Control2"]
+offset_left = 24.0
+offset_right = 48.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
+theme_override_fonts/font = ExtResource("2_u002c")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ScrollContainer/GridContainer/Control2"]
+offset_left = 96.0
+offset_right = 120.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
+theme_override_fonts/font = ExtResource("2_u002c")
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 24
+text = "defends in rounds: 2, 5, 7, 10, 12 ..."
+
+[node name="Space3" type="Control" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 16)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="ScrollContainer/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="Control3" type="Control" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 24)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ScheduleControl" type="Control" parent="ScrollContainer/GridContainer/Control3"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 16.0
+script = ExtResource("3_ncj4q")
+schedule = SubResource("Resource_i7ork")
+schedule_pointer = SubResource("Resource_qavg4")
+
+[node name="Label3" type="Label" parent="ScrollContainer/GridContainer/Control3"]
+offset_left = 120.0
+offset_top = 1.0
+offset_right = 144.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
+theme_override_fonts/font = ExtResource("2_u002c")
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="ScrollContainer/GridContainer/Control3"]
+offset_left = 144.0
+offset_top = 1.0
+offset_right = 168.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
+theme_override_fonts/font = ExtResource("2_u002c")
+text = "7"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="ScrollContainer/GridContainer/Control3"]
+offset_left = 168.0
+offset_top = 1.0
+offset_right = 192.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
+theme_override_fonts/font = ExtResource("2_u002c")
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 24
+text = "attacks in rounds: 6, 7, 8, 14, 15, 16 ..."
+
+[node name="ColorRect3" type="ColorRect" parent="ScrollContainer/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="Space" type="Control" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 32)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label5" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 40
+text = "Units"
+
+[node name="ColorRect5" type="ColorRect" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="Unit" type="Control" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(160, 266)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ConcreteTile" type="Sprite2D" parent="ScrollContainer/GridContainer/Unit"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+scale = Vector2(0.610687, 0.634921)
+texture = ExtResource("6_kt0q8")
+centered = false
+region_enabled = true
+region_rect = Rect2(513, 373, 262, 378)
+
+[node name="Name" type="Label" parent="ScrollContainer/GridContainer/Unit"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("7_7idkj")
+theme_override_font_sizes/font_size = 20
+text = "Prime"
+
+[node name="Def" type="Label" parent="ScrollContainer/GridContainer/Unit"]
+offset_left = 80.0
+offset_top = 200.0
+offset_right = 152.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_fonts/font = ExtResource("7_7idkj")
+theme_override_font_sizes/font_size = 24
+text = "15"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Dmg" type="Label" parent="ScrollContainer/GridContainer/Unit"]
+offset_left = 8.0
+offset_top = 200.0
+offset_right = 80.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_fonts/font = ExtResource("7_7idkj")
+theme_override_font_sizes/font_size = 24
+text = "5"
+vertical_alignment = 1
+
+[node name="Action" type="Label" parent="ScrollContainer/GridContainer/Unit"]
+offset_top = 200.0
+offset_right = 160.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(0.5, 0.25, 0.25, 1)
+theme_override_fonts/font = ExtResource("7_7idkj")
+text = "Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect5" type="ColorRect" parent="ScrollContainer/GridContainer/Unit"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 18.0
+offset_right = 200.0
+offset_bottom = 19.0
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="ScrollContainer/GridContainer/Unit"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 218.0
+offset_right = 200.0
+offset_bottom = 219.0
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="ScrollContainer/GridContainer/Unit"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 0
+offset_left = 80.0
+offset_top = 186.0
+offset_right = 200.0
+offset_bottom = 187.0
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="ScrollContainer/GridContainer/Unit"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 250.0
+offset_right = 200.0
+offset_bottom = 251.0
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="ScrollContainer/GridContainer/Unit"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 0
+offset_left = 80.0
+offset_top = 186.0
+offset_right = 81.0
+offset_bottom = 202.0
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="ScrollContainer/GridContainer/Unit"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 242.0
+offset_right = 17.0
+offset_bottom = 250.0
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/Unit"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 10.0
+offset_right = 248.0
+offset_bottom = 33.0
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 24
+text = "Unit name"
+
+[node name="Label2" type="Label" parent="ScrollContainer/GridContainer/Unit"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 210.0
+offset_right = 248.0
+offset_bottom = 238.0
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 24
+text = "defence"
+
+[node name="Label3" type="Label" parent="ScrollContainer/GridContainer/Unit"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 178.0
+offset_right = 280.0
+offset_bottom = 206.0
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 24
+text = "Action"
+
+[node name="Label4" type="Label" parent="ScrollContainer/GridContainer/Unit"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 242.0
+offset_right = 280.0
+offset_bottom = 270.0
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 24
+text = "Damage"
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/GridContainer/Unit"]
+material = SubResource("ShaderMaterial_ytha4")
+layout_mode = 0
+offset_top = 42.0
+offset_right = 160.0
+offset_bottom = 202.0
+texture = ExtResource("8_ctw6j")
+expand_mode = 2
+
+[node name="Space4" type="Control" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 32)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label6" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 40
+text = "Skills"
+
+[node name="ColorRect6" type="ColorRect" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="Label7" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 24
+text = "Active - activated according to the schedule e.g."
+
+[node name="Label10" type="Label" parent="ScrollContainer/GridContainer/Label7"]
+layout_mode = 2
+offset_right = 588.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 24
+text = "Active"
+
+[node name="Control4" type="Control" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 24)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ScheduleControl" type="Control" parent="ScrollContainer/GridContainer/Control4"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 16.0
+script = ExtResource("3_ncj4q")
+schedule = SubResource("Resource_xreo6")
+schedule_pointer = SubResource("Resource_qavg4")
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/Control4"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
+theme_override_fonts/font = ExtResource("2_u002c")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space5" type="Control" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 16)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label8" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 24
+text = "Passive - conditionally activated when the
+conditions are met e.g."
+
+[node name="Label11" type="Label" parent="ScrollContainer/GridContainer/Label8"]
+layout_mode = 2
+offset_right = 588.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
+theme_override_fonts/font = ExtResource("2_u002c")
+theme_override_font_sizes/font_size = 24
+text = "Passive"
+
+[node name="Label9" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_bph2l")
+theme_override_font_sizes/font_size = 24
+text = "on enemy attack, on ally skill use"
