@@ -118,10 +118,11 @@ script = ExtResource("5_sprwv")
 
 [node name="RerollButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1064.0
-offset_top = 600.0
+offset_left = 1032.0
+offset_top = 584.0
 offset_right = 1144.0
 offset_bottom = 640.0
+theme_override_fonts/font = ExtResource("5_haiug")
 text = "Reroll"
 script = ExtResource("5_sprwv")
 

@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct4bvrnmjjbfm"]
+
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_44dwe"]
+[ext_resource type="Script" path="res://UI/Settings.gd" id="1_seu4n"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_seu4n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.901961)
+
+[node name="SettingsLabel" type="Label" parent="."]
+offset_left = 960.0
+offset_top = 8.0
+offset_right = 1136.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("1_44dwe")
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+horizontal_alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 64.0
+offset_top = 16.0
+offset_right = 384.0
+offset_bottom = 632.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DisplayLabel" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_44dwe")
+theme_override_font_sizes/font_size = 30
+text = "Display"
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="StepAnimationTimeLabel" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_44dwe")
+theme_override_font_sizes/font_size = 24
+text = "step animation time:"
+
+[node name="StepAnimationTimeSlider" type="HSlider" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+min_value = 0.1
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="ScreenChangeTimeLabel" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_44dwe")
+theme_override_font_sizes/font_size = 24
+text = "screen change time:
+"
+
+[node name="ScreenChangeTimeSlider" type="HSlider" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+min_value = 0.1
+max_value = 1.0
+step = 0.05
+value = 0.7
+
+[connection signal="value_changed" from="ScrollContainer/GridContainer/StepAnimationTimeSlider" to="." method="_on_step_animation_time_slider_value_changed"]
+[connection signal="value_changed" from="ScrollContainer/GridContainer/ScreenChangeTimeSlider" to="." method="_on_screen_change_time_slider_value_changed"]

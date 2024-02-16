@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://rnhm1enuxv6q"]
+
+[ext_resource type="Script" path="res://UI/GlobalOverlay.gd" id="1_tkmo4"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_xbdg5"]
+[ext_resource type="Script" path="res://UI/GameButton.gd" id="3_0d3qd"]
+
+[node name="GlobalOverlay" type="CanvasLayer"]
+script = ExtResource("1_tkmo4")
+
+[node name="SettingsButton" type="Button" parent="."]
+offset_left = 1032.0
+offset_top = 8.0
+offset_right = 1144.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("1_xbdg5")
+text = "Settings
+"
+script = ExtResource("3_0d3qd")
+
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
