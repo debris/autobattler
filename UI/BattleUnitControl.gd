@@ -106,11 +106,12 @@ func _gui_input(event):
 func _display_bonuses():
 	def_label.text = str(battle_unit.def)
 	dmg_label.text = str(battle_unit.dmg)
+
 	if battle_unit.dmg_bonus == 0:
 		dmg_bonus_label.text = ""
 	else:
 		dmg_bonus_label.text = "x"
-			
+				
 	if battle_unit.def_bonus == 0:
 		def_bonus_label.text = ""
 	else:

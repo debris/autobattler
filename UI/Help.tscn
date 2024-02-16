@@ -153,6 +153,7 @@ schedule = SubResource("Resource_5f5x2")
 schedule_pointer = SubResource("Resource_qavg4")
 
 [node name="Label" type="Label" parent="ScrollContainer/GridContainer/Control2"]
+layout_mode = 0
 offset_left = 24.0
 offset_right = 48.0
 offset_bottom = 23.0
@@ -163,6 +164,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="ScrollContainer/GridContainer/Control2"]
+layout_mode = 0
 offset_left = 96.0
 offset_right = 120.0
 offset_bottom = 23.0
@@ -206,6 +208,7 @@ schedule = SubResource("Resource_i7ork")
 schedule_pointer = SubResource("Resource_qavg4")
 
 [node name="Label3" type="Label" parent="ScrollContainer/GridContainer/Control3"]
+layout_mode = 0
 offset_left = 120.0
 offset_top = 1.0
 offset_right = 144.0
@@ -217,6 +220,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="ScrollContainer/GridContainer/Control3"]
+layout_mode = 0
 offset_left = 144.0
 offset_top = 1.0
 offset_right = 168.0
@@ -228,6 +232,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="ScrollContainer/GridContainer/Control3"]
+layout_mode = 0
 offset_left = 168.0
 offset_top = 1.0
 offset_right = 192.0
@@ -282,6 +287,7 @@ region_enabled = true
 region_rect = Rect2(513, 373, 262, 378)
 
 [node name="Name" type="Label" parent="ScrollContainer/GridContainer/Unit"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 160.0
@@ -291,6 +297,7 @@ theme_override_font_sizes/font_size = 20
 text = "Prime"
 
 [node name="Def" type="Label" parent="ScrollContainer/GridContainer/Unit"]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 200.0
 offset_right = 152.0
@@ -303,6 +310,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Dmg" type="Label" parent="ScrollContainer/GridContainer/Unit"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 200.0
 offset_right = 80.0
@@ -314,6 +322,7 @@ text = "5"
 vertical_alignment = 1
 
 [node name="Action" type="Label" parent="ScrollContainer/GridContainer/Unit"]
+layout_mode = 0
 offset_top = 200.0
 offset_right = 160.0
 offset_bottom = 240.0

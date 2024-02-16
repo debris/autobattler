@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dr0dc7idr7cvr"]
+[gd_scene load_steps=11 format=3 uid="uid://dr0dc7idr7cvr"]
 
 [ext_resource type="Script" path="res://UI/LocationControl.gd" id="1_n8w8j"]
 [ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="2_2cmxt"]
-[ext_resource type="Script" path="res://UI/ImageRect.gd" id="2_5b3hp"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_6migv"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="3_rwavq"]
 [ext_resource type="Shader" path="res://UI/AvatarShader.gdshader" id="4_cukmc"]
@@ -10,11 +9,10 @@
 [ext_resource type="Shader" path="res://UI/IconPlayerShader.gdshader" id="8_r2iw3"]
 [ext_resource type="Texture2D" uid="uid://bon14hoca0ad5" path="res://Assets/Icons/player.png" id="9_a75gy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_amulv"]
-resource_local_to_scene = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50l7j"]
 shader = ExtResource("4_cukmc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4ely"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bl5do"]
 shader = ExtResource("8_r2iw3")
 
 [node name="LocationControl" type="Control"]
@@ -77,18 +75,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.705882)
 
-[node name="Icon" type="Control" parent="Content"]
-process_mode = 4
-material = SubResource("ShaderMaterial_amulv")
+[node name="Icon" type="TextureRect" parent="Content"]
+material = SubResource("ShaderMaterial_50l7j")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("2_5b3hp")
 texture = ExtResource("5_fsxle")
+expand_mode = 1
 
 [node name="InactiveControl" type="ColorRect" parent="Content"]
 visible = false
@@ -114,15 +110,13 @@ text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CurrentControl" type="Control" parent="Content"]
-process_mode = 4
+[node name="CurrentControl" type="TextureRect" parent="Content"]
 visible = false
-material = SubResource("ShaderMaterial_t4ely")
-anchors_preset = 0
+material = SubResource("ShaderMaterial_bl5do")
+layout_mode = 0
 offset_left = -16.0
 offset_top = -16.0
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 2
-script = ExtResource("2_5b3hp")
 texture = ExtResource("9_a75gy")
+expand_mode = 1
