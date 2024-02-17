@@ -4,7 +4,12 @@ signal reroll_button_pressed
 signal selected_units(units: Array[OwnedUnit])
 
 @export var to_select: int = 2
-@export var out_of: Team
+@export var out_of: Team:
+	set(value):
+		out_of = value
+		if is_node_ready():
+			update_display()
+			
 @export var player_team_level: int
 @export var title_text: String
 @export var reroll_button_visible: bool = false
@@ -20,19 +25,22 @@ var selected: Array[OwnedUnit] = []
 func _ready():
 	reroll_button.visible = reroll_button_visible
 	select_label.text = title_text
+	
 	var battle_controller = BattleController.default()
 	battle_controller.show_details.connect(func(battle_query):
 		var details = load("res://UI/BattleUnitDetails.tscn").instantiate()
 		details.battle_query = battle_query
 		add_child(details)
 	)
+	for button in select_button_grid.get_children():
+		button.pressed.connect(_on_select_button_pressed.bind(button))
 	
+	update_display()
+
+func update_display():
 	var battle_state = BattleState.new(BattleTeam.new(out_of, player_team_level), BattleTeam.new(Team.null_team()))
 	displayed_team = battle_state.team_a
 	battle_team_control.battle_team_query = battle_state.team_a_query()
-	
-	for button in select_button_grid.get_children():
-		button.pressed.connect(_on_select_button_pressed.bind(button))
 
 func _on_select_button_pressed(button):
 	var index = button.get_index()

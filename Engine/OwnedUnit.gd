@@ -8,7 +8,8 @@ class_name OwnedUnit
 @export var skill: Skill
 @export var schedules: Array[Schedule]
 
-func _init(b: Unit, ss: Array[Schedule]):
+# the empty constructor should not be used, but is REQUIRED by godots serializer
+func _init(b: Unit = Unit.new(), ss: Array[Schedule] = []):
 	base = b
 	dmg = b.dmg
 	def = b.def

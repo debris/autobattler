@@ -8,24 +8,23 @@
 script = ExtResource("1_tkmo4")
 
 [node name="SettingsButton" type="Button" parent="."]
-offset_left = 992.0
+offset_left = 8.0
 offset_top = 8.0
-offset_right = 1144.0
+offset_right = 56.0
 offset_bottom = 56.0
 theme_override_fonts/font = ExtResource("1_xbdg5")
 theme_override_font_sizes/font_size = 24
-text = "Settings
-"
+text = "*"
 script = ExtResource("3_0d3qd")
 
 [node name="HelpButton" type="Button" parent="."]
-offset_left = 992.0
-offset_top = 64.0
-offset_right = 1144.0
-offset_bottom = 112.0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 56.0
+offset_bottom = 120.0
 theme_override_fonts/font = ExtResource("1_xbdg5")
 theme_override_font_sizes/font_size = 24
-text = "Help"
+text = "?"
 script = ExtResource("3_0d3qd")
 
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

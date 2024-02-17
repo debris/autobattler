@@ -1,0 +1,2 @@
+extends SelectNameAction
+class_name SelectNameActionCancel

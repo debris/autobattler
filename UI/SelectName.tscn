@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://blb5rreojl423"]
+
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_j08r3"]
+[ext_resource type="Script" path="res://UI/SelectName.gd" id="1_vtsyf"]
+[ext_resource type="Script" path="res://UI/GameButton.gd" id="2_r6084"]
+
+[node name="SelectName" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vtsyf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 1, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(448, 48)
+layout_mode = 2
+theme_override_constants/line_spacing = 8
+theme_override_fonts/font = ExtResource("1_j08r3")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Enter Name"
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+columns = 2
+
+[node name="CancelButton" type="Button" parent="CenterContainer/GridContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_j08r3")
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+script = ExtResource("2_r6084")
+
+[node name="ProceedButton" type="Button" parent="CenterContainer/GridContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_j08r3")
+theme_override_font_sizes/font_size = 24
+text = "Proceed"
+script = ExtResource("2_r6084")
+
+[connection signal="pressed" from="CenterContainer/GridContainer/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer/GridContainer/ProceedButton" to="." method="_on_proceed_button_pressed"]

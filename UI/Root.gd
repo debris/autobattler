@@ -1,17 +1,16 @@
 extends CanvasLayer
 
-signal units_selected
-signal battle_finished
-signal reward_selected
-
 var generator: Generator
-var team: Team
-var bench: Array[OwnedUnit]
-var enemy_team_size
-var player_team_level
-var enemy_team_level
+var save: Save
+var save_name: String
 
-var seed: int = 0
+func enemy_team_size() -> int:
+	if save.floor == 0:
+		return save.count_units() - 1
+	return 6
+#
+func enemy_team_level(floor: int) -> int:
+	return 2 * floor
 
 func close_view(view):
 	await get_tree().create_timer(DisplaySettings.default().screen_transition_time).timeout
@@ -34,54 +33,66 @@ func display_view_with_transition(view):
 
 func _ready():
 	Sounds.start_main_theme_track()
-	generator = Generator.new(seed)
-	
-	# TODO: load team
-	team = Team.new()
-	bench = [] as Array[OwnedUnit]
-	#for i in 100:
-		#bench.push_back(generator.random_unit())
-	enemy_team_size = 0
-	player_team_level = 0
-	enemy_team_level = 0
 
-	while team.members.size() == 0:
+	# LOAD GAME
+	while save == null:
+		var load_game = preload("res://UI/Loadgame.tscn").instantiate()
+		add_child(load_game)
+		var action = await load_game.action_selected
+		close_view(load_game)
+	
+		if action is LoadgameActionNew:
+			var select_name = preload("res://UI/SelectName.tscn").instantiate()
+			display_view_with_transition(select_name)
+			#save_name = await select_name.selected_name
+			var select_name_action = await select_name.action_selected
+			close_view(select_name)
+			
+			if select_name_action is SelectNameActionCancel:
+				continue
+			
+			if select_name_action is SelectNameActionProceed:
+				save_name = select_name_action.selected_name
+				save = Save.new()
+				save.write_save(save_name)
+	
+		if action is LoadgameActionLoad:
+			save = action.save
+			save_name = action.save_name
+
+	# SELECT STARTING UNITS
+	generator = Generator.new(save_name.hash())
+	while save.count_units() == 0:
 		# if there is no team to load, select new
 		var select_units = preload("res://UI/SelectUnits.tscn").instantiate()
-		#select_units.generator = generator
 		select_units.to_select = 2
 		select_units.out_of = generator.random_team(6)
-		select_units.player_team_level = player_team_level
+		select_units.player_team_level = save.player_team_level
 		select_units.title_text = "select 2 units"
 		select_units.reroll_button_visible = true
 		select_units.reroll_button_pressed.connect(func():
-			seed += 1
-			select_units.queue_free()
-			# team size is still 0, so we will start over with a different seed
-			units_selected.emit()
+			select_units.out_of = generator.random_team(6)
 		)
-		select_units.selected_units.connect(func(units):
-			team.members = units
-			while team.members.size() < 6:
-				team.members.push_back(null)
-			close_view(select_units)
-			units_selected.emit()
-		)
-		add_child(select_units)
-			
-		await units_selected
+		display_view_with_transition(select_units)
+		var units = await select_units.selected_units
+		save.team.members = units
+		while save.team.members.size() < 6:
+			save.team.members.push_back(null)
+		close_view(select_units)
 
 
-	# game screen loop
+	# GAME LOOP
+	generator = Generator.new((save_name + str(save.floor)).hash())
 	var map = generator.random_map(Map.COLUMNS, Map.ROWS)
 	while true:
+		# save the game after every completed location
+		save.write_save(save_name)
+		
 		var map_control = preload("res://UI/Map.tscn").instantiate()
 		map_control.map = map
-		map_control.selected_location.connect(func():
-			close_view(map_control)
-		)
 		display_view_with_transition(map_control)
 		await map_control.selected_location
+		close_view(map_control)
 		
 		var current_location = map.current_location()
 		
@@ -92,9 +103,10 @@ func _ready():
 			# TODO: display a different kind of battle?
 			await display_battle(Units.all)
 			# progress to the new map
+			save.player_team_level += 1
+			save.floor += 1
+			generator = Generator.new((save_name + str(save.floor)).hash())
 			map = generator.random_map(Map.COLUMNS, Map.ROWS)
-			player_team_level += 1
-			enemy_team_level += 2
 
 		if current_location is LocationTreasure:
 			var _treasure = generator.random_treasure()
@@ -105,40 +117,34 @@ func _ready():
 
 func display_battle(collection: Array[Unit]):
 	# lets fight with our team
-	enemy_team_size = min(6, enemy_team_size + 1)
 	var battle = preload("res://UI/Battle.tscn").instantiate()
-	battle.player_team_level = player_team_level
-	battle.enemy_team_level = enemy_team_level
-	battle.player_team = team
-	battle.bench = bench
-	battle.enemy_team = generator.random_team(enemy_team_size, collection)
-	battle.battle_finished.connect(func(_result):
-		# TODO: depending on the result display different screens?
-		close_view(battle)
-		battle_finished.emit()
-	)
+	battle.player_team_level = save.player_team_level
+	battle.enemy_team_level = enemy_team_level(save.floor)
+	battle.player_team = save.team
+	battle.bench = save.bench
+	battle.enemy_team = generator.random_team(enemy_team_size(), collection)
 	display_view_with_transition(battle)
-	await battle_finished
+	var _result = await battle.battle_finished
+	close_view(battle)
 
 
 	# after the fight lets get some rewards
 	var select_reward = preload("res://UI/SelectUnits.tscn").instantiate()
 	select_reward.to_select = 1
 	select_reward.out_of = generator.random_team(6, collection)
-	select_reward.player_team_level = player_team_level
+	select_reward.player_team_level = save.player_team_level
 	select_reward.title_text = "select reward"
-	select_reward.selected_units.connect(func(units):
-		assert(units.size() == 1)
-		var added = false
-		for i in team.members.size():
-			if team.members[i] == null:
-				team.members[i] = units[0]
-				added = true
-				break
-		if !added:
-			bench.push_back(units[0])
-		close_view(select_reward)
-		reward_selected.emit()
-	)
 	display_view_with_transition(select_reward)
-	await reward_selected
+	var units = await select_reward.selected_units
+	assert(units.size() == 1)
+	close_view(select_reward)
+	
+	var added = false
+	for i in save.team.members.size():
+		if save.team.members[i] == null:
+			save.team.members[i] = units[0]
+			added = true
+			break
+
+	if !added:
+		save.bench.push_back(units[0])
