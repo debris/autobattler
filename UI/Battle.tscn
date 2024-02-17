@@ -220,6 +220,7 @@ vertical_alignment = 1
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -232,9 +233,9 @@ theme = SubResource("Theme_dqv1h")
 [node name="Console" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 200.0
+offset_top = 176.0
 offset_right = 56.0
-offset_bottom = 248.0
+offset_bottom = 224.0
 text = "\"'"
 script = ExtResource("9_d1yxv")
 

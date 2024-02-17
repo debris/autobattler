@@ -2,13 +2,13 @@ extends Control
 
 signal action_selected(LoadgameAction)
 
-@onready var preview_control = $Preview
 @onready var saves_list = $Border/ScrollContainer/Saves
-@onready var save_name_label = $Preview/SaveName
-@onready var chapter_label = $Preview/ChapterLabel
-@onready var level_label = $Preview/LevelLabel
-@onready var units_label = $Preview/UnitsLabel
-@onready var team_list = $Preview/TeamList
+@onready var preview_control = $CenterContainer/Preview
+@onready var save_name_label = $CenterContainer/Preview/SaveName
+@onready var chapter_label = $CenterContainer/Preview/ChapterLabel
+@onready var level_label = $CenterContainer/Preview/LevelLabel
+@onready var units_label = $CenterContainer/Preview/UnitsLabel
+@onready var team_list = $CenterContainer/Preview/TeamList
 
 var save_preview: Save:
 	set(value):
