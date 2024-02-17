@@ -3,10 +3,11 @@ extends Control
 @export var battle_query: BattleQuery:
 	set(value):
 		battle_query = value
-		if battle_unit_control != null:
-			battle_unit_control.battle_query = battle_query
+		if is_node_ready():
+			update_display()
 
-@onready var battle_unit_control = $CenterContainer/Control/BattleUnitControl
+
+@onready var unit_control = $CenterContainer/Control/UnitControl
 @onready var tags_content = $Control/TagsContent
 @onready var skill_name = $Control/SkillName
 @onready var skill_description = $Control/SkillDescription
@@ -14,11 +15,11 @@ extends Control
 @onready var passive_description = $Control/PassiveDescription
 
 func _ready():
-	battle_unit_control.battle_query = battle_query
-	battle_unit_control.click_to_show_details = false
-	battle_unit_control.with_battle_logs = false
-	
+	update_display()
+
+func update_display():
 	var unit = battle_query.get_this_unit()
+	unit_control.display_battle_unit(unit)
 	
 	tags_content.text = ", ".join(unit.tags.keys())
 	skill_name.text = "Active: " + unit.skill.name

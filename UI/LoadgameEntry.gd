@@ -32,6 +32,8 @@ func _ready():
 
 func update_display():
 	name_label.text = text
+	# TODO: convert utc time to local time
+	# TODO: pretty print
 	date_label.text = utc_time
 
 func _gui_input(event):

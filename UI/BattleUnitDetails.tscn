@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmqmsbr11cdeb"]
 
 [ext_resource type="Script" path="res://UI/BattleUnitDetails.gd" id="1_28edc"]
-[ext_resource type="PackedScene" uid="uid://nooylmpe7l5w" path="res://UI/BattleUnitControl.tscn" id="2_4cosj"]
+[ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="3_bbnrl"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="3_vb625"]
 
 [node name="BattleUnitDetails" type="Control"]
@@ -38,12 +38,14 @@ custom_minimum_size = Vector2(320, 480)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="BattleUnitControl" parent="CenterContainer/Control" instance=ExtResource("2_4cosj")]
+[node name="UnitControl" parent="CenterContainer/Control" instance=ExtResource("3_bbnrl")]
 layout_mode = 2
-offset_top = -52.0
-offset_bottom = 188.0
-scale = Vector2(1.9, 1.9)
-mouse_filter = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 160.0
+offset_bottom = 240.0
+scale = Vector2(2, 2)
 
 [node name="Control" type="GridContainer" parent="."]
 layout_mode = 0
