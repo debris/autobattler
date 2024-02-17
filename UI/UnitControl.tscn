@@ -1,13 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmn414tgvv43c"]
+[gd_scene load_steps=9 format=3 uid="uid://dmn414tgvv43c"]
 
 [ext_resource type="Texture2D" uid="uid://b4luy6l1hso5k" path="res://Assets/card_back.png" id="1_bd7dg"]
 [ext_resource type="Script" path="res://UI/UnitControl.gd" id="1_q6svs"]
 [ext_resource type="Shader" path="res://UI/AvatarShader.gdshader" id="2_1v1rc"]
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="2_48twk"]
 [ext_resource type="Texture2D" uid="uid://c72e21ql22q8y" path="res://Assets/Units/captain_blaze.png" id="2_hvc5d"]
+[ext_resource type="Shader" path="res://UI/Shine.gdshader" id="6_eyufi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu2ho"]
 shader = ExtResource("2_1v1rc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a83py"]
+shader = ExtResource("6_eyufi")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
 
 [node name="UnitControl" type="Control"]
 custom_minimum_size = Vector2(160, 240)
@@ -82,6 +89,19 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_hvc5d")
 expand_mode = 1
+
+[node name="Shine" type="ColorRect" parent="Content"]
+material = SubResource("ShaderMaterial_a83py")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.0470588)
 
 [node name="Dmg" type="Label" parent="Content"]
 layout_mode = 1
