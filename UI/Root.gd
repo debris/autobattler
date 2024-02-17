@@ -5,12 +5,12 @@ var save: Save
 var save_name: String
 
 func enemy_team_size() -> int:
-	if save.floor == 0:
+	if save.chapter == 0:
 		return save.count_units() - 1
 	return 6
 #
-func enemy_team_level(floor: int) -> int:
-	return 2 * floor
+func enemy_team_level(chapter: int) -> int:
+	return 2 * chapter
 
 func close_view(view):
 	await get_tree().create_timer(DisplaySettings.default().screen_transition_time).timeout
@@ -82,7 +82,7 @@ func _ready():
 
 
 	# GAME LOOP
-	generator = Generator.new((save_name + str(save.floor)).hash())
+	generator = Generator.new((save_name + str(save.chapter)).hash())
 	var map = generator.random_map(Map.COLUMNS, Map.ROWS)
 	while true:
 		# save the game after every completed location
@@ -104,8 +104,8 @@ func _ready():
 			await display_battle(Units.all)
 			# progress to the new map
 			save.player_team_level += 1
-			save.floor += 1
-			generator = Generator.new((save_name + str(save.floor)).hash())
+			save.chapter += 1
+			generator = Generator.new((save_name + str(save.chapter)).hash())
 			map = generator.random_map(Map.COLUMNS, Map.ROWS)
 
 		if current_location is LocationTreasure:
@@ -119,7 +119,7 @@ func display_battle(collection: Array[Unit]):
 	# lets fight with our team
 	var battle = preload("res://UI/Battle.tscn").instantiate()
 	battle.player_team_level = save.player_team_level
-	battle.enemy_team_level = enemy_team_level(save.floor)
+	battle.enemy_team_level = enemy_team_level(save.chapter)
 	battle.player_team = save.team
 	battle.bench = save.bench
 	battle.enemy_team = generator.random_team(enemy_team_size(), collection)

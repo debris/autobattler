@@ -45,6 +45,15 @@ func _init(u: OwnedUnit, tl: int = 0):
 	for tag in u.base.tags:
 		tags[tag] = null
 
+func turn_into(other: BattleUnit):	
+	var copy_fields = func(battle_unit: BattleUnit, fields):
+		for key in fields.keys():
+			if !key.begins_with("@"):
+				battle_unit[key] = fields[key]
+
+	var tmp = inst_to_dict(other)
+	copy_fields.call(self, tmp)
+
 func skill_at(phase: int) -> Skill:
 	assert(phase >= 0 && phase <= 2, "there are only 3 phases")
 	match schedules[phase].kind:

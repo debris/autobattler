@@ -3,13 +3,13 @@ class_name Save
 
 @export var team: Team
 @export var bench: Array[OwnedUnit]
-@export var floor: int
+@export var chapter: int
 @export var player_team_level: int
 
 func _init():
 	team = Team.new()
 	bench = []
-	floor = 0
+	chapter = 0
 	player_team_level = 0
 
 func count_units() -> int:

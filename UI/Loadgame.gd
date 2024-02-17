@@ -5,7 +5,7 @@ signal action_selected(LoadgameAction)
 @onready var preview_control = $Preview
 @onready var saves_list = $Border/ScrollContainer/Saves
 @onready var save_name_label = $Preview/SaveName
-@onready var floor_label = $Preview/FloorLabel
+@onready var chapter_label = $Preview/ChapterLabel
 @onready var level_label = $Preview/LevelLabel
 @onready var units_label = $Preview/UnitsLabel
 @onready var team_label = $Preview/TeamLabel
@@ -38,7 +38,7 @@ func display_preview():
 	
 	preview_control.visible = true
 	save_name_label.text = save_name
-	floor_label.text = "floor: " + str(save_preview.floor)
+	chapter_label.text = "chapter: " + str(save_preview.chapter)
 	level_label.text = "level: " + str(save_preview.player_team_level)
 	# bench size + not null members
 	var units_count = str(save_preview.count_units())

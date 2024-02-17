@@ -117,46 +117,6 @@ theme_override_font_sizes/font_size = 40
 text = "save name"
 vertical_alignment = 1
 
-[node name="FloorLabel" type="Label" parent="Preview"]
-layout_mode = 0
-offset_top = 64.0
-offset_right = 192.0
-offset_bottom = 96.0
-theme_override_fonts/font = ExtResource("2_1d7kx")
-theme_override_font_sizes/font_size = 24
-text = "floor"
-vertical_alignment = 1
-
-[node name="LevelLabel" type="Label" parent="Preview"]
-layout_mode = 0
-offset_top = 96.0
-offset_right = 192.0
-offset_bottom = 128.0
-theme_override_fonts/font = ExtResource("2_1d7kx")
-theme_override_font_sizes/font_size = 24
-text = "level"
-vertical_alignment = 1
-
-[node name="UnitsLabel" type="Label" parent="Preview"]
-layout_mode = 0
-offset_top = 128.0
-offset_right = 192.0
-offset_bottom = 160.0
-theme_override_fonts/font = ExtResource("2_1d7kx")
-theme_override_font_sizes/font_size = 24
-text = "UNITS"
-vertical_alignment = 1
-
-[node name="TeamLabel" type="Label" parent="Preview"]
-layout_mode = 0
-offset_top = 160.0
-offset_right = 192.0
-offset_bottom = 192.0
-theme_override_fonts/font = ExtResource("2_1d7kx")
-theme_override_font_sizes/font_size = 24
-text = "TEAM"
-vertical_alignment = 1
-
 [node name="ColorRect2" type="ColorRect" parent="Preview"]
 custom_minimum_size = Vector2(2.08165e-12, 1)
 layout_mode = 0
@@ -164,6 +124,46 @@ offset_top = 63.0
 offset_right = 256.0
 offset_bottom = 64.0
 color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="ChapterLabel" type="Label" parent="Preview"]
+layout_mode = 0
+offset_top = 72.0
+offset_right = 192.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("2_1d7kx")
+theme_override_font_sizes/font_size = 24
+text = "chapter"
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="Preview"]
+layout_mode = 0
+offset_top = 104.0
+offset_right = 192.0
+offset_bottom = 136.0
+theme_override_fonts/font = ExtResource("2_1d7kx")
+theme_override_font_sizes/font_size = 24
+text = "level"
+vertical_alignment = 1
+
+[node name="UnitsLabel" type="Label" parent="Preview"]
+layout_mode = 0
+offset_top = 136.0
+offset_right = 192.0
+offset_bottom = 168.0
+theme_override_fonts/font = ExtResource("2_1d7kx")
+theme_override_font_sizes/font_size = 24
+text = "UNITS"
+vertical_alignment = 1
+
+[node name="TeamLabel" type="Label" parent="Preview"]
+layout_mode = 0
+offset_top = 168.0
+offset_right = 192.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("2_1d7kx")
+theme_override_font_sizes/font_size = 24
+text = "TEAM"
+vertical_alignment = 1
 
 [connection signal="pressed" from="BottomPanel/GridContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="pressed" from="BottomPanel/GridContainer/StartButton" to="." method="_on_start_button_pressed"]
