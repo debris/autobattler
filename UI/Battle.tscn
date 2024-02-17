@@ -232,9 +232,9 @@ theme = SubResource("Theme_dqv1h")
 [node name="Console" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 136.0
+offset_top = 200.0
 offset_right = 56.0
-offset_bottom = 184.0
+offset_bottom = 248.0
 text = "\"'"
 script = ExtResource("9_d1yxv")
 

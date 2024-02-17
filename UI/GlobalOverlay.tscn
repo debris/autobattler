@@ -7,11 +7,21 @@
 [node name="GlobalOverlay" type="CanvasLayer"]
 script = ExtResource("1_tkmo4")
 
-[node name="SettingsButton" type="Button" parent="."]
+[node name="ExitButton" type="Button" parent="."]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 56.0
 offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("1_xbdg5")
+theme_override_font_sizes/font_size = 24
+text = "x"
+script = ExtResource("3_0d3qd")
+
+[node name="SettingsButton" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 56.0
+offset_bottom = 120.0
 theme_override_fonts/font = ExtResource("1_xbdg5")
 theme_override_font_sizes/font_size = 24
 text = "*"
@@ -19,13 +29,14 @@ script = ExtResource("3_0d3qd")
 
 [node name="HelpButton" type="Button" parent="."]
 offset_left = 8.0
-offset_top = 72.0
+offset_top = 136.0
 offset_right = 56.0
-offset_bottom = 120.0
+offset_bottom = 184.0
 theme_override_fonts/font = ExtResource("1_xbdg5")
 theme_override_font_sizes/font_size = 24
 text = "?"
 script = ExtResource("3_0d3qd")
 
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="HelpButton" to="." method="_on_help_button_pressed"]

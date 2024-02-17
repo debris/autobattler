@@ -8,7 +8,7 @@ signal action_selected(LoadgameAction)
 @onready var chapter_label = $Preview/ChapterLabel
 @onready var level_label = $Preview/LevelLabel
 @onready var units_label = $Preview/UnitsLabel
-@onready var team_label = $Preview/TeamLabel
+@onready var team_list = $Preview/TeamList
 
 var save_preview: Save:
 	set(value):
@@ -43,6 +43,10 @@ func display_preview():
 	# bench size + not null members
 	var units_count = str(save_preview.count_units())
 	units_label.text = "units: " + str(units_count)
+	
+	var unit_controls = team_list.get_children()
+	for i in unit_controls.size():
+		unit_controls[i].display_owned_unit(save_preview.team.members[i])
 
 func _on_new_game_button_pressed():
 	action_selected.emit(LoadgameActionNew.new())
