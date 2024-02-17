@@ -1,9 +1,9 @@
 extends Skill
 class_name SkillPaint
 
-var on: bool
+@export var on: bool
 
-func _init(o):
+func _init(o = true):
 	on = o
 	if on:
 		name = "Paint"
