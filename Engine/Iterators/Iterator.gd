@@ -28,6 +28,9 @@ func concat(other_iterator: Iterator) -> ConcatIterator:
 func alternate(other_iterator: Iterator) -> AlternateIterator:
 	return AlternateIterator.new(self, other_iterator)
 
+func zip(other_iterator: Iterator) -> ZipIterator:
+	return ZipIterator.new(self, other_iterator)
+
 func first() -> Option:
 	return Option.new(next())
 
@@ -57,3 +60,11 @@ func count(pattern = null) -> int:
 func compare(callable):
 	var item = next()
 	return reduce(item, callable)
+
+func collect() -> Array:
+	var result = []
+	var value = next()
+	while value != null:
+		result.push_back(value)
+		value = next()
+	return result

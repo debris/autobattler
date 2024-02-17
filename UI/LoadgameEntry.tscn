@@ -43,3 +43,17 @@ theme_override_fonts/font = ExtResource("2_ggrs7")
 theme_override_font_sizes/font_size = 24
 text = "Savefile #1"
 vertical_alignment = 1
+
+[node name="DateLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 64.0
+offset_top = 16.0
+offset_right = 432.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.785641, 0.785641, 0.785641, 1)
+theme_override_fonts/font = ExtResource("2_ggrs7")
+theme_override_font_sizes/font_size = 24
+text = "Datetime"
+horizontal_alignment = 2
+vertical_alignment = 1

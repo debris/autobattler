@@ -18,21 +18,28 @@ var save_preview: Save:
 var save_name: String
 
 func _ready():
-	var all_saves = Save.all_saves()
-	all_saves.sort()
-	for save in all_saves:
+	var all_saves_names = Save.all_saves()
+	var all_saves = all_saves_names.map(func(n): return Save.load_save(n))
+	var pairs: Array = ArrayIterator.new(all_saves_names).zip(ArrayIterator.new(all_saves)).collect()
+	pairs.sort_custom(func(tuple_a, tuple_b):
+		return tuple_a.b.utc_savetime > tuple_b.b.utc_savetime
+	)
+	
+	for save_tuple in pairs:
 		var label = preload("res://UI/LoadgameEntry.tscn").instantiate()
-		label.text = save
+		
+		label.text = save_tuple.a
+		label.utc_time = save_tuple.b.utc_savetime
 		label.selected.connect(func():
-			save_name = save
-			save_preview = Save.load_save(save)
+			save_name = save_tuple.a
+			save_preview = save_tuple.b
 		)
 		saves_list.add_child(label)
-	
+
 	display_preview()
 
 func display_preview():
-	if save_preview == null:
+	if save_preview == null:	
 		preview_control.visible = false
 		return
 	

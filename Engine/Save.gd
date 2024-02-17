@@ -5,12 +5,14 @@ class_name Save
 @export var bench: Array[OwnedUnit]
 @export var chapter: int
 @export var player_team_level: int
+@export var utc_savetime: String
 
 func _init():
 	team = Team.new()
 	bench = []
 	chapter = 0
 	player_team_level = 0
+	utc_savetime = ""
 
 func count_units() -> int:
 	return bench.size() + ArrayIterator.new(team.members).count()
@@ -22,6 +24,7 @@ static func save_path(index: String) -> String:
 	return "user://" + save_name(index)
 
 func write_save(index):
+	utc_savetime = Time.get_datetime_string_from_system(true)
 	ResourceSaver.save(self, Save.save_path(index))
 	
 static func load_save(index) -> Save:
