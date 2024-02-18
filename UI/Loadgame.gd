@@ -40,6 +40,11 @@ func _ready():
 
 	display_preview()
 
+func _on_unit_control_pressed(unit):
+	var details = load("res://UI/UnitDetails.tscn").instantiate()
+	details.unit = unit
+	add_child(details)
+
 func display_preview():
 	if save_preview == null:
 		preview_control.visible = false
@@ -56,19 +61,10 @@ func display_preview():
 	# bench size + not null members
 	var units_count = str(save_preview.count_units())
 	units_label.text = "units: " + str(units_count)
-	
-	for unit_control in team_list.get_children():
-		unit_control.queue_free()
 
+	var unit_controls = team_list.get_children()
 	for i in 6:
-		var unit_control = preload("res://UI/UnitControl.tscn").instantiate()
-		unit_control.pressed.connect(func():
-			var details = load("res://UI/UnitDetails.tscn").instantiate()
-			details.unit = save_preview.team.members[i]
-			add_child(details)
-		)
-		team_list.add_child(unit_control)
-		unit_control.display_unit(save_preview.team.members[i])
+		unit_controls[i].unit = save_preview.team.members[i]
 
 func _on_new_game_button_pressed():
 	action_selected.emit(LoadgameActionNew.new())
@@ -87,4 +83,3 @@ func _on_delete_button_pressed():
 func _on_start_button_pressed():
 	if save_preview != null:
 		action_selected.emit(LoadgameActionLoad.new(save_preview, save_name))
-

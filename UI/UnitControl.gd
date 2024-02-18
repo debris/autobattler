@@ -1,6 +1,13 @@
+# Control capable of displaying all unit types: `Unit`, `OwnedUnit` and `BattleUnit`
 extends Control
 
-signal pressed
+signal pressed(unit)
+
+@export var unit: Resource:
+	set(value):
+		unit = value
+		if is_node_ready():
+			display_unit()
 
 @onready var on_hover = $OnHover
 @onready var content = $Content
@@ -8,8 +15,9 @@ signal pressed
 @onready var avatar = $Content/Avatar
 @onready var dmg_label = $Content/Dmg
 @onready var def_label = $Content/Def
+@onready var schedules = $Content/Schedules
 
-func display_unit(unit):
+func display_unit():
 	if unit == null:
 		content.visible = false
 		on_hover.visible = false
@@ -20,8 +28,13 @@ func display_unit(unit):
 	avatar.texture = unit.texture
 	dmg_label.text = str(unit.dmg)
 	def_label.text = str(unit.def)
+	
+	var schedule_controls = schedules.get_children()
+	for i in 3:
+		schedule_controls[i].schedule = unit.schedules[i]
 
 func _ready():
+	display_unit()
 	mouse_entered.connect(func():
 		if content.visible && pressed.get_connections().size() > 0:
 			on_hover.visible = true
@@ -34,4 +47,4 @@ func _ready():
 
 func _gui_input(event):
 	if on_hover.visible && event.is_action_pressed("LeftClick"):
-		pressed.emit()
+		pressed.emit(unit)

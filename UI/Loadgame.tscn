@@ -9,7 +9,7 @@
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="6_fe43y"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
 
-[sub_resource type="Shader" id="Shader_j43ko"]
+[sub_resource type="Shader" id="Shader_od35k"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -27,12 +27,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
 resource_local_to_scene = true
-shader = SubResource("Shader_j43ko")
+shader = SubResource("Shader_od35k")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_gpo0i"]
+[sub_resource type="Shader" id="Shader_p2alj"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -50,12 +50,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
 resource_local_to_scene = true
-shader = SubResource("Shader_gpo0i")
+shader = SubResource("Shader_p2alj")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_6iyf0"]
+[sub_resource type="Shader" id="Shader_dsn6g"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -73,7 +73,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_6iyf0")
+shader = SubResource("Shader_dsn6g")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -96,22 +96,12 @@ centered = false
 region_enabled = true
 region_rect = Rect2(256, 244, 2304, 1296)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.901961)
-
 [node name="Frame2" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 688.0
 offset_top = -8.0
 offset_right = 1088.0
-offset_bottom = 648.0
+offset_bottom = 656.0
 script = ExtResource("6_4vb2i")
 metadata/_edit_group_ = true
 
@@ -129,6 +119,7 @@ material = SubResource("ShaderMaterial_snoq0")
 layout_mode = 1
 offset_top = 0.0
 offset_bottom = 0.0
+color = Color(0, 0, 0, 0.0470588)
 
 [node name="Border" type="Control" parent="."]
 clip_contents = true
@@ -255,7 +246,7 @@ vertical_alignment = 1
 [node name="TeamList" type="GridContainer" parent="CenterContainer/Preview"]
 layout_mode = 0
 offset_top = 88.0
-offset_right = 640.0
+offset_right = 500.0
 offset_bottom = 584.0
 scale = Vector2(0.8, 0.8)
 theme_override_constants/h_separation = 8
@@ -340,3 +331,9 @@ vertical_alignment = 1
 [connection signal="pressed" from="BottomPanel/GridContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="pressed" from="BottomPanel/GridContainer/LoadButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="BottomPanel/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Preview/TeamList/UnitControl" to="." method="_on_unit_control_pressed"]
+[connection signal="pressed" from="CenterContainer/Preview/TeamList/UnitControl2" to="." method="_on_unit_control_pressed"]
+[connection signal="pressed" from="CenterContainer/Preview/TeamList/UnitControl3" to="." method="_on_unit_control_pressed"]
+[connection signal="pressed" from="CenterContainer/Preview/TeamList/UnitControl4" to="." method="_on_unit_control_pressed"]
+[connection signal="pressed" from="CenterContainer/Preview/TeamList/UnitControl5" to="." method="_on_unit_control_pressed"]
+[connection signal="pressed" from="CenterContainer/Preview/TeamList/UnitControl6" to="." method="_on_unit_control_pressed"]

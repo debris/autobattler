@@ -1,3 +1,4 @@
+# Control capable of displaying unit types: `OwnedUnit` and `BattleUnit`
 extends Control
 
 @export var unit: Resource:
@@ -18,7 +19,7 @@ func _ready():
 	update_display()
 
 func update_display():
-	unit_control.display_unit(unit)
+	unit_control.unit = unit
 	
 	tags_content.text = ", ".join(unit.tags.keys())
 	skill_name.text = "Active: " + unit.skill.name

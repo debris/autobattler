@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmn414tgvv43c"]
+[gd_scene load_steps=19 format=3 uid="uid://dmn414tgvv43c"]
 
 [ext_resource type="Texture2D" uid="uid://b4luy6l1hso5k" path="res://Assets/card_back.png" id="1_bd7dg"]
 [ext_resource type="Script" path="res://UI/UnitControl.gd" id="1_q6svs"]
@@ -6,11 +6,37 @@
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="2_48twk"]
 [ext_resource type="Texture2D" uid="uid://c72e21ql22q8y" path="res://Assets/Units/captain_blaze.png" id="2_hvc5d"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="6_h6610"]
+[ext_resource type="Script" path="res://UI/ScheduleControl.gd" id="7_qpxt1"]
+[ext_resource type="Script" path="res://Engine/Schedule.gd" id="8_lr2qc"]
+[ext_resource type="FontVariation" uid="uid://cfurrex4by3bf" path="res://Assets/Fonts/PunktumItalic.tres" id="9_0km6o"]
+[ext_resource type="Script" path="res://Engine/SchedulePointer.gd" id="9_v5a6m"]
+[ext_resource type="Script" path="res://UI/Frame.gd" id="11_4isk2"]
+
+[sub_resource type="Resource" id="Resource_mwdfb"]
+script = ExtResource("8_lr2qc")
+data = Array[bool]([true, false, false, false, true, true, false, false])
+kind = 0
+
+[sub_resource type="Resource" id="Resource_tnkqx"]
+script = ExtResource("9_v5a6m")
+round = 0
+phase = 0
+active = false
+
+[sub_resource type="Resource" id="Resource_fiv12"]
+script = ExtResource("8_lr2qc")
+data = Array[bool]([false, true, false])
+kind = 1
+
+[sub_resource type="Resource" id="Resource_do5gq"]
+script = ExtResource("8_lr2qc")
+data = Array[bool]([false, true, false])
+kind = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu2ho"]
 shader = ExtResource("2_1v1rc")
 
-[sub_resource type="Shader" id="Shader_a1riy"]
+[sub_resource type="Shader" id="Shader_um7e2"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -28,7 +54,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8eri"]
 resource_local_to_scene = true
-shader = SubResource("Shader_a1riy")
+shader = SubResource("Shader_um7e2")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -44,6 +70,8 @@ offset_bottom = -408.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q6svs")
+metadata/_edit_horizontal_guides_ = [8.0, 232.0]
+metadata/_edit_vertical_guides_ = [8.0, 152.0]
 
 [node name="OnHover" type="ColorRect" parent="."]
 visible = false
@@ -80,32 +108,69 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Schedules" type="GridContainer" parent="Content"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 200.0
+offset_right = -67.0
+offset_bottom = 232.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/v_separation = 0
+metadata/_edit_group_ = true
+
+[node name="ScheduleControl" type="Control" parent="Content/Schedules"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("7_qpxt1")
+schedule = SubResource("Resource_mwdfb")
+schedule_pointer = SubResource("Resource_tnkqx")
+
+[node name="ScheduleControl2" type="Control" parent="Content/Schedules"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("7_qpxt1")
+schedule = SubResource("Resource_fiv12")
+schedule_pointer = SubResource("Resource_tnkqx")
+
+[node name="ScheduleControl3" type="Control" parent="Content/Schedules"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("7_qpxt1")
+schedule = SubResource("Resource_do5gq")
+schedule_pointer = SubResource("Resource_tnkqx")
+
+[node name="Avatar" type="TextureRect" parent="Content"]
+material = SubResource("ShaderMaterial_wu2ho")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 160.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("2_hvc5d")
+expand_mode = 1
+
 [node name="Name" type="Label" parent="Content"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 8.0
-offset_top = 8.0
-offset_bottom = 40.0
+offset_top = 168.0
+offset_right = -8.0
+offset_bottom = 200.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_48twk")
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
+theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
+theme_override_fonts/font = ExtResource("9_0km6o")
 theme_override_font_sizes/font_size = 20
 text = "Name"
 vertical_alignment = 1
-
-[node name="Avatar" type="TextureRect" parent="Content"]
-material = SubResource("ShaderMaterial_wu2ho")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 40.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("2_hvc5d")
-expand_mode = 1
 
 [node name="Dmg" type="Label" parent="Content"]
 layout_mode = 1
@@ -113,13 +178,15 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = -40.0
-offset_right = 80.0
+offset_top = -240.0
+offset_right = 72.0
+offset_bottom = -192.0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_colors/font_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 theme_override_fonts/font = ExtResource("2_48twk")
-theme_override_font_sizes/font_size = 24
-text = "10"
+theme_override_font_sizes/font_size = 28
+text = "10
+"
 vertical_alignment = 1
 
 [node name="Def" type="Label" parent="Content"]
@@ -130,13 +197,13 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -80.0
-offset_top = -40.0
+offset_top = -48.0
 offset_right = -8.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
 theme_override_fonts/font = ExtResource("2_48twk")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 28
 text = "10"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -146,3 +213,13 @@ material = SubResource("ShaderMaterial_y8eri")
 layout_mode = 1
 offset_top = 2.08165e-12
 offset_bottom = 0.0
+
+[node name="Frame" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("11_4isk2")

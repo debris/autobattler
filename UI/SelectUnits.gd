@@ -15,42 +15,41 @@ signal selected_units(units: Array[OwnedUnit])
 @export var reroll_button_visible: bool = false
 
 @onready var select_label = $SelectLabel
-@onready var battle_team_control = $BattleTeamControl
+@onready var team_list = $TeamList
 @onready var select_button_grid = $SelectButtonGrid
 @onready var reroll_button = $RerollButton
 
-var displayed_team: BattleTeam
 var selected: Array[OwnedUnit] = []
 
 func _ready():
 	reroll_button.visible = reroll_button_visible
 	select_label.text = title_text
 	
-	var battle_controller = BattleController.default()
-	battle_controller.show_details.connect(func(battle_query):
-		var details = load("res://UI/UnitDetails.tscn").instantiate()
-		details.unit = battle_query.get_this_unit()
-		add_child(details)
-	)
 	for button in select_button_grid.get_children():
 		button.pressed.connect(_on_select_button_pressed.bind(button))
 	
 	update_display()
 
 func update_display():
-	var battle_state = BattleState.new(BattleTeam.new(out_of, player_team_level), BattleTeam.new(Team.null_team()))
-	displayed_team = battle_state.team_a
-	battle_team_control.battle_team_query = battle_state.team_a_query()
+	assert(out_of.members.size() == 6, "for now only 6 is supported")
+	var unit_controls = team_list.get_children()
+	for i in 6:
+		unit_controls[i].unit = out_of.members[i]
 
 func _on_select_button_pressed(button):
 	var index = button.get_index()
-	selected.push_back(displayed_team.members[index].unit)
-	displayed_team.members[index] = null
+	selected.push_back(out_of.members[index].unit)
+	out_of.members[index] = null
 	button.disabled = true
-	battle_team_control.refresh()
+	update_display()
 	
 	if selected.size() == to_select:
 		selected_units.emit(selected)
 
 func _on_reroll_button_pressed():
 	reroll_button_pressed.emit()
+
+func _on_unit_control_pressed(unit):
+	var details = load("res://UI/UnitDetails.tscn").instantiate()
+	details.unit = unit
+	add_child(details)

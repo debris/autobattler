@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cfurrex4by3bf"]
+
+[ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="1_avfpf"]
+
+[resource]
+base_font = ExtResource("1_avfpf")
+variation_transform = Transform2D(1, 0.3, 2.08165e-12, 1, 2.08165e-12, 2.08165e-12)
