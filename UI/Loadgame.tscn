@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://db4xehwv3k6ab"]
+[gd_scene load_steps=15 format=3 uid="uid://db4xehwv3k6ab"]
 
 [ext_resource type="Script" path="res://UI/Loadgame.gd" id="1_465sv"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_1d7kx"]
@@ -7,6 +7,76 @@
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="4_3qovm"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="6_4vb2i"]
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="6_fe43y"]
+[ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
+
+[sub_resource type="Shader" id="Shader_6l48m"]
+resource_local_to_scene = true
+code = "// based on
+// https://godotshaders.com/shader/2d-shine-highlight/
+
+shader_type canvas_item;
+
+uniform vec4 shine_color : source_color = vec4(1.0);
+uniform float shine_speed : hint_range(-10.0, 10.0, 0.1) = 1.0;
+uniform float shine_size : hint_range(0.01, 1.0, 0.01) = 0.01;
+
+void fragment() {
+	float shine = step(1.0 - shine_size * 0.5, 0.5 + 0.5 * sin(-SCREEN_UV.x - SCREEN_UV.y * 0.3 + TIME * shine_speed));
+	COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, shine * shine_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
+resource_local_to_scene = true
+shader = SubResource("Shader_6l48m")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
+
+[sub_resource type="Shader" id="Shader_l1861"]
+resource_local_to_scene = true
+code = "// based on
+// https://godotshaders.com/shader/2d-shine-highlight/
+
+shader_type canvas_item;
+
+uniform vec4 shine_color : source_color = vec4(1.0);
+uniform float shine_speed : hint_range(-10.0, 10.0, 0.1) = 1.0;
+uniform float shine_size : hint_range(0.01, 1.0, 0.01) = 0.01;
+
+void fragment() {
+	float shine = step(1.0 - shine_size * 0.5, 0.5 + 0.5 * sin(-SCREEN_UV.x - SCREEN_UV.y * 0.3 + TIME * shine_speed));
+	COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, shine * shine_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
+resource_local_to_scene = true
+shader = SubResource("Shader_l1861")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
+
+[sub_resource type="Shader" id="Shader_vykeu"]
+resource_local_to_scene = true
+code = "// based on
+// https://godotshaders.com/shader/2d-shine-highlight/
+
+shader_type canvas_item;
+
+uniform vec4 shine_color : source_color = vec4(1.0);
+uniform float shine_speed : hint_range(-10.0, 10.0, 0.1) = 1.0;
+uniform float shine_size : hint_range(0.01, 1.0, 0.01) = 0.01;
+
+void fragment() {
+	float shine = step(1.0 - shine_size * 0.5, 0.5 + 0.5 * sin(-SCREEN_UV.x - SCREEN_UV.y * 0.3 + TIME * shine_speed));
+	COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, shine * shine_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
+resource_local_to_scene = true
+shader = SubResource("Shader_vykeu")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
 
 [node name="Loadgame" type="Control"]
 layout_mode = 3
@@ -53,6 +123,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.705882)
+
+[node name="Shine" parent="Frame2" instance=ExtResource("8_wtwe6")]
+material = SubResource("ShaderMaterial_snoq0")
+layout_mode = 1
+offset_top = 0.0
+offset_bottom = 0.0
 
 [node name="Border" type="Control" parent="."]
 clip_contents = true
@@ -111,7 +187,7 @@ theme_override_font_sizes/font_size = 24
 text = "Delete"
 script = ExtResource("3_uvtvc")
 
-[node name="StartButton" type="Button" parent="BottomPanel/GridContainer"]
+[node name="LoadButton" type="Button" parent="BottomPanel/GridContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -159,6 +235,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.705882)
+
+[node name="Shine" parent="CenterContainer/Preview/TopFrame" instance=ExtResource("8_wtwe6")]
+material = SubResource("ShaderMaterial_m8r3g")
+layout_mode = 1
+offset_top = 0.0
+offset_bottom = 0.0
 
 [node name="SaveName" type="Label" parent="CenterContainer/Preview"]
 layout_mode = 0
@@ -216,6 +298,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.705882)
 
+[node name="Shine" parent="CenterContainer/Preview/Frame" instance=ExtResource("8_wtwe6")]
+material = SubResource("ShaderMaterial_sx87t")
+layout_mode = 1
+offset_top = 0.0
+offset_bottom = 0.0
+
 [node name="ChapterLabel" type="Label" parent="CenterContainer/Preview"]
 layout_mode = 0
 offset_left = 16.0
@@ -250,5 +338,5 @@ text = "UNITS"
 vertical_alignment = 1
 
 [connection signal="pressed" from="BottomPanel/GridContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
-[connection signal="pressed" from="BottomPanel/GridContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="BottomPanel/GridContainer/LoadButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="BottomPanel/NewGameButton" to="." method="_on_new_game_button_pressed"]

@@ -1,9 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://rnhm1enuxv6q"]
+[gd_scene load_steps=8 format=3 uid="uid://rnhm1enuxv6q"]
 
 [ext_resource type="Script" path="res://UI/GlobalOverlay.gd" id="1_tkmo4"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_xbdg5"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_hr3b2"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="3_0d3qd"]
+[ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_55ib8"]
+
+[sub_resource type="Shader" id="Shader_tokgy"]
+resource_local_to_scene = true
+code = "// based on
+// https://godotshaders.com/shader/2d-shine-highlight/
+
+shader_type canvas_item;
+
+uniform vec4 shine_color : source_color = vec4(1.0);
+uniform float shine_speed : hint_range(-10.0, 10.0, 0.1) = 1.0;
+uniform float shine_size : hint_range(0.01, 1.0, 0.01) = 0.01;
+
+void fragment() {
+	float shine = step(1.0 - shine_size * 0.5, 0.5 + 0.5 * sin(-SCREEN_UV.x - SCREEN_UV.y * 0.3 + TIME * shine_speed));
+	COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, shine * shine_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itegs"]
+resource_local_to_scene = true
+shader = SubResource("Shader_tokgy")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
 
 [node name="GlobalOverlay" type="CanvasLayer"]
 script = ExtResource("1_tkmo4")
@@ -25,6 +49,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.705882)
+
+[node name="Shine" parent="Frame" instance=ExtResource("3_55ib8")]
+material = SubResource("ShaderMaterial_itegs")
+layout_mode = 1
+offset_top = 0.0
+offset_bottom = 0.0
 
 [node name="ExitButton" type="Button" parent="."]
 offset_left = 8.0

@@ -9,6 +9,8 @@ signal action_selected(LoadgameAction)
 @onready var level_label = $CenterContainer/Preview/LevelLabel
 @onready var units_label = $CenterContainer/Preview/UnitsLabel
 @onready var team_list = $CenterContainer/Preview/TeamList
+@onready var delete_button = $BottomPanel/GridContainer/DeleteButton
+@onready var load_button = $BottomPanel/GridContainer/LoadButton
 
 var save_preview: Save:
 	set(value):
@@ -41,8 +43,12 @@ func _ready():
 func display_preview():
 	if save_preview == null:
 		preview_control.visible = false
+		delete_button.disabled = true
+		load_button.disabled = true
 		return
 	
+	delete_button.disabled = false
+	load_button.disabled = false
 	preview_control.visible = true
 	save_name_label.text = save_name
 	chapter_label.text = "chapter: " + str(save_preview.chapter)

@@ -1,17 +1,34 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmn414tgvv43c"]
+[gd_scene load_steps=10 format=3 uid="uid://dmn414tgvv43c"]
 
 [ext_resource type="Texture2D" uid="uid://b4luy6l1hso5k" path="res://Assets/card_back.png" id="1_bd7dg"]
 [ext_resource type="Script" path="res://UI/UnitControl.gd" id="1_q6svs"]
 [ext_resource type="Shader" path="res://UI/AvatarShader.gdshader" id="2_1v1rc"]
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="2_48twk"]
 [ext_resource type="Texture2D" uid="uid://c72e21ql22q8y" path="res://Assets/Units/captain_blaze.png" id="2_hvc5d"]
-[ext_resource type="Shader" path="res://UI/Shine.gdshader" id="6_eyufi"]
+[ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="6_h6610"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu2ho"]
 shader = ExtResource("2_1v1rc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a83py"]
-shader = ExtResource("6_eyufi")
+[sub_resource type="Shader" id="Shader_dq13e"]
+resource_local_to_scene = true
+code = "// based on
+// https://godotshaders.com/shader/2d-shine-highlight/
+
+shader_type canvas_item;
+
+uniform vec4 shine_color : source_color = vec4(1.0);
+uniform float shine_speed : hint_range(-10.0, 10.0, 0.1) = 1.0;
+uniform float shine_size : hint_range(0.01, 1.0, 0.01) = 0.01;
+
+void fragment() {
+	float shine = step(1.0 - shine_size * 0.5, 0.5 + 0.5 * sin(-SCREEN_UV.x - SCREEN_UV.y * 0.3 + TIME * shine_speed));
+	COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, shine * shine_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y8eri"]
+resource_local_to_scene = true
+shader = SubResource("Shader_dq13e")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -90,19 +107,6 @@ mouse_filter = 2
 texture = ExtResource("2_hvc5d")
 expand_mode = 1
 
-[node name="Shine" type="ColorRect" parent="Content"]
-material = SubResource("ShaderMaterial_a83py")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.0470588)
-
 [node name="Dmg" type="Label" parent="Content"]
 layout_mode = 1
 anchors_preset = 2
@@ -136,3 +140,10 @@ theme_override_font_sizes/font_size = 24
 text = "10"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Shine" parent="." instance=ExtResource("6_h6610")]
+material = SubResource("ShaderMaterial_y8eri")
+layout_mode = 1
+offset_top = 2.08165e-12
+offset_bottom = 0.0
+color = Color(0, 0, 0, 0.0470588)
