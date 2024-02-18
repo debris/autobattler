@@ -28,8 +28,8 @@ func _ready():
 	
 	var battle_controller = BattleController.default()
 	battle_controller.show_details.connect(func(battle_query):
-		var details = load("res://UI/BattleUnitDetails.tscn").instantiate()
-		details.battle_query = battle_query
+		var details = load("res://UI/UnitDetails.tscn").instantiate()
+		details.unit = battle_query.get_this_unit()
 		add_child(details)
 	)
 	for button in select_button_grid.get_children():

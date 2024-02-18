@@ -9,6 +9,7 @@ var texture: Texture2D
 var dmg: int
 var def: int
 var skill: Skill
+var passive: Passive
 var schedules: Array[Schedule]
 var schedule_pointer: SchedulePointer
 # bonus dmg is set to zero once it's used
@@ -30,6 +31,7 @@ func _init(u: OwnedUnit, tl: int = 0):
 	dmg = u.dmg + (u.dmg * team_level * 10 / 100)
 	def = u.def + (u.def * team_level * 10 / 100)
 	skill = u.skill
+	passive = u.passive
 	
 	# we may need a deep copy here if there are cards that modify the schedule
 	# during the battle
@@ -42,7 +44,7 @@ func _init(u: OwnedUnit, tl: int = 0):
 	skill_bonus_casts = 0
 	
 	tags = {}
-	for tag in u.base.tags:
+	for tag in u.tags.keys():
 		tags[tag] = null
 
 func turn_into(other: BattleUnit):	

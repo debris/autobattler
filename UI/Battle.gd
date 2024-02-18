@@ -44,8 +44,8 @@ func _ready():
 	battle_controller = BattleController.default()
 	battle_controller.show_details.connect(func(battle_query):
 		paused = true
-		var details = load("res://UI/BattleUnitDetails.tscn").instantiate()
-		details.battle_query = battle_query
+		var details = load("res://UI/UnitDetails.tscn").instantiate()
+		details.unit = battle_query.get_this_unit()
 		add_child(details)
 	)
 	battle_controller.move_unit_left.connect(func(i): 

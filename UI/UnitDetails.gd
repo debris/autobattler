@@ -1,8 +1,8 @@
 extends Control
 
-@export var battle_query: BattleQuery:
+@export var unit: Resource:
 	set(value):
-		battle_query = value
+		unit = value
 		if is_node_ready():
 			update_display()
 
@@ -18,20 +18,19 @@ func _ready():
 	update_display()
 
 func update_display():
-	var unit = battle_query.get_this_unit()
-	unit_control.display_battle_unit(unit)
+	unit_control.display_unit(unit)
 	
 	tags_content.text = ", ".join(unit.tags.keys())
 	skill_name.text = "Active: " + unit.skill.name
 	skill_description.text = unit.skill.description
-	passive_name.text = "Passive: " + unit.unit.base.passive.name
-	passive_description.text = unit.unit.base.passive.description
+	passive_name.text = "Passive: " + unit.passive.name
+	passive_description.text = unit.passive.description
 	
 	if unit.skill is SkillEmpty:
 		skill_name.visible = false
 		skill_description.visible = false
 	
-	if unit.unit.base.passive is PassiveEmpty:
+	if unit.passive is PassiveEmpty:
 		passive_name.visible = false
 		passive_description.visible = false
 

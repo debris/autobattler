@@ -63,10 +63,12 @@ func display_preview():
 	for i in 6:
 		var unit_control = preload("res://UI/UnitControl.tscn").instantiate()
 		unit_control.pressed.connect(func():
-			print_debug("pressed!")
+			var details = load("res://UI/UnitDetails.tscn").instantiate()
+			details.unit = save_preview.team.members[i]
+			add_child(details)
 		)
 		team_list.add_child(unit_control)
-		unit_control.display_owned_unit(save_preview.team.members[i])
+		unit_control.display_unit(save_preview.team.members[i])
 
 func _on_new_game_button_pressed():
 	action_selected.emit(LoadgameActionNew.new())

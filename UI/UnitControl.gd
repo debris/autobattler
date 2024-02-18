@@ -9,27 +9,15 @@ signal pressed
 @onready var dmg_label = $Content/Dmg
 @onready var def_label = $Content/Def
 
-func display_owned_unit(unit: OwnedUnit):
+func display_unit(unit):
 	if unit == null:
 		content.visible = false
 		on_hover.visible = false
 		return
 
-	content.visible = true
-	name_label.text = unit.base.name
-	avatar.texture = unit.base.texture
-	dmg_label.text = str(unit.dmg)
-	def_label.text = str(unit.def)
-
-func display_battle_unit(unit: BattleUnit):
-	if unit == null:
-		content.visible = false
-		on_hover.visible = false
-		return
-	
 	content.visible = true
 	name_label.text = unit.name
-	avatar.texture = unit.unit.base.texture
+	avatar.texture = unit.texture
 	dmg_label.text = str(unit.dmg)
 	def_label.text = str(unit.def)
 

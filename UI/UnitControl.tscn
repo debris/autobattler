@@ -10,7 +10,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu2ho"]
 shader = ExtResource("2_1v1rc")
 
-[sub_resource type="Shader" id="Shader_dq13e"]
+[sub_resource type="Shader" id="Shader_a1riy"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -28,7 +28,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8eri"]
 resource_local_to_scene = true
-shader = SubResource("Shader_dq13e")
+shader = SubResource("Shader_a1riy")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -146,4 +146,3 @@ material = SubResource("ShaderMaterial_y8eri")
 layout_mode = 1
 offset_top = 2.08165e-12
 offset_bottom = 0.0
-color = Color(0, 0, 0, 0.0470588)
