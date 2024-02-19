@@ -16,8 +16,8 @@ signal battle_finished(result)
 
 @onready var team_a_control = $TeamA
 @onready var team_b_control = $TeamB
-@onready var team_a_power = $TeamAPower
-@onready var team_b_power = $TeamBPower
+@onready var team_a_power = $RightPanel/TeamAPower
+@onready var team_b_power = $RightPanel/TeamBPower
 @onready var round_label = $RightPanel/Round
 @onready var phase_label = $RightPanel/Phase
 @onready var console_logs = $ConsoleLogs
@@ -27,10 +27,10 @@ signal battle_finished(result)
 @onready var victory_label = $VictoryLabel
 @onready var change_grid = $ChangeGrid
 @onready var continue_button = $Continue
-@onready var level_a_label = $LevelA
-@onready var level_b_label = $LevelB
-@onready var stacks_control_a = $StacksControlA
-@onready var stacks_control_b = $StacksControlB
+@onready var level_a_label = $RightPanel/LevelA
+@onready var level_b_label = $RightPanel/LevelB
+@onready var stacks_control_a = $RightPanel/StacksControlA
+@onready var stacks_control_b = $RightPanel/StacksControlB
 
 var battle_state: BattleState
 var battle_controller: BattleController
@@ -65,7 +65,6 @@ func _ready():
 				player_team.members[i - 1] = members[i - 1].unit
 			else:
 				player_team.members[i - 1] = null
-			team_b_control.refresh()
 	)
 	battle_controller.move_unit_right.connect(func(i): 
 		var members = battle_state.team_b.members
@@ -84,7 +83,6 @@ func _ready():
 				player_team.members[i + 1] = members[i + 1].unit
 			else:
 				player_team.members[i + 1] = null
-			team_b_control.refresh()
 	)
 	battle_controller.change_pressed.connect(func(i):
 		var list = preload("res://UI/UnitList.tscn").instantiate()

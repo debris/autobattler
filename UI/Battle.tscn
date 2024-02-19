@@ -44,21 +44,19 @@ region_enabled = true
 region_rect = Rect2(256, 244, 2304, 1296)
 
 [node name="TeamA" parent="." instance=ExtResource("2_w07n4")]
-custom_minimum_size = Vector2(960, 240)
 layout_mode = 2
-offset_left = 128.0
-offset_top = 64.0
-offset_right = 1088.0
-offset_bottom = 304.0
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 1064.0
+offset_bottom = 280.0
 scale = Vector2(0.8, 0.8)
 
 [node name="TeamB" parent="." instance=ExtResource("2_w07n4")]
-custom_minimum_size = Vector2(960, 240)
 layout_mode = 2
-offset_left = 128.0
-offset_top = 392.0
-offset_right = 1088.0
-offset_bottom = 632.0
+offset_left = 24.0
+offset_top = 360.0
+offset_right = 1064.0
+offset_bottom = 600.0
 scale = Vector2(0.8, 0.8)
 
 [node name="ChangeGrid" type="GridContainer" parent="."]
@@ -90,67 +88,9 @@ layout_mode = 2
 [node name="BattleUnitPositionController6" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
 layout_mode = 2
 
-[node name="TeamAPower" type="Control" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -584.0
-offset_top = 256.0
-offset_right = -448.0
-offset_bottom = 320.0
-grow_horizontal = 2
-script = ExtResource("4_mhi2i")
-
-[node name="LevelA" type="Label" parent="."]
-layout_mode = 0
-offset_top = 208.0
-offset_right = 112.0
-offset_bottom = 256.0
-theme_override_font_sizes/font_size = 20
-text = "0"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="StacksControlA" parent="." instance=ExtResource("9_xnqrc")]
-layout_mode = 2
-offset_top = 80.0
-offset_bottom = 208.0
-
-[node name="TeamBPower" type="Control" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -584.0
-offset_top = 4.0
-offset_right = -448.0
-offset_bottom = 68.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_mhi2i")
-
-[node name="LevelB" type="Label" parent="."]
-layout_mode = 0
-offset_top = 392.0
-offset_right = 112.0
-offset_bottom = 440.0
-theme_override_font_sizes/font_size = 20
-text = "0"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="StacksControlB" parent="." instance=ExtResource("9_xnqrc")]
-offset_top = 440.0
-offset_bottom = 568.0
-
 [node name="RightPanel" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 984.0
+offset_left = 1008.0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 0.705882)
@@ -172,7 +112,72 @@ offset_right = -1.0
 grow_vertical = 2
 color = Color(0.0588235, 0.0588235, 0.0588235, 1)
 
+[node name="TeamAPower" type="Control" parent="RightPanel"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -68.0
+offset_right = 8.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_mhi2i")
+
+[node name="LevelA" type="Label" parent="RightPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 208.0
+offset_right = 120.0
+offset_bottom = 256.0
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StacksControlA" parent="RightPanel" instance=ExtResource("9_xnqrc")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 136.0
+offset_bottom = 200.0
+
+[node name="TeamBPower" type="Control" parent="RightPanel"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_right = 8.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_mhi2i")
+
+[node name="LevelB" type="Label" parent="RightPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 392.0
+offset_right = 120.0
+offset_bottom = 440.0
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StacksControlB" parent="RightPanel" instance=ExtResource("9_xnqrc")]
+offset_left = 8.0
+offset_top = 440.0
+offset_right = 136.0
+offset_bottom = 568.0
+
 [node name="Round" type="Label" parent="RightPanel"]
+visible = false
 layout_mode = 0
 offset_left = 8.0
 offset_top = 288.0
@@ -184,6 +189,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RoundTitle" type="Label" parent="RightPanel"]
+visible = false
 layout_mode = 0
 offset_left = 8.0
 offset_top = 240.0
@@ -195,6 +201,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Phase" type="Label" parent="RightPanel"]
+visible = false
 layout_mode = 0
 offset_left = 8.0
 offset_top = 392.0
@@ -206,6 +213,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PhaseTitle" type="Label" parent="RightPanel"]
+visible = false
 layout_mode = 0
 offset_left = 8.0
 offset_top = 344.0
@@ -221,6 +229,7 @@ visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3

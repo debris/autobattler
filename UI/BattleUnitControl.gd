@@ -40,6 +40,7 @@ func _process(_delta):
 		schedule_control.phase = i
 		schedule_control.schedule_pointer = battle_unit.schedule_pointer
 
+	# TODO: REDO
 	#_display_bonuses()
 
 	logs_iterator.for_each(func(battle_log):
@@ -51,9 +52,7 @@ func _process(_delta):
 	else:
 		unit_control.scale = Vector2(1.0, 1.0)
 
-	# TODO: REDO
-
-#TODO: REDO
+# TODO: REDO
 #func _display_bonuses():
 	#def_label.text = str(battle_unit.def)
 	#dmg_label.text = str(battle_unit.dmg)
@@ -108,7 +107,6 @@ func _process_log(action: Log):
 			color = GameColors.red()
 		_blink(color)
 
-
 func _blink(color: Color):
 	var tween = create_tween()
 	tween.tween_property(unit_control, "modulate", color, display_settings.step_time / 2).set_ease(Tween.EASE_IN)
@@ -151,4 +149,3 @@ func _display_notification(text: String, color: Color):
 	await get_tree().create_timer(display_settings.step_time).timeout
 	if label != null:
 		label.queue_free()
-
