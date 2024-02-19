@@ -36,7 +36,7 @@ kind = 2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu2ho"]
 shader = ExtResource("2_1v1rc")
 
-[sub_resource type="Shader" id="Shader_um7e2"]
+[sub_resource type="Shader" id="Shader_nbpjk"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -54,7 +54,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8eri"]
 resource_local_to_scene = true
-shader = SubResource("Shader_um7e2")
+shader = SubResource("Shader_nbpjk")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -100,6 +100,7 @@ texture = ExtResource("1_bd7dg")
 expand_mode = 1
 
 [node name="Content" type="Control" parent="."]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -125,6 +126,7 @@ metadata/_edit_group_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("7_qpxt1")
 schedule = SubResource("Resource_mwdfb")
 schedule_pointer = SubResource("Resource_tnkqx")
@@ -133,6 +135,7 @@ schedule_pointer = SubResource("Resource_tnkqx")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("7_qpxt1")
 schedule = SubResource("Resource_fiv12")
 schedule_pointer = SubResource("Resource_tnkqx")
@@ -141,6 +144,7 @@ schedule_pointer = SubResource("Resource_tnkqx")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("7_qpxt1")
 schedule = SubResource("Resource_do5gq")
 schedule_pointer = SubResource("Resource_tnkqx")
@@ -152,6 +156,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 160.0
 grow_horizontal = 2
+pivot_offset = Vector2(80, 80)
 mouse_filter = 2
 texture = ExtResource("2_hvc5d")
 expand_mode = 1

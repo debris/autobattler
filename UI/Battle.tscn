@@ -308,6 +308,8 @@ theme_override_font_sizes/font_size = 24
 text = "CONTINUE"
 script = ExtResource("9_d1yxv")
 
+[connection signal="pressed" from="TeamA" to="." method="_on_team_pressed"]
+[connection signal="pressed" from="TeamB" to="." method="_on_team_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Console" to="." method="_on_console_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Step" to="." method="_on_step_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Pause" to="." method="_on_pause_pressed"]

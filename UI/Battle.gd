@@ -184,3 +184,9 @@ func _on_start_pressed():
 
 func _on_continue_pressed():
 	battle_finished.emit(result)
+
+
+func _on_team_pressed(battle_unit):
+	var details = load("res://UI/UnitDetails.tscn").instantiate()
+	details.unit = battle_unit
+	add_child(details)

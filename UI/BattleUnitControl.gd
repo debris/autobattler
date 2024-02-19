@@ -1,23 +1,9 @@
 extends Control
 
+signal pressed(battle_unit)
+
 @export var battle_query: BattleQuery
-@export var click_to_show_details = true
-@export var with_battle_logs = true
-
-@onready var control = $Control
-@onready var on_hover = $Control/OnHover
-@onready var active_control = $Control/ActiveControl
-@onready var active_on_schedule = $Control/ActiveOnSchedule
-
-@onready var content = $Control/Content
-@onready var image_rect = $Control/Content/ImageRect
-@onready var name_label = $Control/Content/Name
-@onready var def_label = $Control/Content/Def
-@onready var dmg_label = $Control/Content/Dmg
-@onready var dmg_bonus_label = $Control/Content/DmgBonus
-@onready var def_bonus_label = $Control/Content/DefBonus
-
-@onready var schedules_list = $Schedules
+@onready var unit_control = $UnitControl
 
 var display_settings: DisplaySettings
 var battle_unit: BattleUnit
@@ -28,18 +14,9 @@ func should_display_as_enemy() -> bool:
 
 func _ready():
 	display_settings = DisplaySettings.default()
-	
-	mouse_entered.connect(func():
-		if battle_unit != null:
-			Sounds.play_hover()
-			on_hover.visible = true
+	unit_control.pressed.connect(func(_unit):
+		pressed.emit(battle_unit)
 	)
-	mouse_exited.connect(func():
-		on_hover.visible = false
-	)
-	
-	if should_display_as_enemy():
-		schedules_list.position.y = content.size.y + 16
 
 func _process(_delta):
 	# initialize only once
@@ -50,72 +27,46 @@ func _process(_delta):
 			)
 	
 	battle_unit = battle_query.get_this_unit()
+	unit_control.unit = battle_unit
+	
 	if battle_unit == null:
-		content.visible == false
-		for content_child in content.get_children():
-			content_child.visible = false
-		active_control.visible = false
-		active_on_schedule.visible = false
-		schedules_list.visible = false
-		
 		return
-
-	schedules_list.visible = true
-	content.visible = true
-	for content_child in content.get_children():
-			content_child.visible = true
-	name_label.visible = true
-
-	name_label.text = battle_unit.name
-	image_rect.texture = battle_unit.texture
 
 	# always 3 schedules, let's grab them in reverse because of the rotation
 	for i in 3:
 		var index = i
-		var schedule_control = schedules_list.get_child(index)
+		var schedule_control = unit_control.schedules.get_child(index)
 		schedule_control.schedule = battle_unit.schedules[i]
 		schedule_control.phase = i
 		schedule_control.schedule_pointer = battle_unit.schedule_pointer
-		#schedule_control.the_color = GameColors.schedule_color(battle_unit.schedules[i].kind)
 
-	_display_bonuses()
-
-	if !with_battle_logs:
-		active_control.visible = false
-		active_on_schedule.visible = false
-		return
+	#_display_bonuses()
 
 	logs_iterator.for_each(func(battle_log):
 		_process_log(battle_log)
 	)
 
 	if battle_query.is_active():
-		control.scale = Vector2(1.1, 1.1)
+		unit_control.scale = Vector2(1.1, 1.1)
 	else:
-		control.scale = Vector2(1.0, 1.0)
+		unit_control.scale = Vector2(1.0, 1.0)
 
-	active_control.visible = battle_query.is_active()
-	active_on_schedule.visible = battle_query.is_active() && battle_query.is_on_schedule()
+	# TODO: REDO
 
-func _gui_input(event):
-	if click_to_show_details && on_hover.visible && event.is_action_released("LeftClick"):
-		accept_event()
-		Sounds.play_button_press()
-		BattleController.default().show_details.emit(battle_query)
-
-func _display_bonuses():
-	def_label.text = str(battle_unit.def)
-	dmg_label.text = str(battle_unit.dmg)
-
-	if battle_unit.dmg_bonus == 0:
-		dmg_bonus_label.text = ""
-	else:
-		dmg_bonus_label.text = "x"
-				
-	if battle_unit.def_bonus == 0:
-		def_bonus_label.text = ""
-	else:
-		def_bonus_label.text = "x"
+#TODO: REDO
+#func _display_bonuses():
+	#def_label.text = str(battle_unit.def)
+	#dmg_label.text = str(battle_unit.dmg)
+#
+	#if battle_unit.dmg_bonus == 0:
+		#dmg_bonus_label.text = ""
+	#else:
+		#dmg_bonus_label.text = "x"
+				#
+	#if battle_unit.def_bonus == 0:
+		#def_bonus_label.text = ""
+	#else:
+		#def_bonus_label.text = "x"
 
 # private
 func _process_log(action: Log):
@@ -160,8 +111,8 @@ func _process_log(action: Log):
 
 func _blink(color: Color):
 	var tween = create_tween()
-	tween.tween_property(control, "modulate", color, display_settings.step_time / 2).set_ease(Tween.EASE_IN)
-	tween.tween_property(control, "modulate", Color.WHITE, display_settings.step_time / 2).set_ease(Tween.EASE_OUT)
+	tween.tween_property(unit_control, "modulate", color, display_settings.step_time / 2).set_ease(Tween.EASE_IN)
+	tween.tween_property(unit_control, "modulate", Color.WHITE, display_settings.step_time / 2).set_ease(Tween.EASE_OUT)
 
 # private
 func _attack_animation():
@@ -171,16 +122,16 @@ func _attack_animation():
 	if should_display_as_enemy():
 		offset *= -1
 	
-	image_rect.scale = Vector2(1.1, 1.1)
-	control.position = control.position - offset
-	tween.tween_property(control, "position", Vector2.ZERO, display_settings.step_time / 2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
-	tween.parallel().tween_property(image_rect, "scale", Vector2.ONE, display_settings.step_time / 2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	unit_control.avatar.scale = Vector2(1.1, 1.1)
+	unit_control.position = unit_control.position - offset
+	tween.tween_property(unit_control, "position", Vector2.ZERO, display_settings.step_time / 2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	tween.parallel().tween_property(unit_control.avatar, "scale", Vector2.ONE, display_settings.step_time / 2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 
 # private
 func _defend_animation():
 	var tween = create_tween()
-	image_rect.scale = Vector2(1.1, 1.1)
-	tween.tween_property(image_rect, "scale", Vector2.ONE, display_settings.step_time).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	unit_control.avatar.scale = Vector2(1.1, 1.1)
+	tween.tween_property(unit_control.avatar, "scale", Vector2.ONE, display_settings.step_time).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 
 # private
 func _skill_animation():
@@ -190,12 +141,13 @@ func _skill_animation():
 func _display_notification(text: String, color: Color):
 	var label = Label.new()
 	label.add_theme_color_override("font_color", color)
-	label.position = Vector2(0, dmg_label.position.y)
-	label.size = Vector2(size.x, dmg_label.size.y)
+	label.position = Vector2(0, size.y / 2.0)
+	label.size = Vector2(size.x, 20.0)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.add_theme_font_size_override("font_size", 20)
 	label.text = text
-	control.add_child(label)
+	unit_control.add_child(label)
 	await get_tree().create_timer(display_settings.step_time).timeout
 	if label != null:
 		label.queue_free()

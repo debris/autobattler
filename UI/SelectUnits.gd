@@ -38,7 +38,7 @@ func update_display():
 
 func _on_select_button_pressed(button):
 	var index = button.get_index()
-	selected.push_back(out_of.members[index].unit)
+	selected.push_back(out_of.members[index])
 	out_of.members[index] = null
 	button.disabled = true
 	update_display()
