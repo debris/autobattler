@@ -45,9 +45,10 @@ func show_diff_label(value):
 	var label = Label.new()
 	label.add_theme_font_size_override("font_size", 40)
 	label.add_theme_color_override("font_color", color)
-	label.position = Vector2(size.x + 16, 0)
+	label.position = Vector2(-size.x - 16, 0)
 	label.size = size
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	label.text = str(value)
 	add_child(label)
 	await get_tree().create_timer(DisplaySettings.default().step_time).timeout
