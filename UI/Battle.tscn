@@ -62,11 +62,12 @@ scale = Vector2(0.8, 0.8)
 [node name="ChangeGrid" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(960, 2.08165e-12)
 layout_mode = 0
-offset_left = 128.0
+offset_left = 24.0
 offset_top = 592.0
-offset_right = 1168.0
+offset_right = 1064.0
 offset_bottom = 624.0
 scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(520, 16)
 theme_override_constants/h_separation = 16
 columns = 6
 
@@ -90,7 +91,7 @@ layout_mode = 2
 
 [node name="RightPanel" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 1008.0
+offset_left = 1024.0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 0.705882)
@@ -119,7 +120,7 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -8.0
+offset_left = -16.0
 offset_top = -68.0
 offset_right = 8.0
 offset_bottom = -4.0
@@ -152,9 +153,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -8.0
+offset_left = -16.0
+offset_top = 4.0
 offset_right = 8.0
-offset_bottom = 60.0
+offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_mhi2i")
@@ -176,60 +178,11 @@ offset_top = 440.0
 offset_right = 136.0
 offset_bottom = 568.0
 
-[node name="Round" type="Label" parent="RightPanel"]
-visible = false
-layout_mode = 0
-offset_left = 8.0
-offset_top = 288.0
-offset_right = 160.0
-offset_bottom = 328.0
-theme_override_font_sizes/font_size = 30
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RoundTitle" type="Label" parent="RightPanel"]
-visible = false
-layout_mode = 0
-offset_left = 8.0
-offset_top = 240.0
-offset_right = 160.0
-offset_bottom = 272.0
-theme_override_font_sizes/font_size = 20
-text = "Round"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Phase" type="Label" parent="RightPanel"]
-visible = false
-layout_mode = 0
-offset_left = 8.0
-offset_top = 392.0
-offset_right = 160.0
-offset_bottom = 432.0
-theme_override_font_sizes/font_size = 30
-text = "1 of 3"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PhaseTitle" type="Label" parent="RightPanel"]
-visible = false
-layout_mode = 0
-offset_left = 8.0
-offset_top = 344.0
-offset_right = 160.0
-offset_bottom = 376.0
-theme_override_font_sizes/font_size = 20
-text = "Phase"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="ConsoleLogs" parent="." instance=ExtResource("6_tcwyr")]
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -251,9 +204,9 @@ script = ExtResource("9_d1yxv")
 [node name="Step" type="Button" parent="CanvasLayer/Control"]
 visible = false
 layout_mode = 0
-offset_left = 992.0
+offset_left = 1032.0
 offset_top = 592.0
-offset_right = 1064.0
+offset_right = 1080.0
 offset_bottom = 640.0
 text = "STEP"
 script = ExtResource("9_d1yxv")
@@ -261,7 +214,7 @@ script = ExtResource("9_d1yxv")
 [node name="Pause" type="Button" parent="CanvasLayer/Control"]
 visible = false
 layout_mode = 0
-offset_left = 1072.0
+offset_left = 1095.0
 offset_top = 592.0
 offset_right = 1144.0
 offset_bottom = 640.0
@@ -298,6 +251,20 @@ offset_bottom = 360.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Victory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoundPhaseLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 112.0
+offset_top = 280.0
+offset_right = 984.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
+theme_override_font_sizes/font_size = 30
+text = "Round 0 Phase 1 of 3
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 

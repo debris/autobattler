@@ -18,8 +18,6 @@ signal battle_finished(result)
 @onready var team_b_control = $TeamB
 @onready var team_a_power = $RightPanel/TeamAPower
 @onready var team_b_power = $RightPanel/TeamBPower
-@onready var round_label = $RightPanel/Round
-@onready var phase_label = $RightPanel/Phase
 @onready var console_logs = $ConsoleLogs
 @onready var pause_button = $CanvasLayer/Control/Pause
 @onready var step_button = $CanvasLayer/Control/Step
@@ -31,6 +29,7 @@ signal battle_finished(result)
 @onready var level_b_label = $RightPanel/LevelB
 @onready var stacks_control_a = $RightPanel/StacksControlA
 @onready var stacks_control_b = $RightPanel/StacksControlB
+@onready var round_phase_label = $RoundPhaseLabel
 
 var battle_state: BattleState
 var battle_controller: BattleController
@@ -97,7 +96,6 @@ func _ready():
 			members[i] = BattleUnit.new(tmp, player_team_level)
 
 			player_team.members[i] = tmp
-			team_b_control.refresh()
 			list.queue_free()
 		)
 		add_child(list)
@@ -146,11 +144,11 @@ func on_battle_end(battle_result):
 	victory_label.visible = true
 	step_button.visible = false
 	pause_button.visible = false
+	round_phase_label.visible = false
 	paused = true
 
 func _process(_delta):
-	round_label.text = str(battle_state.round + 1)
-	phase_label.text = str(battle_state.phase + 1) + " of 3"
+	round_phase_label.text = "ROUND " + str(battle_state.round + 1) + " PHASE " + str(battle_state.phase + 1) + " of 3"
 	level_a_label.text = "LEVEL " + str(enemy_team_level + 1)
 	level_b_label.text = "LEVEL " + str(player_team_level + 1)
 	
@@ -176,6 +174,7 @@ func _on_start_pressed():
 	step_button.visible = true
 	pause_button.visible = true
 	change_grid.visible = false
+	round_phase_label.visible = true
 
 	while true:
 		await battle_state.execute_round()
