@@ -44,31 +44,42 @@ region_rect = Rect2(256, 244, 2304, 1296)
 
 [node name="TeamList" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 160.0
+offset_left = 152.0
 offset_top = 224.0
-offset_right = 1200.0
+offset_right = 1000.0
 offset_bottom = 464.0
-scale = Vector2(0.8, 0.8)
 theme_override_constants/h_separation = 16
 columns = 6
 
 [node name="UnitControl" parent="TeamList" instance=ExtResource("5_8187x")]
 layout_mode = 2
+metadata/_edit_horizontal_guides_ = [8.0, 232.0]
+metadata/_edit_vertical_guides_ = [8.0, 152.0]
 
 [node name="UnitControl2" parent="TeamList" instance=ExtResource("5_8187x")]
 layout_mode = 2
+metadata/_edit_horizontal_guides_ = [8.0, 232.0]
+metadata/_edit_vertical_guides_ = [8.0, 152.0]
 
 [node name="UnitControl3" parent="TeamList" instance=ExtResource("5_8187x")]
 layout_mode = 2
+metadata/_edit_horizontal_guides_ = [8.0, 232.0]
+metadata/_edit_vertical_guides_ = [8.0, 152.0]
 
 [node name="UnitControl4" parent="TeamList" instance=ExtResource("5_8187x")]
 layout_mode = 2
+metadata/_edit_horizontal_guides_ = [8.0, 232.0]
+metadata/_edit_vertical_guides_ = [8.0, 152.0]
 
 [node name="UnitControl5" parent="TeamList" instance=ExtResource("5_8187x")]
 layout_mode = 2
+metadata/_edit_horizontal_guides_ = [8.0, 232.0]
+metadata/_edit_vertical_guides_ = [8.0, 152.0]
 
 [node name="UnitControl6" parent="TeamList" instance=ExtResource("5_8187x")]
 layout_mode = 2
+metadata/_edit_horizontal_guides_ = [8.0, 232.0]
+metadata/_edit_vertical_guides_ = [8.0, 152.0]
 
 [node name="SelectLabel" type="Label" parent="."]
 layout_mode = 0
@@ -83,54 +94,53 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SelectButtonGrid" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(960, 2.08165e-12)
+custom_minimum_size = Vector2(848, 2.08165e-12)
 layout_mode = 0
-offset_left = 160.0
+offset_left = 152.0
 offset_top = 432.0
-offset_right = 1200.0
+offset_right = 1000.0
 offset_bottom = 464.0
-scale = Vector2(0.8, 0.8)
 theme_override_constants/h_separation = 16
 columns = 6
 metadata/_edit_group_ = true
 
 [node name="SelectButton" type="Button" parent="SelectButtonGrid"]
-custom_minimum_size = Vector2(160, 32)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
 text = "Select"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton2" type="Button" parent="SelectButtonGrid"]
-custom_minimum_size = Vector2(160, 32)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
 text = "Select"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton3" type="Button" parent="SelectButtonGrid"]
-custom_minimum_size = Vector2(160, 32)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
 text = "Select"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton4" type="Button" parent="SelectButtonGrid"]
-custom_minimum_size = Vector2(160, 32)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
 text = "Select"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton5" type="Button" parent="SelectButtonGrid"]
-custom_minimum_size = Vector2(160, 32)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
 text = "Select"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton6" type="Button" parent="SelectButtonGrid"]
-custom_minimum_size = Vector2(160, 32)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
 text = "Select"

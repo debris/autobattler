@@ -45,31 +45,31 @@ region_rect = Rect2(256, 244, 2304, 1296)
 
 [node name="TeamA" parent="." instance=ExtResource("2_w07n4")]
 layout_mode = 2
-offset_left = 24.0
-offset_top = 40.0
-offset_right = 1064.0
-offset_bottom = 280.0
-scale = Vector2(0.8, 0.8)
+offset_left = 120.0
+offset_top = 64.0
+offset_right = 968.0
+offset_bottom = 256.0
+pivot_offset = Vector2(424, 96)
 
 [node name="TeamB" parent="." instance=ExtResource("2_w07n4")]
 layout_mode = 2
-offset_left = 24.0
-offset_top = 360.0
-offset_right = 1064.0
-offset_bottom = 600.0
-scale = Vector2(0.8, 0.8)
+offset_left = 120.0
+offset_top = 384.0
+offset_right = 968.0
+offset_bottom = 576.0
+pivot_offset = Vector2(424, 96)
 
 [node name="ChangeGrid" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(960, 2.08165e-12)
+custom_minimum_size = Vector2(848, 2.08165e-12)
 layout_mode = 0
-offset_left = 24.0
+offset_left = 120.0
 offset_top = 592.0
-offset_right = 1064.0
+offset_right = 968.0
 offset_bottom = 624.0
-scale = Vector2(0.8, 0.8)
-pivot_offset = Vector2(520, 16)
+pivot_offset = Vector2(424, 16)
 theme_override_constants/h_separation = 16
 columns = 6
+metadata/_edit_group_ = true
 
 [node name="BattleUnitPositionController" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
 layout_mode = 2

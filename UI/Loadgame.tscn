@@ -9,7 +9,7 @@
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="6_fe43y"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
 
-[sub_resource type="Shader" id="Shader_od35k"]
+[sub_resource type="Shader" id="Shader_rstmv"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -27,12 +27,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
 resource_local_to_scene = true
-shader = SubResource("Shader_od35k")
+shader = SubResource("Shader_rstmv")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_p2alj"]
+[sub_resource type="Shader" id="Shader_18s2k"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -50,12 +50,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
 resource_local_to_scene = true
-shader = SubResource("Shader_p2alj")
+shader = SubResource("Shader_18s2k")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_dsn6g"]
+[sub_resource type="Shader" id="Shader_dvyva"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -73,7 +73,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_dsn6g")
+shader = SubResource("Shader_dvyva")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -243,33 +243,35 @@ theme_override_font_sizes/font_size = 36
 text = "save name"
 vertical_alignment = 1
 
-[node name="TeamList" type="GridContainer" parent="CenterContainer/Preview"]
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/Preview"]
 layout_mode = 0
 offset_top = 88.0
-offset_right = 500.0
-offset_bottom = 584.0
-scale = Vector2(0.8, 0.8)
+offset_right = 400.0
+offset_bottom = 480.0
+
+[node name="TeamList" type="GridContainer" parent="CenterContainer/Preview/CenterContainer"]
+layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 3
 metadata/_edit_group_ = true
 
-[node name="UnitControl" parent="CenterContainer/Preview/TeamList" instance=ExtResource("4_3qovm")]
+[node name="UnitControl" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
 
-[node name="UnitControl2" parent="CenterContainer/Preview/TeamList" instance=ExtResource("4_3qovm")]
+[node name="UnitControl2" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
 
-[node name="UnitControl3" parent="CenterContainer/Preview/TeamList" instance=ExtResource("4_3qovm")]
+[node name="UnitControl3" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
 
-[node name="UnitControl4" parent="CenterContainer/Preview/TeamList" instance=ExtResource("4_3qovm")]
+[node name="UnitControl4" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
 
-[node name="UnitControl5" parent="CenterContainer/Preview/TeamList" instance=ExtResource("4_3qovm")]
+[node name="UnitControl5" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
 
-[node name="UnitControl6" parent="CenterContainer/Preview/TeamList" instance=ExtResource("4_3qovm")]
+[node name="UnitControl6" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
 
 [node name="Frame" type="Control" parent="CenterContainer/Preview"]
@@ -331,9 +333,9 @@ vertical_alignment = 1
 [connection signal="pressed" from="BottomPanel/GridContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="pressed" from="BottomPanel/GridContainer/LoadButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="BottomPanel/NewGameButton" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="CenterContainer/Preview/TeamList/UnitControl" to="." method="_on_unit_control_pressed"]
-[connection signal="pressed" from="CenterContainer/Preview/TeamList/UnitControl2" to="." method="_on_unit_control_pressed"]
-[connection signal="pressed" from="CenterContainer/Preview/TeamList/UnitControl3" to="." method="_on_unit_control_pressed"]
-[connection signal="pressed" from="CenterContainer/Preview/TeamList/UnitControl4" to="." method="_on_unit_control_pressed"]
-[connection signal="pressed" from="CenterContainer/Preview/TeamList/UnitControl5" to="." method="_on_unit_control_pressed"]
-[connection signal="pressed" from="CenterContainer/Preview/TeamList/UnitControl6" to="." method="_on_unit_control_pressed"]
+[connection signal="pressed" from="CenterContainer/Preview/CenterContainer/TeamList/UnitControl" to="." method="_on_unit_control_pressed"]
+[connection signal="pressed" from="CenterContainer/Preview/CenterContainer/TeamList/UnitControl2" to="." method="_on_unit_control_pressed"]
+[connection signal="pressed" from="CenterContainer/Preview/CenterContainer/TeamList/UnitControl3" to="." method="_on_unit_control_pressed"]
+[connection signal="pressed" from="CenterContainer/Preview/CenterContainer/TeamList/UnitControl4" to="." method="_on_unit_control_pressed"]
+[connection signal="pressed" from="CenterContainer/Preview/CenterContainer/TeamList/UnitControl5" to="." method="_on_unit_control_pressed"]
+[connection signal="pressed" from="CenterContainer/Preview/CenterContainer/TeamList/UnitControl6" to="." method="_on_unit_control_pressed"]

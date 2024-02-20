@@ -5,16 +5,16 @@
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="3_h052f"]
 
 [node name="BattleUnitPositionController" type="Control"]
-custom_minimum_size = Vector2(160, 32)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 160.0
+offset_right = 128.0
 offset_bottom = 32.0
 script = ExtResource("1_ogd3v")
 
 [node name="Left" type="Button" parent="."]
 layout_mode = 0
-offset_right = 32.0
+offset_right = 24.0
 offset_bottom = 32.0
 theme_override_fonts/font = ExtResource("2_ac4sj")
 text = "<"
@@ -22,8 +22,8 @@ script = ExtResource("3_h052f")
 
 [node name="Right" type="Button" parent="."]
 layout_mode = 0
-offset_left = 128.0
-offset_right = 160.0
+offset_left = 104.0
+offset_right = 128.0
 offset_bottom = 32.0
 theme_override_fonts/font = ExtResource("2_ac4sj")
 text = ">"
@@ -31,8 +31,8 @@ script = ExtResource("3_h052f")
 
 [node name="Change" type="Button" parent="."]
 layout_mode = 0
-offset_left = 40.0
-offset_right = 120.0
+offset_left = 24.0
+offset_right = 104.0
 offset_bottom = 32.0
 theme_override_fonts/font = ExtResource("2_ac4sj")
 text = "Change"

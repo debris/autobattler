@@ -36,7 +36,7 @@ kind = 2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu2ho"]
 shader = ExtResource("2_1v1rc")
 
-[sub_resource type="Shader" id="Shader_ret83"]
+[sub_resource type="Shader" id="Shader_dc376"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -54,24 +54,24 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8eri"]
 resource_local_to_scene = true
-shader = SubResource("Shader_ret83")
+shader = SubResource("Shader_dc376")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
 [node name="UnitControl" type="Control"]
-custom_minimum_size = Vector2(160, 240)
+custom_minimum_size = Vector2(128, 192)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -992.0
-offset_bottom = -408.0
+offset_right = -1024.0
+offset_bottom = -456.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q6svs")
-metadata/_edit_horizontal_guides_ = [8.0, 232.0]
-metadata/_edit_vertical_guides_ = [8.0, 152.0]
+metadata/_edit_horizontal_guides_ = [8.0, 184.0]
+metadata/_edit_vertical_guides_ = [8.0, 120.0]
 
 [node name="OnHover" type="ColorRect" parent="."]
 visible = false
@@ -112,13 +112,15 @@ mouse_filter = 2
 
 [node name="Schedules" type="GridContainer" parent="Content"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = 200.0
-offset_right = -67.0
-offset_bottom = 232.0
+offset_top = 160.0
+offset_right = -56.0
+offset_bottom = -8.0
 grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/v_separation = 0
 metadata/_edit_group_ = true
@@ -155,7 +157,7 @@ material = SubResource("ShaderMaterial_wu2ho")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 160.0
+offset_bottom = 128.0
 grow_horizontal = 2
 pivot_offset = Vector2(80, 80)
 mouse_filter = 2
@@ -164,33 +166,31 @@ expand_mode = 1
 
 [node name="Name" type="Label" parent="Content"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
+anchor_bottom = 0.5
 offset_left = 8.0
-offset_top = 168.0
+offset_top = 32.0
 offset_right = -8.0
-offset_bottom = 200.0
+offset_bottom = 56.0
 grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
 theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
 theme_override_fonts/font = ExtResource("9_0km6o")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "Name"
 vertical_alignment = 1
 
 [node name="Dmg" type="Label" parent="Content"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = -240.0
 offset_right = 72.0
-offset_bottom = -192.0
-grow_vertical = 0
+offset_bottom = 40.0
 theme_override_colors/font_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 theme_override_fonts/font = ExtResource("2_48twk")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 22
 text = "10
 "
 vertical_alignment = 1
@@ -203,24 +203,26 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -80.0
-offset_top = -48.0
+offset_top = -40.0
 offset_right = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
 theme_override_fonts/font = ExtResource("2_48twk")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 22
 text = "10"
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Shine" parent="." instance=ExtResource("6_h6610")]
+visible = false
 material = SubResource("ShaderMaterial_y8eri")
 layout_mode = 1
 offset_top = 2.08165e-12
 offset_bottom = 0.0
 
 [node name="Frame" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

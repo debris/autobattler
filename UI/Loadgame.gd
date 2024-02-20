@@ -8,7 +8,7 @@ signal action_selected(LoadgameAction)
 @onready var chapter_label = $CenterContainer/Preview/ChapterLabel
 @onready var level_label = $CenterContainer/Preview/LevelLabel
 @onready var units_label = $CenterContainer/Preview/UnitsLabel
-@onready var team_list = $CenterContainer/Preview/TeamList
+@onready var team_list = $CenterContainer/Preview/CenterContainer/TeamList
 @onready var delete_button = $BottomPanel/GridContainer/DeleteButton
 @onready var load_button = $BottomPanel/GridContainer/LoadButton
 
