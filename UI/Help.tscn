@@ -73,7 +73,7 @@ horizontal_alignment = 2
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 clip_contents = false
 layout_mode = 0
-offset_left = 64.0
+offset_left = 176.0
 offset_top = 16.0
 offset_right = 1152.0
 offset_bottom = 632.0

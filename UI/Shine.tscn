@@ -8,6 +8,7 @@ shader = ExtResource("1_gnx38")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
+shader_parameter/x_offset = 0.0
 
 [node name="Shine" type="ColorRect"]
 material = SubResource("ShaderMaterial_a83py")
