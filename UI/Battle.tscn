@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxvn6rx8m3xcl"]
+[gd_scene load_steps=15 format=3 uid="uid://dxvn6rx8m3xcl"]
 
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="1_i6e86"]
 [ext_resource type="Script" path="res://UI/Battle.gd" id="1_w871l"]
 [ext_resource type="PackedScene" uid="uid://cdnpjps8d0c6u" path="res://UI/BattleTeamControl.tscn" id="2_w07n4"]
 [ext_resource type="Script" path="res://UI/TeamPowerControl.gd" id="4_mhi2i"]
 [ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="4_mvys2"]
+[ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="6_cjoq1"]
 [ext_resource type="PackedScene" uid="uid://dcc60h5gjui3p" path="res://UI/BattleUnitPositionController.tscn" id="6_ggmcb"]
 [ext_resource type="PackedScene" uid="uid://wcnxqur4xofi" path="res://UI/ConsoleLogs.tscn" id="6_tcwyr"]
+[ext_resource type="Shader" path="res://UI/Shine.gdshader" id="7_xc6kw"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="9_d1yxv"]
 [ext_resource type="PackedScene" uid="uid://boyd05hhjowbm" path="res://UI/StacksControl.tscn" id="9_xnqrc"]
 
@@ -25,6 +27,14 @@ Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_i6e86")
 Label/styles/normal = SubResource("StyleBoxEmpty_exw7v")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2m7x0"]
+resource_local_to_scene = true
+shader = ExtResource("7_xc6kw")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
+shader_parameter/x_offset = 0.0
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -112,6 +122,10 @@ offset_left = -2.0
 offset_right = -1.0
 grow_vertical = 2
 color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+
+[node name="Shine" parent="RightPanel" instance=ExtResource("6_cjoq1")]
+material = SubResource("ShaderMaterial_2m7x0")
+layout_mode = 1
 
 [node name="TeamAPower" type="Control" parent="RightPanel"]
 custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)

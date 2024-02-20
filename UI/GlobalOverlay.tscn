@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="3_0d3qd"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_55ib8"]
 
-[sub_resource type="Shader" id="Shader_tokgy"]
+[sub_resource type="Shader" id="Shader_sh3bv"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -24,7 +24,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_itegs"]
 resource_local_to_scene = true
-shader = SubResource("Shader_tokgy")
+shader = SubResource("Shader_sh3bv")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -32,25 +32,28 @@ shader_parameter/shine_size = 0.3
 [node name="GlobalOverlay" type="CanvasLayer"]
 script = ExtResource("1_tkmo4")
 
-[node name="Frame" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -8.0
 offset_top = -8.0
-offset_right = 64.0
-offset_bottom = 656.0
-script = ExtResource("2_hr3b2")
+offset_right = -1088.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
 
-[node name="ColorRect" type="ColorRect" parent="Frame"]
+[node name="Frame" type="Control" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.705882)
+script = ExtResource("2_hr3b2")
 
-[node name="Shine" parent="Frame" instance=ExtResource("3_55ib8")]
+[node name="Shine" parent="ColorRect" instance=ExtResource("3_55ib8")]
 material = SubResource("ShaderMaterial_itegs")
 layout_mode = 1
 offset_top = 0.0

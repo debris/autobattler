@@ -9,7 +9,7 @@
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="6_fe43y"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
 
-[sub_resource type="Shader" id="Shader_rstmv"]
+[sub_resource type="Shader" id="Shader_4de78"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -27,12 +27,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
 resource_local_to_scene = true
-shader = SubResource("Shader_rstmv")
+shader = SubResource("Shader_4de78")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_18s2k"]
+[sub_resource type="Shader" id="Shader_7ldac"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -50,12 +50,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
 resource_local_to_scene = true
-shader = SubResource("Shader_18s2k")
+shader = SubResource("Shader_7ldac")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_dvyva"]
+[sub_resource type="Shader" id="Shader_8q2bx"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -73,7 +73,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_dvyva")
+shader = SubResource("Shader_8q2bx")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -96,25 +96,30 @@ centered = false
 region_enabled = true
 region_rect = Rect2(256, 244, 2304, 1296)
 
-[node name="Frame2" type="Control" parent="."]
-anchors_preset = 0
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 688.0
 offset_top = -8.0
-offset_right = 1088.0
-offset_bottom = 656.0
-script = ExtResource("6_4vb2i")
-metadata/_edit_group_ = true
+offset_right = -64.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
 
-[node name="ColorRect" type="ColorRect" parent="Frame2"]
+[node name="Frame2" type="Control" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.705882)
+script = ExtResource("6_4vb2i")
+metadata/_edit_group_ = true
 
-[node name="Shine" parent="Frame2" instance=ExtResource("8_wtwe6")]
+[node name="Shine" parent="ColorRect" instance=ExtResource("8_wtwe6")]
 material = SubResource("ShaderMaterial_snoq0")
 layout_mode = 1
 offset_top = 0.0
@@ -210,24 +215,28 @@ grow_vertical = 2
 custom_minimum_size = Vector2(400, 648)
 layout_mode = 2
 
-[node name="TopFrame" type="Control" parent="CenterContainer/Preview"]
-anchors_preset = 0
+[node name="ColorRect2" type="ColorRect" parent="CenterContainer/Preview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_top = -8.0
-offset_right = 400.0
-offset_bottom = 72.0
-script = ExtResource("6_4vb2i")
-metadata/_edit_group_ = true
+offset_bottom = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/Preview/TopFrame"]
+[node name="TopFrame" type="Control" parent="CenterContainer/Preview/ColorRect2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.705882)
+script = ExtResource("6_4vb2i")
+metadata/_edit_group_ = true
 
-[node name="Shine" parent="CenterContainer/Preview/TopFrame" instance=ExtResource("8_wtwe6")]
+[node name="Shine" parent="CenterContainer/Preview/ColorRect2" instance=ExtResource("8_wtwe6")]
 material = SubResource("ShaderMaterial_m8r3g")
 layout_mode = 1
 offset_top = 0.0
@@ -274,24 +283,28 @@ layout_mode = 2
 [node name="UnitControl6" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
 
-[node name="Frame" type="Control" parent="CenterContainer/Preview"]
-anchors_preset = 0
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/Preview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_top = 496.0
-offset_right = 400.0
-offset_bottom = 656.0
-script = ExtResource("6_4vb2i")
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/Preview/Frame"]
+[node name="Frame" type="Control" parent="CenterContainer/Preview/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.705882)
+script = ExtResource("6_4vb2i")
 
-[node name="Shine" parent="CenterContainer/Preview/Frame" instance=ExtResource("8_wtwe6")]
+[node name="Shine" parent="CenterContainer/Preview/ColorRect" instance=ExtResource("8_wtwe6")]
 material = SubResource("ShaderMaterial_sx87t")
 layout_mode = 1
 offset_top = 0.0
