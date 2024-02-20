@@ -34,7 +34,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Control" type="Control" parent="CenterContainer"]
-custom_minimum_size = Vector2(320, 480)
+custom_minimum_size = Vector2(256, 384)
 layout_mode = 2
 mouse_filter = 2
 
@@ -43,8 +43,8 @@ layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 160.0
-offset_bottom = 240.0
+offset_right = 128.0
+offset_bottom = 192.0
 scale = Vector2(2, 2)
 
 [node name="Control" type="GridContainer" parent="."]
