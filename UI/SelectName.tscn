@@ -40,7 +40,7 @@ layout_mode = 2
 theme_override_constants/line_spacing = 8
 theme_override_fonts/font = ExtResource("1_j08r3")
 theme_override_font_sizes/font_size = 24
-placeholder_text = "Enter Name"
+placeholder_text = "Enter your name"
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/GridContainer"]
 custom_minimum_size = Vector2(0, 48)
@@ -64,5 +64,6 @@ theme_override_font_sizes/font_size = 24
 text = "Proceed"
 script = ExtResource("2_r6084")
 
+[connection signal="text_changed" from="CenterContainer/GridContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/GridContainer/ProceedButton" to="." method="_on_proceed_button_pressed"]

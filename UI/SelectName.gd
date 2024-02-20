@@ -8,7 +8,15 @@ func _on_cancel_button_pressed():
 	action_selected.emit(SelectNameActionCancel.new())
 
 func _on_proceed_button_pressed():
-	if Save.exists(text_edit.text):
+	proceed(text_edit.text)
+
+func _on_text_edit_text_changed():
+	if text_edit.text.contains("\n"):
+		var selected_name = text_edit.text.replace("\n", "")
+		proceed(selected_name)
+
+func proceed(text):
+	if Save.exists(text):
 		return
 
-	action_selected.emit(SelectNameActionProceed.new(text_edit.text))
+	action_selected.emit(SelectNameActionProceed.new(text))
