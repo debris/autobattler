@@ -14,6 +14,9 @@ func _init():
 	player_team_level = 0
 	utc_savetime = ""
 
+func all_units() -> Iterator:
+	return ArrayIterator.new(team.members).concat(ArrayIterator.new(bench))
+
 func count_units() -> int:
 	return bench.size() + ArrayIterator.new(team.members).count()
 

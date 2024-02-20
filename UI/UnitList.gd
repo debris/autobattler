@@ -4,8 +4,9 @@ signal selected_unit(unit_index: int)
 
 @export var units: Array[OwnedUnit]
 
-@onready var list = $ScrollBorders/ScrollContainer/GridContainer
-@onready var name_filter = $NameFilter
+@onready var list = $LeftContianer/Control/ScrollBorders/ScrollContainer/UnitsContainer
+@onready var name_filter = $LeftContianer/Control/NameFilter
+@onready var unit_control = $RightContainer/Control/UnitControl
 
 var sort_order: bool = true
 
@@ -15,6 +16,9 @@ func _ready():
 		entry.unit = unit
 		entry.selected.connect(func():
 			selected_unit.emit(entry.get_index())
+		)
+		entry.mouse_entered.connect(func():
+			unit_control.unit = unit
 		)
 		list.add_child(entry)
 

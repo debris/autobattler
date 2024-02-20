@@ -13,16 +13,20 @@ signal selected_units(units: Array[OwnedUnit])
 @export var player_team_level: int
 @export var title_text: String
 @export var reroll_button_visible: bool = false
+@export var team_button_visible: bool = false
+@export var all_units: Array[OwnedUnit]
 
 @onready var select_label = $SelectLabel
 @onready var team_list = $TeamList
 @onready var select_button_grid = $SelectButtonGrid
 @onready var reroll_button = $RerollButton
+@onready var team_button = $CanvasLayer/Control/TeamButton
 
 var selected: Array[OwnedUnit] = []
 
 func _ready():
 	reroll_button.visible = reroll_button_visible
+	team_button.visible = team_button_visible
 	select_label.text = title_text
 	
 	for button in select_button_grid.get_children():
@@ -53,3 +57,8 @@ func _on_unit_control_pressed(unit):
 	var details = load("res://UI/UnitDetails.tscn").instantiate()
 	details.unit = unit
 	add_child(details)
+
+func _on_team_pressed():
+	var unit_list = load("res://UI/UnitList.tscn").instantiate()
+	unit_list.units = all_units
+	add_child(unit_list)

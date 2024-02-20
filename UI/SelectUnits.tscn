@@ -157,6 +157,26 @@ theme_override_font_sizes/font_size = 24
 text = "Reroll"
 script = ExtResource("5_sprwv")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TeamButton" type="Button" parent="CanvasLayer/Control"]
+offset_left = 8.0
+offset_top = 176.0
+offset_right = 56.0
+offset_bottom = 224.0
+text = "T"
+script = ExtResource("5_sprwv")
+
 [connection signal="pressed" from="TeamList/UnitControl" to="." method="_on_unit_control_pressed"]
 [connection signal="pressed" from="TeamList/UnitControl2" to="." method="_on_unit_control_pressed"]
 [connection signal="pressed" from="TeamList/UnitControl3" to="." method="_on_unit_control_pressed"]
@@ -164,3 +184,4 @@ script = ExtResource("5_sprwv")
 [connection signal="pressed" from="TeamList/UnitControl5" to="." method="_on_unit_control_pressed"]
 [connection signal="pressed" from="TeamList/UnitControl6" to="." method="_on_unit_control_pressed"]
 [connection signal="pressed" from="RerollButton" to="." method="_on_reroll_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/TeamButton" to="." method="_on_team_pressed"]

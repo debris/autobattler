@@ -148,6 +148,9 @@ func display_battle(collection: Array[Unit]):
 	select_reward.out_of = generator.random_team(6, collection)
 	select_reward.player_team_level = save.player_team_level
 	select_reward.title_text = "select reward"
+	select_reward.team_button_visible = true
+	select_reward.all_units.assign(save.all_units().collect())
+
 	present_view(select_reward)
 	var units = await select_reward.selected_units
 	assert(units.size() == 1)

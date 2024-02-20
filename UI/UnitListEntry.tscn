@@ -31,12 +31,12 @@ phase = 0
 active = false
 
 [node name="TeamListEntry" type="Control"]
-custom_minimum_size = Vector2(448, 64)
+custom_minimum_size = Vector2(400, 64)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -704.0
+offset_right = -752.0
 offset_bottom = -584.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -54,9 +54,12 @@ mouse_filter = 2
 color = Color(0.745098, 0.745098, 0.745098, 0.745098)
 
 [node name="Frame" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 448.0
-offset_bottom = 64.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_ck1m6")
 
@@ -85,9 +88,9 @@ text = "0000-0000-0000"
 
 [node name="Select" type="Button" parent="."]
 layout_mode = 0
-offset_left = 368.0
+offset_left = 328.0
 offset_top = 16.0
-offset_right = 432.0
+offset_right = 392.0
 offset_bottom = 48.0
 theme_override_fonts/font = ExtResource("2_ipio7")
 text = "Select"
@@ -98,6 +101,7 @@ offset_left = 160.0
 offset_top = 8.0
 offset_right = 288.0
 offset_bottom = 56.0
+mouse_filter = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 metadata/_edit_group_ = true
@@ -106,6 +110,7 @@ metadata/_edit_group_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("4_ox5jo")
 schedule_pointer = SubResource("Resource_c455t")
 
@@ -113,6 +118,7 @@ schedule_pointer = SubResource("Resource_c455t")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("4_ox5jo")
 schedule_pointer = SubResource("Resource_ynug1")
 
@@ -120,6 +126,7 @@ schedule_pointer = SubResource("Resource_ynug1")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("4_ox5jo")
 schedule_pointer = SubResource("Resource_18u74")
 

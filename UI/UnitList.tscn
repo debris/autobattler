@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://jlf00hl8a4y5"]
+[gd_scene load_steps=4 format=3 uid="uid://jlf00hl8a4y5"]
 
 [ext_resource type="Script" path="res://UI/UnitList.gd" id="1_qsus6"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_qlmkt"]
+[ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="3_e3e2o"]
 
 [node name="UnitList" type="Control"]
 layout_mode = 3
@@ -22,26 +23,6 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.901961)
 
-[node name="ScrollBorders" type="Control" parent="."]
-clip_contents = true
-anchors_preset = 0
-offset_left = 64.0
-offset_top = 104.0
-offset_right = 528.0
-offset_bottom = 648.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="ScrollBorders"]
-clip_contents = false
-layout_mode = 0
-offset_top = 8.0
-offset_right = 464.0
-offset_bottom = 528.0
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
-
-[node name="GridContainer" type="GridContainer" parent="ScrollBorders/ScrollContainer"]
-layout_mode = 2
-
 [node name="UnitsLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 960.0
@@ -53,16 +34,55 @@ theme_override_font_sizes/font_size = 40
 text = "Units"
 horizontal_alignment = 2
 
-[node name="TopPanel" type="ColorRect" parent="."]
+[node name="RightContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 576.0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="RightContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UnitControl" parent="RightContainer/Control" instance=ExtResource("3_e3e2o")]
+layout_mode = 1
+offset_left = -128.0
+offset_top = -192.0
+offset_right = 0.0
+offset_bottom = 0.0
+scale = Vector2(2, 2)
+mouse_filter = 2
+
+[node name="LeftContianer" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_left = 64.0
+offset_right = 688.0
+offset_bottom = 648.0
+
+[node name="Control" type="Control" parent="LeftContianer"]
+custom_minimum_size = Vector2(400, 648)
+layout_mode = 2
+
+[node name="NameFilter" type="TextEdit" parent="LeftContianer/Control"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 400.0
+offset_bottom = 56.0
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("2_qlmkt")
+theme_override_font_sizes/font_size = 18
+placeholder_text = "Filter"
+
+[node name="TopPanel" type="ColorRect" parent="LeftContianer/Control"]
+layout_mode = 0
 offset_top = 56.0
-offset_right = 512.0
+offset_right = 400.0
 offset_bottom = 104.0
 color = Color(0.745098, 0.745098, 0.745098, 0)
 metadata/_edit_group_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="TopPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="LeftContianer/Control/TopPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,41 +94,41 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 8
 
-[node name="GridContainer" type="GridContainer" parent="TopPanel/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="LeftContianer/Control/TopPanel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 8
 columns = 4
 metadata/_edit_group_ = true
 
-[node name="NameButton" type="Button" parent="TopPanel/MarginContainer/GridContainer"]
+[node name="NameButton" type="Button" parent="LeftContianer/Control/TopPanel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_qlmkt")
 text = "Name"
 
-[node name="SkillButton" type="Button" parent="TopPanel/MarginContainer/GridContainer"]
+[node name="SkillButton" type="Button" parent="LeftContianer/Control/TopPanel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_qlmkt")
 text = "Skill"
 
-[node name="AttackButton" type="Button" parent="TopPanel/MarginContainer/GridContainer"]
+[node name="AttackButton" type="Button" parent="LeftContianer/Control/TopPanel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_qlmkt")
 text = "Attack"
 
-[node name="DefenceButton" type="Button" parent="TopPanel/MarginContainer/GridContainer"]
+[node name="DefenceButton" type="Button" parent="LeftContianer/Control/TopPanel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_qlmkt")
 text = "Defence"
 
-[node name="ColorRect" type="ColorRect" parent="TopPanel"]
+[node name="ColorRect" type="ColorRect" parent="LeftContianer/Control/TopPanel"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -119,19 +139,26 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.745098, 0.745098, 0.745098, 1)
 
-[node name="NameFilter" type="TextEdit" parent="."]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 8.0
-offset_right = 512.0
-offset_bottom = 56.0
-theme_override_constants/line_spacing = 12
-theme_override_fonts/font = ExtResource("2_qlmkt")
-theme_override_font_sizes/font_size = 18
-placeholder_text = "Filter"
+[node name="ScrollBorders" type="Control" parent="LeftContianer/Control"]
+clip_contents = true
+anchors_preset = 0
+offset_top = 104.0
+offset_right = 400.0
+offset_bottom = 648.0
 
-[connection signal="pressed" from="TopPanel/MarginContainer/GridContainer/NameButton" to="." method="_on_name_button_pressed"]
-[connection signal="pressed" from="TopPanel/MarginContainer/GridContainer/SkillButton" to="." method="_on_skill_button_pressed"]
-[connection signal="pressed" from="TopPanel/MarginContainer/GridContainer/AttackButton" to="." method="_on_attack_button_pressed"]
-[connection signal="pressed" from="TopPanel/MarginContainer/GridContainer/DefenceButton" to="." method="_on_defence_button_pressed"]
-[connection signal="text_changed" from="NameFilter" to="." method="_on_name_filter_text_changed"]
+[node name="ScrollContainer" type="ScrollContainer" parent="LeftContianer/Control/ScrollBorders"]
+clip_contents = false
+layout_mode = 0
+offset_top = 8.0
+offset_right = 408.0
+offset_bottom = 528.0
+horizontal_scroll_mode = 0
+
+[node name="UnitsContainer" type="GridContainer" parent="LeftContianer/Control/ScrollBorders/ScrollContainer"]
+layout_mode = 2
+
+[connection signal="text_changed" from="LeftContianer/Control/NameFilter" to="." method="_on_name_filter_text_changed"]
+[connection signal="pressed" from="LeftContianer/Control/TopPanel/MarginContainer/GridContainer/NameButton" to="." method="_on_name_button_pressed"]
+[connection signal="pressed" from="LeftContianer/Control/TopPanel/MarginContainer/GridContainer/SkillButton" to="." method="_on_skill_button_pressed"]
+[connection signal="pressed" from="LeftContianer/Control/TopPanel/MarginContainer/GridContainer/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="LeftContianer/Control/TopPanel/MarginContainer/GridContainer/DefenceButton" to="." method="_on_defence_button_pressed"]

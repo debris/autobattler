@@ -143,7 +143,7 @@ func _display_notification(text: String, color: Color):
 	label.size = Vector2(size.x, 20.0)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	label.add_theme_font_size_override("font_size", 20)
+	label.add_theme_font_size_override("font_size", 16)
 	label.text = text
 	unit_control.add_child(label)
 	await get_tree().create_timer(display_settings.step_time).timeout
