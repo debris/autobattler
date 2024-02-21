@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="3_0d3qd"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_55ib8"]
 
-[sub_resource type="Shader" id="Shader_sh3bv"]
+[sub_resource type="Shader" id="Shader_tf51u"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -24,7 +24,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_itegs"]
 resource_local_to_scene = true
-shader = SubResource("Shader_sh3bv")
+shader = SubResource("Shader_tf51u")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -59,36 +59,60 @@ layout_mode = 1
 offset_top = 0.0
 offset_bottom = 0.0
 
-[node name="ExitButton" type="Button" parent="."]
+[node name="Panel" type="GridContainer" parent="."]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 56.0
-offset_bottom = 56.0
+offset_bottom = 648.0
+theme_override_constants/v_separation = 16
+
+[node name="ExitButton" type="Button" parent="Panel"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xbdg5")
 theme_override_font_sizes/font_size = 24
 text = "x"
 script = ExtResource("3_0d3qd")
 
-[node name="SettingsButton" type="Button" parent="."]
-offset_left = 8.0
-offset_top = 64.0
-offset_right = 56.0
-offset_bottom = 112.0
+[node name="SettingsButton" type="Button" parent="Panel"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xbdg5")
 theme_override_font_sizes/font_size = 24
 text = "*"
 script = ExtResource("3_0d3qd")
 
-[node name="HelpButton" type="Button" parent="."]
-offset_left = 8.0
-offset_top = 120.0
-offset_right = 56.0
-offset_bottom = 168.0
+[node name="HelpButton" type="Button" parent="Panel"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xbdg5")
 theme_override_font_sizes/font_size = 24
 text = "?"
 script = ExtResource("3_0d3qd")
 
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="HelpButton" to="." method="_on_help_button_pressed"]
+[node name="TeamButton" type="Button" parent="Panel"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xbdg5")
+theme_override_font_sizes/font_size = 24
+text = "T"
+script = ExtResource("3_0d3qd")
+
+[node name="LogsButton" type="Button" parent="Panel"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xbdg5")
+theme_override_font_sizes/font_size = 24
+text = "''"
+script = ExtResource("3_0d3qd")
+
+[connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Panel/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Panel/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="Panel/TeamButton" to="." method="_on_team_button_pressed"]
+[connection signal="pressed" from="Panel/LogsButton" to="." method="_on_logs_button_pressed"]

@@ -3,6 +3,11 @@ extends Control
 signal action_selected(SelectNameAction)
 
 @onready var text_edit = $CenterContainer/GridContainer/TextEdit
+@onready var global_overlay = $GlobalOverlay
+
+func _ready():
+	global_overlay.exit_button.visible = true
+	global_overlay.settings_button.visible = true
 
 func _on_cancel_button_pressed():
 	action_selected.emit(SelectNameActionCancel.new())

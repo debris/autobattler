@@ -11,6 +11,7 @@ signal action_selected(LoadgameAction)
 @onready var team_list = $CenterContainer/Preview/CenterContainer/TeamList
 @onready var delete_button = $BottomPanel/GridContainer/DeleteButton
 @onready var load_button = $BottomPanel/GridContainer/LoadButton
+@onready var global_overlay = $GlobalOverlay
 
 var save_preview: Save:
 	set(value):
@@ -20,6 +21,8 @@ var save_preview: Save:
 var save_name: String
 
 func _ready():
+	global_overlay.exit_button.visible = true
+	global_overlay.settings_button.visible = true
 	var all_saves_names = Save.all_saves()
 	var all_saves = all_saves_names.map(func(n): return Save.load_save(n))
 	var pairs: Array = ArrayIterator.new(all_saves_names).zip(ArrayIterator.new(all_saves)).collect()

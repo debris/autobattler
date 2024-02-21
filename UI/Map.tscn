@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnkmc23o7l0gg"]
+[gd_scene load_steps=4 format=3 uid="uid://dnkmc23o7l0gg"]
 
 [ext_resource type="Script" path="res://UI/Map.gd" id="1_kaxd2"]
 [ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="2_3dhri"]
+[ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="3_usdyr"]
 
 [node name="Map" type="Control"]
 layout_mode = 3
@@ -20,6 +21,8 @@ texture = ExtResource("2_3dhri")
 centered = false
 region_enabled = true
 region_rect = Rect2(256, 244, 2304, 1296)
+
+[node name="GlobalOverlay" parent="." instance=ExtResource("3_usdyr")]
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

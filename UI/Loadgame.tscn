@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://db4xehwv3k6ab"]
+[gd_scene load_steps=16 format=3 uid="uid://db4xehwv3k6ab"]
 
 [ext_resource type="Script" path="res://UI/Loadgame.gd" id="1_465sv"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_1d7kx"]
+[ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="2_7ijpy"]
 [ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="2_j1c3k"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="3_uvtvc"]
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="4_3qovm"]
@@ -9,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="6_fe43y"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
 
-[sub_resource type="Shader" id="Shader_iqr0j"]
+[sub_resource type="Shader" id="Shader_ivjk8"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -27,12 +28,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
 resource_local_to_scene = true
-shader = SubResource("Shader_iqr0j")
+shader = SubResource("Shader_ivjk8")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_lya1p"]
+[sub_resource type="Shader" id="Shader_j5vvf"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -50,12 +51,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
 resource_local_to_scene = true
-shader = SubResource("Shader_lya1p")
+shader = SubResource("Shader_j5vvf")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_6vfbb"]
+[sub_resource type="Shader" id="Shader_73mam"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -73,7 +74,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_6vfbb")
+shader = SubResource("Shader_73mam")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -95,6 +96,8 @@ texture = ExtResource("2_j1c3k")
 centered = false
 region_enabled = true
 region_rect = Rect2(256, 244, 2304, 1296)
+
+[node name="GlobalOverlay" parent="." instance=ExtResource("2_7ijpy")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -124,7 +127,6 @@ material = SubResource("ShaderMaterial_snoq0")
 layout_mode = 1
 offset_top = 0.0
 offset_bottom = 0.0
-color = Color(0, 0, 0, 0.0470588)
 
 [node name="Border" type="Control" parent="."]
 clip_contents = true

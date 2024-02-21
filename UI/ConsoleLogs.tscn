@@ -3,19 +3,16 @@
 [ext_resource type="Script" path="res://UI/ConsoleLogs.gd" id="1_g1y4a"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_fxkrm"]
 
-[node name="ConsoleLogs" type="CanvasLayer"]
-script = ExtResource("1_g1y4a")
-
-[node name="Control" type="Control" parent="."]
+[node name="ConsoleLogs" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+script = ExtResource("1_g1y4a")
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +22,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.745098)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 15
@@ -37,11 +34,11 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="GridContainer" type="GridContainer" parent="Control/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LogsLabel" type="Label" parent="Control"]
+[node name="LogsLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 960.0
 offset_top = 8.0

@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var overlay = $GlobalOverlay
+#@onready var overlay = $GlobalOverlay
 
 var generator: Generator
 var save: Save
@@ -44,7 +44,7 @@ func present_view(view):
 
 func _ready():
 	Sounds.start_main_theme_track()
-	overlay.exit_pressed.connect(reset)
+	#overlay.exit_pressed.connect(reset)
 	reset()
 
 func reset():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://eagvkhnvorue"]
+[gd_scene load_steps=11 format=3 uid="uid://eagvkhnvorue"]
 
 [ext_resource type="Script" path="res://UI/UnitListEntry.gd" id="1_p8drj"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_ck1m6"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_ipio7"]
+[ext_resource type="FontVariation" uid="uid://cfurrex4by3bf" path="res://Assets/Fonts/PunktumItalic.tres" id="3_4s74j"]
 [ext_resource type="Script" path="res://UI/ScheduleControl.gd" id="4_ox5jo"]
 [ext_resource type="Script" path="res://Engine/SchedulePointer.gd" id="5_f4dux"]
 
@@ -69,7 +70,8 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 272.0
 offset_bottom = 48.0
-theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("3_4s74j")
+theme_override_font_sizes/font_size = 16
 text = "Name"
 vertical_alignment = 1
 

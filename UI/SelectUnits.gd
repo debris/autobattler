@@ -20,13 +20,19 @@ signal selected_units(units: Array[OwnedUnit])
 @onready var team_list = $TeamList
 @onready var select_button_grid = $SelectButtonGrid
 @onready var reroll_button = $RerollButton
-@onready var team_button = $CanvasLayer/Control/TeamButton
+
+@onready var global_overlay = $GlobalOverlay
 
 var selected: Array[OwnedUnit] = []
 
 func _ready():
+	global_overlay.exit_button.visible = true
+	global_overlay.settings_button.visible = true
+	global_overlay.help_button.visible = true
+	global_overlay.team_button.visible = team_button_visible
+	global_overlay.team_button.pressed.connect(_on_team_button_pressed)
+	
 	reroll_button.visible = reroll_button_visible
-	team_button.visible = team_button_visible
 	select_label.text = title_text
 	
 	for button in select_button_grid.get_children():
@@ -56,9 +62,9 @@ func _on_reroll_button_pressed():
 func _on_unit_control_pressed(unit):
 	var details = load("res://UI/UnitDetails.tscn").instantiate()
 	details.unit = unit
-	add_child(details)
+	global_overlay.present_subview(details)
 
-func _on_team_pressed():
+func _on_team_button_pressed():
 	var unit_list = load("res://UI/UnitList.tscn").instantiate()
 	unit_list.units = all_units
-	add_child(unit_list)
+	global_overlay.present_subview(unit_list)

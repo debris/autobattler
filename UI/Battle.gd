@@ -18,7 +18,7 @@ signal battle_finished(result)
 @onready var team_b_control = $TeamB
 @onready var team_a_power = $RightPanel/TeamAPower
 @onready var team_b_power = $RightPanel/TeamBPower
-@onready var console_logs = $ConsoleLogs
+#@onready var console_logs = $ConsoleLogs
 @onready var pause_button = $CanvasLayer/Control/Pause
 @onready var step_button = $CanvasLayer/Control/Step
 @onready var start_button = $Start
@@ -31,12 +31,20 @@ signal battle_finished(result)
 @onready var stacks_control_b = $RightPanel/StacksControlB
 @onready var round_phase_label = $RoundPhaseLabel
 
+@onready var global_overlay = $GlobalOverlay
+
 var battle_state: BattleState
 var battle_controller: BattleController
 var paused = false
 var result: Result
 
 func _ready():
+	global_overlay.exit_button.visible = true
+	global_overlay.settings_button.visible = true
+	global_overlay.help_button.visible = true
+	global_overlay.logs_button.visible = true
+	global_overlay.logs_button.pressed.connect(_on_logs_button_pressed)
+	
 	assert(player_team.members.size() == 6)
 	assert(enemy_team.members.size() == 6)
 	
@@ -111,7 +119,7 @@ func _ready():
 	stacks_control_b.stacks = battle_state.team_b.stacks
 
 	battle_state.action_executed.connect(_wait_for_display)
-	console_logs.battle_state = battle_state
+	#console_logs.battle_state = battle_state
 
 # private
 func _wait_for_display():
@@ -162,8 +170,14 @@ func _on_pause_pressed():
 	if !paused:
 		battle_state.proceed()
 
-func _on_console_pressed():
-	console_logs.visible = !console_logs.visible
+func _on_logs_button_pressed():
+	var console_logs = load("res://UI/ConsoleLogs.tscn").instantiate()
+	console_logs.battle_state = battle_state
+	global_overlay.present_subview(console_logs)
+	#var details = load("res://UI/UnitDetails.tscn").instantiate()
+	#details.unit = battle_unit
+	#global_overlay.present_subview(details)
+	#console_logs.visible = !console_logs.visible
 
 func _on_step_pressed():
 	battle_state.proceed()
@@ -186,4 +200,4 @@ func _on_continue_pressed():
 func _on_team_pressed(battle_unit):
 	var details = load("res://UI/UnitDetails.tscn").instantiate()
 	details.unit = battle_unit
-	add_child(details)
+	global_overlay.present_subview(details)

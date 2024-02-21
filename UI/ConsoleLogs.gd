@@ -1,11 +1,11 @@
-extends CanvasLayer
+extends Control
 
 @export var battle_state: BattleState:
 	set(value):
 		battle_state = value
 		logs_iterator = LogsIterator.new(battle_state.logs).peekable()
 
-@onready var list_control = $Control/ScrollContainer/GridContainer
+@onready var list_control = $ScrollContainer/GridContainer
 
 var logs_iterator
 

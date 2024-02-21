@@ -6,8 +6,12 @@ signal selected_location
 
 @onready var list = $CenterContainer/List
 @onready var locations_grid = $CenterContainer/List/LocationsGrid
+@onready var global_overlay = $GlobalOverlay
 
 func _ready():
+	global_overlay.exit_button.visible = true
+	global_overlay.settings_button.visible = true
+	
 	locations_grid.columns = Map.COLUMNS
 
 	for i in map.rows.size():

@@ -1,10 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://kktd6vexmfkb"]
+[gd_scene load_steps=2 format=3 uid="uid://kktd6vexmfkb"]
 
 [ext_resource type="Script" path="res://UI/Root.gd" id="1_v3mdc"]
-[ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="2_0x1f8"]
 
 [node name="Root" type="CanvasLayer"]
 script = ExtResource("1_v3mdc")
-
-[node name="GlobalOverlay" parent="." instance=ExtResource("2_0x1f8")]
-layer = 2

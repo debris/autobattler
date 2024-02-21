@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5jfrjudv63dk"]
+[gd_scene load_steps=10 format=3 uid="uid://c5jfrjudv63dk"]
 
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="1_ahuw8"]
 [ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="1_vme58"]
 [ext_resource type="Script" path="res://UI/SelectUnits.gd" id="2_qqg62"]
+[ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="4_h4d1b"]
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="5_8187x"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="5_haiug"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="5_sprwv"]
@@ -41,6 +42,8 @@ texture = ExtResource("1_vme58")
 centered = false
 region_enabled = true
 region_rect = Rect2(256, 244, 2304, 1296)
+
+[node name="GlobalOverlay" parent="." instance=ExtResource("4_h4d1b")]
 
 [node name="TeamList" type="GridContainer" parent="."]
 layout_mode = 0
@@ -157,26 +160,6 @@ theme_override_font_sizes/font_size = 24
 text = "Reroll"
 script = ExtResource("5_sprwv")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="TeamButton" type="Button" parent="CanvasLayer/Control"]
-offset_left = 8.0
-offset_top = 176.0
-offset_right = 56.0
-offset_bottom = 224.0
-text = "T"
-script = ExtResource("5_sprwv")
-
 [connection signal="pressed" from="TeamList/UnitControl" to="." method="_on_unit_control_pressed"]
 [connection signal="pressed" from="TeamList/UnitControl2" to="." method="_on_unit_control_pressed"]
 [connection signal="pressed" from="TeamList/UnitControl3" to="." method="_on_unit_control_pressed"]
@@ -184,4 +167,3 @@ script = ExtResource("5_sprwv")
 [connection signal="pressed" from="TeamList/UnitControl5" to="." method="_on_unit_control_pressed"]
 [connection signal="pressed" from="TeamList/UnitControl6" to="." method="_on_unit_control_pressed"]
 [connection signal="pressed" from="RerollButton" to="." method="_on_reroll_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/TeamButton" to="." method="_on_team_pressed"]
