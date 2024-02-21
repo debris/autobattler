@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfe31cw3b8ijn"]
+
+[ext_resource type="Texture2D" uid="uid://bgq116wr0lcu" path="res://Assets/Icons/viking_boat.png" id="1_0att3"]
+[ext_resource type="Shader" path="res://UI/HexTile.gdshader" id="1_35aoo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ugbvh"]
+shader = ExtResource("1_35aoo")
+
+[node name="HexNode" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ugbvh")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0att3")
+expand_mode = 1

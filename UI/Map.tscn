@@ -39,6 +39,6 @@ theme_override_constants/v_separation = 16
 
 [node name="LocationsGrid" type="GridContainer" parent="CenterContainer/List"]
 layout_mode = 2
-theme_override_constants/h_separation = 48
-theme_override_constants/v_separation = 16
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
 columns = 5
