@@ -1,6 +1,7 @@
 extends CanvasLayer
+class_name GlobalOverlay
 
-signal exit_pressed
+static var on_exit: Callable
 
 @onready var exit_button = $Panel/ExitButton
 @onready var settings_button = $Panel/SettingsButton
@@ -13,6 +14,7 @@ var subview: Control
 func present_subview(view):
 	if subview != null:
 		subview.queue_free()
+		# hacky way for toggling subviews
 		if subview.get_script().get_instance_id() == view.get_script().get_instance_id():
 			return
 	
@@ -33,10 +35,23 @@ func _on_exit_button_pressed():
 		subview.queue_free()
 		return
 	
-	exit_pressed.emit()
+	var exit = preload("res://UI/Exit.tscn").instantiate()
+	exit.yes_pressed.connect(func(): 
+		on_exit.call()
+	)
+	exit.cancel_pressed.connect(func():
+		exit.queue_free()
+	)	
+	present_subview(exit)
+	
 
 func _on_team_button_pressed():
-	pass # Replace with function body.
+	pass 
 
 func _on_logs_button_pressed():
-	pass # Replace with function body.
+	pass
+
+func _process(_delta):
+	if Input.is_action_just_pressed("Escape"):
+		exit_button.accept_event()
+		_on_exit_button_pressed()

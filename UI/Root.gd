@@ -16,6 +16,10 @@ func enemy_team_level(chapter: int) -> int:
 	return 2 * chapter
 
 func close_view(view):
+	# close global overlay first
+	if "global_overlay" in view:
+		view.global_overlay.visible = false
+
 	await get_tree().create_timer(DisplaySettings.default().screen_transition_time).timeout
 	if view != null:
 		view.queue_free()
@@ -44,7 +48,7 @@ func present_view(view):
 
 func _ready():
 	Sounds.start_main_theme_track()
-	#overlay.exit_pressed.connect(reset)
+	GlobalOverlay.on_exit = reset
 	reset()
 
 func reset():

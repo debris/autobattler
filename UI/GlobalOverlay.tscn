@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="3_0d3qd"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_55ib8"]
 
-[sub_resource type="Shader" id="Shader_tf51u"]
+[sub_resource type="Shader" id="Shader_cicju"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -24,7 +24,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_itegs"]
 resource_local_to_scene = true
-shader = SubResource("Shader_tf51u")
+shader = SubResource("Shader_cicju")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -108,7 +108,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xbdg5")
 theme_override_font_sizes/font_size = 24
-text = "''"
+text = "'"
 script = ExtResource("3_0d3qd")
 
 [connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]
