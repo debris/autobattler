@@ -194,6 +194,9 @@ func _on_start_pressed():
 		await battle_state.execute_round()
 
 func _on_continue_pressed():
+	if result == Result.DEFEAT:
+		global_overlay.goto_loadgame.call()
+		return
 	battle_finished.emit(result)
 
 

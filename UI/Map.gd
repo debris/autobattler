@@ -11,6 +11,7 @@ signal selected_location
 func _ready():
 	global_overlay.exit_button.visible = true
 	global_overlay.settings_button.visible = true
+	global_overlay.team_button.visible = true
 	
 	locations_grid.columns = Map.COLUMNS
 

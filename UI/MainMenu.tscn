@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://cyb4f6bo4dhgg"]
+
+[ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="1_el5lm"]
+[ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_s1um4"]
+[ext_resource type="Script" path="res://UI/Frame.gd" id="2_p0l2d"]
+[ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_qnkk0"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="4_ad07h"]
+[ext_resource type="Script" path="res://UI/GameButton.gd" id="5_uw5ga"]
+[ext_resource type="FontVariation" uid="uid://cfurrex4by3bf" path="res://Assets/Fonts/PunktumItalic.tres" id="6_5e7re"]
+
+[sub_resource type="Shader" id="Shader_mxvyn"]
+resource_local_to_scene = true
+code = "// based on
+// https://godotshaders.com/shader/2d-shine-highlight/
+
+shader_type canvas_item;
+
+uniform vec4 shine_color : source_color = vec4(1.0);
+uniform float shine_speed : hint_range(-10.0, 10.0, 0.1) = 1.0;
+uniform float shine_size : hint_range(0.01, 1.0, 0.01) = 0.01;
+
+void fragment() {
+	float shine = step(1.0 - shine_size * 0.5, 0.5 + 0.5 * sin(-SCREEN_UV.x - SCREEN_UV.y * 0.3 + TIME * shine_speed));
+	COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, shine * shine_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pq5l2"]
+resource_local_to_scene = true
+shader = SubResource("Shader_mxvyn")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s1um4")
+
+[node name="Concrete0" type="Sprite2D" parent="."]
+modulate = Color(0.627451, 0.627451, 0.627451, 1)
+texture_repeat = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_el5lm")
+centered = false
+region_enabled = true
+region_rect = Rect2(256, 244, 2304, 1296)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 688.0
+offset_top = -8.0
+offset_right = -64.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="Frame2" type="Control" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_p0l2d")
+metadata/_edit_group_ = true
+
+[node name="Shine" parent="ColorRect" instance=ExtResource("3_qnkk0")]
+material = SubResource("ShaderMaterial_pq5l2")
+layout_mode = 1
+offset_top = 0.0
+offset_bottom = 0.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 408.0
+offset_right = 1088.0
+offset_bottom = 544.0
+
+[node name="PlayButton" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_ad07h")
+theme_override_font_sizes/font_size = 24
+text = "Play"
+script = ExtResource("5_uw5ga")
+
+[node name="Quit" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_ad07h")
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+script = ExtResource("5_uw5ga")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 688.0
+offset_bottom = 648.0
+theme_override_fonts/font = ExtResource("6_5e7re")
+theme_override_font_sizes/font_size = 60
+text = "PROJECT
+AUTOBATTLER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="GridContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="GridContainer/Quit" to="." method="_on_quit_pressed"]

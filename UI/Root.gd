@@ -49,9 +49,23 @@ func present_view(view):
 func _ready():
 	Sounds.start_main_theme_track()
 	GlobalOverlay.on_exit = reset
+	GlobalOverlay.on_team_pressed = func(overlay):
+		var unit_list = load("res://UI/UnitList.tscn").instantiate()
+		unit_list.units.assign(save.all_units().collect())
+		overlay.present_subview(unit_list)
+	GlobalOverlay.goto_loadgame = loadgame_screen
 	reset()
 
 func reset():
+	save = null
+	save_name = ""
+
+	var main_menu = preload("res://UI/MainMenu.tscn").instantiate()
+	present_view(main_menu)
+	await main_menu.play_pressed
+	loadgame_screen()
+
+func loadgame_screen():
 	save = null
 	save_name = ""
 
@@ -145,7 +159,6 @@ func display_battle(collection: Array[Unit]):
 	present_view(battle)
 	var _result = await battle.battle_finished
 
-
 	# after the fight lets get some rewards
 	var select_reward = preload("res://UI/SelectUnits.tscn").instantiate()
 	select_reward.to_select = 1
@@ -153,7 +166,6 @@ func display_battle(collection: Array[Unit]):
 	select_reward.player_team_level = save.player_team_level
 	select_reward.title_text = "select reward"
 	select_reward.team_button_visible = true
-	select_reward.all_units.assign(save.all_units().collect())
 
 	present_view(select_reward)
 	var units = await select_reward.selected_units

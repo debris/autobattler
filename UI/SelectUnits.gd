@@ -14,7 +14,6 @@ signal selected_units(units: Array[OwnedUnit])
 @export var title_text: String
 @export var reroll_button_visible: bool = false
 @export var team_button_visible: bool = false
-@export var all_units: Array[OwnedUnit]
 
 @onready var select_label = $SelectLabel
 @onready var team_list = $TeamList
@@ -30,7 +29,6 @@ func _ready():
 	global_overlay.settings_button.visible = true
 	global_overlay.help_button.visible = true
 	global_overlay.team_button.visible = team_button_visible
-	global_overlay.team_button.pressed.connect(_on_team_button_pressed)
 	
 	reroll_button.visible = reroll_button_visible
 	select_label.text = title_text
@@ -63,8 +61,3 @@ func _on_unit_control_pressed(unit):
 	var details = load("res://UI/UnitDetails.tscn").instantiate()
 	details.unit = unit
 	global_overlay.present_subview(details)
-
-func _on_team_button_pressed():
-	var unit_list = load("res://UI/UnitList.tscn").instantiate()
-	unit_list.units = all_units
-	global_overlay.present_subview(unit_list)

@@ -2,6 +2,8 @@ extends CanvasLayer
 class_name GlobalOverlay
 
 static var on_exit: Callable
+static var on_team_pressed: Callable
+static var goto_loadgame: Callable
 
 @onready var exit_button = $Panel/ExitButton
 @onready var settings_button = $Panel/SettingsButton
@@ -46,7 +48,7 @@ func _on_exit_button_pressed():
 	
 
 func _on_team_button_pressed():
-	pass 
+	on_team_pressed.call(self)
 
 func _on_logs_button_pressed():
 	pass
