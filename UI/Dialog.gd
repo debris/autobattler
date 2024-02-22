@@ -19,6 +19,7 @@ var current_chapter = -1
 
 func _ready():
 	_update_avatar()
+	grab_focus()
 
 func _update_avatar():
 	avatar.texture = dialog.avatar

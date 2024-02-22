@@ -7,6 +7,7 @@ func display(dialog_name: String):
 	dialog_control.dialog = dialog
 	var canvas_layer = CanvasLayer.new()
 	canvas_layer.add_child(dialog_control)
+	canvas_layer.layer = 2
 	get_tree().root.add_child(canvas_layer)
 	dialog_control.next_chapter()
 	return dialog_control
