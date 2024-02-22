@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://eagvkhnvorue"]
+[gd_scene load_steps=10 format=3 uid="uid://eagvkhnvorue"]
 
 [ext_resource type="Script" path="res://UI/UnitListEntry.gd" id="1_p8drj"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_ck1m6"]
@@ -6,12 +6,6 @@
 [ext_resource type="FontVariation" uid="uid://cfurrex4by3bf" path="res://Assets/Fonts/PunktumItalic.tres" id="3_4s74j"]
 [ext_resource type="Script" path="res://UI/ScheduleControl.gd" id="4_ox5jo"]
 [ext_resource type="Script" path="res://Engine/SchedulePointer.gd" id="5_f4dux"]
-
-[sub_resource type="FontVariation" id="FontVariation_5l4h4"]
-base_font = ExtResource("2_ipio7")
-variation_embolden = 1.0
-spacing_glyph = 4
-spacing_top = 2
 
 [sub_resource type="Resource" id="Resource_c455t"]
 script = ExtResource("5_f4dux")
@@ -74,19 +68,6 @@ theme_override_fonts/font = ExtResource("3_4s74j")
 theme_override_font_sizes/font_size = 16
 text = "Name"
 vertical_alignment = 1
-
-[node name="SerialNumberLabel" type="RichTextLabel" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 32.0
-offset_right = 192.0
-offset_bottom = 56.0
-mouse_filter = 2
-theme_override_fonts/normal_font = SubResource("FontVariation_5l4h4")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "0000-0000-0000"
 
 [node name="Select" type="Button" parent="."]
 layout_mode = 0

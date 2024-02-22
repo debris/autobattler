@@ -88,7 +88,7 @@ func _ready():
 	)
 	battle_controller.change_pressed.connect(func(i):
 		var list = preload("res://UI/UnitList.tscn").instantiate()
-		list.units = bench
+		list.units.assign(bench.map(func(unit): return BattleUnit.new(unit, player_team_level)))
 		list.selected_unit.connect(func(index):
 			var members = battle_state.team_b.members
 			var tmp = bench[index]

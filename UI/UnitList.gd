@@ -2,7 +2,7 @@ extends Control
 
 signal selected_unit(unit_index: int)
 
-@export var units: Array[OwnedUnit]
+@export var units: Array[BattleUnit]
 
 @onready var list = $LeftContianer/Control/ScrollBorders/ScrollContainer/UnitsContainer
 @onready var name_filter = $LeftContianer/Control/NameFilter
@@ -37,9 +37,9 @@ func update_display():
 func _on_name_button_pressed():
 	units.sort_custom(func(a, b):
 		if sort_order:
-			return a.base.name > b.base.name
+			return a.name > b.name
 		else:
-			return a.base.name < b.base.name
+			return a.name < b.name
 	)
 	sort_order = !sort_order
 	update_display()
@@ -87,4 +87,4 @@ func _on_name_filter_text_changed():
 		if name_filter.text == null || name_filter.text == "":
 			entry_control.visible = true
 		else:
-			entry_control.visible = entry_control.unit.base.name.to_lower().contains(name_filter.text.to_lower())
+			entry_control.visible = entry_control.unit.name.to_lower().contains(name_filter.text.to_lower())

@@ -16,7 +16,7 @@ func _init():
 
 func delete_unit(unit: OwnedUnit):
 	for i in team.members.size():
-		if team.members[i].get_instance_id() == unit.get_instance_id():
+		if team.members[i] != null && team.members[i].get_instance_id() == unit.get_instance_id():
 			team.members[i] = null
 			return
 

@@ -1,9 +1,9 @@
 extends LocationEvent
-class_name LocationSacraficeAltar
+class_name LocationSacrificeAltar
 
 func _init():
 	name = "Event"
-	reroll = 95
+	reroll = 0
 	icon = load("res://Assets/Icons/event.png")
 
 func _view() -> Control:

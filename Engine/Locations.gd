@@ -10,5 +10,5 @@ static var all = [
 	LocationBeeHive.new(),
 	LocationVikingBoat.new(),
 	LocationRipperdoc.new(),
-	LocationSacraficeAltar.new()
+	LocationSacrificeAltar.new()
 ]

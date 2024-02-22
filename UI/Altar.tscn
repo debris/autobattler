@@ -1,10 +1,115 @@
-[gd_scene load_steps=6 format=3 uid="uid://bji05iqnd5g4b"]
+[gd_scene load_steps=11 format=3 uid="uid://bji05iqnd5g4b"]
 
 [ext_resource type="Script" path="res://UI/Altar.gd" id="1_luiga"]
 [ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="1_y6glw"]
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="2_7ki4x"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_y8gv6"]
 [ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="3_4fl37"]
+[ext_resource type="Shader" path="res://UI/Sacrifice.gdshader" id="6_hdevq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oledy"]
+shader = ExtResource("6_hdevq")
+shader_parameter/blood_color = Color(0.447059, 0.152941, 0.172549, 0.823529)
+shader_parameter/percent = 0.0
+
+[sub_resource type="Animation" id="Animation_lhew5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GridContainer/SacrificedUnitControl/Blood:material:shader_parameter/percent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GridContainer/SacrificedUnitControl/Blood:material:shader_parameter/blood_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.447059, 0.152941, 0.172549, 0.823529)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GridContainer/EmpoweredUnitControl:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8c8pu"]
+resource_name = "sacrifice"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GridContainer/SacrificedUnitControl/Blood:material:shader_parameter/percent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GridContainer/SacrificedUnitControl/Blood:material:shader_parameter/blood_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.447059, 0.152941, 0.172549, 0.823529), Color(0.447059, 0.152941, 0.172549, 0.823529), Color(0.447059, 0.152941, 0.172549, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_reset_sacrifice_control"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GridContainer/EmpoweredUnitControl:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(5, 5, 5, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gjos"]
+_data = {
+"RESET": SubResource("Animation_lhew5"),
+"sacrifice": SubResource("Animation_8c8pu")
+}
 
 [node name="Altar" type="Control"]
 layout_mode = 3
@@ -26,26 +131,17 @@ region_rect = Rect2(256, 244, 2304, 1296)
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("3_4fl37")]
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GridContainer2" type="GridContainer" parent="CenterContainer"]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 32
-
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/GridContainer2"]
-layout_mode = 2
+offset_left = 384.0
+offset_top = 92.0
+offset_right = 768.0
+offset_bottom = 423.0
 theme_override_constants/h_separation = 128
 theme_override_constants/v_separation = 16
 columns = 2
 
-[node name="Label" type="Label" parent="CenterContainer/GridContainer2/GridContainer"]
+[node name="Label" type="Label" parent="GridContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y8gv6")
@@ -55,7 +151,7 @@ UNIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="CenterContainer/GridContainer2/GridContainer"]
+[node name="Label2" type="Label" parent="GridContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y8gv6")
@@ -65,39 +161,56 @@ UNIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EmpoweredUnitControl" parent="CenterContainer/GridContainer2/GridContainer" instance=ExtResource("2_7ki4x")]
+[node name="EmpoweredUnitControl" parent="GridContainer" instance=ExtResource("2_7ki4x")]
 layout_mode = 2
 
-[node name="SacrificedUnitControl" parent="CenterContainer/GridContainer2/GridContainer" instance=ExtResource("2_7ki4x")]
+[node name="SacrificedUnitControl" parent="GridContainer" instance=ExtResource("2_7ki4x")]
 layout_mode = 2
 
-[node name="SelectEmpowered" type="Button" parent="CenterContainer/GridContainer2/GridContainer"]
+[node name="Blood" type="ColorRect" parent="GridContainer/SacrificedUnitControl"]
+modulate = Color(2, 2, 1, 1)
+material = SubResource("ShaderMaterial_oledy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SelectEmpowered" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 48)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y8gv6")
 theme_override_font_sizes/font_size = 24
 text = "SELECT"
 
-[node name="SelectSacrificed" type="Button" parent="CenterContainer/GridContainer2/GridContainer"]
+[node name="SelectSacrificed" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 48)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y8gv6")
 theme_override_font_sizes/font_size = 24
 text = "SELECT"
 
-[node name="GridContainer2" type="GridContainer" parent="CenterContainer/GridContainer2"]
+[node name="GridContainer2" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(384, 2.08165e-12)
 layout_mode = 2
+offset_left = 384.0
+offset_top = 480.0
+offset_right = 768.0
+offset_bottom = 580.0
 size_flags_horizontal = 3
+metadata/_edit_group_ = true
 
-[node name="SacrificeButton" type="Button" parent="CenterContainer/GridContainer2/GridContainer2"]
+[node name="SacrificeButton" type="Button" parent="GridContainer2"]
 custom_minimum_size = Vector2(2.08165e-12, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_y8gv6")
 theme_override_font_sizes/font_size = 24
-text = "SACRAFICE"
+text = "SACRIFICE"
 
-[node name="CancelButton" type="Button" parent="CenterContainer/GridContainer2/GridContainer2"]
+[node name="ProceedButton" type="Button" parent="GridContainer2"]
 custom_minimum_size = Vector2(2.08165e-12, 48)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -105,7 +218,12 @@ theme_override_fonts/font = ExtResource("2_y8gv6")
 theme_override_font_sizes/font_size = 24
 text = "CANCEL"
 
-[connection signal="pressed" from="CenterContainer/GridContainer2/GridContainer/SelectEmpowered" to="." method="_on_select_empowered_pressed"]
-[connection signal="pressed" from="CenterContainer/GridContainer2/GridContainer/SelectSacrificed" to="." method="_on_select_sacrificed_pressed"]
-[connection signal="pressed" from="CenterContainer/GridContainer2/GridContainer2/SacrificeButton" to="." method="_on_sacrifice_button_pressed"]
-[connection signal="pressed" from="CenterContainer/GridContainer2/GridContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0gjos")
+}
+
+[connection signal="pressed" from="GridContainer/SelectEmpowered" to="." method="_on_select_empowered_pressed"]
+[connection signal="pressed" from="GridContainer/SelectSacrificed" to="." method="_on_select_sacrificed_pressed"]
+[connection signal="pressed" from="GridContainer2/SacrificeButton" to="." method="_on_sacrifice_button_pressed"]
+[connection signal="pressed" from="GridContainer2/ProceedButton" to="." method="_on_proceed_button_pressed"]

@@ -51,7 +51,10 @@ func _ready():
 	GlobalOverlay.on_exit = reset
 	GlobalOverlay.on_team_pressed = func(overlay):
 		var unit_list = load("res://UI/UnitList.tscn").instantiate()
-		unit_list.units.assign(save.all_units().collect())
+		var battle_units: Array = save.all_units().collect().map(func(unit):
+			return BattleUnit.new(unit, save.player_team_level)
+		)
+		unit_list.units.assign(battle_units)
 		overlay.present_subview(unit_list)
 	GlobalOverlay.goto_loadgame = loadgame_screen
 	reset()
