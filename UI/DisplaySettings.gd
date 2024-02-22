@@ -6,6 +6,8 @@ class_name DisplaySettings
 
 @export var screen_transition_time: float = 0.75
 
+@export var language: String = "en"
+
 static var singleton
 
 static func default() -> DisplaySettings:

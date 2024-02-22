@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Dialog" load_steps=3 format=3 uid="uid://d3yurpvwnu1t2"]
+
+[ext_resource type="Texture2D" uid="uid://c501amj5mchih" path="res://Assets/UnitsTransparent/captain_blaze.png" id="1_5ar43"]
+[ext_resource type="Script" path="res://UI/Dialogs/Dialog.gd" id="1_gj8xb"]
+
+[resource]
+script = ExtResource("1_gj8xb")
+avatar = ExtResource("1_5ar43")
+chapters = Array[String](["Congrats! You won your first battle! Proceed to collect rewards."])

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Dialog" load_steps=3 format=3 uid="uid://b8hgcgrxgkxbd"]
+
+[ext_resource type="Texture2D" uid="uid://c501amj5mchih" path="res://Assets/UnitsTransparent/captain_blaze.png" id="1_nmxcb"]
+[ext_resource type="Script" path="res://UI/Dialogs/Dialog.gd" id="2_lxus2"]
+
+[resource]
+script = ExtResource("2_lxus2")
+avatar = ExtResource("1_nmxcb")
+chapters = Array[String](["This is world map. Highlighted locations represent your possible assignments.", "If you need help, you can find it in the panel on the left side.", "The game is automatically saved every time you come back to the assignment board.", "Select one of the highlighted locations and start your journey!"])
