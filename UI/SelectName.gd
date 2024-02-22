@@ -9,6 +9,8 @@ func _ready():
 	global_overlay.exit_button.visible = true
 	global_overlay.settings_button.visible = true
 
+	text_edit.grab_focus()
+
 func _on_cancel_button_pressed():
 	action_selected.emit(SelectNameActionCancel.new())
 
