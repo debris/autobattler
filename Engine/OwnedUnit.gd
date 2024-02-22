@@ -11,6 +11,7 @@ class_name OwnedUnit
 @export var passive: Passive
 @export var tags: Dictionary
 @export var schedules: Array[Schedule]
+@export var empowered: int
 
 # the empty constructor should not be used, but is REQUIRED by godots serializer
 func _init(b: Unit = Unit.new(), ss: Array[Schedule] = []):
@@ -27,6 +28,7 @@ func _init(b: Unit = Unit.new(), ss: Array[Schedule] = []):
 		tags[tag] = null
 
 	schedules = ss
+	empowered = 0
 
 func display_serial_number() -> String:
 	return " ".join(schedules.map(func(s):

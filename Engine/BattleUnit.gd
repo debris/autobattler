@@ -28,8 +28,9 @@ func _init(u: OwnedUnit, tl: int = 0):
 	unit = u
 	name = u.base.name
 	texture = u.base.texture
-	dmg = u.dmg + (u.dmg * team_level * 10 / 100)
-	def = u.def + (u.def * team_level * 10 / 100)
+	var multiplier = team_level + u.empowered
+	dmg = u.dmg + (u.dmg * multiplier * 10 / 100)
+	def = u.def + (u.def * multiplier * 10 / 100)
 	skill = u.skill
 	passive = u.passive
 	

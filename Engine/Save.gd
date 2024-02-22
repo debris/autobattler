@@ -14,6 +14,17 @@ func _init():
 	player_team_level = 0
 	utc_savetime = ""
 
+func delete_unit(unit: OwnedUnit):
+	for i in team.members.size():
+		if team.members[i].get_instance_id() == unit.get_instance_id():
+			team.members[i] = null
+			return
+
+	for i in bench.size():
+		if bench[i].get_instance_id() == unit.get_instance_id():
+			bench.remove_at(i)
+			return
+
 func all_units() -> Iterator:
 	return ArrayIterator.new(team.members).concat(ArrayIterator.new(bench))
 

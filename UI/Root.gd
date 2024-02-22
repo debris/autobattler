@@ -9,7 +9,7 @@ var current_view: Control
 
 func enemy_team_size() -> int:
 	if save.chapter == 0:
-		return save.count_units() - 1
+		return min(6, save.count_units() - 1)
 	return 6
 #
 func enemy_team_level(chapter: int) -> int:
@@ -144,7 +144,7 @@ func loadgame_screen():
 			var _treasure = generator.random_treasure()
 		
 		if current_location is LocationEvent:
-			pass
+			await display_event(current_location._view())
 
 
 func display_battle(collection: Array[Unit]):
@@ -180,3 +180,8 @@ func display_battle(collection: Array[Unit]):
 
 	if !added:
 		save.bench.push_back(units[0])
+
+func display_event(event_view: Control):
+	event_view.save = save
+	present_view(event_view)
+	await event_view.proceed

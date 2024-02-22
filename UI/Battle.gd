@@ -49,12 +49,7 @@ func _ready():
 	assert(enemy_team.members.size() == 6)
 	
 	battle_controller = BattleController.default()
-	battle_controller.show_details.connect(func(battle_query):
-		paused = true
-		var details = load("res://UI/UnitDetails.tscn").instantiate()
-		details.unit = battle_query.get_this_unit()
-		add_child(details)
-	)
+	
 	battle_controller.move_unit_left.connect(func(i): 
 		if i > 0:
 			var members = battle_state.team_b.members
@@ -106,7 +101,7 @@ func _ready():
 			player_team.members[i] = tmp
 			list.queue_free()
 		)
-		add_child(list)
+		global_overlay.present_subview(list)
 	)
 
 	battle_state = BattleState.new(BattleTeam.new(enemy_team, enemy_team_level), BattleTeam.new(player_team, player_team_level))

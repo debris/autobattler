@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://bji05iqnd5g4b"]
+
+[ext_resource type="Script" path="res://UI/Altar.gd" id="1_luiga"]
+[ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="1_y6glw"]
+[ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="2_7ki4x"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_y8gv6"]
+[ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="3_4fl37"]
+
+[node name="Altar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_luiga")
+
+[node name="Concrete0" type="Sprite2D" parent="."]
+modulate = Color(0.627451, 0.627451, 0.627451, 1)
+texture_repeat = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_y6glw")
+centered = false
+region_enabled = true
+region_rect = Rect2(256, 244, 2304, 1296)
+
+[node name="GlobalOverlay" parent="." instance=ExtResource("3_4fl37")]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer2" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 32
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/GridContainer2"]
+layout_mode = 2
+theme_override_constants/h_separation = 128
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="Label" type="Label" parent="CenterContainer/GridContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y8gv6")
+theme_override_font_sizes/font_size = 24
+text = "EMPOWERED
+UNIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/GridContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y8gv6")
+theme_override_font_sizes/font_size = 24
+text = "SACRIFICED
+UNIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EmpoweredUnitControl" parent="CenterContainer/GridContainer2/GridContainer" instance=ExtResource("2_7ki4x")]
+layout_mode = 2
+
+[node name="SacrificedUnitControl" parent="CenterContainer/GridContainer2/GridContainer" instance=ExtResource("2_7ki4x")]
+layout_mode = 2
+
+[node name="SelectEmpowered" type="Button" parent="CenterContainer/GridContainer2/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y8gv6")
+theme_override_font_sizes/font_size = 24
+text = "SELECT"
+
+[node name="SelectSacrificed" type="Button" parent="CenterContainer/GridContainer2/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y8gv6")
+theme_override_font_sizes/font_size = 24
+text = "SELECT"
+
+[node name="GridContainer2" type="GridContainer" parent="CenterContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SacrificeButton" type="Button" parent="CenterContainer/GridContainer2/GridContainer2"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_y8gv6")
+theme_override_font_sizes/font_size = 24
+text = "SACRAFICE"
+
+[node name="CancelButton" type="Button" parent="CenterContainer/GridContainer2/GridContainer2"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_y8gv6")
+theme_override_font_sizes/font_size = 24
+text = "CANCEL"
+
+[connection signal="pressed" from="CenterContainer/GridContainer2/GridContainer/SelectEmpowered" to="." method="_on_select_empowered_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer2/GridContainer/SelectSacrificed" to="." method="_on_select_sacrificed_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer2/GridContainer2/SacrificeButton" to="." method="_on_sacrifice_button_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer2/GridContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]
