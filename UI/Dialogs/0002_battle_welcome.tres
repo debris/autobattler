@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Dialog" load_steps=3 format=3 uid="uid://orldppupnrax"]
+
+[ext_resource type="Texture2D" uid="uid://c501amj5mchih" path="res://Assets/UnitsTransparent/captain_blaze.png" id="1_1rnvu"]
+[ext_resource type="Script" path="res://UI/Dialogs/Dialog.gd" id="1_ncvdu"]
+
+[resource]
+script = ExtResource("1_ncvdu")
+avatar = ExtResource("1_1rnvu")
+chapters = Array[String](["Prepare for the battle. ", "Inspect enemies and pick the team who will face them.", "Once ready, press START to begin the fight."])

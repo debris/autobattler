@@ -46,7 +46,7 @@ func _ready():
 func _on_unit_control_pressed(unit):
 	var details = load("res://UI/UnitDetails.tscn").instantiate()
 	details.unit = unit
-	add_child(details)
+	global_overlay.present_subview(details)
 
 func display_preview():
 	if save_preview == null:

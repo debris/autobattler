@@ -13,12 +13,13 @@ signal battle_finished(result)
 @export var player_team_level: int
 @export var enemy_team_level: int
 @export var bench: Array[OwnedUnit]
+@export var dialog_progress: DialogProgress
 
 @onready var team_a_control = $TeamA
 @onready var team_b_control = $TeamB
 @onready var team_a_power = $RightPanel/TeamAPower
 @onready var team_b_power = $RightPanel/TeamBPower
-#@onready var console_logs = $ConsoleLogs
+
 @onready var pause_button = $CanvasLayer/Control/Pause
 @onready var step_button = $CanvasLayer/Control/Step
 @onready var start_button = $Start
@@ -115,6 +116,11 @@ func _ready():
 
 	battle_state.action_executed.connect(_wait_for_display)
 	#console_logs.battle_state = battle_state
+	if !dialog_progress.welcome_battle:
+		var dialog = Dialogs.display("0002_battle_welcome")
+		dialog.finished.connect(func(): 
+			dialog_progress.welcome_battle = true
+		)
 
 # private
 func _wait_for_display():
@@ -128,7 +134,13 @@ func _wait_for_display():
 		return on_battle_end(Result.TIE)
 	
 	if victory:
-		return on_battle_end(Result.VICTORY)
+		on_battle_end(Result.VICTORY)
+		if !dialog_progress.welcome_battle_win:
+			var dialog = Dialogs.display("0003_battle_win_welcome")
+			await dialog.finished
+			if dialog_progress != null:
+				dialog_progress.welcome_battle_win = true
+		return
 
 	if defeat:
 		return on_battle_end(Result.DEFEAT)
@@ -169,10 +181,6 @@ func _on_logs_button_pressed():
 	var console_logs = load("res://UI/ConsoleLogs.tscn").instantiate()
 	console_logs.battle_state = battle_state
 	global_overlay.present_subview(console_logs)
-	#var details = load("res://UI/UnitDetails.tscn").instantiate()
-	#details.unit = battle_unit
-	#global_overlay.present_subview(details)
-	#console_logs.visible = !console_logs.visible
 
 func _on_step_pressed():
 	battle_state.proceed()

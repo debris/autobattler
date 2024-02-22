@@ -161,6 +161,7 @@ func display_battle(collection: Array[Unit]):
 	battle.player_team = save.team
 	battle.bench = save.bench
 	battle.enemy_team = generator.random_team(enemy_team_size(), collection)
+	battle.dialog_progress = save.dialog_progress
 	present_view(battle)
 	var _result = await battle.battle_finished
 
