@@ -106,6 +106,7 @@ func loadgame_screen():
 		select_units.player_team_level = save.player_team_level
 		select_units.title_text = "select 2 units"
 		select_units.reroll_button_visible = true
+		select_units.dialog_progress = save.dialog_progress
 		select_units.reroll_button_pressed.connect(func():
 			select_units.out_of = generator.random_team(6)
 		)
@@ -126,6 +127,7 @@ func loadgame_screen():
 		var map_control = preload("res://UI/Map.tscn").instantiate()
 		# TODO: refactor so selected location is not modified internally
 		map_control.map = map
+		map_control.dialog_progress = save.dialog_progress
 		present_view(map_control)
 		await map_control.selected_location
 		
@@ -169,6 +171,7 @@ func display_battle(collection: Array[Unit]):
 	select_reward.player_team_level = save.player_team_level
 	select_reward.title_text = "select reward"
 	select_reward.team_button_visible = true
+	select_reward.dialog_progress = save.dialog_progress
 
 	present_view(select_reward)
 	var units = await select_reward.selected_units

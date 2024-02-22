@@ -9,3 +9,4 @@ func display(dialog_name: String):
 	canvas_layer.add_child(dialog_control)
 	get_tree().root.add_child(canvas_layer)
 	dialog_control.next_chapter()
+	return dialog_control

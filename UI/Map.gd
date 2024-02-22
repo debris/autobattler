@@ -3,6 +3,7 @@ extends Control
 signal selected_location
 
 @export var map: Map
+@export var dialog_progress: DialogProgress
 
 @onready var list = $CenterContainer/List
 @onready var locations_grid = $CenterContainer/List/LocationsGrid
@@ -47,3 +48,9 @@ func _ready():
 		selected_location.emit()
 	)
 	list.add_child(start_control)
+	
+	if !dialog_progress.welcome_world_map:
+		var dialog = Dialogs.display("0001_world_map_welcome")
+		dialog.finished.connect(func():
+			dialog_progress.welcome_world_map = true
+		)

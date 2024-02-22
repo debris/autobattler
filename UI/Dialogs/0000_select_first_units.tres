@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Dialog" load_steps=3 format=3 uid="uid://cpa0ohjlt30jk"]
-
-[ext_resource type="Script" path="res://UI/Dialogs/Dialog.gd" id="1_gy57c"]
-[ext_resource type="Texture2D" uid="uid://c501amj5mchih" path="res://Assets/UnitsTransparent/captain_blaze.png" id="1_w40vv"]
-
-[resource]
-script = ExtResource("1_gy57c")
-avatar = ExtResource("1_w40vv")
-chapters = Array[String](["Welcome to the game.", "Select your starting team. It's best to select units whose traits complement each other.", "This is just another textbox that should be displayed."])

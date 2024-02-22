@@ -6,6 +6,7 @@ class_name Save
 @export var chapter: int
 @export var player_team_level: int
 @export var utc_savetime: String
+@export var dialog_progress: DialogProgress
 
 func _init():
 	team = Team.new()
@@ -13,6 +14,7 @@ func _init():
 	chapter = 0
 	player_team_level = 0
 	utc_savetime = ""
+	dialog_progress = DialogProgress.new()
 
 func delete_unit(unit: OwnedUnit):
 	for i in team.members.size():

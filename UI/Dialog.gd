@@ -1,5 +1,7 @@
 extends Control
 
+signal finished
+
 @export var dialog: Dialog:
 	set(value):
 		dialog = value;
@@ -34,8 +36,11 @@ func next_chapter():
 	
 	current_chapter += 1
 	
-	if current_chapter >= dialog.chapters.size():
+	if current_chapter == dialog.chapters.size():
 		queue_free()
+		finished.emit()
+		return
+	elif current_chapter > dialog.chapters.size():
 		return
 
 	typing_label.percent = 0.0

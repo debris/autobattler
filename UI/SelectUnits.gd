@@ -14,6 +14,7 @@ signal selected_units(units: Array[OwnedUnit])
 @export var title_text: String
 @export var reroll_button_visible: bool = false
 @export var team_button_visible: bool = false
+@export var dialog_progress: DialogProgress
 
 @onready var select_label = $SelectLabel
 @onready var team_list = $TeamList
@@ -37,8 +38,11 @@ func _ready():
 		button.pressed.connect(_on_select_button_pressed.bind(button))
 	
 	# TODO: better condition to check if this is a first run
-	if !team_button_visible:
-		Dialogs.display("0000_select_first_units")
+	if !dialog_progress.welcome_select_units:
+		var dialog = Dialogs.display("0000_select_units_welcome")
+		dialog.finished.connect(func():
+			dialog_progress.welcome_select_units = true
+		)
 	
 	update_display()
 
