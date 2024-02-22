@@ -38,10 +38,7 @@ func _ready():
 	
 	# TODO: better condition to check if this is a first run
 	if !team_button_visible:
-		var dialog_control = load("res://UI/Dialog.tscn").instantiate()
-		dialog_control.dialog = load("res://UI/Dialogs/0000_select_first_units.tres")
-		add_child(dialog_control)
-		# TODO: we should call next_chapter here, but dialog catches the event from the textbox
+		Dialogs.display("0000_select_first_units")
 	
 	update_display()
 

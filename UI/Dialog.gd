@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @export var dialog: Dialog:
 	set(value):
@@ -8,8 +8,8 @@ extends CanvasLayer
 			animation_player.stop(false)
 			_update_avatar()
 
-@onready var typing_label = $Control/ColorRect/TypingLabel
-@onready var avatar = $Control/ColorRect/Avatar
+@onready var typing_label = $ColorRect/TypingLabel
+@onready var avatar = $ColorRect/Avatar
 @onready var animation_player = $AnimationPlayer
 
 var characters_per_second: float = 20.0
@@ -21,9 +21,9 @@ func _ready():
 func _update_avatar():
 	avatar.texture = dialog.avatar
 
-func _process(_delta):
-	if Input.is_action_just_pressed("LeftClick") || Input.is_action_just_pressed("ui_accept"):
-		typing_label.accept_event()
+func _gui_input(event):
+	if event.is_action_pressed("LeftClick") || Input.is_action_just_pressed("ui_accept"):
+		accept_event()
 		next_chapter()
 
 func next_chapter():

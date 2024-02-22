@@ -35,7 +35,7 @@ resource_name = "typing"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/ColorRect/TypingLabel:percent")
+tracks/0/path = NodePath("ColorRect/TypingLabel:percent")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,7 +50,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/ColorRect/TypingLabel:percent")
+tracks/0/path = NodePath("ColorRect/TypingLabel:percent")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -66,18 +66,16 @@ _data = {
 "typing": SubResource("Animation_eifm5")
 }
 
-[node name="Dialog" type="CanvasLayer"]
-script = ExtResource("1_tuykt")
-
-[node name="Control" type="Control" parent="."]
+[node name="Dialog" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tuykt")
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,19 +86,21 @@ offset_right = -128.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.705882)
 
-[node name="Frame2" type="Control" parent="Control/ColorRect"]
+[node name="Frame2" type="Control" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("2_1uc4j")
 metadata/_edit_group_ = true
 
-[node name="TypingLabel" type="Label" parent="Control/ColorRect"]
+[node name="TypingLabel" type="Label" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,17 +117,18 @@ autowrap_mode = 2
 script = ExtResource("1_7axdl")
 final_text = "This is the story of the character"
 
-[node name="Shine" parent="Control/ColorRect" instance=ExtResource("3_kntj0")]
+[node name="Shine" parent="ColorRect" instance=ExtResource("3_kntj0")]
 material = SubResource("ShaderMaterial_yj4lm")
 layout_mode = 1
 offset_top = 0.0
 offset_bottom = 0.0
 
-[node name="Avatar" type="TextureRect" parent="Control/ColorRect"]
+[node name="Avatar" type="TextureRect" parent="ColorRect"]
 layout_mode = 0
 offset_top = -80.0
 offset_right = 256.0
 offset_bottom = 176.0
+mouse_filter = 2
 texture = ExtResource("5_a00hg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
