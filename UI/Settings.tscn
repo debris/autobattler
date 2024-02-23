@@ -28,13 +28,13 @@ color = Color(0, 0, 0, 0.901961)
 
 [node name="SettingsLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 960.0
+offset_left = 832.0
 offset_top = 8.0
 offset_right = 1136.0
 offset_bottom = 72.0
 theme_override_fonts/font = ExtResource("1_44dwe")
 theme_override_font_sizes/font_size = 40
-text = "Settings"
+text = "SETTINGS"
 horizontal_alignment = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
@@ -50,11 +50,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/v_separation = 8
 
-[node name="DisplayLabel" type="Label" parent="ScrollContainer/GridContainer"]
+[node name="GameLabel" type="Label" parent="ScrollContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_44dwe")
 theme_override_font_sizes/font_size = 40
-text = "Display"
+text = "GAME"
 
 [node name="ColorRect" type="ColorRect" parent="ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 1)
@@ -66,29 +66,47 @@ color = Color(0.745098, 0.745098, 0.745098, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_44dwe")
 theme_override_font_sizes/font_size = 24
-text = "Language:"
+text = "LANGUAGE"
 
 [node name="LanguageOptions" type="OptionButton" parent="ScrollContainer/GridContainer"]
 layout_mode = 2
 theme = SubResource("Theme_wcrcb")
 theme_override_fonts/font = ExtResource("1_44dwe")
 theme_override_font_sizes/font_size = 24
-item_count = 3
+item_count = 4
 selected = 0
-popup/item_0/text = "English"
+popup/item_0/text = "ENGLISH"
 popup/item_0/id = 0
-popup/item_1/text = "German"
+popup/item_1/text = "GERMAN"
 popup/item_1/id = 1
-popup/item_2/text = "French"
+popup/item_2/text = "FRENCH"
 popup/item_2/id = 2
+popup/item_3/text = "POLISH"
+popup/item_3/id = 3
 
-[node name="StepAnimationTimeLabel" type="Label" parent="ScrollContainer/GridContainer"]
+[node name="Separator" type="Control" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 16)
+layout_mode = 2
+
+[node name="Animations" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_44dwe")
+theme_override_font_sizes/font_size = 40
+text = "ANIMATIONS"
+
+[node name="ColorRect2" type="ColorRect" parent="ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[node name="BattleStepTimeLabel" type="Label" parent="ScrollContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_44dwe")
 theme_override_font_sizes/font_size = 24
-text = "step animation time:"
+text = "battle step time:"
 
-[node name="StepAnimationTimeSlider" type="HSlider" parent="ScrollContainer/GridContainer"]
+[node name="BattleStepTimeSlider" type="HSlider" parent="ScrollContainer/GridContainer"]
 layout_mode = 2
 min_value = 0.1
 max_value = 1.0
@@ -110,5 +128,5 @@ step = 0.05
 value = 0.7
 
 [connection signal="item_selected" from="ScrollContainer/GridContainer/LanguageOptions" to="." method="_on_language_options_item_selected"]
-[connection signal="value_changed" from="ScrollContainer/GridContainer/StepAnimationTimeSlider" to="." method="_on_step_animation_time_slider_value_changed"]
+[connection signal="value_changed" from="ScrollContainer/GridContainer/BattleStepTimeSlider" to="." method="_on_battle_step_time_slider_value_changed"]
 [connection signal="value_changed" from="ScrollContainer/GridContainer/ScreenChangeTimeSlider" to="." method="_on_screen_change_time_slider_value_changed"]

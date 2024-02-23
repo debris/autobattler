@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="6_fe43y"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
 
-[sub_resource type="Shader" id="Shader_2rkyq"]
+[sub_resource type="Shader" id="Shader_pyh50"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -28,12 +28,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
 resource_local_to_scene = true
-shader = SubResource("Shader_2rkyq")
+shader = SubResource("Shader_pyh50")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_du3fd"]
+[sub_resource type="Shader" id="Shader_to65p"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -51,12 +51,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
 resource_local_to_scene = true
-shader = SubResource("Shader_du3fd")
+shader = SubResource("Shader_to65p")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_204rs"]
+[sub_resource type="Shader" id="Shader_wpr0q"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -74,7 +74,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_204rs")
+shader = SubResource("Shader_wpr0q")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -182,7 +182,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_1d7kx")
 theme_override_font_sizes/font_size = 24
-text = "Delete"
+text = "DELETE"
 script = ExtResource("3_uvtvc")
 
 [node name="LoadButton" type="Button" parent="BottomPanel/GridContainer"]
@@ -191,7 +191,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_1d7kx")
 theme_override_font_sizes/font_size = 24
-text = "Load"
+text = "LOAD"
 script = ExtResource("3_uvtvc")
 
 [node name="NewGameButton" type="Button" parent="BottomPanel"]
@@ -200,7 +200,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_1d7kx")
 theme_override_font_sizes/font_size = 24
-text = "New Game"
+text = "NEW_GAME"
 script = ExtResource("3_uvtvc")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

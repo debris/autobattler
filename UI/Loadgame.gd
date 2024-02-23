@@ -42,6 +42,7 @@ func _ready():
 		saves_list.add_child(label)
 
 	display_preview()
+	DisplaySettings.default().language_changed.connect(display_preview)
 
 func _on_unit_control_pressed(unit):
 	var details = load("res://UI/UnitDetails.tscn").instantiate()
@@ -59,11 +60,11 @@ func display_preview():
 	load_button.disabled = false
 	preview_control.visible = true
 	save_name_label.text = save_name
-	chapter_label.text = "chapter: " + str(save_preview.chapter)
-	level_label.text = "level: " + str(save_preview.player_team_level)
+	chapter_label.text = tr("CHAPTER").format({"chapter": str(save_preview.chapter)})
+	level_label.text = tr("LEVEL").format({"level": str(save_preview.player_team_level)})
 	# bench size + not null members
 	var units_count = str(save_preview.count_units())
-	units_label.text = "units: " + str(units_count)
+	units_label.text = tr("UNITS").format({"units": str(units_count)})
 
 	var unit_controls = team_list.get_children()
 	for i in 6:

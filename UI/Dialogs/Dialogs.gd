@@ -2,7 +2,7 @@ extends Node
 
 func display(dialog_name: String):
 	var display_settings = DisplaySettings.default()
-	var full_name = "res://UI/Dialogs/" + display_settings.language + "/" + dialog_name + ".tres"
+	var full_name = "res://UI/Dialogs/" + "en" + "/" + dialog_name + ".tres"
 	var dialog = load(full_name)
 	var dialog_control = load("res://UI/Dialog.tscn").instantiate()
 	dialog_control.dialog = dialog

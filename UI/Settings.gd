@@ -1,7 +1,7 @@
 extends Control
 
-@onready var step_animation_time_label = $ScrollContainer/GridContainer/StepAnimationTimeLabel
-@onready var step_animation_time_slider = $ScrollContainer/GridContainer/StepAnimationTimeSlider
+@onready var battle_step_time_label = $ScrollContainer/GridContainer/BattleStepTimeLabel
+@onready var battle_step_time_slider = $ScrollContainer/GridContainer/BattleStepTimeSlider
 @onready var screen_change_time_label = $ScrollContainer/GridContainer/ScreenChangeTimeLabel
 @onready var screen_change_time_slider = $ScrollContainer/GridContainer/ScreenChangeTimeSlider
 @onready var language_options = $ScrollContainer/GridContainer/LanguageOptions
@@ -10,20 +10,21 @@ var display_settings: DisplaySettings
 
 func _ready():
 	display_settings = DisplaySettings.default()
-	step_animation_time_slider.value = display_settings.step_time
+	battle_step_time_slider.value = display_settings.step_time
 	screen_change_time_slider.value = display_settings.screen_transition_time
 	
 	match display_settings.language:
 		"en": language_options.select(0)
 		"de": language_options.select(1)
 		"fr": language_options.select(2)
+		"pl": language_options.select(3)
 	
 
 func update_display():
-	step_animation_time_label.text = "step animation time: " + str(display_settings.step_time)
-	screen_change_time_label.text = "screen change time: " + str(display_settings.screen_transition_time)
+	battle_step_time_label.text = tr("BATTLE_STEP_TIME").format({"time": str(display_settings.step_time)})
+	screen_change_time_label.text = tr("SCREEN_CHANGE_TIME").format({"time": str(display_settings.screen_transition_time)})
 
-func _on_step_animation_time_slider_value_changed(value):
+func _on_battle_step_time_slider_value_changed(value):
 	display_settings.step_time = value
 	update_display()
 
@@ -48,5 +49,10 @@ func _on_language_options_item_selected(index):
 		lang = "de"
 	elif index == 2:
 		lang = "fr"
+	elif index == 3:
+		lang = "pl"
+	else:
+		assert("unsupported language")
 	
 	display_settings.language = lang
+	update_display()
