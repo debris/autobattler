@@ -23,9 +23,9 @@ func update_display():
 	
 	tags_content.text = ", ".join(unit.tags.keys())
 	skill_name.text = "Active: " + unit.skill.name
-	skill_description.text = unit.skill.description
+	skill_description.text = tr(unit.skill.description)
 	passive_name.text = "Passive: " + unit.passive.name
-	passive_description.text = unit.passive.description
+	passive_description.text = tr(unit.passive.description)
 	
 	if unit.skill is SkillEmpty:
 		skill_name.visible = false

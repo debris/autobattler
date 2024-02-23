@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("1_ncvdu")
 avatar = ExtResource("1_1rnvu")
-chapters = Array[String](["Prepare for the battle. ", "Inspect enemies and pick the team who will face them.", "Once ready, press START to begin the fight."])
+chapters = Array[String](["DIALOG_0002_0", "DIALOG_0002_1", "DIALOG_0002_2"])

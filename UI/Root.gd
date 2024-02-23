@@ -104,7 +104,7 @@ func loadgame_screen():
 		select_units.to_select = 2
 		select_units.out_of = generator.random_team(6)
 		select_units.player_team_level = save.player_team_level
-		select_units.title_text = "select 2 units"
+		select_units.title_text = "SELECT_2_UNITS"
 		select_units.reroll_button_visible = true
 		select_units.dialog_progress = save.dialog_progress
 		select_units.reroll_button_pressed.connect(func():
@@ -170,7 +170,7 @@ func display_battle(collection: Array[Unit]):
 	select_reward.to_select = 1
 	select_reward.out_of = generator.random_team(6, collection)
 	select_reward.player_team_level = save.player_team_level
-	select_reward.title_text = "select reward"
+	select_reward.title_text = "SELECT_REWARD"
 	select_reward.team_button_visible = true
 	select_reward.dialog_progress = save.dialog_progress
 

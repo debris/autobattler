@@ -44,6 +44,7 @@ theme_override_constants/line_spacing = 8
 theme_override_fonts/font = ExtResource("1_j08r3")
 theme_override_font_sizes/font_size = 24
 placeholder_text = "ENTER_YOUR_NAME"
+caret_blink = true
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/GridContainer"]
 custom_minimum_size = Vector2(0, 48)

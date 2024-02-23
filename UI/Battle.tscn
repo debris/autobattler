@@ -267,12 +267,13 @@ offset_right = 984.0
 offset_bottom = 360.0
 theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
 theme_override_font_sizes/font_size = 30
-text = "Round 0 Phase 1 of 3
+text = "Round 0
+Phase 1 of 3
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Continue" type="Button" parent="."]
+[node name="ProceedButton" type="Button" parent="."]
 visible = false
 layout_mode = 0
 offset_left = 776.0
@@ -285,7 +286,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "CONTINUE"
+text = "PROCEED"
 script = ExtResource("9_d1yxv")
 
 [connection signal="pressed" from="TeamA" to="." method="_on_team_pressed"]
@@ -293,4 +294,4 @@ script = ExtResource("9_d1yxv")
 [connection signal="pressed" from="CanvasLayer/Control/Step" to="." method="_on_step_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="ProceedButton" to="." method="_on_proceed_button_pressed"]

@@ -111,42 +111,42 @@ metadata/_edit_group_ = true
 custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
-text = "Select"
+text = "SELECT"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton2" type="Button" parent="SelectButtonGrid"]
 custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
-text = "Select"
+text = "SELECT"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton3" type="Button" parent="SelectButtonGrid"]
 custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
-text = "Select"
+text = "SELECT"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton4" type="Button" parent="SelectButtonGrid"]
 custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
-text = "Select"
+text = "SELECT"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton5" type="Button" parent="SelectButtonGrid"]
 custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
-text = "Select"
+text = "SELECT"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton6" type="Button" parent="SelectButtonGrid"]
 custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_haiug")
-text = "Select"
+text = "SELECT"
 script = ExtResource("5_sprwv")
 
 [node name="RerollButton" type="Button" parent="."]
@@ -157,7 +157,7 @@ offset_right = 1144.0
 offset_bottom = 640.0
 theme_override_fonts/font = ExtResource("5_haiug")
 theme_override_font_sizes/font_size = 24
-text = "Reroll"
+text = "REROLL"
 script = ExtResource("5_sprwv")
 
 [connection signal="pressed" from="TeamList/UnitControl" to="." method="_on_unit_control_pressed"]

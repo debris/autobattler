@@ -25,7 +25,7 @@ signal battle_finished(result)
 @onready var start_button = $Start
 @onready var victory_label = $VictoryLabel
 @onready var change_grid = $ChangeGrid
-@onready var continue_button = $Continue
+@onready var proceed_button = $ProceedButton
 @onready var level_a_label = $RightPanel/LevelA
 @onready var level_b_label = $RightPanel/LevelB
 @onready var stacks_control_a = $RightPanel/StacksControlA
@@ -151,11 +151,11 @@ func _wait_for_display():
 func on_battle_end(battle_result):
 	result = battle_result
 	match result:
-		Result.VICTORY: victory_label.text = "victory"
-		Result.DEFEAT: victory_label.text = "defeat"
-		Result.TIE: victory_label.text = "tie"
+		Result.VICTORY: victory_label.text = tr("VICTORY")
+		Result.DEFEAT: victory_label.text = tr("DEFEAT")
+		Result.TIE: victory_label.text = tr("TIE")
 	
-	continue_button.visible = true
+	proceed_button.visible = true
 	victory_label.visible = true
 	step_button.visible = false
 	pause_button.visible = false
@@ -163,14 +163,17 @@ func on_battle_end(battle_result):
 	paused = true
 
 func _process(_delta):
-	round_phase_label.text = "ROUND " + str(battle_state.round + 1) + " PHASE " + str(battle_state.phase + 1) + " of 3"
-	level_a_label.text = "LEVEL " + str(enemy_team_level + 1)
-	level_b_label.text = "LEVEL " + str(player_team_level + 1)
+	round_phase_label.text = tr("ROUND_PHASE").format({
+		"round": str(battle_state.round + 1),
+		"phase": str(battle_state.phase + 1)
+	})
+	level_a_label.text = tr("LEVEL").format({"level": enemy_team_level + 1})
+	level_b_label.text = tr("LEVEL").format({"level": player_team_level + 1})
 	
 	if !paused:
-		pause_button.text = "PAUSE"
+		pause_button.text = tr("PAUSE")
 	else:
-		pause_button.text = "PLAY"
+		pause_button.text = tr("PLAY")
 
 func _on_pause_pressed():
 	paused = !paused
@@ -196,7 +199,7 @@ func _on_start_pressed():
 	while true:
 		await battle_state.execute_round()
 
-func _on_continue_pressed():
+func _on_proceed_button_pressed():
 	if result == Result.DEFEAT:
 		global_overlay.goto_loadgame.call()
 		return

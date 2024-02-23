@@ -3,7 +3,7 @@ class_name SkillLokiSwap
 
 func _init():
 	name = "Loki Swap"
-	description = "Swap skills of the units with the highest dmg in each team"
+	description = "SKILL_LOKI_SWAP_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()
