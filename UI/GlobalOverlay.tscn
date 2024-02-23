@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://rnhm1enuxv6q"]
 
 [ext_resource type="Script" path="res://UI/GlobalOverlay.gd" id="1_tkmo4"]
-[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_xbdg5"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_hr3b2"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="3_0d3qd"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_55ib8"]
+[ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="4_aoywr"]
 
-[sub_resource type="Shader" id="Shader_smrok"]
+[sub_resource type="Shader" id="Shader_uu66k"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -24,7 +24,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_itegs"]
 resource_local_to_scene = true
-shader = SubResource("Shader_smrok")
+shader = SubResource("Shader_uu66k")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -61,54 +61,44 @@ offset_top = 0.0
 offset_bottom = 0.0
 
 [node name="Panel" type="GridContainer" parent="."]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 56.0
+offset_left = -1.5
+offset_right = 62.5
 offset_bottom = 648.0
-theme_override_constants/v_separation = 16
+theme = ExtResource("4_aoywr")
+theme_override_constants/v_separation = 0
 
 [node name="ExitButton" type="Button" parent="Panel"]
 visible = false
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_xbdg5")
-theme_override_font_sizes/font_size = 24
 text = "x"
 script = ExtResource("3_0d3qd")
 
 [node name="SettingsButton" type="Button" parent="Panel"]
 visible = false
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_xbdg5")
-theme_override_font_sizes/font_size = 24
 text = "*"
 script = ExtResource("3_0d3qd")
 
 [node name="HelpButton" type="Button" parent="Panel"]
 visible = false
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_xbdg5")
-theme_override_font_sizes/font_size = 24
 text = "?"
 script = ExtResource("3_0d3qd")
 
 [node name="TeamButton" type="Button" parent="Panel"]
 visible = false
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_xbdg5")
-theme_override_font_sizes/font_size = 24
 text = "T"
 script = ExtResource("3_0d3qd")
 
 [node name="LogsButton" type="Button" parent="Panel"]
 visible = false
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_xbdg5")
-theme_override_font_sizes/font_size = 24
 text = "'"
 script = ExtResource("3_0d3qd")
 

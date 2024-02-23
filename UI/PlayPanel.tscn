@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://c13deqh1oar6d"]
+
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_vhjf8"]
+
+[node name="PlayPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -960.0
+offset_bottom = -456.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("1_vhjf8")
+theme_override_font_sizes/font_size = 24
+text = ">"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("1_vhjf8")
+theme_override_font_sizes/font_size = 24
+text = ">>"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("1_vhjf8")
+theme_override_font_sizes/font_size = 24
+text = ">>>"
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("1_vhjf8")
+theme_override_font_sizes/font_size = 24
+text = " ||"
+
+[node name="Button5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 64.0
+offset_right = 160.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("1_vhjf8")
+theme_override_font_sizes/font_size = 24
+text = " >|"

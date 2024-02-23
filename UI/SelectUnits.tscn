@@ -1,28 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5jfrjudv63dk"]
+[gd_scene load_steps=8 format=3 uid="uid://c5jfrjudv63dk"]
 
-[ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="1_ahuw8"]
+[ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_ifiyp"]
 [ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="1_vme58"]
 [ext_resource type="Script" path="res://UI/SelectUnits.gd" id="2_qqg62"]
 [ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="4_h4d1b"]
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="5_8187x"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="5_haiug"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="5_sprwv"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_exw7v"]
-
-[sub_resource type="Theme" id="Theme_dqv1h"]
-default_font = ExtResource("1_ahuw8")
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(1, 1, 1, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-Label/constants/line_spacing = 3
-Label/constants/outline_size = 0
-Label/constants/shadow_offset_x = 1
-Label/constants/shadow_offset_y = 1
-Label/constants/shadow_outline_size = 1
-Label/font_sizes/font_size = 16
-Label/fonts/font = ExtResource("1_ahuw8")
-Label/styles/normal = SubResource("StyleBoxEmpty_exw7v")
 
 [node name="SelectUnits" type="Control"]
 layout_mode = 3
@@ -31,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_dqv1h")
+theme = ExtResource("1_ifiyp")
 script = ExtResource("2_qqg62")
 
 [node name="Concrete0" type="Sprite2D" parent="."]
@@ -102,50 +86,44 @@ layout_mode = 0
 offset_left = 152.0
 offset_top = 432.0
 offset_right = 1000.0
-offset_bottom = 464.0
+offset_bottom = 496.0
 theme_override_constants/h_separation = 16
 columns = 6
 metadata/_edit_group_ = true
 
 [node name="SelectButton" type="Button" parent="SelectButtonGrid"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_haiug")
 text = "SELECT"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton2" type="Button" parent="SelectButtonGrid"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_haiug")
 text = "SELECT"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton3" type="Button" parent="SelectButtonGrid"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_haiug")
 text = "SELECT"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton4" type="Button" parent="SelectButtonGrid"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_haiug")
 text = "SELECT"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton5" type="Button" parent="SelectButtonGrid"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_haiug")
 text = "SELECT"
 script = ExtResource("5_sprwv")
 
 [node name="SelectButton6" type="Button" parent="SelectButtonGrid"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_haiug")
 text = "SELECT"
 script = ExtResource("5_sprwv")
 

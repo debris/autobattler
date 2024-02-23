@@ -10,12 +10,14 @@ signal yes_pressed
 			update_display()
 
 @onready var question_label = $CenterContainer/GridContainer/QuestionLabel
+@onready var cancel_button = $CenterContainer/GridContainer/GridContainer/CancelButton
 
 func update_display():
 	question_label.text = question_text
 
 func _ready():
 	update_display()
+	cancel_button.grab_focus()
 
 func _on_cancel_button_pressed():
 	cancel_pressed.emit()

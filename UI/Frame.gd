@@ -3,6 +3,8 @@ extends Control
 class_name Frame
 
 func _draw():
+	#var inner_color = Color(153.0/255.0, 153.0/255.0, 153.0/255.0)
+	#var outer_color = Color(60.0/255.0, 60.0/255.0, 60.0/255.0)
 	var inner_color = Color(60.0/255.0, 60.0/255.0, 60.0/255.0)
 	var outer_color = Color(15.0/255.0, 15.0/255.0, 15.0/255.0)
 	var width = 1.0

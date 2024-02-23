@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_s1um4"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_p0l2d"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_qnkk0"]
-[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="4_ad07h"]
+[ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="5_i8oeh"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="5_uw5ga"]
 [ext_resource type="FontVariation" uid="uid://cfurrex4by3bf" path="res://Assets/Fonts/PunktumItalic.tres" id="6_5e7re"]
 
-[sub_resource type="Shader" id="Shader_vnnuo"]
+[sub_resource type="Shader" id="Shader_o80da"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -26,7 +26,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pq5l2"]
 resource_local_to_scene = true
-shader = SubResource("Shader_vnnuo")
+shader = SubResource("Shader_o80da")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -38,6 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_i8oeh")
 script = ExtResource("1_s1um4")
 
 [node name="Concrete0" type="Sprite2D" parent="."]
@@ -80,26 +81,23 @@ offset_bottom = 0.0
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 688.0
+offset_left = 689.5
 offset_top = 408.0
-offset_right = 1088.0
+offset_right = 1086.5
 offset_bottom = 544.0
+theme_override_constants/v_separation = 0
 
 [node name="PlayButton" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 48)
+custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("4_ad07h")
-theme_override_font_sizes/font_size = 24
 text = "PLAY"
 script = ExtResource("5_uw5ga")
 
 [node name="Quit" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 48)
+custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("4_ad07h")
-theme_override_font_sizes/font_size = 24
 text = "QUIT"
 script = ExtResource("5_uw5ga")
 

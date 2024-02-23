@@ -57,6 +57,8 @@ func _on_select_button_pressed(button):
 	selected.push_back(out_of.members[index])
 	out_of.members[index] = null
 	button.disabled = true
+	button.release_focus()
+	button.focus_mode = FOCUS_NONE
 	update_display()
 	
 	if selected.size() == to_select:

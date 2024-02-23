@@ -53,11 +53,15 @@ func display_preview():
 	if save_preview == null:
 		preview_control.visible = false
 		delete_button.disabled = true
+		delete_button.focus_mode = FOCUS_NONE
 		load_button.disabled = true
+		load_button.focus_mode = FOCUS_NONE
 		return
 	
 	delete_button.disabled = false
+	delete_button.focus_mode = FOCUS_ALL
 	load_button.disabled = false
+	load_button.focus_mode = FOCUS_ALL
 	preview_control.visible = true
 	save_name_label.text = save_name
 	chapter_label.text = tr("CHAPTER").format({"chapter": str(save_preview.chapter)})

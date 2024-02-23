@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://blb5rreojl423"]
+[gd_scene load_steps=7 format=3 uid="uid://blb5rreojl423"]
 
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_j08r3"]
+[ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_ptjof"]
 [ext_resource type="Script" path="res://UI/SelectName.gd" id="1_vtsyf"]
 [ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="2_qcd8a"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="2_r6084"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ptjof")
 script = ExtResource("1_vtsyf")
 
 [node name="Concrete0" type="Sprite2D" parent="."]
@@ -36,35 +38,36 @@ grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer"]
 layout_mode = 2
+theme_override_constants/v_separation = 16
 
 [node name="TextEdit" type="TextEdit" parent="CenterContainer/GridContainer"]
-custom_minimum_size = Vector2(400, 48)
+custom_minimum_size = Vector2(400, 64)
 layout_mode = 2
-theme_override_constants/line_spacing = 8
+theme_override_constants/line_spacing = 16
+theme_override_constants/outline_size = 0
+theme_override_constants/caret_width = 12
 theme_override_fonts/font = ExtResource("1_j08r3")
 theme_override_font_sizes/font_size = 24
 placeholder_text = "ENTER_YOUR_NAME"
 caret_blink = true
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
+theme_override_constants/h_separation = 16
 columns = 2
 
 [node name="CancelButton" type="Button" parent="CenterContainer/GridContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("1_j08r3")
-theme_override_font_sizes/font_size = 24
 text = "CANCEL"
 script = ExtResource("2_r6084")
 
 [node name="ProceedButton" type="Button" parent="CenterContainer/GridContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("1_j08r3")
-theme_override_font_sizes/font_size = 24
 text = "PROCEED"
 script = ExtResource("2_r6084")
 

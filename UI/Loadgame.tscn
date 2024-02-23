@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://db4xehwv3k6ab"]
+[gd_scene load_steps=17 format=3 uid="uid://db4xehwv3k6ab"]
 
 [ext_resource type="Script" path="res://UI/Loadgame.gd" id="1_465sv"]
+[ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_cqel3"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_1d7kx"]
 [ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="2_7ijpy"]
 [ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="2_j1c3k"]
@@ -10,7 +11,7 @@
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="6_fe43y"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
 
-[sub_resource type="Shader" id="Shader_ml1mf"]
+[sub_resource type="Shader" id="Shader_cfim2"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -28,12 +29,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
 resource_local_to_scene = true
-shader = SubResource("Shader_ml1mf")
+shader = SubResource("Shader_cfim2")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_j4qgi"]
+[sub_resource type="Shader" id="Shader_xjkao"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -51,12 +52,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
 resource_local_to_scene = true
-shader = SubResource("Shader_j4qgi")
+shader = SubResource("Shader_xjkao")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_10k4w"]
+[sub_resource type="Shader" id="Shader_7y6mf"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -74,7 +75,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_10k4w")
+shader = SubResource("Shader_7y6mf")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -86,6 +87,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_cqel3")
 script = ExtResource("1_465sv")
 
 [node name="Concrete0" type="Sprite2D" parent="."]
@@ -134,7 +136,7 @@ layout_mode = 2
 anchors_preset = 0
 offset_left = 688.0
 offset_right = 1088.0
-offset_bottom = 520.0
+offset_bottom = 504.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Border"]
 clip_contents = false
@@ -153,53 +155,49 @@ theme_override_constants/v_separation = 0
 [node name="ColorRect" type="ColorRect" parent="Border"]
 custom_minimum_size = Vector2(2.08165e-12, 1)
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.5
 offset_top = -1.0
-grow_horizontal = 2
+offset_right = 398.5
 grow_vertical = 0
 color = Color(0.745098, 0.745098, 0.745098, 1)
 
 [node name="BottomPanel" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(400, 2.08165e-12)
+custom_minimum_size = Vector2(397, 2.08165e-12)
 layout_mode = 2
-offset_left = 688.0
-offset_top = 528.0
-offset_right = 1088.0
-offset_bottom = 628.0
+offset_left = 689.5
+offset_top = 504.0
+offset_right = 1086.5
+offset_bottom = 632.0
+theme_override_constants/v_separation = 0
 metadata/_edit_group_ = true
 
 [node name="GridContainer" type="GridContainer" parent="BottomPanel"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/h_separation = 0
 columns = 2
 
 [node name="DeleteButton" type="Button" parent="BottomPanel/GridContainer"]
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_1d7kx")
-theme_override_font_sizes/font_size = 24
 text = "DELETE"
 script = ExtResource("3_uvtvc")
 
 [node name="LoadButton" type="Button" parent="BottomPanel/GridContainer"]
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_1d7kx")
-theme_override_font_sizes/font_size = 24
 text = "LOAD"
 script = ExtResource("3_uvtvc")
 
 [node name="NewGameButton" type="Button" parent="BottomPanel"]
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_1d7kx")
-theme_override_font_sizes/font_size = 24
 text = "NEW_GAME"
 script = ExtResource("3_uvtvc")
 
