@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5jfrjudv63dk"]
+[gd_scene load_steps=7 format=3 uid="uid://c5jfrjudv63dk"]
 
 [ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_ifiyp"]
 [ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="1_vme58"]
 [ext_resource type="Script" path="res://UI/SelectUnits.gd" id="2_qqg62"]
 [ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="4_h4d1b"]
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="5_8187x"]
-[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="5_haiug"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="5_sprwv"]
 
 [node name="SelectUnits" type="Control"]
@@ -129,12 +128,10 @@ script = ExtResource("5_sprwv")
 
 [node name="RerollButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 992.0
-offset_top = 592.0
-offset_right = 1144.0
-offset_bottom = 640.0
-theme_override_fonts/font = ExtResource("5_haiug")
-theme_override_font_sizes/font_size = 24
+offset_left = 1008.0
+offset_top = 568.0
+offset_right = 1136.0
+offset_bottom = 632.0
 text = "REROLL"
 script = ExtResource("5_sprwv")
 

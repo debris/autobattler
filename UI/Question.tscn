@@ -38,7 +38,7 @@ layout_mode = 2
 theme_override_constants/v_separation = 16
 
 [node name="QuestionLabel" type="Label" parent="CenterContainer/GridContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 48)
+custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_sm3vg")
 theme_override_font_sizes/font_size = 24
@@ -52,7 +52,7 @@ theme_override_constants/h_separation = 0
 columns = 2
 
 [node name="CancelButton" type="Button" parent="CenterContainer/GridContainer/GridContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 48)
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_sm3vg")
@@ -61,7 +61,7 @@ text = "CANCEL"
 script = ExtResource("3_lll5r")
 
 [node name="YesButton" type="Button" parent="CenterContainer/GridContainer/GridContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 48)
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_sm3vg")
