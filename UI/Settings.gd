@@ -52,7 +52,7 @@ func _on_language_options_item_selected(index):
 	elif index == 3:
 		lang = "pl"
 	else:
-		assert("unsupported language")
+		assert(false, "unsupported language")
 	
 	display_settings.language = lang
 	update_display()

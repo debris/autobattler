@@ -20,3 +20,7 @@
 "CHAPTER","chapter: {chapter}","chapter_de","chapter_fr","rozdzial: {chapter}"
 "LEVEL","level: {level}","level_de","level_fr","poziom: {level}"
 "UNITS","units: {units}","units_de","units_fr","jednostki: {units}"
+"DIALOG_0000_0","Welcome to the project autobattler. I am Captain Blaze and I will guide you through your first steps on the battlefield.","dialog_0000_0_de","dialog_0000_0_fr","Witam w projekcie autobattler. Jestem Kapitan Blaze i wprowadze Cie w pierwsze kroki na polu walki."
+"DIALOG_0000_1","Your team is your most important asset. Always carefully choose your lineup.","dialog_0000_1_de","dialog_0000_1_fr","Twoja druzyna jest zawsze najwazniejsza. Uwazenie wybieraj kto ma za Ciebie walczyc."
+"DIALOG_0000_2","You can inspect the unit by pressing it with LMB.","dialog_0000_2_de","dialog_0000_2_fr","Mozesz sprawdzic szczegoly danej jednostki klikajac ja lewym przyciskiem myszy."
+"DIALOG_0000_3","Pick your fighters and carry on to the next screen to select your first assignments.","dialog_0000_3_de","dialog_0000_3_fr","A teraz wybierz swoj zespol i przejdz do kolejnego ekranu, aby dostac swoje pierwsze zadanie."

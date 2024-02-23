@@ -45,6 +45,7 @@ func next_chapter():
 		return
 
 	typing_label.percent = 0.0
-	typing_label.final_text = dialog.chapters[current_chapter]
-	animation_player.speed_scale = characters_per_second / dialog.chapters[current_chapter].length()
+	var translated = tr(dialog.chapters[current_chapter])
+	typing_label.final_text = translated
+	animation_player.speed_scale = characters_per_second / translated.length()
 	animation_player.play("typing")
