@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Dialog" load_steps=3 format=3 uid="uid://cpa0ohjlt30jk"]
-
-[ext_resource type="Texture2D" uid="uid://c501amj5mchih" path="res://Assets/UnitsTransparent/captain_blaze.png" id="1_p6iva"]
-[ext_resource type="Script" path="res://UI/Dialogs/Dialog.gd" id="2_06qlc"]
-
-[resource]
-script = ExtResource("2_06qlc")
-avatar = ExtResource("1_p6iva")
-chapters = Array[String](["Welcome to the project autobattler. I am Captain Blaze and I will guide you through your first steps on the battlefield.", "Your team is your most important asset. Always carefully choose your lineup.", "You can inspect the unit by pressing it with LMB.", "Pick your fighters and carry on to the next screen to select your first assignments."])

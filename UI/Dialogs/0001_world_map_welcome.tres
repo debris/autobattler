@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("2_lxus2")
 avatar = ExtResource("1_nmxcb")
-chapters = Array[String](["This is world map. Highlighted locations represent your possible assignments.", "If you need help, you can find it in the panel on the left side.", "The game is automatically saved every time you come back to the assignment board.", "Select one of the highlighted locations and start your journey!"])
+chapters = Array[String](["DIALOG_0001_0", "DIALOG_0001_1", "DIALOG_0001_2", "DIALOG_0001_3"])

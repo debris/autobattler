@@ -39,7 +39,7 @@ custom_minimum_size = Vector2(2.08165e-12, 48)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_typhw")
 theme_override_font_sizes/font_size = 24
-text = "Exit to main menu?"
+text = "EXIT_TO_MAIN_MENU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -53,7 +53,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_typhw")
 theme_override_font_sizes/font_size = 24
-text = "Cancel"
+text = "CANCEL"
 script = ExtResource("2_4m70y")
 
 [node name="YesButton" type="Button" parent="CenterContainer/GridContainer/GridContainer"]
@@ -62,7 +62,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_typhw")
 theme_override_font_sizes/font_size = 24
-text = "Yes"
+text = "YES"
 script = ExtResource("2_4m70y")
 
 [connection signal="pressed" from="CenterContainer/GridContainer/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
