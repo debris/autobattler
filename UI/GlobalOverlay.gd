@@ -37,7 +37,8 @@ func _on_exit_button_pressed():
 		subview.queue_free()
 		return
 	
-	var exit = preload("res://UI/Exit.tscn").instantiate()
+	var exit = preload("res://UI/Question.tscn").instantiate()
+	exit.question_text = tr("EXIT_TO_MAIN_MENU")
 	exit.yes_pressed.connect(func(): 
 		on_exit.call()
 	)

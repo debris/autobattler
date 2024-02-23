@@ -75,6 +75,15 @@ func _on_new_game_button_pressed():
 
 func _on_delete_button_pressed():
 	if save_name != null && save_name != "":
+		var delete_control = preload("res://UI/Question.tscn").instantiate()
+		delete_control.question_text = tr("CONFIRM_DELETE_SAVE")
+		delete_control.cancel_pressed.connect(func():
+			delete_control.queue_free()
+		)
+		global_overlay.present_subview(delete_control)
+		await delete_control.yes_pressed
+		delete_control.queue_free()
+
 		Save.delete(save_name)
 		for load_entry in saves_list.get_children():
 			if load_entry.text == save_name:
