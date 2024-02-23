@@ -3,7 +3,7 @@ class_name SkillArrowBarrage
 
 func _init():
 	name = "Arrow Barrage"
-	description = "Rain down a barrage of arrows upon all enemies and reduce their *defense* by 10%"
+	description = "SKILL_ARROW_BARRAGE_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()
