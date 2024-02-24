@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("1_gj8xb")
 avatar = ExtResource("1_5ar43")
-chapters = Array[String](["Congrats! You won your first battle! Proceed to collect rewards."])
+chapters = Array[String](["DIALOG_0003_0"])
