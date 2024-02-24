@@ -2,12 +2,14 @@ extends CanvasLayer
 class_name GlobalOverlay
 
 static var on_exit: Callable
+static var on_character_pressed: Callable
 static var on_team_pressed: Callable
 static var goto_loadgame: Callable
 
 @onready var exit_button = $Panel/ExitButton
 @onready var settings_button = $Panel/SettingsButton
 @onready var help_button = $Panel/HelpButton
+@onready var character_button = $Panel/CharacterButton
 @onready var team_button = $Panel/TeamButton
 @onready var logs_button = $Panel/LogsButton
 
@@ -47,6 +49,9 @@ func _on_exit_button_pressed():
 	)	
 	present_subview(exit)
 	
+
+func _on_character_button_pressed():
+	on_character_pressed.call(self)
 
 func _on_team_button_pressed():
 	on_team_pressed.call(self)

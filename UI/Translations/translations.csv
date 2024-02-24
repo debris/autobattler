@@ -44,6 +44,7 @@
 "DEFENCE","defence","obrona","defense_fr","defense_de"
 "HELP","help","pomoc","help_fr","help_de"
 "NAME","name","nazwa","name_fr","name_de"
+"CHARACTER","character","postac","character_fr","character_de"
 "","","","",""
 "","","","",""
 "DIALOG_0000_0","Welcome to the project autobattler. I am Captain Blaze and I will guide you through your first steps on the battlefield.","Witam w projekcie autobattler. Jestem Kapitan Blaze i wprowadze Cie w pierwsze kroki na polu walki.","dialog_0000_0_fr","dialog_0000_0_de"

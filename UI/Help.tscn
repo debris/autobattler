@@ -59,7 +59,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.901961)
 
-[node name="SettingsLabel" type="Label" parent="."]
+[node name="HelpLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 832.0
 offset_top = 8.0

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_55ib8"]
 [ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="4_aoywr"]
 
-[sub_resource type="Shader" id="Shader_nfarp"]
+[sub_resource type="Shader" id="Shader_o7tnu"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -24,7 +24,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_itegs"]
 resource_local_to_scene = true
-shader = SubResource("Shader_nfarp")
+shader = SubResource("Shader_o7tnu")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -88,6 +88,13 @@ layout_mode = 2
 text = "?"
 script = ExtResource("3_0d3qd")
 
+[node name="CharacterButton" type="Button" parent="Panel"]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "C"
+script = ExtResource("3_0d3qd")
+
 [node name="TeamButton" type="Button" parent="Panel"]
 visible = false
 custom_minimum_size = Vector2(64, 64)
@@ -105,5 +112,6 @@ script = ExtResource("3_0d3qd")
 [connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="Panel/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Panel/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="Panel/CharacterButton" to="." method="_on_character_button_pressed"]
 [connection signal="pressed" from="Panel/TeamButton" to="." method="_on_team_button_pressed"]
 [connection signal="pressed" from="Panel/LogsButton" to="." method="_on_logs_button_pressed"]

@@ -49,6 +49,11 @@ func present_view(view):
 func _ready():
 	Sounds.start_main_theme_track()
 	GlobalOverlay.on_exit = reset
+	GlobalOverlay.on_character_pressed = func(overlay):
+		var character_view = load("res://UI/Character.tscn").instantiate()
+		character_view.save_name = save_name
+		character_view.save = save
+		overlay.present_subview(character_view)
 	GlobalOverlay.on_team_pressed = func(overlay):
 		var unit_list = load("res://UI/UnitList.tscn").instantiate()
 		var battle_units: Array = save.all_units().collect().map(func(unit):
