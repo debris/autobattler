@@ -1,11 +1,38 @@
-[gd_scene load_steps=11 format=3 uid="uid://bji05iqnd5g4b"]
+[gd_scene load_steps=17 format=3 uid="uid://bji05iqnd5g4b"]
 
+[ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_2k6q3"]
 [ext_resource type="Script" path="res://UI/Altar.gd" id="1_luiga"]
 [ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="1_y6glw"]
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="2_7ki4x"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_y8gv6"]
 [ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="3_4fl37"]
+[ext_resource type="Script" path="res://UI/Frame.gd" id="5_nw04q"]
+[ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="6_1nx8s"]
 [ext_resource type="Shader" path="res://UI/Sacrifice.gdshader" id="6_hdevq"]
+[ext_resource type="Script" path="res://UI/GameButton.gd" id="8_w4ath"]
+
+[sub_resource type="Shader" id="Shader_ehx4w"]
+resource_local_to_scene = true
+code = "// based on
+// https://godotshaders.com/shader/2d-shine-highlight/
+
+shader_type canvas_item;
+
+uniform vec4 shine_color : source_color = vec4(1.0);
+uniform float shine_speed : hint_range(-10.0, 10.0, 0.1) = 1.0;
+uniform float shine_size : hint_range(0.01, 1.0, 0.01) = 0.01;
+
+void fragment() {
+	float shine = step(1.0 - shine_size * 0.5, 0.5 + 0.5 * sin(-SCREEN_UV.x - SCREEN_UV.y * 0.3 + TIME * shine_speed));
+	COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, shine * shine_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u7qev"]
+resource_local_to_scene = true
+shader = SubResource("Shader_ehx4w")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oledy"]
 shader = ExtResource("6_hdevq")
@@ -118,6 +145,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_2k6q3")
 script = ExtResource("1_luiga")
 
 [node name="Concrete0" type="Sprite2D" parent="."]
@@ -131,13 +159,42 @@ region_rect = Rect2(256, 244, 2304, 1296)
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("3_4fl37")]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 376.0
+offset_top = -8.0
+offset_right = -376.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="Frame2" type="Control" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_nw04q")
+metadata/_edit_group_ = true
+
+[node name="Shine" parent="ColorRect" instance=ExtResource("6_1nx8s")]
+material = SubResource("ShaderMaterial_u7qev")
+layout_mode = 1
+offset_top = 0.0
+offset_bottom = 0.0
+
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
-offset_left = 384.0
+offset_left = 416.0
 offset_top = 92.0
-offset_right = 768.0
-offset_bottom = 423.0
-theme_override_constants/h_separation = 128
+offset_right = 736.0
+offset_bottom = 439.0
+theme_override_constants/h_separation = 64
 theme_override_constants/v_separation = 16
 columns = 2
 
@@ -179,44 +236,41 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="SelectEmpowered" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 48)
+custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_y8gv6")
-theme_override_font_sizes/font_size = 24
 text = "SELECT"
+script = ExtResource("8_w4ath")
 
 [node name="SelectSacrificed" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 48)
+custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_y8gv6")
-theme_override_font_sizes/font_size = 24
 text = "SELECT"
+script = ExtResource("8_w4ath")
 
 [node name="GridContainer2" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(384, 2.08165e-12)
 layout_mode = 2
-offset_left = 384.0
+offset_left = 376.0
 offset_top = 480.0
-offset_right = 768.0
-offset_bottom = 580.0
+offset_right = 776.0
+offset_bottom = 616.0
 size_flags_horizontal = 3
+theme_override_constants/v_separation = 0
 metadata/_edit_group_ = true
 
 [node name="SacrificeButton" type="Button" parent="GridContainer2"]
-custom_minimum_size = Vector2(2.08165e-12, 48)
+custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_y8gv6")
-theme_override_font_sizes/font_size = 24
 text = "SACRIFICE"
+script = ExtResource("8_w4ath")
 
 [node name="ProceedButton" type="Button" parent="GridContainer2"]
-custom_minimum_size = Vector2(2.08165e-12, 48)
+custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_y8gv6")
-theme_override_font_sizes/font_size = 24
 text = "CANCEL"
+script = ExtResource("8_w4ath")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

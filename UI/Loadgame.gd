@@ -72,7 +72,11 @@ func display_preview():
 
 	var unit_controls = team_list.get_children()
 	for i in 6:
-		unit_controls[i].unit = save_preview.team.members[i]
+		var unit = save_preview.team.members[i]
+		if unit != null:
+			unit_controls[i].unit = BattleUnit.new(unit, save_preview.player_team_level)
+		else:
+			unit_controls[i].unit = null
 
 func _on_new_game_button_pressed():
 	action_selected.emit(LoadgameActionNew.new())

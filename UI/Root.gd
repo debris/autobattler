@@ -9,7 +9,7 @@ var current_view: Control
 
 func enemy_team_size() -> int:
 	if save.chapter == 0:
-		return min(6, save.count_units() - 1)
+		return max(1, min(6, save.count_units() - 1))
 	return 6
 #
 func enemy_team_level(chapter: int) -> int:

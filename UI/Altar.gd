@@ -21,6 +21,13 @@ var sacrificed_unit: BattleUnit
 func _ready():
 	global_overlay.exit_button.visible = true
 	global_overlay.help_button.visible = true
+	sacrifice_button.disabled = true
+	sacrifice_button.focus_mode = FOCUS_NONE
+
+func update_sacrifice_button():
+	if empowered_unit != null && sacrificed_unit != null:
+		sacrifice_button.focus_mode = FOCUS_ALL
+		sacrifice_button.disabled = false
 
 func _on_select_empowered_pressed():
 	var list = preload("res://UI/UnitList.tscn").instantiate()
@@ -32,9 +39,9 @@ func _on_select_empowered_pressed():
 		empowered_unit = units[index]
 		empowered_unit_control.unit = empowered_unit
 		list.queue_free()
+		update_sacrifice_button()
 	)
 	global_overlay.present_subview(list)
-
 
 func _on_select_sacrificed_pressed():
 	var list = preload("res://UI/UnitList.tscn").instantiate()
@@ -46,6 +53,7 @@ func _on_select_sacrificed_pressed():
 		sacrificed_unit = units[index]
 		sacrificed_unit_control.unit = sacrificed_unit
 		list.queue_free()
+		update_sacrifice_button()
 	)
 	global_overlay.present_subview(list)
 
