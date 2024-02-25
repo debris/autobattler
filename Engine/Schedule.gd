@@ -22,6 +22,14 @@ enum Kind {
 	DMG,
 }
 
+enum Tier {
+	S,
+	A,
+	B,
+	C,
+	F
+}
+
 @export var kind = Kind.SKILL
 
 func is_skill() -> bool:
@@ -50,3 +58,31 @@ func as_string() -> String:
 	for i in data.size():
 		number = number | (int(data[i]) << i)
 	return "%x%x%02x" % [kind as int, data.size(), number]
+
+func tier() -> String:
+	var ok = 0
+	var s = data.size()
+	for i in s:
+		if data[i]:
+			ok += 1
+	
+	if ok == 1 && s == 3:
+		return "C"
+		
+	if ok == 1 && s == 4:
+		return "F"
+	
+	if ok == 2 && s == 5:
+		return "A"
+	
+	if ok == 2 && s == 6:
+		return "C"
+	
+	if ok == 3 && s == 7:
+		return "S"
+	
+	if ok == 3 && s == 8:
+		return "B"
+	
+	assert(false, "should be unreachable, logic error")
+	return ""

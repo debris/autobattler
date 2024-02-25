@@ -59,28 +59,26 @@ mouse_filter = 2
 [node name="LeftContianer" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_left = 64.0
+offset_top = 16.0
 offset_right = 688.0
 offset_bottom = 648.0
 
-[node name="Control" type="Control" parent="LeftContianer"]
-custom_minimum_size = Vector2(400, 648)
+[node name="Control" type="GridContainer" parent="LeftContianer"]
+custom_minimum_size = Vector2(400, 632)
 layout_mode = 2
+theme_override_constants/v_separation = 0
 
 [node name="NameFilter" type="TextEdit" parent="LeftContianer/Control"]
-layout_mode = 0
-offset_top = 16.0
-offset_right = 400.0
-offset_bottom = 80.0
+custom_minimum_size = Vector2(400, 64)
+layout_mode = 2
 theme_override_constants/line_spacing = 16
 theme_override_fonts/font = ExtResource("2_qlmkt")
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Filter"
 
 [node name="TopPanel" type="ColorRect" parent="LeftContianer/Control"]
-layout_mode = 0
-offset_top = 80.0
-offset_right = 400.0
-offset_bottom = 144.0
+custom_minimum_size = Vector2(2.08165e-12, 64)
+layout_mode = 2
 color = Color(0.745098, 0.745098, 0.745098, 0)
 metadata/_edit_group_ = true
 
@@ -130,34 +128,30 @@ size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_qlmkt")
 text = "Defence"
 
-[node name="ColorRect" type="ColorRect" parent="LeftContianer/Control/TopPanel"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.745098, 0.745098, 0.745098, 1)
-
 [node name="ScrollBorders" type="Control" parent="LeftContianer/Control"]
 clip_contents = true
-anchors_preset = 0
-offset_top = 144.0
-offset_right = 400.0
-offset_bottom = 648.0
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="LeftContianer/Control/ScrollBorders"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0.745098, 0.745098, 0.745098, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="LeftContianer/Control/ScrollBorders"]
 clip_contents = false
 layout_mode = 0
 offset_top = 16.0
 offset_right = 408.0
-offset_bottom = 488.0
+offset_bottom = 472.0
 horizontal_scroll_mode = 0
 
 [node name="UnitsContainer" type="GridContainer" parent="LeftContianer/Control/ScrollBorders/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [connection signal="text_changed" from="LeftContianer/Control/NameFilter" to="." method="_on_name_filter_text_changed"]
 [connection signal="pressed" from="LeftContianer/Control/TopPanel/MarginContainer/GridContainer/NameButton" to="." method="_on_name_button_pressed"]

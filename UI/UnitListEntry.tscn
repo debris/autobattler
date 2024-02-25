@@ -69,15 +69,6 @@ theme_override_font_sizes/font_size = 16
 text = "Name"
 vertical_alignment = 1
 
-[node name="Select" type="Button" parent="."]
-layout_mode = 0
-offset_left = 328.0
-offset_top = 16.0
-offset_right = 392.0
-offset_bottom = 48.0
-theme_override_fonts/font = ExtResource("2_ipio7")
-text = "Select"
-
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
 offset_left = 160.0
@@ -113,4 +104,13 @@ mouse_filter = 2
 script = ExtResource("4_ox5jo")
 schedule_pointer = SubResource("Resource_18u74")
 
-[connection signal="pressed" from="Select" to="." method="_on_select_pressed"]
+[node name="SelectLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 304.0
+offset_right = 400.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("2_ipio7")
+theme_override_font_sizes/font_size = 24
+text = "Select"
+horizontal_alignment = 1
+vertical_alignment = 1

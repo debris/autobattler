@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dmn414tgvv43c"]
+[gd_scene load_steps=20 format=3 uid="uid://dmn414tgvv43c"]
 
 [ext_resource type="Texture2D" uid="uid://b4luy6l1hso5k" path="res://Assets/card_back.png" id="1_bd7dg"]
 [ext_resource type="Script" path="res://UI/UnitControl.gd" id="1_q6svs"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Engine/Schedule.gd" id="8_lr2qc"]
 [ext_resource type="FontVariation" uid="uid://cfurrex4by3bf" path="res://Assets/Fonts/PunktumItalic.tres" id="9_0km6o"]
 [ext_resource type="Script" path="res://Engine/SchedulePointer.gd" id="9_v5a6m"]
+[ext_resource type="PackedScene" uid="uid://btopitt5e6n1" path="res://UI/Tiers.tscn" id="10_mv4ke"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="11_4isk2"]
 
 [sub_resource type="Resource" id="Resource_mwdfb"]
@@ -36,7 +37,7 @@ kind = 2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu2ho"]
 shader = ExtResource("2_1v1rc")
 
-[sub_resource type="Shader" id="Shader_ob2ct"]
+[sub_resource type="Shader" id="Shader_xyahr"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -54,7 +55,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8eri"]
 resource_local_to_scene = true
-shader = SubResource("Shader_ob2ct")
+shader = SubResource("Shader_xyahr")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -214,13 +215,21 @@ text = "10"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="Tiers" parent="Content" instance=ExtResource("10_mv4ke")]
+layout_mode = 1
+offset_top = 160.0
+offset_right = -116.0
+offset_bottom = -8.0
+
 [node name="Shine" parent="." instance=ExtResource("6_h6610")]
+visible = false
 material = SubResource("ShaderMaterial_y8eri")
 layout_mode = 1
 offset_top = 2.08165e-12
 offset_bottom = 0.0
 
 [node name="Frame" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

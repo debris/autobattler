@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://btopitt5e6n1"]
+
+[ext_resource type="Script" path="res://UI/Tiers.gd" id="1_kuo0w"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_yr2dr"]
+[ext_resource type="Script" path="res://UI/Tier.gd" id="3_0wljv"]
+
+[node name="Tiers" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1120.0
+offset_bottom = -624.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kuo0w")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_yr2dr")
+theme_override_font_sizes/font_size = 6
+text = "s"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_0wljv")
+
+[node name="Label2" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_yr2dr")
+theme_override_font_sizes/font_size = 6
+text = "s"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_0wljv")
+
+[node name="Label3" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_yr2dr")
+theme_override_font_sizes/font_size = 6
+text = "s"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_0wljv")

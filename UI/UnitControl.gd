@@ -16,6 +16,7 @@ signal pressed(unit)
 @onready var dmg_label = $Content/Dmg
 @onready var def_label = $Content/Def
 @onready var schedules = $Content/Schedules
+@onready var tiers = $Content/Tiers
 
 func display_unit():
 	if unit == null:
@@ -32,6 +33,7 @@ func display_unit():
 	var schedule_controls = schedules.get_children()
 	for i in 3:
 		schedule_controls[i].schedule = unit.schedules[i]
+	tiers.schedules = unit.schedules
 
 func _ready():
 	display_unit()

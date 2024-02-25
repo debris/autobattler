@@ -56,6 +56,7 @@ func _ready():
 		overlay.present_subview(character_view)
 	GlobalOverlay.on_team_pressed = func(overlay):
 		var unit_list = load("res://UI/UnitList.tscn").instantiate()
+		unit_list.selectable = false
 		var battle_units: Array = save.all_units().collect().map(func(unit):
 			return BattleUnit.new(unit, save.player_team_level)
 		)

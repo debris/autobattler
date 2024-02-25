@@ -3,6 +3,7 @@ extends Control
 signal selected_unit(unit_index: int)
 
 @export var units: Array[BattleUnit]
+@export var selectable: bool = true
 
 @onready var list = $LeftContianer/Control/ScrollBorders/ScrollContainer/UnitsContainer
 @onready var name_filter = $LeftContianer/Control/NameFilter
@@ -17,9 +18,13 @@ func _ready():
 		entry.selected.connect(func():
 			selected_unit.emit(entry.get_index())
 		)
-		entry.mouse_entered.connect(func():
+		entry.mouse_entered.connect(func(): 
 			unit_control.unit = unit
 		)
+		entry.mouse_exited.connect(func():
+			unit_control.unit = null
+		)
+		entry.selectable = selectable
 		list.add_child(entry)
 
 func _gui_input(event):
