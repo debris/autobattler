@@ -2,6 +2,8 @@ extends Resource
 class_name DisplaySettings
 
 signal language_changed
+signal music_on_changed
+signal sounds_on_changed
 
 # How long each step of the game should take. Affects the animation time
 @export var step_time: float = 0.5:
@@ -19,6 +21,18 @@ signal language_changed
 		language = value
 		TranslationServer.set_locale(value)
 		language_changed.emit()	
+		save_settings()
+
+@export var music_on: bool = true:
+	set(value):
+		music_on = value
+		music_on_changed.emit()
+		save_settings()
+
+@export var sounds_on: bool = true:
+	set(value):
+		sounds_on = value
+		sounds_on_changed.emit()
 		save_settings()
 
 var config_name: String

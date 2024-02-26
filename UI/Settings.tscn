@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ct4bvrnmjjbfm"]
+[gd_scene load_steps=6 format=3 uid="uid://ct4bvrnmjjbfm"]
 
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_44dwe"]
 [ext_resource type="Script" path="res://UI/Settings.gd" id="1_seu4n"]
+[ext_resource type="Script" path="res://UI/GameOptionButton.gd" id="3_tu31p"]
+[ext_resource type="Script" path="res://UI/GameSlider.gd" id="3_vudpb"]
 
 [sub_resource type="Theme" id="Theme_wcrcb"]
 default_font = ExtResource("1_44dwe")
@@ -83,6 +85,31 @@ popup/item_2/text = "FRENCH"
 popup/item_2/id = 2
 popup/item_3/text = "POLISH"
 popup/item_3/id = 3
+script = ExtResource("3_tu31p")
+
+[node name="MusicLabel" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_44dwe")
+theme_override_font_sizes/font_size = 24
+text = "MUSIC: ON"
+
+[node name="MusicOnSlider" type="HSlider" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+max_value = 1.0
+value = 1.0
+script = ExtResource("3_vudpb")
+
+[node name="SoundsLabel" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_44dwe")
+theme_override_font_sizes/font_size = 24
+text = "MUSIC: ON"
+
+[node name="SoundsOnSlider" type="HSlider" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+max_value = 1.0
+value = 1.0
+script = ExtResource("3_vudpb")
 
 [node name="Separator" type="Control" parent="ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 16)
@@ -112,6 +139,7 @@ min_value = 0.1
 max_value = 1.0
 step = 0.05
 value = 0.5
+script = ExtResource("3_vudpb")
 
 [node name="ScreenChangeTimeLabel" type="Label" parent="ScrollContainer/GridContainer"]
 layout_mode = 2
@@ -126,7 +154,10 @@ min_value = 0.1
 max_value = 1.0
 step = 0.05
 value = 0.7
+script = ExtResource("3_vudpb")
 
 [connection signal="item_selected" from="ScrollContainer/GridContainer/LanguageOptions" to="." method="_on_language_options_item_selected"]
+[connection signal="value_changed" from="ScrollContainer/GridContainer/MusicOnSlider" to="." method="_on_music_on_slider_value_changed"]
+[connection signal="value_changed" from="ScrollContainer/GridContainer/SoundsOnSlider" to="." method="_on_sounds_on_slider_value_changed"]
 [connection signal="value_changed" from="ScrollContainer/GridContainer/BattleStepTimeSlider" to="." method="_on_battle_step_time_slider_value_changed"]
 [connection signal="value_changed" from="ScrollContainer/GridContainer/ScreenChangeTimeSlider" to="." method="_on_screen_change_time_slider_value_changed"]
