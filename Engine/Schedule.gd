@@ -66,23 +66,20 @@ func tier() -> String:
 		if data[i]:
 			ok += 1
 	
-	if ok == 1 && s == 3:
-		return "C"
-		
-	if ok == 1 && s == 4:
-		return "F"
-	
-	if ok == 2 && s == 5:
-		return "A"
-	
-	if ok == 2 && s == 6:
-		return "C"
-	
-	if ok == 3 && s == 7:
+	var is_float_greater_or_equal = func(a, b):
+		return a > b || is_zero_approx(a - b)
+
+	var percent: float = float(ok) / float(s)
+	if is_float_greater_or_equal.call(percent, 3.0 / 7.0):
 		return "S"
+
+	if is_float_greater_or_equal.call(percent, 2.0 / 5.0):
+		return "A"
+
+	if is_float_greater_or_equal.call(percent, 1.0 / 3.0):
+		return "C"
+
+	if is_float_greater_or_equal.call(percent, 1.0 / 4.0):
+		return "D"
 	
-	if ok == 3 && s == 8:
-		return "B"
-	
-	assert(false, "should be unreachable, logic error")
-	return ""
+	return "F"
