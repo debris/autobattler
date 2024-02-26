@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://boyd05hhjowbm" path="res://UI/StacksControl.tscn" id="9_xnqrc"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="13_r0s70"]
 
-[sub_resource type="Shader" id="Shader_uylij"]
+[sub_resource type="Shader" id="Shader_tn5gk"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -33,7 +33,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3531"]
 resource_local_to_scene = true
-shader = SubResource("Shader_uylij")
+shader = SubResource("Shader_tn5gk")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -81,7 +81,8 @@ region_rect = Rect2(256, 244, 2304, 1296)
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("4_6pe4k")]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CenterRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,7 +96,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.705882)
 metadata/_edit_group_ = true
 
-[node name="Frame2" type="Control" parent="ColorRect"]
+[node name="Frame2" type="Control" parent="CenterRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,7 +105,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_mndca")
 
-[node name="Shine" parent="ColorRect" instance=ExtResource("6_cjoq1")]
+[node name="Shine" parent="CenterRect" instance=ExtResource("6_cjoq1")]
 material = SubResource("ShaderMaterial_x3531")
 layout_mode = 1
 offset_top = 0.0

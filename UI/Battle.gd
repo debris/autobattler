@@ -33,6 +33,7 @@ signal battle_finished(result)
 @onready var round_phase_label = $RoundPhaseLabel
 
 @onready var global_overlay = $GlobalOverlay
+@onready var center_rect = $CenterRect
 
 var battle_state: BattleState
 var battle_controller: BattleController
@@ -195,6 +196,7 @@ func _on_start_pressed():
 	pause_button.visible = true
 	change_grid.visible = false
 	round_phase_label.visible = true
+	center_rect.visible = true
 
 	while true:
 		await battle_state.execute_round()
