@@ -11,6 +11,23 @@ offset_right = 128.0
 offset_bottom = 64.0
 script = ExtResource("1_ogd3v")
 
+[node name="Change" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -32.0
+offset_right = 41.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "CHANGE"
+script = ExtResource("3_h052f")
+
 [node name="Left" type="Button" parent="."]
 layout_mode = 0
 offset_right = 24.0
@@ -26,14 +43,6 @@ offset_bottom = 64.0
 text = ">"
 script = ExtResource("3_h052f")
 
-[node name="Change" type="Button" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_right = 104.0
-offset_bottom = 64.0
-text = "CHANGE"
-script = ExtResource("3_h052f")
-
+[connection signal="pressed" from="Change" to="." method="_on_change_pressed"]
 [connection signal="pressed" from="Left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="Right" to="." method="_on_right_pressed"]
-[connection signal="pressed" from="Change" to="." method="_on_change_pressed"]

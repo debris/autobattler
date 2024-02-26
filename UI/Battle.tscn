@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://boyd05hhjowbm" path="res://UI/StacksControl.tscn" id="9_xnqrc"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="13_r0s70"]
 
-[sub_resource type="Shader" id="Shader_tn5gk"]
+[sub_resource type="Shader" id="Shader_05tuf"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -33,7 +33,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3531"]
 resource_local_to_scene = true
-shader = SubResource("Shader_tn5gk")
+shader = SubResource("Shader_05tuf")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
