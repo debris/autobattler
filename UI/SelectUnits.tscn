@@ -127,11 +127,18 @@ text = "SELECT"
 script = ExtResource("5_sprwv")
 
 [node name="RerollButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1008.0
-offset_top = 568.0
-offset_right = 1136.0
-offset_bottom = 632.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -80.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "REROLL"
 script = ExtResource("5_sprwv")
 

@@ -23,14 +23,17 @@ var tags: Dictionary
 # memorized team_level
 var team_level: int
 
+func increase_by_x_percent(value: float, x: float):
+	return value * (1.0 + x / 100.0)
+
 func _init(u: OwnedUnit, tl: int = 0):
 	team_level = tl
 	unit = u
 	name = u.base.name
 	texture = u.base.texture
 	var multiplier = team_level + u.empowered
-	dmg = u.dmg + (u.dmg * multiplier * 10 / 100)
-	def = u.def + (u.def * multiplier * 10 / 100)
+	dmg = int(increase_by_x_percent(u.dmg, multiplier * 10.0))
+	def = int(increase_by_x_percent(u.def, multiplier * 10.0))
 	skill = u.skill
 	passive = u.passive
 	

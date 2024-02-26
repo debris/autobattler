@@ -3,7 +3,7 @@ class_name SkillBloodRage
 
 func _init():
 	name = "Blood Rage"
-	description = "Increase *damage* by 20%."
+	description = "SKILL_BLOOD_RAGE_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

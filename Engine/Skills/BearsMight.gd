@@ -3,7 +3,7 @@ class_name SkillBearsMight
 
 func _init():
 	name = "Bear's Might"
-	description = "If unit on the right is defending this phase, it defends for extra defence equal to this characters *defence*."
+	description = "SKILL_BEARS_MIGHT_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()
