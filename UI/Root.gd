@@ -47,6 +47,7 @@ func present_view(view):
 		transition.queue_free()
 
 func _ready():
+	DisplaySettings.ensure_loaded()
 	Sounds.start_main_theme_track()
 	GlobalOverlay.on_exit = reset
 	GlobalOverlay.on_character_pressed = func(overlay):
