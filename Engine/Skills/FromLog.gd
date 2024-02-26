@@ -1,13 +1,13 @@
-# Simple wrapper for log, useful when skill should be triggered from auction
+# Simple wrapper for battle_log, useful when skill should be triggered from auction
 extends Skill
 class_name SkillFromLog
 
-var log = Log
+var battle_log = Log
 
 func _init(l: Log, n: String, d: String):
-	log = l
+	battle_log = l
 	name = n
 	description = d
 
 func _execute(_query: BattleQuery) -> Array[Log]:
-	return [log]
+	return [battle_log]

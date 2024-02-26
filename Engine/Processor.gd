@@ -2,7 +2,7 @@ extends Object
 class_name Processor
 
 func _process_logs(_pl_iterator: ProcessedLogs):
-	null
+	pass
 
 func _process_changes(changes: ExecutionChanges, battle_state: BattleState) -> Array[ExecutionEnv]:
 	var processed_logs = ProcessedLogs.new(changes.execution_logs, battle_state)

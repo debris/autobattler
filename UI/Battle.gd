@@ -164,7 +164,7 @@ func on_battle_end(battle_result):
 
 func _process(_delta):
 	round_phase_label.text = tr("ROUND_PHASE").format({
-		"round": str(battle_state.round + 1),
+		"round": str(battle_state.battle_round + 1),
 		"phase": str(battle_state.phase + 1)
 	})
 	level_a_label.text = tr("LEVEL").format({"level": enemy_team_level + 1})

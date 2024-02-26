@@ -16,7 +16,7 @@ func get_this_unit() -> BattleUnit:
 	return root
 
 func get_round() -> int:
-	return battle_state.round
+	return battle_state.battle_round
 
 func get_phase() -> int:
 	return battle_state.phase
@@ -25,7 +25,7 @@ func is_active() -> bool:
 	return root.schedule_pointer.active
 
 # returns true if unit is on schedule this round and phase
-func is_on_schedule(r = battle_state.round, phase = battle_state.phase) -> bool:
+func is_on_schedule(r = battle_state.battle_round, phase = battle_state.phase) -> bool:
 	return root.schedules[phase].at(r)
 
 # returns all units from team a and team b

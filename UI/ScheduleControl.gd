@@ -31,13 +31,13 @@ func _process(_delta):
 	# we cannot redraw all the time cause the game may freeze
 	# this limits the amount of redraws
 	if schedule_pointer != null:
-		if schedule_pointer.active != drawn_active || schedule_pointer.round != drawn_round || schedule_pointer.phase != drawn_phase:
+		if schedule_pointer.active != drawn_active || schedule_pointer.battle_round != drawn_round || schedule_pointer.phase != drawn_phase:
 			queue_redraw()
 
 func _draw():
 	if schedule_pointer != null:
 		drawn_active = schedule_pointer.active
-		drawn_round = schedule_pointer.round
+		drawn_round = schedule_pointer.battle_round
 		drawn_phase = schedule_pointer.phase
 	
 	if schedule != null:
@@ -73,7 +73,7 @@ func _draw():
 			else:
 				draw_rect(Rect2(Vector2(cell_x * i, 0) + cell_offset, cell_size - cell_offset * 2), negative_color, true)
 			
-			if schedule_pointer != null && i == schedule.normalize(schedule_pointer.round):
+			if schedule_pointer != null && i == schedule.normalize(schedule_pointer.battle_round):
 				if schedule_pointer.active && schedule_pointer.phase == phase:
 					# draw currently executed cell
 					draw_rect(Rect2(Vector2(cell_x * i, 0) + cell_offset, cell_size - cell_offset * 2), active_color, true)
