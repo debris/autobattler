@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfmudqbhxragu"]
+
+[ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="1_ssu5e"]
+[ext_resource type="Script" path="res://UI/Background.gd" id="2_5i5sl"]
+
+[node name="Concrete0" type="Sprite2D"]
+modulate = Color(0.627451, 0.627451, 0.627451, 1)
+texture_repeat = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ssu5e")
+centered = false
+region_enabled = true
+region_rect = Rect2(256, 244, 2304, 1296)
+script = ExtResource("2_5i5sl")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c5jfrjudv63dk"]
 
 [ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_ifiyp"]
-[ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="1_vme58"]
 [ext_resource type="Script" path="res://UI/SelectUnits.gd" id="2_qqg62"]
+[ext_resource type="PackedScene" uid="uid://cfmudqbhxragu" path="res://UI/Background.tscn" id="3_n0cd3"]
 [ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="4_h4d1b"]
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="5_8187x"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="5_sprwv"]
@@ -17,14 +17,8 @@ grow_vertical = 2
 theme = ExtResource("1_ifiyp")
 script = ExtResource("2_qqg62")
 
-[node name="Concrete0" type="Sprite2D" parent="."]
-modulate = Color(0.627451, 0.627451, 0.627451, 1)
-texture_repeat = 2
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_vme58")
-centered = false
-region_enabled = true
-region_rect = Rect2(256, 244, 2304, 1296)
+[node name="Concrete0" parent="." instance=ExtResource("3_n0cd3")]
+region_rect = Rect2(256, 537727, 2304, 1296)
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("4_h4d1b")]
 

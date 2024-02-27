@@ -2,16 +2,16 @@
 
 [ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_2k6q3"]
 [ext_resource type="Script" path="res://UI/Altar.gd" id="1_luiga"]
-[ext_resource type="Texture2D" uid="uid://cr1m6gx5jqqqa" path="res://Assets/Landscapes/concrete_shades.png" id="1_y6glw"]
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="2_7ki4x"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_y8gv6"]
+[ext_resource type="PackedScene" uid="uid://cfmudqbhxragu" path="res://UI/Background.tscn" id="3_3f14h"]
 [ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="3_4fl37"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="5_nw04q"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="6_1nx8s"]
 [ext_resource type="Shader" path="res://UI/Sacrifice.gdshader" id="6_hdevq"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="8_w4ath"]
 
-[sub_resource type="Shader" id="Shader_6qhgg"]
+[sub_resource type="Shader" id="Shader_diutv"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -29,7 +29,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u7qev"]
 resource_local_to_scene = true
-shader = SubResource("Shader_6qhgg")
+shader = SubResource("Shader_diutv")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -148,14 +148,8 @@ grow_vertical = 2
 theme = ExtResource("1_2k6q3")
 script = ExtResource("1_luiga")
 
-[node name="Concrete0" type="Sprite2D" parent="."]
-modulate = Color(0.627451, 0.627451, 0.627451, 1)
-texture_repeat = 2
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_y6glw")
-centered = false
-region_enabled = true
-region_rect = Rect2(256, 244, 2304, 1296)
+[node name="Concrete0" parent="." instance=ExtResource("3_3f14h")]
+region_rect = Rect2(256, -542811, 2304, 1296)
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("3_4fl37")]
 

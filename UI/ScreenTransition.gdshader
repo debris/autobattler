@@ -32,6 +32,6 @@ void fragment() {
 	value += squareDist*.1;
 	vec4 x = texture(SCREEN_TEXTURE, SCREEN_UV);
 	COLOR = x;
-	COLOR.rgb = x.rgb * (1.0 - percent);
+	COLOR.rgb = x.rgb;// * (1.0 - percent);
 	COLOR.a = smoothstep(0.0, 1.0, 1.0 - clamp(value, 0.0, 1.0));
 }
