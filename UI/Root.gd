@@ -134,6 +134,7 @@ func loadgame_screen():
 		var map_control = preload("res://UI/Map.tscn").instantiate()
 		# TODO: refactor so selected location is not modified internally
 		map_control.map = map
+		map_control.chapter = save.chapter
 		map_control.dialog_progress = save.dialog_progress
 		present_view(map_control)
 		await map_control.selected_location

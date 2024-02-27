@@ -2,12 +2,14 @@ extends Control
 
 signal selected_location
 
+@export var chapter: int
 @export var map: Map
 @export var dialog_progress: DialogProgress
 
 @onready var list = $CenterContainer/ColorRect/CenterContainer/List
 @onready var locations_grid = $CenterContainer/ColorRect/CenterContainer/List/LocationsGrid
 @onready var global_overlay = $GlobalOverlay
+@onready var chapter_label = $CenterContainer/ColorRect/CenterContainer/List/Control/ChapterLabel
 
 func _ready():
 	global_overlay.exit_button.visible = true
@@ -15,6 +17,8 @@ func _ready():
 	global_overlay.character_button.visible = true
 	global_overlay.team_button.visible = true
 	
+	chapter_label.text = tr("CHAPTER").format({"chapter": str(chapter)})
+
 	locations_grid.columns = Map.COLUMNS
 
 	for i in map.rows.size():

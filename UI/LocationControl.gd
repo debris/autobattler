@@ -34,6 +34,7 @@ func _ready():
 		mouse_entered.connect(func():
 			z_index = 1
 			content.scale = Vector2(1.2, 1.2)
+			clip_contents = false
 			possible_control.visible = true
 			hovered = true
 			Sounds.play_hover()
@@ -41,6 +42,7 @@ func _ready():
 		mouse_exited.connect(func():
 			z_index = 0
 			content.scale = Vector2(1.0, 1.0)
+			clip_contents = true
 			possible_control.visible = false
 			hovered = false
 		)

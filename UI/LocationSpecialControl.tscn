@@ -15,6 +15,7 @@ shader = ExtResource("3_riq75")
 shader = ExtResource("4_tt257")
 
 [node name="LocationControl" type="Control"]
+clip_contents = true
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 3
 anchors_preset = 15

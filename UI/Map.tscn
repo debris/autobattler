@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnkmc23o7l0gg"]
+[gd_scene load_steps=10 format=3 uid="uid://dnkmc23o7l0gg"]
 
 [ext_resource type="Script" path="res://UI/Map.gd" id="1_kaxd2"]
 [ext_resource type="PackedScene" uid="uid://cfmudqbhxragu" path="res://UI/Background.tscn" id="2_ax5x7"]
 [ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="3_usdyr"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="4_bul0e"]
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="4_c2i7u"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="4_lego7"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="5_g67ud"]
 
 [sub_resource type="Shader" id="Shader_85pbh"]
@@ -40,7 +41,7 @@ grow_vertical = 2
 script = ExtResource("1_kaxd2")
 
 [node name="Concrete0" parent="." instance=ExtResource("2_ax5x7")]
-region_rect = Rect2(256, -688111, 2304, 1296)
+region_rect = Rect2(256, -728811, 2304, 1296)
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("3_usdyr")]
 
@@ -53,7 +54,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer"]
-custom_minimum_size = Vector2(401, 688)
+custom_minimum_size = Vector2(400, 688)
 layout_mode = 2
 color = Color(0, 0, 0, 0.705882)
 
@@ -81,11 +82,27 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 24.0
+offset_right = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_c2i7u")
 theme_override_font_sizes/font_size = 40
 text = "MAP"
+vertical_alignment = 1
+
+[node name="ChapterLabel" type="Label" parent="CenterContainer/ColorRect/CenterContainer/List/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_lego7")
+theme_override_font_sizes/font_size = 30
+text = "CHAPTER 0"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="LocationsGrid" type="GridContainer" parent="CenterContainer/ColorRect/CenterContainer/List"]
