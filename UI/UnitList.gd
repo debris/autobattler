@@ -19,7 +19,8 @@ func _ready():
 			selected_unit.emit(entry.get_index())
 		)
 		entry.mouse_entered.connect(func(): 
-			unit_control.unit = unit
+			# the order of units may change, so we always need to look at the latest version of the units list
+			unit_control.unit = units[entry.get_index()]
 		)
 		entry.mouse_exited.connect(func():
 			unit_control.unit = null
