@@ -3,7 +3,7 @@ class_name SkillUnionize
 
 func _init():
 	name = "Unionize"
-	description = "Set the schedule of the n'th unit in both teams to this unit's schedule, where n is the current round number."
+	description = "SKILL_UNIONIZE_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

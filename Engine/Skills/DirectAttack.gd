@@ -3,7 +3,7 @@ class_name SkillDirectAttack
 
 func _init():
 	name = "Direct Attack"
-	description = "Direct units on both sides to attack the enemy."
+	description = "SKILL_DIRECT_ATTACK_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

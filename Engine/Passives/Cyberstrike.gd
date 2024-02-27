@@ -3,4 +3,4 @@ class_name PassiveCyberstrike
 
 func _init():
 	name = "Cyberstrike"
-	description = "If assassin on the right attacks, attack."
+	description = "PASSIVE_CYBERSTRIKE_DESC"

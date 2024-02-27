@@ -3,7 +3,7 @@ class_name SkillDefenceRitual
 
 func _init():
 	name = "Defence Ritual"
-	description = "Increase *defence* of all other orcs in the team by 10%."
+	description = "SKILL_DEFENCE_RITUAL_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

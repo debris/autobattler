@@ -7,10 +7,10 @@ func _init(o = true):
 	on = o
 	if on:
 		name = "Paint"
-		description = "Paints current phase as active for all units on the battlefield"
+		description = "SKILL_PAINT_DESC"
 	else:
 		name = "Cleanup"
-		description = "Cleans current phase for all units on the battlefield"
+		description = "SKILL_CLEANUP_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

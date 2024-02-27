@@ -3,7 +3,7 @@ class_name SkillCorruption
 
 func _init():
 	name = "Corruption"
-	description = "Decrease opponent's *defense* by 20%."
+	description = "SKILL_CORRUPTION_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

@@ -3,7 +3,7 @@ class_name SkillSubDefence
 
 func _init():
 	name = "Sub Defence"
-	description = "Substitutes the weakest defender in the team with a special defence unit."
+	description = "SKILL_SUB_DEFENCE_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

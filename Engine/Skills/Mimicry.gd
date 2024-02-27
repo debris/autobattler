@@ -3,7 +3,7 @@ class_name SkillMimicry
 
 func _init():
 	name = "Mimicry"
-	description = "Jester Thylocron mimics the last ability used by an enemy."
+	description = "SKILL_MIMICRY_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

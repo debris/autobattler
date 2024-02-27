@@ -3,7 +3,7 @@ class_name SkillDoubleCross
 
 func _init():
 	name = "Double Cross"
-	description = "Swap places with the enemy unit with the highest defence"
+	description = "SKILL_DOUBLE_CROSS_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

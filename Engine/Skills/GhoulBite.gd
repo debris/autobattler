@@ -3,7 +3,7 @@ class_name SkillGhoulBite
 
 func _init():
 	name = "Ghoul Bite"
-	description = "Add 1 stack of *poison* to enemy team."
+	description = "SKILL_GHOUL_BITE_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

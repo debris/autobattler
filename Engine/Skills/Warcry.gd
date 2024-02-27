@@ -3,7 +3,7 @@ class_name SkillWarcry
 
 func _init():
 	name = "Warcry"
-	description = "Warcry removes 20% of the *dmg* from the enemy on the opposite side and grants double that amount as *dmg bonus* to himself and allies on his both sides"
+	description = "SKILL_WARCRY_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

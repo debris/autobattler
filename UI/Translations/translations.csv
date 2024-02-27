@@ -45,27 +45,52 @@
 "HELP","help","pomoc","help_fr","Hilfe"
 "NAME","name","nazwa","name_fr","Name"
 "CHARACTER","character","postac","character_fr","Spieler"
-"","","","",""
-"","","","",""
+,,,,
+,,,,
 "DIALOG_0000_0","Welcome to the project autobattler. I am Captain Blaze and I will guide you through your first steps on the battlefield.","Witam w projekcie autobattler. Jestem Kapitan Blaze i wprowadze Cie w pierwsze kroki na polu walki.","dialog_0000_0_fr","Willkommen beim autobattler-Projekt. Ich bin Captain Blaze und werde dich durch deine ersten Schritte auf dem Schlachtfeld fuehren."
 "DIALOG_0000_1","Your team is your most important asset. Always carefully choose your lineup.","Twoja druzyna jest zawsze najwazniejsza. Uwazenie wybieraj kto ma za Ciebie walczyc.","dialog_0000_1_fr","Dein Team ist dein wichtigstes Kapital. Wähle es sorgfaeltig aus."
 "DIALOG_0000_2","You can inspect the unit by pressing it with LMB.","Mozesz sprawdzic szczegoly danej jednostki klikajac ja lewym przyciskiem myszy.","dialog_0000_2_fr","Linke Maustaste um karte anzusehen"
 "DIALOG_0000_3","Pick your fighters and carry on to the next screen to select your first assignments.","A teraz wybierz swoj zespol i przejdz do kolejnego ekranu, aby dostac swoje pierwsze zadanie.","dialog_0000_3_fr","Waehle deinen Kaempfer aus und gehe zum naechsten Bildschirm, um dein ersten Auftrag auszuwaehlen."
-"","","","",""
+,,,,
 "DIALOG_0001_0","This is world map. Highlighted locations represent your possible assignments.","Witaj w ekranie mapy swiata. Mozesz tu wyznaczyc kolejny cel podrozy z posrod podswietlonych lokalizacji.","dialog_0001_0_fr","Dies ist die Weltkarte. Die markierten Orte stellen Ihre Aufgaben dar."
 "DIALOG_0001_1","If you need help, you can find it in the panel on the left side.","Szczegoly gry mozesz znalezc w panelu pomocy po lewej stronie ekranu.","dialog_0001_0_fr","Wenn du Hilfe benoetigst, findest du diese im Fenster auf der linken Seite."
 "DIALOG_0001_2","The game is automatically saved every time you come back to the assignment board.","Gra zapisuje sie automatycznie za kazdy razem kiedy powracasz do tego ekranu.","dialog_0001_2_fr","Spiel speichert automatisch, sobald du zur Weltkarte zurueckkehrst."
 "DIALOG_0001_3","Select one of the highlighted locations and start your journey!","Wybierz jeden z podswietlonych celow podrozy i rozpocznij swoja przygode!","dialog_0001_3_fr","Wähle einen der markierten Orte aus und beginne mit deiner Reise!"
-"","","","",""
+,,,,
 "DIALOG_0002_0","Prepare for the battle!","Przygotuj sie do walki!","dialog_0002_0_fr","Bereite dich auf den kaempf vor"
 "DIALOG_0002_1","Inspect enemies and pick the team that will face them.","Sprawdz swoich przeciwnikow i wybierz druzyne ktora stawi im czola.","dialog_0002_1_fr","sieh dir die gegnerischen karten an und wähle aus wer gegen sie antreten soll."
 "DIALOG_0002_2","Once ready, press ""start"" to begin the fight.","Kiedy bedziesz gotowy, nacisnij ""start"", aby rozpoczac walke.","dialog_0002_2_fr","Bist du bereit? Dann druecke „start“ um mit dem kaempf zu beginnen."
-"","","","",""
+,,,,
 "DIALOG_0003_0","Congrats! You won your first battle! Proceed to collect rewards.","Gratulacje! Wygrales swoja pierwsza bitwe! Przejdz dalej aby odebrac nagrody.","dialog_0003_0_fr","Glueckwunsch, du hast deinen ersten kaempf gewonnen. Fahre fort um deine Belohnung zu erhalten."
-"","","","",""
+,,,,
 "SKILL_ARCHER_TRAINING_DESC","Increase damage by 10% for every other archer on the team.","Zwieksz obrazenia o 10% za kazdego pozostalego lucznika w druzynie.","skill_archer_training_desc_fr","Erhoeht den Schaden fuer jeden anderen Bogenschuetzen im Team um 10%."
 "SKILL_ARROW_BARRAGE_DESC","Rain down a barrage of arrows upon all enemies and reduce their defense by 10%.","Zasyp przeciwnikow strzalami i zmniejsz ich obrone o 10%.","skill_arrow_barrage_desc_fr","Lasst eine Flut von Pfeilen auf alle Feinde niederregnen und reduziere ihre Verteidigung um 10%."
 "SKILL_AZURE_MOMENTUM_DESC","Next two units activate their active skills two more times in this phase.","Nastepne dwie jednostki aktywuja swoj skill dodatkowe dwa razy w tej fazie.","skill_azure_momentum_fr","Die naechsten zwei karten aktivieren ihre aktiven Faehigkeiten noch zweimal in dieser Phase."
 "SKILL_BEARS_MIGHT_DESC","If unit on the right is defending this phase, it defends for extra defence equal to this characters defence.","Jesli jednostka po prawej broni w tej fazie, jej obrona jest zwiekszona o obrone tej jednostki.","skill_bears_might_fr","Wenn eine Karte in dieser Phase auf der rechten Seite verteidigt wird, erhaelt sie einen zusaetzlichen Verteidigungswert, der der Verteidigung dieser Figur entspricht."
 "SKILL_BLOOD_RAGE_DESC","Increase damage by 20%.","Zwieksz obrazenia o 20%.","skill_blood_rage_fr","Schaden um 20% erhoehen."
+"SKILL_BLUE_42_DESC","Increase *defence* by 10% for every other defender on the team.","Zwieksz obrazenia o 10% za kazdego innego 'defender' w druzynie.",,
+"SKILL_CORRUPTION_DESC","Decrease direct opponent's *defense* by 20%.","Zmniejsz obrazenia jednostki na przeciwko o 20%.",,
+"SKILL_DEFENCE_RITUAL_DESC","Increase *defence* of all other orcs in the team by 10%.","Zwieksz obrone wszystkich innych orkow w druzynie o 20%.",,
+"SKILL_DIRECT_ATTACK_DESC","Direct units on both sides to attack the enemy.","Nakaz jednostka po lewej i prawej atak.",,
+"SKILL_DOUBLE_CROSS_DESC","Swap places with the enemy unit with the highest defence.","Zamien sie miejscami z jednostka przecinika, ktora ma najwiecej obrony.",,
+"SKILL_ECLIPSE_SENTINEL_DESC","Add 1 stack of vigilance.","Dodaj 1 poziom czujnosci.",,
+"SKILL_GHOUL_BITE_DESC","Add 1 stack of poison to enemy team.","Dodaj 1 poziom zatrucia przeciwnikowi.",,
+"SKILL_GREEN_RANKS_DESC","Add 'orc' tag to the first unit that doesn't have it. Start with enemy team.","Dodaj tag 'orc' pierwszemu przeciwnikowi, ktory go nie ma. Zacznij od druzyny przeciwnika.",,
 "SKILL_LOKI_SWAP_DESC","Swap skills of the units with the highest dmg in each team.","Zamien umiejetnosci jednostek z najwyzszym atakiem w kazdej z druzyn.","skill_loki_swap_desc_fr","Tausche die Faehigkeiten der Karten mit dem hoechsten Schaden in jedem Team."
+"SKILL_MIMICRY_DESC","Jester Thylocron mimics the last ability used by an enemy.","Uzyj ostatniej umiejetnosci uzytej przez przeciwnika.",,
+"SKILL_PAINT_DESC","Paints current phase as active for all units on the battlefield.","Zmien obecna faze na aktywna dla wszystkich jednostek na polu walki.",,
+"SKILL_CLEANUP_DESC","Cleans current phase for all units on the battlefield.","Zmien obecna faze na nieaktywna dla wszystkich jednostek na polu walki.",,
+"SKILL_SELFCARE_DESC","Turn 50% of this unit's current bonuses into pernament improvements.","Zamien 50% obecnych bonusow tej jednostki na stale ulepszenia.",,
+"SKILL_SHAPESHIFT_DESC","Copy looks and attributes of another character. On odd rounds character with the highest attack and on even with the highest defence. If no such character exists, do nothing.","Skopiuj wyglad i statystyki innej postaci. W nieparzystych rundach postaci z najwyzszym atakiem, a w parzystych z najwyzsza obrona.",,
+"SKILL_SUB_DEFENCE_DESC","Substitutes the weakest defender in the team with a special defence unit.","Zamien najslabszego obronce w druzynie na specjalnego obronce.",,
+"SKILL_TIME_TRAVEL_DESC","If this units offense is higher than defense, increase the round counter by 1, if it's lower, decrease by 1. If they are the same, do nothing.","Jesli atak tej jednostki jest wyzszy niz obrona, przenies w przyszlosc o 1 runde, a jesli nizszy, przeniesc w przeslosc o 1 runde. Jesli atak i obrona sa takie same, nie rob nic.",,
+"SKILL_UNIONIZE_DESC","Set the schedule of the n'th unit in both teams to this unit's schedule, where n is the current round number.","Ustaw terminarz ""n"" postaci w obu druzynach na terminarz tej postaci, gdzie ""n"", to obecna runda.",,
+"SKILL_WARCRY_DESC","Warcry removes 20% of the dmg from the enemy on the opposite side and grants double that amount as dmg bonus to himself and allies on his both sides.","Zmniejsz dmg jednostki na przeciwko o 20% i dodaj podwojna ilosc tej kwoty jako bonus do obrazenen sobie i sojusznikom po obu stronach tej jednostki.",,
+,,,,
+"PASSIVE_AUTO_HIVE_DESC","If this team's power is twice smaller than enemy's, whenever enemy unit attacks, all bees and mechs attack him back.","Jesli moc tej druzyny jest dwukrotnie mniejsza niz druzyny przeciwnika, za kazdym razem kiedy jeden z przeciwnikow attakuje, wszystkie 'bees' i 'mechs' kontratakuja.",,
+"PASSIVE_CYBERSTRIKE_DESC","If assassin on the right attacks, attack.","Jesli 'assassin' po prawej od tej jednostki atakuje, ta jednostka rowniez atakuje.",,
+"PASSIVE_DOUBLE_STRIKE_DESC","This unit attacks twice, but for 50% dmg.","Ta jednostka atakuje dwukrotnie, ale za 50% obrazen.",,
+"PASSIVE_JUMP_ATTACK_DESC","This unit after attack jumps right. If jump would not be possible, cancels attack and jumps to the leftmost position.","Ta jednostka skacze w prawo po ataku. Jesli skok nie bylby mozliwy, anuluje atak i skacze do pozycji najbardziej po lewej stronie.",,
+"PASSIVE_RETRIBUTION_DESC","On opposite enemy attack, attack back.","Jesli jednostka na przeciwko tej atakuje, kontratakuj.",,
+"PASSIVE_SHADOW_STRIKE_DESC","If this unit hasn't attacked in 3 rounds, it's next attack deals triple damage.","Jesli ta jednoska nie atakowala przez 3 rundy, jej kolejny atak zadaje potrojne obrazenia.",,
+"PASSIVE_TRICKSTER_DETAINMENT_DESC","Whenever a trickster from the opposite team performs an action other than defend and this unit is on schedule that phase, invalidate that action.","Jesli 'trickster' z przeciwnej druzyny wykonuje jakakolwiek akcje inna niz obrona w obecnym cykly i ta jednoska jest aktywna, anuluj akcje tego 'trickster'a.",,

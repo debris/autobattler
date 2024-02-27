@@ -3,7 +3,7 @@ class_name SkillEclipseSentinel
 
 func _init():
 	name = "Eclipse Sentinel"
-	description = "Add 1 stack of *vigilance*."
+	description = "SKILL_ECLIPSE_SENTINEL_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

@@ -4,7 +4,7 @@ class_name SkillTimeTravel
 
 func _init():
 	name = "Time Travel"
-	description = "If this units offense is higher than defense, increase the round counter by 1, if it's lower, decrease by 1. If they are the same, do nothing."
+	description = "SKILL_TIME_TRAVEL_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

@@ -3,7 +3,7 @@ class_name SkillGreenRanks
 
 func _init():
 	name = "Green Ranks"
-	description = "Add 'orc' tag to the first unit that doesn't have it. Start with enemy team."
+	description = "SKILL_GREEN_RANKS_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var unit = query.get_this_unit()

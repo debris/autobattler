@@ -3,7 +3,7 @@ class_name SkillShapeshift
 
 func _init():
 	name = "Shapeshift"
-	description = "Copy looks and attributes of another character. On odd rounds character with the highest attack and on even with the highest defence. If no such character exists, do nothing."
+	description = "SKILL_SHAPESHIFT_DESC"
 
 func _execute(query: BattleQuery) -> Array[Log]:
 	var battle_unit = query.get_this_unit()
