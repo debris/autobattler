@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cishw7lk1ijaa"]
+[gd_scene load_steps=10 format=3 uid="uid://cishw7lk1ijaa"]
 
 [ext_resource type="Script" path="res://UI/LocationControl.gd" id="1_o4rkf"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="3_i0x3w"]
+[ext_resource type="Shader" path="res://UI/AvatarShader.gdshader" id="3_riq75"]
+[ext_resource type="Texture2D" uid="uid://cnr5ef2xgjvow" path="res://Assets/Icons/event.png" id="4_thonq"]
 [ext_resource type="Shader" path="res://UI/IconPlayerShader.gdshader" id="4_tt257"]
 [ext_resource type="Texture2D" uid="uid://bon14hoca0ad5" path="res://Assets/Icons/player.png" id="6_2ueo3"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="7_7662v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1uxd"]
+shader = ExtResource("3_riq75")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eyk80"]
 shader = ExtResource("4_tt257")
@@ -15,10 +20,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1072.0
+offset_right = -752.0
 offset_bottom = -568.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(200, 40)
 size_flags_horizontal = 3
 script = ExtResource("1_o4rkf")
 
@@ -29,6 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(200, 40)
 
 [node name="PossibleControl" type="ColorRect" parent="Content"]
 visible = false
@@ -44,15 +51,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 0, 1)
 
-[node name="Frame" type="Control" parent="Content"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_i0x3w")
-
 [node name="Background" type="ColorRect" parent="Content"]
 layout_mode = 1
 anchors_preset = 15
@@ -62,7 +60,28 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.705882)
 
+[node name="Icon" type="TextureRect" parent="Content"]
+material = SubResource("ShaderMaterial_i1uxd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_thonq")
+expand_mode = 1
+
+[node name="Frame" type="Control" parent="Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_i0x3w")
+
 [node name="NameLabel" type="Label" parent="Content"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,9 +113,17 @@ color = Color(0, 0, 0, 0.705882)
 [node name="CurrentControl" type="TextureRect" parent="Content"]
 visible = false
 material = SubResource("ShaderMaterial_eyk80")
-offset_left = -16.0
-offset_top = -16.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
 offset_right = 40.0
 offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("6_2ueo3")
 expand_mode = 1

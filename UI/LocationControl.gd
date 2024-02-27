@@ -8,6 +8,7 @@ signal selected_location
 @export var display_icon: bool = true
 
 @onready var content = $Content
+@onready var icon = $Content/Icon
 @onready var name_label = $Content/NameLabel
 @onready var possible_control = $Content/PossibleControl
 @onready var current_control = $Content/CurrentControl
@@ -18,7 +19,9 @@ var hovered = false
 func _ready():
 	content.visible = !location is LocationEmpty
 	if location.icon != null:
-		content.get_node("Icon").texture = location.icon
+		icon.texture = location.icon
+	else:
+		icon.visible = false
 	name_label.text = location.name
 	current_control.visible = map.map_position == map_position
 	
@@ -29,11 +32,15 @@ func _ready():
 
 	if map.is_valid_destination(map_position):
 		mouse_entered.connect(func():
+			z_index = 1
+			content.scale = Vector2(1.2, 1.2)
 			possible_control.visible = true
 			hovered = true
 			Sounds.play_hover()
 		)
 		mouse_exited.connect(func():
+			z_index = 0
+			content.scale = Vector2(1.0, 1.0)
 			possible_control.visible = false
 			hovered = false
 		)

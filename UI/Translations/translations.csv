@@ -56,7 +56,7 @@
 ,,,,
 "DIALOG_0001_0","This is world map. Highlighted locations represent your possible assignments.","Witaj w ekranie mapy swiata. Mozesz tu wyznaczyc kolejny cel podrozy z posrod podswietlonych lokalizacji.","dialog_0001_0_fr","Dies ist die Weltkarte. Die markierten Orte sind deine naechsten kaempfe."
 "DIALOG_0001_1","If you need help, you can find it in the panel on the left side.","Szczegoly gry mozesz znalezc w panelu pomocy po lewej stronie ekranu.","dialog_0001_0_fr","Wenn du Hilfe benoetigst, findest du diese im Fenster auf der linken Seite."
-"DIALOG_0001_2","The game is automatically saved every time you come back to the assignment board.","Gra zapisuje sie automatycznie za kazdy razem kiedy powracasz do tego ekranu.","dialog_0001_2_fr","Spiel speichert automatisch, sobald du zur Weltkarte zurueckkehrst."
+"DIALOG_0001_2","The game is automatically saved every time you come back to this screen.","Gra zapisuje sie automatycznie za kazdy razem kiedy powracasz do tego ekranu.","dialog_0001_2_fr","Spiel speichert automatisch, sobald du zur Weltkarte zurueckkehrst."
 "DIALOG_0001_3","Select one of the highlighted locations and start your journey!","Wybierz jeden z podswietlonych celow podrozy i rozpocznij swoja przygode!","dialog_0001_3_fr","Waehle einen der markierten Orte aus und beginne mit deiner Reise!"
 ,,,,
 "DIALOG_0002_0","Prepare for the battle!","Przygotuj sie do walki!","dialog_0002_0_fr","Bereite dich auf den kampf vor"

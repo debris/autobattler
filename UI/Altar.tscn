@@ -149,7 +149,7 @@ theme = ExtResource("1_2k6q3")
 script = ExtResource("1_luiga")
 
 [node name="Concrete0" parent="." instance=ExtResource("3_3f14h")]
-region_rect = Rect2(256, -542811, 2304, 1296)
+region_rect = Rect2(256, -608892, 2304, 1296)
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("3_4fl37")]
 

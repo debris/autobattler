@@ -1,8 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnkmc23o7l0gg"]
+[gd_scene load_steps=9 format=3 uid="uid://dnkmc23o7l0gg"]
 
 [ext_resource type="Script" path="res://UI/Map.gd" id="1_kaxd2"]
 [ext_resource type="PackedScene" uid="uid://cfmudqbhxragu" path="res://UI/Background.tscn" id="2_ax5x7"]
 [ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="3_usdyr"]
+[ext_resource type="Script" path="res://UI/Frame.gd" id="4_bul0e"]
+[ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="4_c2i7u"]
+[ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="5_g67ud"]
+
+[sub_resource type="Shader" id="Shader_85pbh"]
+resource_local_to_scene = true
+code = "// based on
+// https://godotshaders.com/shader/2d-shine-highlight/
+
+shader_type canvas_item;
+
+uniform vec4 shine_color : source_color = vec4(1.0);
+uniform float shine_speed : hint_range(-10.0, 10.0, 0.1) = 1.0;
+uniform float shine_size : hint_range(0.01, 1.0, 0.01) = 0.01;
+
+void fragment() {
+	float shine = step(1.0 - shine_size * 0.5, 0.5 + 0.5 * sin(-SCREEN_UV.x - SCREEN_UV.y * 0.3 + TIME * shine_speed));
+	COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, shine * shine_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wpwi3"]
+resource_local_to_scene = true
+shader = SubResource("Shader_85pbh")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
 
 [node name="Map" type="Control"]
 layout_mode = 3
@@ -14,7 +40,7 @@ grow_vertical = 2
 script = ExtResource("1_kaxd2")
 
 [node name="Concrete0" parent="." instance=ExtResource("2_ax5x7")]
-region_rect = Rect2(256, 538561, 2304, 1296)
+region_rect = Rect2(256, -688111, 2304, 1296)
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("3_usdyr")]
 
@@ -26,13 +52,65 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="List" type="GridContainer" parent="CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(401, 688)
+layout_mode = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="List" type="GridContainer" parent="CenterContainer/ColorRect/CenterContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 16
+theme_override_constants/v_separation = 0
 
-[node name="LocationsGrid" type="GridContainer" parent="CenterContainer/List"]
+[node name="Control" type="Control" parent="CenterContainer/ColorRect/CenterContainer/List"]
+custom_minimum_size = Vector2(400, 96)
 layout_mode = 2
-theme_override_constants/h_separation = 48
-theme_override_constants/v_separation = 16
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CenterContainer/ColorRect/CenterContainer/List/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_c2i7u")
+theme_override_font_sizes/font_size = 40
+text = "MAP"
+vertical_alignment = 1
+
+[node name="LocationsGrid" type="GridContainer" parent="CenterContainer/ColorRect/CenterContainer/List"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
 columns = 5
+
+[node name="Frame2" type="Control" parent="CenterContainer/ColorRect"]
+custom_minimum_size = Vector2(400, 688)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 688.0
+mouse_filter = 2
+script = ExtResource("4_bul0e")
+metadata/_edit_group_ = true
+
+[node name="Shine" parent="CenterContainer/ColorRect" instance=ExtResource("5_g67ud")]
+material = SubResource("ShaderMaterial_wpwi3")
+custom_minimum_size = Vector2(400, 688)
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_right = 400.0
+offset_bottom = 688.0

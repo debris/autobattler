@@ -5,8 +5,8 @@ signal selected_location
 @export var map: Map
 @export var dialog_progress: DialogProgress
 
-@onready var list = $CenterContainer/List
-@onready var locations_grid = $CenterContainer/List/LocationsGrid
+@onready var list = $CenterContainer/ColorRect/CenterContainer/List
+@onready var locations_grid = $CenterContainer/ColorRect/CenterContainer/List/LocationsGrid
 @onready var global_overlay = $GlobalOverlay
 
 func _ready():
@@ -39,7 +39,7 @@ func _ready():
 		selected_location.emit()
 	)
 	list.add_child(boss_control)
-	list.move_child(boss_control, 0)
+	list.move_child(boss_control, 1)
 	
 	var start_control = preload("res://UI/LocationSpecialControl.tscn").instantiate()
 	start_control.location = LocationStart.new()

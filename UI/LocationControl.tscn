@@ -34,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(40, 40)
 
 [node name="PossibleControl" type="ColorRect" parent="Content"]
 visible = false
@@ -50,21 +51,13 @@ grow_vertical = 2
 color = Color(1, 1, 0, 1)
 
 [node name="ConcreteTile" type="Sprite2D" parent="Content"]
+visible = false
 modulate = Color(0.454902, 0.454902, 0.454902, 1)
 scale = Vector2(0.30888, 0.294118)
 texture = ExtResource("2_2cmxt")
 centered = false
 region_enabled = true
 region_rect = Rect2(513, 752, 259, 272)
-
-[node name="Frame" type="Control" parent="Content"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_6migv")
 
 [node name="Background" type="ColorRect" parent="Content"]
 layout_mode = 1
@@ -86,6 +79,15 @@ grow_vertical = 2
 texture = ExtResource("5_fsxle")
 expand_mode = 1
 
+[node name="Frame" type="Control" parent="Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_6migv")
+
 [node name="InactiveControl" type="ColorRect" parent="Content"]
 visible = false
 layout_mode = 1
@@ -101,6 +103,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.705882)
 
 [node name="NameLabel" type="Label" parent="Content"]
+visible = false
 layout_mode = 0
 offset_top = 56.0
 offset_right = 80.0
@@ -111,12 +114,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CurrentControl" type="TextureRect" parent="Content"]
-visible = false
 material = SubResource("ShaderMaterial_bl5do")
-layout_mode = 0
-offset_left = -16.0
-offset_top = -16.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
 offset_right = 40.0
 offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("9_a75gy")
 expand_mode = 1
