@@ -41,7 +41,7 @@ grow_vertical = 2
 script = ExtResource("1_kaxd2")
 
 [node name="Concrete0" parent="." instance=ExtResource("2_ax5x7")]
-region_rect = Rect2(256, -728811, 2304, 1296)
+region_rect = Rect2(256, -754075, 2304, 1296)
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("3_usdyr")]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://eagvkhnvorue"]
+[gd_scene load_steps=11 format=3 uid="uid://eagvkhnvorue"]
 
 [ext_resource type="Script" path="res://UI/UnitListEntry.gd" id="1_p8drj"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_ck1m6"]
@@ -6,22 +6,23 @@
 [ext_resource type="FontVariation" uid="uid://cfurrex4by3bf" path="res://Assets/Fonts/PunktumItalic.tres" id="3_4s74j"]
 [ext_resource type="Script" path="res://UI/ScheduleControl.gd" id="4_ox5jo"]
 [ext_resource type="Script" path="res://Engine/SchedulePointer.gd" id="5_f4dux"]
+[ext_resource type="PackedScene" uid="uid://btopitt5e6n1" path="res://UI/Tiers.tscn" id="6_083eu"]
 
 [sub_resource type="Resource" id="Resource_c455t"]
 script = ExtResource("5_f4dux")
-round = 0
+battle_round = 0
 phase = 0
 active = false
 
 [sub_resource type="Resource" id="Resource_ynug1"]
 script = ExtResource("5_f4dux")
-round = 0
+battle_round = 0
 phase = 0
 active = false
 
 [sub_resource type="Resource" id="Resource_18u74"]
 script = ExtResource("5_f4dux")
-round = 0
+battle_round = 0
 phase = 0
 active = false
 
@@ -103,6 +104,18 @@ size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("4_ox5jo")
 schedule_pointer = SubResource("Resource_18u74")
+
+[node name="Tiers" parent="." instance=ExtResource("6_083eu")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 144.0
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 56.0
+mouse_filter = 2
+font_size = 12
 
 [node name="SelectLabel" type="Label" parent="."]
 layout_mode = 0

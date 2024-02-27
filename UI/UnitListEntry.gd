@@ -20,6 +20,7 @@ signal selected
 @onready var schedule_control2 = $GridContainer/ScheduleControl2
 @onready var schedule_control3 = $GridContainer/ScheduleControl3
 @onready var select_label = $SelectLabel
+@onready var tiers = $Tiers
 
 func _ready():
 	update_display()
@@ -39,6 +40,7 @@ func update_display():
 	schedule_control.schedule = unit.schedules[0]
 	schedule_control2.schedule = unit.schedules[1]
 	schedule_control3.schedule = unit.schedules[2]
+	tiers.schedules = unit.schedules
 
 func update_selectable():
 	select_label.visible = selectable
