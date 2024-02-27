@@ -41,8 +41,8 @@ func update_display():
 
 	battle_step_time_label.text = tr("BATTLE_STEP_TIME").format({"time": str(display_settings.step_time)})
 	screen_change_time_label.text = tr("SCREEN_CHANGE_TIME").format({"time": str(display_settings.screen_transition_time)})
-	music_label.text = "MUSIC: " + bool_to_text.call(display_settings.music_on)
-	sounds_label.text = "SOUNDS: " + bool_to_text.call(display_settings.sounds_on)
+	music_label.text = tr("MUSIC") + ": " + bool_to_text.call(display_settings.music_on)
+	sounds_label.text = tr("SOUNDS") + ": " + bool_to_text.call(display_settings.sounds_on)
 
 func _on_battle_step_time_slider_value_changed(value):
 	display_settings.step_time = value

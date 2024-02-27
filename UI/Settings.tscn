@@ -103,7 +103,7 @@ script = ExtResource("3_vudpb")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_44dwe")
 theme_override_font_sizes/font_size = 24
-text = "MUSIC: ON"
+text = "SOUNDS: ON"
 
 [node name="SoundsOnSlider" type="HSlider" parent="ScrollContainer/GridContainer"]
 layout_mode = 2

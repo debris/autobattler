@@ -82,8 +82,7 @@ offset_bottom = 252.0
 theme_override_colors/font_color = Color(0.5, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_j08r3")
 theme_override_font_sizes/font_size = 16
-text = "Name already exists
-"
+text = "NAME_ALREADY_EXISTS"
 
 [connection signal="text_changed" from="CenterContainer/GridContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
