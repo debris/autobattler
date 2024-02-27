@@ -31,10 +31,11 @@ func update_sacrifice_button():
 
 func _on_select_empowered_pressed():
 	var list = load("res://UI/UnitList.tscn").instantiate()
-	var units = save.all_units().filter(func(unit):
+	var units: Array[BattleUnit] = []
+	units.assign(save.all_units().filter(func(unit):
 		return sacrificed_unit == null || sacrificed_unit.unit.get_instance_id() != unit.get_instance_id()
-	).collect().map(func(unit): return BattleUnit.new(unit, save.player_team_level))
-	list.units.assign(units)
+	).collect().map(func(unit): return BattleUnit.new(unit, save.player_team_level)))
+	list.units = units
 	list.selected_unit.connect(func(index):
 		empowered_unit = units[index]
 		empowered_unit_control.unit = empowered_unit
@@ -45,10 +46,11 @@ func _on_select_empowered_pressed():
 
 func _on_select_sacrificed_pressed():
 	var list = load("res://UI/UnitList.tscn").instantiate()
-	var units = save.all_units().filter(func(unit):
+	var units: Array[BattleUnit] = []
+	units.assign(save.all_units().filter(func(unit):
 		return empowered_unit == null || empowered_unit.unit.get_instance_id() != unit.get_instance_id()
-	).collect().map(func(unit): return BattleUnit.new(unit, save.player_team_level))
-	list.units.assign(units)
+	).collect().map(func(unit): return BattleUnit.new(unit, save.player_team_level)))
+	list.units = units
 	list.selected_unit.connect(func(index):
 		sacrificed_unit = units[index]
 		sacrificed_unit_control.unit = sacrificed_unit
