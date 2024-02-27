@@ -70,6 +70,11 @@ func _on_sacrifice_button_pressed():
 			save.delete_unit(sacrificed_unit.unit)
 			proceed_button.text = "PROCEED"
 
+func _unit_pressed(unit):
+	var details = load("res://UI/UnitDetails.tscn").instantiate()
+	details.unit = unit
+	global_overlay.present_subview(details)
+
 # called by sacrifice animation
 func _reset_sacrifice_control():
 	sacrificed_unit_control.unit = null

@@ -76,6 +76,9 @@ func tier() -> String:
 	if is_float_greater_or_equal.call(percent, 2.0 / 5.0):
 		return "A"
 
+	if is_float_greater_or_equal.call(percent, 3.0 / 8.0):
+		return "B"
+
 	if is_float_greater_or_equal.call(percent, 1.0 / 3.0):
 		return "C"
 

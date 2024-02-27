@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://UI/Sacrifice.gdshader" id="6_hdevq"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="8_w4ath"]
 
-[sub_resource type="Shader" id="Shader_ehx4w"]
+[sub_resource type="Shader" id="Shader_6qhgg"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -29,7 +29,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u7qev"]
 resource_local_to_scene = true
-shader = SubResource("Shader_ehx4w")
+shader = SubResource("Shader_6qhgg")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -277,6 +277,8 @@ libraries = {
 "": SubResource("AnimationLibrary_0gjos")
 }
 
+[connection signal="pressed" from="GridContainer/EmpoweredUnitControl" to="." method="_unit_pressed"]
+[connection signal="pressed" from="GridContainer/SacrificedUnitControl" to="." method="_unit_pressed"]
 [connection signal="pressed" from="GridContainer/SelectEmpowered" to="." method="_on_select_empowered_pressed"]
 [connection signal="pressed" from="GridContainer/SelectSacrificed" to="." method="_on_select_sacrificed_pressed"]
 [connection signal="pressed" from="GridContainer2/SacrificeButton" to="." method="_on_sacrifice_button_pressed"]

@@ -20,7 +20,7 @@ kind = 0
 
 [sub_resource type="Resource" id="Resource_tnkqx"]
 script = ExtResource("9_v5a6m")
-round = 0
+battle_round = 0
 phase = 0
 active = false
 
@@ -37,7 +37,7 @@ kind = 2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu2ho"]
 shader = ExtResource("2_1v1rc")
 
-[sub_resource type="Shader" id="Shader_xyahr"]
+[sub_resource type="Shader" id="Shader_ncqwb"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -55,7 +55,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8eri"]
 resource_local_to_scene = true
-shader = SubResource("Shader_xyahr")
+shader = SubResource("Shader_ncqwb")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -222,14 +222,12 @@ offset_right = -116.0
 offset_bottom = -8.0
 
 [node name="Shine" parent="." instance=ExtResource("6_h6610")]
-visible = false
 material = SubResource("ShaderMaterial_y8eri")
 layout_mode = 1
 offset_top = 2.08165e-12
 offset_bottom = 0.0
 
 [node name="Frame" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
