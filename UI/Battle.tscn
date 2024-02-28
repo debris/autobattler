@@ -73,7 +73,7 @@ theme = ExtResource("1_e5rtg")
 script = ExtResource("1_w871l")
 
 [node name="Concrete0" parent="." instance=ExtResource("3_qla1w")]
-region_rect = Rect2(256, -75642.1, 2304, 1296)
+region_rect = Rect2(256, -83826.5, 2304, 1296)
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("4_6pe4k")]
 
@@ -231,7 +231,6 @@ offset_top = 424.0
 offset_right = 1016.0
 offset_bottom = 616.0
 pivot_offset = Vector2(424, 96)
-is_enemy_team = false
 
 [node name="ChangeGrid" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
