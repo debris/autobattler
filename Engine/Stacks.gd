@@ -4,6 +4,7 @@ class_name Stacks
 enum Kind {
 	VIGILANT,
 	POISON,
+	SELFHARM,
 }
 
 var inner: Dictionary

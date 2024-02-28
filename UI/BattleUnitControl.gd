@@ -80,6 +80,11 @@ func _process_log(action: Log):
 		_display_notification("ATTACK", GameColors.red())
 		_attack_animation()
 		Sounds.play_action()
+
+	if action is LogSelfAttack:
+		_display_notification("SELF ATTACK", GameColors.red())
+		_attack_animation()
+		Sounds.play_action()
 	
 	if action is LogDefend:
 		_display_notification("DEFEND", GameColors.green())

@@ -77,6 +77,7 @@
 "SKILL_DOUBLE_CROSS_DESC","Swap places with the enemy unit with the highest defence.","Zamien sie miejscami z jednostka przecinika, ktora ma najwiecej obrony.",,
 "SKILL_ECLIPSE_SENTINEL_DESC","Add 1 stack of vigilance.","Dodaj 1 poziom czujnosci.",,
 "SKILL_GHOUL_BITE_DESC","Add 1 stack of poison to enemy team.","Dodaj 1 poziom zatrucia przeciwnikowi.",,
+"SKILL_DIRTY_LAUGH_DESC","Rooney's dirty and loud laugh confuses her enemies so much that their next attack hits themselves.","Smiech Rooney'a dezorientuje przeciwnikow przez co w ich nastepnym ataku samookaleczaja sie.",,
 "SKILL_GREEN_RANKS_DESC","Add 'orc' tag to the first unit that doesn't have it. Start with enemy team.","Dodaj tag 'orc' pierwszemu przeciwnikowi, ktory go nie ma. Zacznij od druzyny przeciwnika.",,
 "SKILL_LOKI_SWAP_DESC","Swap skills of the units with the highest dmg in each team.","Zamien umiejetnosci jednostek z najwyzszym atakiem w kazdej z druzyn.","skill_loki_swap_desc_fr","Tausche die Faehigkeiten der Karten mit dem hoechsten Schaden in jedem Team."
 "SKILL_MIMICRY_DESC","Jester Thylocron mimics the last ability used by an enemy.","Uzyj ostatniej umiejetnosci uzytej przez przeciwnika.",,
