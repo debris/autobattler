@@ -36,8 +36,8 @@ func _on_select_empowered_pressed():
 		return sacrificed_unit == null || sacrificed_unit.unit.get_instance_id() != unit.get_instance_id()
 	).collect().map(func(unit): return BattleUnit.new(unit, save.player_team_level)))
 	list.units = units
-	list.selected_unit.connect(func(index):
-		empowered_unit = units[index]
+	list.selected_unit.connect(func(unit):
+		empowered_unit = unit
 		empowered_unit_control.unit = empowered_unit
 		list.queue_free()
 		update_sacrifice_button()
@@ -51,8 +51,8 @@ func _on_select_sacrificed_pressed():
 		return empowered_unit == null || empowered_unit.unit.get_instance_id() != unit.get_instance_id()
 	).collect().map(func(unit): return BattleUnit.new(unit, save.player_team_level)))
 	list.units = units
-	list.selected_unit.connect(func(index):
-		sacrificed_unit = units[index]
+	list.selected_unit.connect(func(unit):
+		sacrificed_unit = unit
 		sacrificed_unit_control.unit = sacrificed_unit
 		list.queue_free()
 		update_sacrifice_button()

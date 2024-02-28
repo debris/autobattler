@@ -1,6 +1,6 @@
 extends Control
 
-signal selected_unit(unit_index: int)
+signal selected_unit(unit: BattleUnit)
 
 @export var units: Array[BattleUnit]
 @export var selectable: bool = true
@@ -16,7 +16,7 @@ func _ready():
 		var entry = preload("res://UI/UnitListEntry.tscn").instantiate()
 		entry.unit = unit
 		entry.selected.connect(func():
-			selected_unit.emit(entry.get_index())
+			selected_unit.emit(units[entry.get_index()])
 		)
 		entry.mouse_entered.connect(func(): 
 			# the order of units may change, so we always need to look at the latest version of the units list
