@@ -19,6 +19,8 @@ signal battle_finished(result)
 @onready var team_b_control = $TeamB
 @onready var team_a_power = $TeamAPower
 @onready var team_b_power = $TeamBPower
+@onready var team_a_avatar = $TeamAAvatar
+@onready var team_b_avatar = $TeamBAvatar
 
 @onready var pause_button = $CanvasLayer/Control/Pause
 @onready var step_button = $CanvasLayer/Control/Step
@@ -39,6 +41,9 @@ var battle_state: BattleState
 var battle_controller: BattleController
 var paused = false
 var result: Result
+
+var memorized_power_a: int
+var memorized_power_b: int
 
 func _ready():
 	global_overlay.exit_button.visible = true
@@ -126,6 +131,9 @@ func _ready():
 			dialog_progress.welcome_battle = true
 		)
 
+	memorized_power_a = battle_state.team_a.power
+	memorized_power_b = battle_state.team_b.power
+
 # private
 func _wait_for_display():
 	await get_tree().create_timer(DisplaySettings.default().step_time).timeout
@@ -179,6 +187,21 @@ func _process(_delta):
 	else:
 		pause_button.text = tr("PLAY")
 
+	if memorized_power_a > battle_state.team_a.power:
+		_blink_control_color_in_this_step(team_a_avatar, GameColors.red())
+
+	if memorized_power_a < battle_state.team_a.power:
+		_blink_control_color_in_this_step(team_a_avatar, GameColors.green())
+
+	if memorized_power_b > battle_state.team_b.power:
+		_blink_control_color_in_this_step(team_b_avatar, GameColors.red())
+	
+	if memorized_power_b < battle_state.team_b.power:
+		_blink_control_color_in_this_step(team_b_avatar, GameColors.green())
+
+	memorized_power_a = battle_state.team_a.power
+	memorized_power_b = battle_state.team_b.power
+
 func _on_pause_pressed():
 	paused = !paused
 	if !paused:
@@ -215,3 +238,8 @@ func _on_team_pressed(battle_unit):
 	var details = load("res://UI/UnitDetails.tscn").instantiate()
 	details.unit = battle_unit
 	global_overlay.present_subview(details)
+
+func _blink_control_color_in_this_step(control: Control, color: Color):
+	var tween = create_tween()
+	tween.tween_property(control, "modulate", color, DisplaySettings.default().step_time / 2).set_ease(Tween.EASE_IN)
+	tween.tween_property(control, "modulate", Color.BLACK, DisplaySettings.default().step_time / 2).set_ease(Tween.EASE_OUT)
