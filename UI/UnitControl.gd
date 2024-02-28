@@ -40,11 +40,13 @@ func _ready():
 	mouse_entered.connect(func():
 		if content.visible && pressed.get_connections().size() > 0:
 			on_hover.visible = true
+			z_index = 1
 			Sounds.play_hover()
 	)
 
 	mouse_exited.connect(func():
 		on_hover.visible = false
+		z_index = 0
 	)
 
 func _gui_input(event):

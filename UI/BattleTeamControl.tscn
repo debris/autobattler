@@ -4,53 +4,57 @@
 [ext_resource type="PackedScene" uid="uid://nooylmpe7l5w" path="res://UI/BattleUnitControl.tscn" id="2_mmwbd"]
 
 [node name="BattleTeamControl" type="Control"]
-custom_minimum_size = Vector2(848, 192)
+custom_minimum_size = Vector2(808, 192)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 848.0
+offset_right = 808.0
 offset_bottom = 192.0
-pivot_offset = Vector2(520, 120)
 script = ExtResource("1_r0ohk")
 
-[node name="TeamGrid" type="GridContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(424, 96)
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 0
-columns = 6
-
-[node name="BattleUnitControl" parent="TeamGrid" instance=ExtResource("2_mmwbd")]
+[node name="BattleUnitControl" parent="." instance=ExtResource("2_mmwbd")]
 custom_minimum_size = Vector2(128, 192)
 layout_mode = 2
+offset_right = 128.0
+offset_bottom = 192.0
 
-[node name="BattleUnitControl2" parent="TeamGrid" instance=ExtResource("2_mmwbd")]
+[node name="BattleUnitControl2" parent="." instance=ExtResource("2_mmwbd")]
 custom_minimum_size = Vector2(128, 192)
 layout_mode = 2
+offset_left = 136.0
+offset_right = 264.0
+offset_bottom = 192.0
 
-[node name="BattleUnitControl3" parent="TeamGrid" instance=ExtResource("2_mmwbd")]
+[node name="BattleUnitControl3" parent="." instance=ExtResource("2_mmwbd")]
 custom_minimum_size = Vector2(128, 192)
 layout_mode = 2
+offset_left = 272.0
+offset_right = 400.0
+offset_bottom = 192.0
 
-[node name="BattleUnitControl4" parent="TeamGrid" instance=ExtResource("2_mmwbd")]
+[node name="BattleUnitControl4" parent="." instance=ExtResource("2_mmwbd")]
 custom_minimum_size = Vector2(128, 192)
 layout_mode = 2
+offset_left = 408.0
+offset_right = 536.0
+offset_bottom = 192.0
 
-[node name="BattleUnitControl5" parent="TeamGrid" instance=ExtResource("2_mmwbd")]
+[node name="BattleUnitControl5" parent="." instance=ExtResource("2_mmwbd")]
 custom_minimum_size = Vector2(128, 192)
 layout_mode = 2
+offset_left = 544.0
+offset_right = 672.0
+offset_bottom = 192.0
 
-[node name="BattleUnitControl6" parent="TeamGrid" instance=ExtResource("2_mmwbd")]
+[node name="BattleUnitControl6" parent="." instance=ExtResource("2_mmwbd")]
 custom_minimum_size = Vector2(128, 192)
 layout_mode = 2
+offset_left = 680.0
+offset_right = 808.0
+offset_bottom = 192.0
 
-[connection signal="pressed" from="TeamGrid/BattleUnitControl" to="." method="_on_battle_unit_control_pressed"]
-[connection signal="pressed" from="TeamGrid/BattleUnitControl2" to="." method="_on_battle_unit_control_pressed"]
-[connection signal="pressed" from="TeamGrid/BattleUnitControl3" to="." method="_on_battle_unit_control_pressed"]
-[connection signal="pressed" from="TeamGrid/BattleUnitControl4" to="." method="_on_battle_unit_control_pressed"]
-[connection signal="pressed" from="TeamGrid/BattleUnitControl5" to="." method="_on_battle_unit_control_pressed"]
-[connection signal="pressed" from="TeamGrid/BattleUnitControl6" to="." method="_on_battle_unit_control_pressed"]
+[connection signal="pressed" from="BattleUnitControl" to="." method="_on_battle_unit_control_pressed"]
+[connection signal="pressed" from="BattleUnitControl2" to="." method="_on_battle_unit_control_pressed"]
+[connection signal="pressed" from="BattleUnitControl3" to="." method="_on_battle_unit_control_pressed"]
+[connection signal="pressed" from="BattleUnitControl4" to="." method="_on_battle_unit_control_pressed"]
+[connection signal="pressed" from="BattleUnitControl5" to="." method="_on_battle_unit_control_pressed"]
+[connection signal="pressed" from="BattleUnitControl6" to="." method="_on_battle_unit_control_pressed"]
