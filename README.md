@@ -2,7 +2,7 @@
 
 Creature collector deckbuilding autobattler inspired by the siralim series.
 
-<div align="center"><a href="https://www.youtube.com/watch?v=LJtmdfBZdgI">
+<div align="center"><a href="https://www.youtube.com/watch?v=XiAm_GEBdfM">
      <img 
       src="https://github.com/debris/autobattler/assets/2613714/c7037079-8357-40a3-906c-7abce97bf58b" 
       alt="Everything Is AWESOME" 
