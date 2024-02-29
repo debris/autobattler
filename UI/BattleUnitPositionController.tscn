@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcc60h5gjui3p"]
+[gd_scene load_steps=4 format=3 uid="uid://dcc60h5gjui3p"]
 
 [ext_resource type="Script" path="res://UI/BattleUnitPositionController.gd" id="1_ogd3v"]
+[ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="3_8wpke"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="3_h052f"]
 
 [node name="BattleUnitPositionController" type="Control"]
-custom_minimum_size = Vector2(128, 64)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 128.0
-offset_bottom = 64.0
+offset_bottom = 32.0
 script = ExtResource("1_ogd3v")
 
 [node name="Change" type="Button" parent="."]
@@ -18,30 +19,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -41.5
-offset_top = -32.0
-offset_right = 41.5
-offset_bottom = 32.0
+offset_left = -40.0
+offset_top = -16.0
+offset_right = 40.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "CHANGE"
 script = ExtResource("3_h052f")
 
 [node name="Left" type="Button" parent="."]
 layout_mode = 0
 offset_right = 24.0
-offset_bottom = 64.0
+offset_bottom = 32.0
 text = "<"
 script = ExtResource("3_h052f")
+
+[node name="DisplayTooltip" type="Node" parent="Left"]
+script = ExtResource("3_8wpke")
+side = 1
+text = "MOVE LEFT"
 
 [node name="Right" type="Button" parent="."]
 layout_mode = 0
 offset_left = 104.0
 offset_right = 128.0
-offset_bottom = 64.0
+offset_bottom = 32.0
 text = ">"
 script = ExtResource("3_h052f")
+
+[node name="DisplayTooltip" type="Node" parent="Right"]
+script = ExtResource("3_8wpke")
+side = 1
+text = "MOVE RIGHT"
 
 [connection signal="pressed" from="Change" to="." method="_on_change_pressed"]
 [connection signal="pressed" from="Left" to="." method="_on_left_pressed"]

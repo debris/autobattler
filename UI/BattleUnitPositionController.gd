@@ -11,9 +11,12 @@ func _ready():
 
 func _on_left_pressed():
 	BattleController.default().move_unit_left.emit(get_index())
+	release_focus()
 
 func _on_right_pressed():
 	BattleController.default().move_unit_right.emit(get_index())
+	release_focus()
 
 func _on_change_pressed():
 	BattleController.default().change_pressed.emit(get_index())
+	release_focus()
