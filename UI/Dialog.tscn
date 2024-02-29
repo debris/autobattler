@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_kntj0"]
 [ext_resource type="Texture2D" uid="uid://c501amj5mchih" path="res://Assets/UnitsTransparent/captain_blaze.png" id="5_a00hg"]
 
-[sub_resource type="Shader" id="Shader_0ee4k"]
+[sub_resource type="Shader" id="Shader_cvx64"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -25,25 +25,10 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yj4lm"]
 resource_local_to_scene = true
-shader = SubResource("Shader_0ee4k")
+shader = SubResource("Shader_cvx64")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
-
-[sub_resource type="Animation" id="Animation_eifm5"]
-resource_name = "typing"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/TypingLabel:percent")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
 
 [sub_resource type="Animation" id="Animation_h8xms"]
 length = 0.001
@@ -58,6 +43,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_eifm5"]
+resource_name = "typing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/TypingLabel:percent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_synba"]

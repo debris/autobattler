@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj5dvh38me2lx"]
+
+[ext_resource type="Script" path="res://UI/Frame.gd" id="1_ac6ln"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_v4cod"]
+
+[node name="Tooltip" type="Label"]
+offset_right = 128.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("1_v4cod")
+theme_override_font_sizes/font_size = 16
+text = "Hello"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ac6ln")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.705882)

@@ -11,7 +11,7 @@
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="6_fe43y"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
 
-[sub_resource type="Shader" id="Shader_ncctm"]
+[sub_resource type="Shader" id="Shader_r1ilh"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -29,12 +29,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
 resource_local_to_scene = true
-shader = SubResource("Shader_ncctm")
+shader = SubResource("Shader_r1ilh")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_2yjnc"]
+[sub_resource type="Shader" id="Shader_77fki"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -52,12 +52,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
 resource_local_to_scene = true
-shader = SubResource("Shader_2yjnc")
+shader = SubResource("Shader_77fki")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_br0mu"]
+[sub_resource type="Shader" id="Shader_12iec"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -75,7 +75,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_br0mu")
+shader = SubResource("Shader_12iec")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3

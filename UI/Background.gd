@@ -1,4 +1,3 @@
-@tool
 extends Sprite2D
 
 static var shared_region_position = 255.0

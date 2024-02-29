@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://rnhm1enuxv6q"]
+[gd_scene load_steps=9 format=3 uid="uid://rnhm1enuxv6q"]
 
 [ext_resource type="Script" path="res://UI/GlobalOverlay.gd" id="1_tkmo4"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_hr3b2"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="3_0d3qd"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_55ib8"]
 [ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="4_aoywr"]
+[ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="6_6rfcr"]
 
-[sub_resource type="Shader" id="Shader_o7tnu"]
+[sub_resource type="Shader" id="Shader_vl1x2"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -24,7 +25,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_itegs"]
 resource_local_to_scene = true
-shader = SubResource("Shader_o7tnu")
+shader = SubResource("Shader_vl1x2")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -74,12 +75,20 @@ layout_mode = 2
 text = "x"
 script = ExtResource("3_0d3qd")
 
+[node name="DisplayTooltip" type="Node" parent="Panel/ExitButton"]
+script = ExtResource("6_6rfcr")
+text = "Exit"
+
 [node name="SettingsButton" type="Button" parent="Panel"]
 visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 text = "*"
 script = ExtResource("3_0d3qd")
+
+[node name="DisplayTooltip" type="Node" parent="Panel/SettingsButton"]
+script = ExtResource("6_6rfcr")
+text = "Settings"
 
 [node name="HelpButton" type="Button" parent="Panel"]
 visible = false
@@ -88,12 +97,20 @@ layout_mode = 2
 text = "?"
 script = ExtResource("3_0d3qd")
 
+[node name="DisplayTooltip" type="Node" parent="Panel/HelpButton"]
+script = ExtResource("6_6rfcr")
+text = "Help"
+
 [node name="CharacterButton" type="Button" parent="Panel"]
 visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 text = "C"
 script = ExtResource("3_0d3qd")
+
+[node name="DisplayTooltip" type="Node" parent="Panel/CharacterButton"]
+script = ExtResource("6_6rfcr")
+text = "Character"
 
 [node name="TeamButton" type="Button" parent="Panel"]
 visible = false
@@ -102,12 +119,20 @@ layout_mode = 2
 text = "T"
 script = ExtResource("3_0d3qd")
 
+[node name="DisplayTooltip" type="Node" parent="Panel/TeamButton"]
+script = ExtResource("6_6rfcr")
+text = "Team"
+
 [node name="LogsButton" type="Button" parent="Panel"]
 visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 text = "'"
 script = ExtResource("3_0d3qd")
+
+[node name="DisplayTooltip" type="Node" parent="Panel/LogsButton"]
+script = ExtResource("6_6rfcr")
+text = "Logs"
 
 [connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="Panel/SettingsButton" to="." method="_on_settings_button_pressed"]
