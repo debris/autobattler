@@ -13,6 +13,7 @@ signal selected_location
 @onready var possible_control = $Content/PossibleControl
 @onready var current_control = $Content/CurrentControl
 @onready var inactive_control = $Content/InactiveControl
+@onready var display_tooltip = $DisplayTooltip
 
 var hovered = false
 
@@ -23,6 +24,7 @@ func _ready():
 	else:
 		icon.visible = false
 	name_label.text = location.name
+	display_tooltip.text = location.name
 	current_control.visible = map.map_position == map_position
 	
 	content.mouse_filter = MOUSE_FILTER_IGNORE

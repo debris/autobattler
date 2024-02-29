@@ -16,3 +16,4 @@ layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
 pivot_offset = Vector2(80, 120)
+mouse_filter = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://db4xehwv3k6ab"]
+[gd_scene load_steps=18 format=3 uid="uid://db4xehwv3k6ab"]
 
 [ext_resource type="Script" path="res://UI/Loadgame.gd" id="1_465sv"]
 [ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_cqel3"]
@@ -10,8 +10,9 @@
 [ext_resource type="Script" path="res://UI/Frame.gd" id="6_4vb2i"]
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="6_fe43y"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
+[ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="10_ck0pt"]
 
-[sub_resource type="Shader" id="Shader_r1ilh"]
+[sub_resource type="Shader" id="Shader_q8bh7"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -29,12 +30,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
 resource_local_to_scene = true
-shader = SubResource("Shader_r1ilh")
+shader = SubResource("Shader_q8bh7")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_77fki"]
+[sub_resource type="Shader" id="Shader_0c4w4"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -52,12 +53,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
 resource_local_to_scene = true
-shader = SubResource("Shader_77fki")
+shader = SubResource("Shader_0c4w4")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_12iec"]
+[sub_resource type="Shader" id="Shader_ndryc"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -75,7 +76,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_12iec")
+shader = SubResource("Shader_ndryc")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -262,20 +263,50 @@ metadata/_edit_group_ = true
 [node name="UnitControl" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
 
+[node name="DisplayTooltip" type="Node" parent="CenterContainer/Preview/CenterContainer/TeamList/UnitControl"]
+script = ExtResource("10_ck0pt")
+side = 1
+text = "Details"
+
 [node name="UnitControl2" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
+
+[node name="DisplayTooltip" type="Node" parent="CenterContainer/Preview/CenterContainer/TeamList/UnitControl2"]
+script = ExtResource("10_ck0pt")
+side = 1
+text = "Details"
 
 [node name="UnitControl3" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
 
+[node name="DisplayTooltip" type="Node" parent="CenterContainer/Preview/CenterContainer/TeamList/UnitControl3"]
+script = ExtResource("10_ck0pt")
+side = 1
+text = "Details"
+
 [node name="UnitControl4" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
+
+[node name="DisplayTooltip" type="Node" parent="CenterContainer/Preview/CenterContainer/TeamList/UnitControl4"]
+script = ExtResource("10_ck0pt")
+side = 3
+text = "Details"
 
 [node name="UnitControl5" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
 
+[node name="DisplayTooltip" type="Node" parent="CenterContainer/Preview/CenterContainer/TeamList/UnitControl5"]
+script = ExtResource("10_ck0pt")
+side = 3
+text = "Details"
+
 [node name="UnitControl6" parent="CenterContainer/Preview/CenterContainer/TeamList" instance=ExtResource("4_3qovm")]
 layout_mode = 2
+
+[node name="DisplayTooltip" type="Node" parent="CenterContainer/Preview/CenterContainer/TeamList/UnitControl6"]
+script = ExtResource("10_ck0pt")
+side = 3
+text = "Details"
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer/Preview"]
 layout_mode = 1

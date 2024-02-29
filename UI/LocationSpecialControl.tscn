@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cishw7lk1ijaa"]
+[gd_scene load_steps=11 format=3 uid="uid://cishw7lk1ijaa"]
 
 [ext_resource type="Script" path="res://UI/LocationControl.gd" id="1_o4rkf"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="3_i0x3w"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" path="res://UI/IconPlayerShader.gdshader" id="4_tt257"]
 [ext_resource type="Texture2D" uid="uid://bon14hoca0ad5" path="res://Assets/Icons/player.png" id="6_2ueo3"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="7_7662v"]
+[ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="8_gi38u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i1uxd"]
 shader = ExtResource("3_riq75")
@@ -128,3 +129,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_2ueo3")
 expand_mode = 1
+
+[node name="DisplayTooltip" type="Node" parent="."]
+script = ExtResource("8_gi38u")
+side = 3

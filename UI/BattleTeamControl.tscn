@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdnpjps8d0c6u"]
+[gd_scene load_steps=4 format=3 uid="uid://cdnpjps8d0c6u"]
 
 [ext_resource type="Script" path="res://UI/BattleTeamControl.gd" id="1_r0ohk"]
 [ext_resource type="PackedScene" uid="uid://nooylmpe7l5w" path="res://UI/BattleUnitControl.tscn" id="2_mmwbd"]
+[ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="3_mumio"]
 
 [node name="BattleTeamControl" type="Control"]
 custom_minimum_size = Vector2(808, 192)
@@ -17,12 +18,22 @@ layout_mode = 2
 offset_right = 128.0
 offset_bottom = 192.0
 
+[node name="DisplayTooltip" type="Node" parent="BattleUnitControl"]
+script = ExtResource("3_mumio")
+side = 1
+text = "DETAILS"
+
 [node name="BattleUnitControl2" parent="." instance=ExtResource("2_mmwbd")]
 custom_minimum_size = Vector2(128, 192)
 layout_mode = 2
 offset_left = 136.0
 offset_right = 264.0
 offset_bottom = 192.0
+
+[node name="DisplayTooltip" type="Node" parent="BattleUnitControl2"]
+script = ExtResource("3_mumio")
+side = 1
+text = "DETAILS"
 
 [node name="BattleUnitControl3" parent="." instance=ExtResource("2_mmwbd")]
 custom_minimum_size = Vector2(128, 192)
@@ -31,12 +42,22 @@ offset_left = 272.0
 offset_right = 400.0
 offset_bottom = 192.0
 
+[node name="DisplayTooltip" type="Node" parent="BattleUnitControl3"]
+script = ExtResource("3_mumio")
+side = 1
+text = "DETAILS"
+
 [node name="BattleUnitControl4" parent="." instance=ExtResource("2_mmwbd")]
 custom_minimum_size = Vector2(128, 192)
 layout_mode = 2
 offset_left = 408.0
 offset_right = 536.0
 offset_bottom = 192.0
+
+[node name="DisplayTooltip" type="Node" parent="BattleUnitControl4"]
+script = ExtResource("3_mumio")
+side = 1
+text = "DETAILS"
 
 [node name="BattleUnitControl5" parent="." instance=ExtResource("2_mmwbd")]
 custom_minimum_size = Vector2(128, 192)
@@ -45,12 +66,22 @@ offset_left = 544.0
 offset_right = 672.0
 offset_bottom = 192.0
 
+[node name="DisplayTooltip" type="Node" parent="BattleUnitControl5"]
+script = ExtResource("3_mumio")
+side = 1
+text = "DETAILS"
+
 [node name="BattleUnitControl6" parent="." instance=ExtResource("2_mmwbd")]
 custom_minimum_size = Vector2(128, 192)
 layout_mode = 2
 offset_left = 680.0
 offset_right = 808.0
 offset_bottom = 192.0
+
+[node name="DisplayTooltip" type="Node" parent="BattleUnitControl6"]
+script = ExtResource("3_mumio")
+side = 1
+text = "DETAILS"
 
 [connection signal="pressed" from="BattleUnitControl" to="." method="_on_battle_unit_control_pressed"]
 [connection signal="pressed" from="BattleUnitControl2" to="." method="_on_battle_unit_control_pressed"]
