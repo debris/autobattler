@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
 [ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="10_ck0pt"]
 
-[sub_resource type="Shader" id="Shader_q8bh7"]
+[sub_resource type="Shader" id="Shader_tc6qw"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -30,12 +30,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
 resource_local_to_scene = true
-shader = SubResource("Shader_q8bh7")
+shader = SubResource("Shader_tc6qw")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_0c4w4"]
+[sub_resource type="Shader" id="Shader_omdk5"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -53,12 +53,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
 resource_local_to_scene = true
-shader = SubResource("Shader_0c4w4")
+shader = SubResource("Shader_omdk5")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_ndryc"]
+[sub_resource type="Shader" id="Shader_dk55j"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -76,7 +76,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_ndryc")
+shader = SubResource("Shader_dk55j")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -93,6 +93,7 @@ script = ExtResource("1_465sv")
 
 [node name="Concrete0" parent="." instance=ExtResource("3_6xxtd")]
 region_rect = Rect2(256, 533784, 2304, 1296)
+scroll = null
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("2_7ijpy")]
 
@@ -125,40 +126,6 @@ layout_mode = 1
 offset_top = 0.0
 offset_bottom = 0.0
 
-[node name="Border" type="Control" parent="."]
-clip_contents = true
-layout_mode = 2
-anchors_preset = 0
-offset_left = 688.0
-offset_right = 1088.0
-offset_bottom = 504.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Border"]
-clip_contents = false
-layout_mode = 0
-offset_top = 16.0
-offset_right = 400.0
-offset_bottom = 512.0
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-
-[node name="Saves" type="GridContainer" parent="Border/ScrollContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-
-[node name="ColorRect" type="ColorRect" parent="Border"]
-custom_minimum_size = Vector2(2.08165e-12, 1)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 1.5
-offset_top = -1.0
-offset_right = 398.5
-grow_vertical = 0
-color = Color(0.745098, 0.745098, 0.745098, 1)
-
 [node name="BottomPanel" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(397, 2.08165e-12)
 layout_mode = 2
@@ -186,7 +153,7 @@ script = ExtResource("3_uvtvc")
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "LOAD"
+text = "CONTINUE"
 script = ExtResource("3_uvtvc")
 
 [node name="NewGameButton" type="Button" parent="BottomPanel"]
@@ -367,6 +334,42 @@ theme_override_fonts/font = ExtResource("2_1d7kx")
 theme_override_font_sizes/font_size = 24
 text = "UNITS"
 vertical_alignment = 1
+
+[node name="Border" type="Control" parent="."]
+clip_contents = true
+layout_mode = 2
+anchors_preset = 0
+offset_left = 484.0
+offset_right = 1088.0
+offset_bottom = 504.0
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Border"]
+clip_contents = false
+layout_mode = 0
+offset_left = 204.0
+offset_top = 8.0
+offset_right = 604.0
+offset_bottom = 504.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Saves" type="GridContainer" parent="Border/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="Border"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 205.5
+offset_top = -1.0
+offset_right = 602.5
+grow_vertical = 0
+color = Color(0.745098, 0.745098, 0.745098, 1)
 
 [connection signal="pressed" from="BottomPanel/GridContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="pressed" from="BottomPanel/GridContainer/LoadButton" to="." method="_on_start_button_pressed"]

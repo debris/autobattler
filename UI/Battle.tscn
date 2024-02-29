@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dxvn6rx8m3xcl"]
+[gd_scene load_steps=20 format=3 uid="uid://dxvn6rx8m3xcl"]
 
 [ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_e5rtg"]
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="1_i6e86"]
@@ -12,12 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://dcc60h5gjui3p" path="res://UI/BattleUnitPositionController.tscn" id="6_ggmcb"]
 [ext_resource type="Texture2D" uid="uid://c501amj5mchih" path="res://Assets/UnitsTransparent/captain_blaze.png" id="7_4orp8"]
 [ext_resource type="Texture2D" uid="uid://dfxrb5qmmv88l" path="res://Assets/UnitsTransparent/leyla.png" id="7_5wuox"]
-[ext_resource type="Shader" path="res://UI/Shine.gdshader" id="7_xc6kw"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="9_d1yxv"]
 [ext_resource type="PackedScene" uid="uid://boyd05hhjowbm" path="res://UI/StacksControl.tscn" id="9_xnqrc"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="13_r0s70"]
 
-[sub_resource type="Shader" id="Shader_0i856"]
+[sub_resource type="Shader" id="Shader_pv25r"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -35,18 +34,10 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3531"]
 resource_local_to_scene = true
-shader = SubResource("Shader_0i856")
+shader = SubResource("Shader_pv25r")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2m7x0"]
-resource_local_to_scene = true
-shader = ExtResource("7_xc6kw")
-shader_parameter/shine_color = Color(1, 1, 1, 1)
-shader_parameter/shine_speed = 0.3
-shader_parameter/shine_size = 0.3
-shader_parameter/x_offset = 0.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_exw7v"]
 
@@ -74,6 +65,7 @@ script = ExtResource("1_w871l")
 
 [node name="Concrete0" parent="." instance=ExtResource("3_qla1w")]
 region_rect = Rect2(256, -494611, 2304, 1296)
+scroll = false
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("4_6pe4k")]
 
@@ -107,60 +99,19 @@ layout_mode = 1
 offset_top = 0.0
 offset_bottom = 0.0
 
-[node name="RightPanel" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 1024.0
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 0.705882)
-
-[node name="ColorRect3" type="ColorRect" parent="RightPanel"]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = -1.0
-grow_vertical = 2
-color = Color(0.235294, 0.235294, 0.235294, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="RightPanel"]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = -1.0
-grow_vertical = 2
-color = Color(0.0588235, 0.0588235, 0.0588235, 1)
-
-[node name="Shine" parent="RightPanel" instance=ExtResource("6_cjoq1")]
-material = SubResource("ShaderMaterial_2m7x0")
-layout_mode = 1
-
-[node name="StacksControlA" parent="RightPanel" instance=ExtResource("9_xnqrc")]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 72.0
-offset_right = 136.0
-offset_bottom = 200.0
-
-[node name="StacksControlB" parent="RightPanel" instance=ExtResource("9_xnqrc")]
-offset_left = 8.0
-offset_top = 440.0
-offset_right = 136.0
-offset_bottom = 568.0
-
 [node name="TeamAAvatar" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 832.0
-offset_right = 1088.0
+offset_left = 944.0
+offset_right = 1200.0
 offset_bottom = 256.0
 texture = ExtResource("7_5wuox")
 
 [node name="LevelA" type="Label" parent="."]
 layout_mode = 0
-offset_left = 904.0
+offset_left = 1016.0
 offset_top = 208.0
-offset_right = 1016.0
+offset_right = 1128.0
 offset_bottom = 256.0
 theme_override_font_sizes/font_size = 20
 text = "0"
@@ -174,9 +125,9 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 848.0
+offset_left = 960.0
 offset_top = -68.0
-offset_right = -128.0
+offset_right = -16.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -184,26 +135,33 @@ script = ExtResource("4_mhi2i")
 
 [node name="TeamA" parent="." instance=ExtResource("2_w07n4")]
 layout_mode = 2
-offset_left = 72.0
+offset_left = 184.0
 offset_top = 32.0
-offset_right = 880.0
+offset_right = 992.0
 offset_bottom = 224.0
 pivot_offset = Vector2(424, 96)
+
+[node name="StacksControlA" parent="." instance=ExtResource("9_xnqrc")]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 72.0
+offset_right = 1128.0
+offset_bottom = 200.0
 
 [node name="TeamBAvatar" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 16.0
+offset_left = 32.0
 offset_top = 392.0
-offset_right = 272.0
+offset_right = 288.0
 offset_bottom = 648.0
 texture = ExtResource("7_4orp8")
 
 [node name="LevelB" type="Label" parent="."]
 layout_mode = 0
-offset_left = 72.0
+offset_left = 88.0
 offset_top = 392.0
-offset_right = 184.0
+offset_right = 200.0
 offset_bottom = 440.0
 theme_override_font_sizes/font_size = 20
 text = "0"
@@ -216,9 +174,9 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 64.0
+offset_left = 80.0
 offset_top = 4.0
-offset_right = -912.0
+offset_right = -896.0
 offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -226,13 +184,20 @@ script = ExtResource("4_mhi2i")
 
 [node name="TeamB" parent="." instance=ExtResource("2_w07n4")]
 layout_mode = 2
-offset_left = 208.0
+offset_left = 224.0
 offset_top = 424.0
-offset_right = 1016.0
+offset_right = 1032.0
 offset_bottom = 616.0
 pivot_offset = Vector2(424, 96)
 
+[node name="StacksControlB" parent="." instance=ExtResource("9_xnqrc")]
+offset_left = 88.0
+offset_top = 448.0
+offset_right = 216.0
+offset_bottom = 576.0
+
 [node name="ChangeGrid" type="GridContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
 layout_mode = 0
 offset_left = 208.0
@@ -264,6 +229,7 @@ layout_mode = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3

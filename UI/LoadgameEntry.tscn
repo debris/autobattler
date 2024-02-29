@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq3mbpv7c6stc"]
+[gd_scene load_steps=6 format=3 uid="uid://dq3mbpv7c6stc"]
 
 [ext_resource type="Script" path="res://UI/LoadgameEntry.gd" id="1_f6wms"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="1_gl6t4"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_ggrs7"]
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="3_0bj3j"]
+[ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="5_u4fqb"]
 
 [node name="LoadgameEntry" type="Control"]
 custom_minimum_size = Vector2(400, 64)
@@ -59,3 +60,8 @@ theme_override_font_sizes/font_size = 24
 text = "Datetime"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="DisplayTooltip" type="Node" parent="."]
+script = ExtResource("5_u4fqb")
+side = 0
+text = "LOAD"

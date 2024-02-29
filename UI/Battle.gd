@@ -30,8 +30,8 @@ signal battle_finished(result)
 @onready var proceed_button = $ProceedButton
 @onready var level_a_label = $LevelA
 @onready var level_b_label = $LevelB
-@onready var stacks_control_a = $RightPanel/StacksControlA
-@onready var stacks_control_b = $RightPanel/StacksControlB
+@onready var stacks_control_a = $StacksControlA
+@onready var stacks_control_b = $StacksControlB
 @onready var round_phase_label = $RoundPhaseLabel
 
 @onready var global_overlay = $GlobalOverlay
