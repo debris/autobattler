@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 Sounds="*res://UI/Sounds.gd"
 Dialogs="*res://UI/Dialogs/Dialogs.gd"
+TooltipLayer="*res://UI/TooltipLayer.gd"
 
 [display]
 

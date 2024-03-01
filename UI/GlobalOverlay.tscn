@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="4_aoywr"]
 [ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="6_6rfcr"]
 
-[sub_resource type="Shader" id="Shader_ncsj3"]
+[sub_resource type="Shader" id="Shader_jpa04"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -25,7 +25,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_itegs"]
 resource_local_to_scene = true
-shader = SubResource("Shader_ncsj3")
+shader = SubResource("Shader_jpa04")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -77,7 +77,6 @@ script = ExtResource("3_0d3qd")
 
 [node name="DisplayTooltip" type="Node" parent="Panel/ExitButton"]
 script = ExtResource("6_6rfcr")
-side = null
 text = "Exit"
 
 [node name="SettingsButton" type="Button" parent="Panel"]
@@ -89,7 +88,6 @@ script = ExtResource("3_0d3qd")
 
 [node name="DisplayTooltip" type="Node" parent="Panel/SettingsButton"]
 script = ExtResource("6_6rfcr")
-side = null
 text = "Settings"
 
 [node name="HelpButton" type="Button" parent="Panel"]
@@ -101,7 +99,6 @@ script = ExtResource("3_0d3qd")
 
 [node name="DisplayTooltip" type="Node" parent="Panel/HelpButton"]
 script = ExtResource("6_6rfcr")
-side = null
 text = "Help"
 
 [node name="CharacterButton" type="Button" parent="Panel"]
@@ -113,7 +110,6 @@ script = ExtResource("3_0d3qd")
 
 [node name="DisplayTooltip" type="Node" parent="Panel/CharacterButton"]
 script = ExtResource("6_6rfcr")
-side = null
 text = "Character"
 
 [node name="TeamButton" type="Button" parent="Panel"]
@@ -125,7 +121,6 @@ script = ExtResource("3_0d3qd")
 
 [node name="DisplayTooltip" type="Node" parent="Panel/TeamButton"]
 script = ExtResource("6_6rfcr")
-side = null
 text = "Team"
 
 [node name="LogsButton" type="Button" parent="Panel"]
@@ -137,7 +132,6 @@ script = ExtResource("3_0d3qd")
 
 [node name="DisplayTooltip" type="Node" parent="Panel/LogsButton"]
 script = ExtResource("6_6rfcr")
-side = null
 text = "Logs"
 
 [connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]

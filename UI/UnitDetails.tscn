@@ -46,6 +46,7 @@ anchor_bottom = 0.0
 offset_right = 128.0
 offset_bottom = 192.0
 scale = Vector2(2, 2)
+details_tooltips_enabled = true
 
 [node name="Control" type="GridContainer" parent="."]
 layout_mode = 0

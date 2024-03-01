@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="12_iol01"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="13_r0s70"]
 
-[sub_resource type="Shader" id="Shader_f343o"]
+[sub_resource type="Shader" id="Shader_dchkv"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -35,7 +35,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3531"]
 resource_local_to_scene = true
-shader = SubResource("Shader_f343o")
+shader = SubResource("Shader_dchkv")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -151,6 +151,7 @@ offset_top = 32.0
 offset_right = 1032.0
 offset_bottom = 224.0
 pivot_offset = Vector2(424, 96)
+tooltip_side = 3
 
 [node name="StacksControlA" parent="." instance=ExtResource("9_xnqrc")]
 layout_mode = 0

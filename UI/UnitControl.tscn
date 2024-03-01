@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dmn414tgvv43c"]
+[gd_scene load_steps=21 format=3 uid="uid://dmn414tgvv43c"]
 
 [ext_resource type="Texture2D" uid="uid://b4luy6l1hso5k" path="res://Assets/card_back.png" id="1_bd7dg"]
 [ext_resource type="Script" path="res://UI/UnitControl.gd" id="1_q6svs"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="2_48twk"]
 [ext_resource type="Texture2D" uid="uid://c72e21ql22q8y" path="res://Assets/Units/captain_blaze.png" id="2_hvc5d"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="6_h6610"]
+[ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="6_l0tov"]
 [ext_resource type="Script" path="res://UI/ScheduleControl.gd" id="7_qpxt1"]
 [ext_resource type="Script" path="res://Engine/Schedule.gd" id="8_lr2qc"]
 [ext_resource type="FontVariation" uid="uid://cfurrex4by3bf" path="res://Assets/Fonts/PunktumItalic.tres" id="9_0km6o"]
@@ -37,7 +38,7 @@ kind = 2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu2ho"]
 shader = ExtResource("2_1v1rc")
 
-[sub_resource type="Shader" id="Shader_ol81g"]
+[sub_resource type="Shader" id="Shader_evqpe"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -55,7 +56,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8eri"]
 resource_local_to_scene = true
-shader = SubResource("Shader_ol81g")
+shader = SubResource("Shader_evqpe")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -122,7 +123,6 @@ offset_right = -56.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme_override_constants/v_separation = 0
 metadata/_edit_group_ = true
 
@@ -153,6 +153,11 @@ script = ExtResource("7_qpxt1")
 schedule = SubResource("Resource_do5gq")
 schedule_pointer = SubResource("Resource_tnkqx")
 
+[node name="DisplayTooltip" type="Node" parent="Content/Schedules"]
+script = ExtResource("6_l0tov")
+side = 0
+text = "SCHEDULE"
+
 [node name="Avatar" type="TextureRect" parent="Content"]
 material = SubResource("ShaderMaterial_wu2ho")
 layout_mode = 1
@@ -178,23 +183,35 @@ offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
 theme_override_fonts/font = ExtResource("9_0km6o")
 theme_override_font_sizes/font_size = 16
 text = "Name"
 vertical_alignment = 1
 
+[node name="DisplayTooltip" type="Node" parent="Content/Name"]
+script = ExtResource("6_l0tov")
+side = 0
+text = "NAME"
+
 [node name="Dmg" type="Label" parent="Content"]
 layout_mode = 1
 offset_left = 8.0
 offset_right = 72.0
 offset_bottom = 40.0
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 theme_override_fonts/font = ExtResource("2_48twk")
 theme_override_font_sizes/font_size = 22
 text = "10
 "
 vertical_alignment = 1
+
+[node name="DisplayTooltip" type="Node" parent="Content/Dmg"]
+script = ExtResource("6_l0tov")
+side = 0
+text = "DAMAGE"
 
 [node name="Def" type="Label" parent="Content"]
 layout_mode = 1
@@ -208,12 +225,17 @@ offset_top = -40.0
 offset_right = -8.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
 theme_override_fonts/font = ExtResource("2_48twk")
 theme_override_font_sizes/font_size = 22
 text = "10"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="DisplayTooltip" type="Node" parent="Content/Def"]
+script = ExtResource("6_l0tov")
+text = "DEFENSE"
 
 [node name="Tiers" parent="Content" instance=ExtResource("10_mv4ke")]
 layout_mode = 1
