@@ -1,59 +1,126 @@
-[gd_scene load_steps=2 format=3 uid="uid://c13deqh1oar6d"]
+[gd_scene load_steps=10 format=3 uid="uid://c13deqh1oar6d"]
 
+[ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_3dak2"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_vhjf8"]
+[ext_resource type="Script" path="res://UI/PlayPanel.gd" id="2_7byxw"]
+[ext_resource type="Script" path="res://UI/GameButton.gd" id="4_l6lj3"]
+[ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="5_4o10n"]
+[ext_resource type="Script" path="res://UI/Frame.gd" id="5_8jf25"]
+[ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="6_wqerc"]
+[ext_resource type="Shader" path="res://UI/Shine.gdshader" id="7_emo88"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ksoe"]
+resource_local_to_scene = true
+shader = ExtResource("7_emo88")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
+shader_parameter/x_offset = 0.0
 
 [node name="PlayPanel" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -960.0
-offset_bottom = -456.0
+offset_right = -896.0
+offset_bottom = -584.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_3dak2")
+script = ExtResource("2_7byxw")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-theme_override_fonts/font = ExtResource("1_vhjf8")
-theme_override_font_sizes/font_size = 24
-text = ">"
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.705882)
 
-[node name="Button2" type="Button" parent="."]
-layout_mode = 0
-offset_left = 64.0
-offset_right = 128.0
-offset_bottom = 64.0
-theme_override_fonts/font = ExtResource("1_vhjf8")
-theme_override_font_sizes/font_size = 24
-text = ">>"
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
 
-[node name="Button3" type="Button" parent="."]
-layout_mode = 0
-offset_left = 128.0
-offset_right = 192.0
-offset_bottom = 64.0
-theme_override_fonts/font = ExtResource("1_vhjf8")
-theme_override_font_sizes/font_size = 24
-text = ">>>"
-
-[node name="Button4" type="Button" parent="."]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 64.0
-offset_right = 96.0
-offset_bottom = 128.0
+[node name="Pause" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_vhjf8")
 theme_override_font_sizes/font_size = 24
 text = " ||"
+script = ExtResource("4_l6lj3")
 
-[node name="Button5" type="Button" parent="."]
-layout_mode = 0
-offset_left = 96.0
-offset_top = 64.0
-offset_right = 160.0
-offset_bottom = 128.0
+[node name="DisplayTooltip" type="Node" parent="GridContainer/Pause"]
+script = ExtResource("5_4o10n")
+side = 3
+text = "PAUSE"
+
+[node name="Speed1" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_vhjf8")
 theme_override_font_sizes/font_size = 24
-text = " >|"
+text = ">"
+script = ExtResource("4_l6lj3")
+
+[node name="DisplayTooltip" type="Node" parent="GridContainer/Speed1"]
+script = ExtResource("5_4o10n")
+side = 3
+text = "SPEED X1"
+
+[node name="Speed2" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_vhjf8")
+theme_override_font_sizes/font_size = 24
+text = ">>"
+script = ExtResource("4_l6lj3")
+
+[node name="DisplayTooltip" type="Node" parent="GridContainer/Speed2"]
+script = ExtResource("5_4o10n")
+side = 3
+text = "SPEED X2"
+
+[node name="Speed3" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_vhjf8")
+theme_override_font_sizes/font_size = 24
+text = ">>>"
+script = ExtResource("4_l6lj3")
+
+[node name="DisplayTooltip" type="Node" parent="GridContainer/Speed3"]
+script = ExtResource("5_4o10n")
+side = 3
+text = "SPEED X3"
+
+[node name="Frame" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_8jf25")
+
+[node name="Shine" parent="." instance=ExtResource("6_wqerc")]
+material = SubResource("ShaderMaterial_3ksoe")
+layout_mode = 1
+
+[connection signal="pressed" from="GridContainer/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="GridContainer/Speed1" to="." method="_on_speed_1_pressed"]
+[connection signal="pressed" from="GridContainer/Speed2" to="." method="_on_speed_2_pressed"]
+[connection signal="pressed" from="GridContainer/Speed3" to="." method="_on_speed_3_pressed"]

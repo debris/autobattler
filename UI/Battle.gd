@@ -22,9 +22,6 @@ signal battle_finished(result)
 @onready var team_a_avatar = $TeamAAvatar
 @onready var team_b_avatar = $TeamBAvatar
 
-@onready var pause_button = $CanvasLayer/Control/Pause
-@onready var step_button = $CanvasLayer/Control/Step
-@onready var start_button = $Start
 @onready var victory_label = $VictoryLabel
 @onready var change_grid = $ChangeGrid
 @onready var proceed_button = $ProceedButton
@@ -37,8 +34,11 @@ signal battle_finished(result)
 @onready var global_overlay = $GlobalOverlay
 @onready var center_rect = $CenterRect
 
+@onready var play_panel = $PlayPanel
+
 var battle_state: BattleState
 var battle_controller: BattleController
+var started = false
 var paused = false
 var result: Result
 
@@ -163,15 +163,12 @@ func _wait_for_display():
 func on_battle_end(battle_result):
 	result = battle_result
 	match result:
-		Result.VICTORY: victory_label.text = tr("VICTORY")
-		Result.DEFEAT: victory_label.text = tr("DEFEAT")
-		Result.TIE: victory_label.text = tr("TIE")
+		Result.VICTORY: proceed_button.text = tr("VICTORY")
+		Result.DEFEAT: proceed_button.text = tr("DEFEAT")
+		Result.TIE: proceed_button.text = tr("TIE")
 	
 	proceed_button.visible = true
-	victory_label.visible = true
-	step_button.visible = false
-	pause_button.visible = false
-	round_phase_label.visible = false
+	play_panel.visible = false
 	paused = true
 
 func _process(_delta):
@@ -182,11 +179,6 @@ func _process(_delta):
 	level_a_label.text = tr("LEVEL").format({"level": enemy_team_level + 1})
 	level_b_label.text = tr("LEVEL").format({"level": player_team_level + 1})
 	
-	if !paused:
-		pause_button.text = tr("PAUSE")
-	else:
-		pause_button.text = tr("PLAY")
-
 	if memorized_power_a > battle_state.team_a.power:
 		_blink_control_color_in_this_step(team_a_avatar, GameColors.red())
 
@@ -217,12 +209,7 @@ func _on_step_pressed():
 
 func _on_start_pressed():
 	paused = false
-	start_button.visible = false
-	step_button.visible = true
-	pause_button.visible = true
 	change_grid.visible = false
-	round_phase_label.visible = true
-	center_rect.visible = true
 
 	while true:
 		await battle_state.execute_round()
@@ -243,3 +230,16 @@ func _blink_control_color_in_this_step(control: Control, color: Color):
 	var tween = create_tween()
 	tween.tween_property(control, "modulate", color, DisplaySettings.default().step_time / 2).set_ease(Tween.EASE_IN)
 	tween.tween_property(control, "modulate", Color.BLACK, DisplaySettings.default().step_time / 2).set_ease(Tween.EASE_OUT)
+
+func _on_play_panel_play():
+	if !started:
+		started = true
+		_on_start_pressed()
+		return
+	if paused:
+		battle_state.proceed()
+	paused = false
+
+
+func _on_play_panel_pause():
+	paused = true

@@ -14,6 +14,7 @@ region_rect = Rect2(256, 244, 2304, 1296)
 script = ExtResource("2_5i5sl")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 2304.0
 offset_bottom = 1296.0
 color = Color(0.745098, 0.745098, 0.745098, 1)
