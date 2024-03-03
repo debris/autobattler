@@ -17,7 +17,23 @@
 [ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="12_iol01"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="13_r0s70"]
 
-[sub_resource type="Shader" id="Shader_dchkv"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_exw7v"]
+
+[sub_resource type="Theme" id="Theme_dqv1h"]
+default_font = ExtResource("1_i6e86")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_i6e86")
+Label/styles/normal = SubResource("StyleBoxEmpty_exw7v")
+
+[sub_resource type="Shader" id="Shader_t4ygx"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -35,26 +51,10 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3531"]
 resource_local_to_scene = true
-shader = SubResource("Shader_dchkv")
+shader = SubResource("Shader_t4ygx")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_exw7v"]
-
-[sub_resource type="Theme" id="Theme_dqv1h"]
-default_font = ExtResource("1_i6e86")
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(1, 1, 1, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-Label/constants/line_spacing = 3
-Label/constants/outline_size = 0
-Label/constants/shadow_offset_x = 1
-Label/constants/shadow_offset_y = 1
-Label/constants/shadow_outline_size = 1
-Label/font_sizes/font_size = 16
-Label/fonts/font = ExtResource("1_i6e86")
-Label/styles/normal = SubResource("StyleBoxEmpty_exw7v")
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -69,185 +69,6 @@ region_rect = Rect2(256, -494611, 2304, 1296)
 scroll = false
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("4_6pe4k")]
-
-[node name="CenterRect" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 344.0
-offset_top = 264.0
-offset_right = -408.0
-offset_bottom = -272.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.705882)
-metadata/_edit_group_ = true
-
-[node name="Frame2" type="Control" parent="CenterRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("5_mndca")
-
-[node name="Shine" parent="CenterRect" instance=ExtResource("6_cjoq1")]
-material = SubResource("ShaderMaterial_x3531")
-layout_mode = 1
-offset_top = 0.0
-offset_bottom = 0.0
-
-[node name="TeamAAvatar" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 32.0
-offset_right = 288.0
-offset_bottom = 256.0
-texture = ExtResource("7_5wuox")
-
-[node name="LevelA" type="Label" parent="."]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 208.0
-offset_right = 224.0
-offset_bottom = 256.0
-mouse_filter = 0
-theme_override_font_sizes/font_size = 20
-text = "0"
-vertical_alignment = 1
-
-[node name="DisplayTooltip" type="Node" parent="LevelA"]
-script = ExtResource("12_iol01")
-side = 1
-text = "ENEMY LEVEL"
-
-[node name="TeamAPower" type="Control" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = -68.0
-offset_right = -912.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_mhi2i")
-horizontal_alignment = 0
-
-[node name="DisplayTooltip" type="Node" parent="TeamAPower"]
-script = ExtResource("12_iol01")
-text = "ENEMY HEALTH"
-
-[node name="TeamA" parent="." instance=ExtResource("2_w07n4")]
-layout_mode = 2
-offset_left = 224.0
-offset_top = 32.0
-offset_right = 1032.0
-offset_bottom = 224.0
-pivot_offset = Vector2(424, 96)
-tooltip_side = 3
-
-[node name="StacksControlA" parent="." instance=ExtResource("9_xnqrc")]
-layout_mode = 0
-offset_left = 96.0
-offset_top = 72.0
-offset_right = 224.0
-offset_bottom = 200.0
-
-[node name="TeamBAvatar" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 32.0
-offset_top = 392.0
-offset_right = 288.0
-offset_bottom = 648.0
-texture = ExtResource("7_4orp8")
-
-[node name="LevelB" type="Label" parent="."]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 392.0
-offset_right = 224.0
-offset_bottom = 440.0
-mouse_filter = 0
-theme_override_font_sizes/font_size = 20
-text = "0"
-vertical_alignment = 1
-
-[node name="DisplayTooltip" type="Node" parent="LevelB"]
-script = ExtResource("12_iol01")
-side = 3
-text = "OUR LEVEL"
-
-[node name="TeamBPower" type="Control" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = 4.0
-offset_right = -912.0
-offset_bottom = 68.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_mhi2i")
-horizontal_alignment = 0
-
-[node name="DisplayTooltip" type="Node" parent="TeamBPower"]
-script = ExtResource("12_iol01")
-text = "OUR HEALTH"
-
-[node name="TeamB" parent="." instance=ExtResource("2_w07n4")]
-layout_mode = 2
-offset_left = 224.0
-offset_top = 424.0
-offset_right = 1032.0
-offset_bottom = 616.0
-pivot_offset = Vector2(424, 96)
-
-[node name="StacksControlB" parent="." instance=ExtResource("9_xnqrc")]
-offset_left = 88.0
-offset_top = 448.0
-offset_right = 224.0
-offset_bottom = 576.0
-
-[node name="ChangeGrid" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 0
-offset_left = 224.0
-offset_top = 616.0
-offset_right = 1032.0
-offset_bottom = 648.0
-pivot_offset = Vector2(424, 16)
-theme_override_constants/h_separation = 8
-columns = 6
-metadata/_edit_group_ = true
-
-[node name="BattleUnitPositionController" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
-layout_mode = 2
-
-[node name="BattleUnitPositionController2" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
-layout_mode = 2
-
-[node name="BattleUnitPositionController3" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
-layout_mode = 2
-
-[node name="BattleUnitPositionController4" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
-layout_mode = 2
-
-[node name="BattleUnitPositionController5" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
-layout_mode = 2
-
-[node name="BattleUnitPositionController6" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
-layout_mode = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -286,11 +107,192 @@ theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 text = "PAUSE"
 script = ExtResource("9_d1yxv")
 
+[node name="CenterRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 408.0
+offset_top = 264.0
+offset_right = -352.0
+offset_bottom = -272.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
+metadata/_edit_group_ = true
+
+[node name="Frame2" type="Control" parent="CenterRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_mndca")
+
+[node name="Shine" parent="CenterRect" instance=ExtResource("6_cjoq1")]
+material = SubResource("ShaderMaterial_x3531")
+layout_mode = 1
+offset_top = 0.0
+offset_bottom = 0.0
+
+[node name="TeamAAvatar" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 32.0
+offset_right = 288.0
+offset_bottom = 256.0
+texture = ExtResource("7_5wuox")
+
+[node name="LevelA" type="Label" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 208.0
+offset_right = 224.0
+offset_bottom = 256.0
+mouse_filter = 0
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="DisplayTooltip" type="Node" parent="LevelA"]
+script = ExtResource("12_iol01")
+side = 1
+text = "ENEMY LEVEL"
+
+[node name="TeamAPower" type="Control" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -68.0
+offset_right = -912.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_mhi2i")
+horizontal_alignment = 1
+
+[node name="DisplayTooltip" type="Node" parent="TeamAPower"]
+script = ExtResource("12_iol01")
+text = "ENEMY HEALTH"
+
+[node name="TeamA" parent="." instance=ExtResource("2_w07n4")]
+layout_mode = 2
+offset_left = 200.0
+offset_top = 32.0
+offset_right = 1008.0
+offset_bottom = 224.0
+pivot_offset = Vector2(424, 96)
+tooltip_side = 3
+
+[node name="StacksControlA" parent="." instance=ExtResource("9_xnqrc")]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 72.0
+offset_right = 224.0
+offset_bottom = 200.0
+
+[node name="TeamBAvatar" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 392.0
+offset_right = 288.0
+offset_bottom = 648.0
+texture = ExtResource("7_4orp8")
+
+[node name="LevelB" type="Label" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 392.0
+offset_right = 224.0
+offset_bottom = 440.0
+mouse_filter = 0
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="DisplayTooltip" type="Node" parent="LevelB"]
+script = ExtResource("12_iol01")
+side = 3
+text = "OUR LEVEL"
+
+[node name="TeamBPower" type="Control" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 4.0
+offset_right = -912.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_mhi2i")
+horizontal_alignment = 1
+
+[node name="DisplayTooltip" type="Node" parent="TeamBPower"]
+script = ExtResource("12_iol01")
+text = "OUR HEALTH"
+
+[node name="TeamB" parent="." instance=ExtResource("2_w07n4")]
+layout_mode = 2
+offset_left = 200.0
+offset_top = 424.0
+offset_right = 1008.0
+offset_bottom = 616.0
+pivot_offset = Vector2(424, 96)
+
+[node name="StacksControlB" parent="." instance=ExtResource("9_xnqrc")]
+offset_left = 88.0
+offset_top = 448.0
+offset_right = 224.0
+offset_bottom = 576.0
+
+[node name="ChangeGrid" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 0
+offset_left = 200.0
+offset_top = 616.0
+offset_right = 1008.0
+offset_bottom = 648.0
+pivot_offset = Vector2(424, 16)
+theme_override_constants/h_separation = 8
+columns = 6
+metadata/_edit_group_ = true
+
+[node name="BattleUnitPositionController" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
+layout_mode = 2
+
+[node name="BattleUnitPositionController2" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
+layout_mode = 2
+
+[node name="BattleUnitPositionController3" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
+layout_mode = 2
+
+[node name="BattleUnitPositionController4" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
+layout_mode = 2
+
+[node name="BattleUnitPositionController5" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
+layout_mode = 2
+
+[node name="BattleUnitPositionController6" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
+layout_mode = 2
+
 [node name="Start" type="Button" parent="."]
 layout_mode = 0
-offset_left = 560.0
+offset_left = 536.0
 offset_top = 288.0
-offset_right = 696.0
+offset_right = 672.0
 offset_bottom = 352.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
@@ -304,9 +306,9 @@ script = ExtResource("9_d1yxv")
 [node name="VictoryLabel" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 112.0
+offset_left = 200.0
 offset_top = 280.0
-offset_right = 984.0
+offset_right = 1008.0
 offset_bottom = 360.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 40
@@ -317,9 +319,9 @@ vertical_alignment = 1
 [node name="RoundPhaseLabel" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 344.0
+offset_left = 408.0
 offset_top = 280.0
-offset_right = 744.0
+offset_right = 800.0
 offset_bottom = 360.0
 theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
 theme_override_fonts/font = ExtResource("13_r0s70")
@@ -333,9 +335,9 @@ vertical_alignment = 1
 [node name="ProceedButton" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 776.0
+offset_left = 808.0
 offset_top = 288.0
-offset_right = 888.0
+offset_right = 920.0
 offset_bottom = 352.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
@@ -346,9 +348,9 @@ theme_override_font_sizes/font_size = 24
 text = "PROCEED"
 script = ExtResource("9_d1yxv")
 
-[connection signal="pressed" from="TeamA" to="." method="_on_team_pressed"]
-[connection signal="pressed" from="TeamB" to="." method="_on_team_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Step" to="." method="_on_step_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="TeamA" to="." method="_on_team_pressed"]
+[connection signal="pressed" from="TeamB" to="." method="_on_team_pressed"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="ProceedButton" to="." method="_on_proceed_button_pressed"]
