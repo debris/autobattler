@@ -59,7 +59,11 @@ func show_diff_label(value):
 	label.size = size
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
-	label.text = str(value)
+	# punktum font is broken, and '+' size is in the wrong spot
+	if value > 0:
+		label.text = "&" + str(value)
+	else:
+		label.text = str(value)
 	add_child(label)
 	await get_tree().create_timer(DisplaySettings.default().step_time).timeout
 	label.queue_free()
