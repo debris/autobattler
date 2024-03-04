@@ -119,8 +119,9 @@ func queue() -> Array[QueuePosition]:
 	while new_queue.size() < QUEUE_MIN_SIZE:
 		var battle_unit = _battle_unit_at(virtual_pointer)
 		if battle_unit != null:
-			if battle_unit.schedules[virtual_pointer.battle_phase].at(virtual_pointer.battle_round):
-				new_queue.push_back(QueuePosition.new(battle_unit, virtual_pointer.battle_round, virtual_pointer.battle_phase))
+			var schedule = battle_unit.schedules[virtual_pointer.battle_phase]
+			if schedule.at(virtual_pointer.battle_round):
+				new_queue.push_back(QueuePosition.new(battle_unit, virtual_pointer.battle_round, virtual_pointer.battle_phase, schedule.kind))
 		virtual_pointer.advance()
 	
 	return new_queue

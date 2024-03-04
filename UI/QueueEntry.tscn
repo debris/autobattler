@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://jwvtuhvmml5l"]
+[gd_scene load_steps=5 format=3 uid="uid://jwvtuhvmml5l"]
 
 [ext_resource type="Script" path="res://UI/QueueEntry.gd" id="1_yhfnt"]
 [ext_resource type="Texture2D" uid="uid://cbexshp3x74r" path="res://Assets/Units/azure_dragon.png" id="1_yu5he"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_p8ucu"]
+[ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="4_81ne6"]
 
 [node name="QueueEntry" type="Control"]
 custom_minimum_size = Vector2(64, 64)
@@ -20,8 +21,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("1_yu5he")
 expand_mode = 1
+
+[node name="SkillRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 64.0
+mouse_filter = 2
 
 [node name="Frame" type="Control" parent="."]
 layout_mode = 1
@@ -30,6 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("2_p8ucu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -39,6 +48,7 @@ offset_left = -8.0
 offset_top = -8.0
 offset_right = 16.0
 offset_bottom = 16.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0.705882)
 
 [node name="Frame" type="Control" parent="ColorRect"]
@@ -58,3 +68,8 @@ theme_override_font_sizes/font_size = 14
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DisplayTooltip" type="Node" parent="."]
+script = ExtResource("4_81ne6")
+side = 0
+text = "TEXT"

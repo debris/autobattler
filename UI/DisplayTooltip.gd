@@ -18,6 +18,7 @@ class_name DisplayTooltip
 		text = value
 		if tooltip != null:
 			tooltip.text = text
+			_update_tooltip_position()
 
 var tooltip: Label:
 	set(value):
@@ -33,6 +34,7 @@ func _ready():
 
 		tooltip = preload("Tooltip.tscn").instantiate()
 		tooltip.text = text
+		#var font = tooltip.get_theme_font("font") 
 		TooltipLayer.add_child(tooltip)
 		_update_tooltip_position()
 	)
@@ -43,6 +45,11 @@ func _ready():
 	)
 
 func _update_tooltip_position():
+	var font = tooltip.get_theme_font("font") 
+	var font_size = tooltip.get_theme_font_size("font_size")
+	var text_size = font.get_string_size(tooltip.text, HORIZONTAL_ALIGNMENT_CENTER, -1, font_size)
+	tooltip.size.x = max(128.0, text_size.x + 32.0)
+
 	var parent: Control = get_parent()
 	var global_rect = parent.get_global_rect()
 	match side:

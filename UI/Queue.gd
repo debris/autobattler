@@ -25,25 +25,28 @@ func _update_queue(old_queue):
 		child.queue_free()
 	
 	for i in queue.size():
-		# NEW entry
 		var entry_scale = Vector2.ONE
 
 		if i == 0:
 			entry_scale = Vector2(1.2, 1.2)
 
+		# NEW entry
 		if old_indexes[i] == -1:
 			var entry = preload("res://UI/QueueEntry.tscn").instantiate()
 			entry.position = _position_for_index(i, true)
 			entry.unit = queue[i].unit
 			entry.index = i + 1
+			entry.skill_kind = queue[i].skill_kind
 			entry.scale = entry_scale
 			grid.add_child(entry)
 			_move_to_index(entry, i)
+		# OLD entry
 		else:
 			var entry = preload("res://UI/QueueEntry.tscn").instantiate()
 			entry.position = _position_for_index(old_indexes[i])
 			entry.unit = queue[i].unit
 			entry.index = i + 1
+			entry.skill_kind = queue[i].skill_kind
 			entry.scale = entry_scale
 			grid.add_child(entry)
 			_move_to_index(entry, i)
