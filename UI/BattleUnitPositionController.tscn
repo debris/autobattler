@@ -1,59 +1,115 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcc60h5gjui3p"]
+[gd_scene load_steps=9 format=3 uid="uid://dcc60h5gjui3p"]
 
+[ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_mkwf5"]
 [ext_resource type="Script" path="res://UI/BattleUnitPositionController.gd" id="1_ogd3v"]
 [ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="3_8wpke"]
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="3_h052f"]
+[ext_resource type="Script" path="res://UI/Frame.gd" id="3_hrshw"]
+[ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="6_a8gov"]
+[ext_resource type="Shader" path="res://UI/Shine.gdshader" id="7_wypkp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_55v5g"]
+resource_local_to_scene = true
+shader = ExtResource("7_wypkp")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
+shader_parameter/x_offset = 0.0
 
 [node name="BattleUnitPositionController" type="Control"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(128, 192)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 128.0
 offset_bottom = 32.0
+mouse_filter = 2
+theme = ExtResource("1_mkwf5")
 script = ExtResource("1_ogd3v")
 
-[node name="Change" type="Button" parent="."]
+[node name="Content" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -16.0
-offset_right = 40.0
-offset_bottom = 16.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 16
-text = "CHANGE"
-script = ExtResource("3_h052f")
+mouse_filter = 2
 
-[node name="Left" type="Button" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Content"]
 layout_mode = 0
-offset_right = 24.0
-offset_bottom = 32.0
+offset_top = 152.0
+offset_right = 128.0
+offset_bottom = 192.0
+color = Color(0, 0, 0, 0.705882)
+
+[node name="Frame" type="Control" parent="Content/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_hrshw")
+
+[node name="Grid" type="GridContainer" parent="Content"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="Left" type="Button" parent="Content/Grid"]
+custom_minimum_size = Vector2(32, 2.08165e-12)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
 text = "<"
 script = ExtResource("3_h052f")
 
-[node name="DisplayTooltip" type="Node" parent="Left"]
+[node name="DisplayTooltip" type="Node" parent="Content/Grid/Left"]
 script = ExtResource("3_8wpke")
 side = 1
 text = "MOVE LEFT"
 
-[node name="Right" type="Button" parent="."]
-layout_mode = 0
-offset_left = 104.0
-offset_right = 128.0
-offset_bottom = 32.0
+[node name="Change" type="Button" parent="Content/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 16
+text = "CHANGE"
+script = ExtResource("3_h052f")
+
+[node name="Right" type="Button" parent="Content/Grid"]
+custom_minimum_size = Vector2(32, 2.08165e-12)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.8
+mouse_filter = 1
 text = ">"
 script = ExtResource("3_h052f")
 
-[node name="DisplayTooltip" type="Node" parent="Right"]
+[node name="DisplayTooltip" type="Node" parent="Content/Grid/Right"]
 script = ExtResource("3_8wpke")
 side = 1
 text = "MOVE RIGHT"
 
-[connection signal="pressed" from="Change" to="." method="_on_change_pressed"]
-[connection signal="pressed" from="Left" to="." method="_on_left_pressed"]
-[connection signal="pressed" from="Right" to="." method="_on_right_pressed"]
+[node name="Dummy" type="Control" parent="Content/Grid"]
+layout_mode = 2
+
+[node name="Shine" parent="Content" instance=ExtResource("6_a8gov")]
+material = SubResource("ShaderMaterial_55v5g")
+layout_mode = 1
+offset_top = 152.0
+offset_bottom = 0.0
+
+[connection signal="pressed" from="Content/Grid/Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="Content/Grid/Change" to="." method="_on_change_pressed"]
+[connection signal="pressed" from="Content/Grid/Right" to="." method="_on_right_pressed"]

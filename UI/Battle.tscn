@@ -18,7 +18,7 @@
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="13_r0s70"]
 [ext_resource type="PackedScene" uid="uid://c13deqh1oar6d" path="res://UI/PlayPanel.tscn" id="17_kh1bd"]
 
-[sub_resource type="Shader" id="Shader_sc6mg"]
+[sub_resource type="Shader" id="Shader_0ared"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -36,7 +36,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3531"]
 resource_local_to_scene = true
-shader = SubResource("Shader_sc6mg")
+shader = SubResource("Shader_0ared")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -177,7 +177,6 @@ offset_left = 200.0
 offset_top = 72.0
 offset_right = 1008.0
 offset_bottom = 264.0
-pivot_offset = Vector2(424, 96)
 tooltip_side = 3
 
 [node name="StacksControlA" parent="." instance=ExtResource("9_xnqrc")]
@@ -265,6 +264,7 @@ offset_top = 384.0
 offset_right = 1008.0
 offset_bottom = 576.0
 pivot_offset = Vector2(424, 96)
+metadata/_edit_lock_ = true
 
 [node name="StacksControlB" parent="." instance=ExtResource("9_xnqrc")]
 offset_left = 88.0
@@ -273,20 +273,20 @@ offset_right = 224.0
 offset_bottom = 576.0
 
 [node name="ChangeGrid" type="GridContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
 layout_mode = 0
 offset_left = 200.0
-offset_top = 616.0
+offset_top = 384.0
 offset_right = 1008.0
-offset_bottom = 648.0
-pivot_offset = Vector2(424, 16)
+offset_bottom = 576.0
+mouse_filter = 2
 theme_override_constants/h_separation = 8
 columns = 6
 metadata/_edit_group_ = true
 
 [node name="BattleUnitPositionController" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="BattleUnitPositionController2" parent="ChangeGrid" instance=ExtResource("6_ggmcb")]
 layout_mode = 2
@@ -364,4 +364,3 @@ offset_bottom = -296.0
 [connection signal="pressed" from="ProceedButton" to="." method="_on_proceed_button_pressed"]
 [connection signal="pause" from="PlayPanel" to="." method="_on_play_panel_pause"]
 [connection signal="play" from="PlayPanel" to="." method="_on_play_panel_play"]
-[connection signal="toggle_play" from="PlayPanel" to="." method="_on_play_panel_toggle_play"]

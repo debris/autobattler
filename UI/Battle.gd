@@ -22,7 +22,7 @@ signal battle_finished(result)
 @onready var team_a_avatar = $TeamAAvatar
 @onready var team_b_avatar = $TeamBAvatar
 
-@onready var victory_label = $VictoryLabel
+#@onready var victory_label = $VictoryLabel
 @onready var change_grid = $ChangeGrid
 @onready var proceed_button = $ProceedButton
 @onready var level_a_label = $LevelA

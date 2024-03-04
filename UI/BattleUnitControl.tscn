@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="2_k7jw8"]
 
 [node name="BattleUnitControl" type="ColorRect"]
-custom_minimum_size = Vector2(160, 240)
-offset_right = 160.0
-offset_bottom = 240.0
+custom_minimum_size = Vector2(128, 192)
+offset_right = 128.0
+offset_bottom = 192.0
 pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
 color = Color(0, 0, 0, 0)
 script = ExtResource("1_rf7mt")

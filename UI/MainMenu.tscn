@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="5_uw5ga"]
 [ext_resource type="FontVariation" uid="uid://cfurrex4by3bf" path="res://Assets/Fonts/PunktumItalic.tres" id="6_5e7re"]
 
-[sub_resource type="Shader" id="Shader_3uhpq"]
+[sub_resource type="Shader" id="Shader_o4p2m"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -26,7 +26,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pq5l2"]
 resource_local_to_scene = true
-shader = SubResource("Shader_3uhpq")
+shader = SubResource("Shader_o4p2m")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3

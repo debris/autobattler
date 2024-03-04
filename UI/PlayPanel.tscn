@@ -76,7 +76,7 @@ script = ExtResource("4_l6lj3")
 [node name="DisplayTooltip" type="Node" parent="GridContainer/Speed1"]
 script = ExtResource("5_4o10n")
 side = 3
-text = "SPEED X1"
+text = "PLAY X1"
 
 [node name="Speed2" type="Button" parent="GridContainer"]
 layout_mode = 2
@@ -90,7 +90,7 @@ script = ExtResource("4_l6lj3")
 [node name="DisplayTooltip" type="Node" parent="GridContainer/Speed2"]
 script = ExtResource("5_4o10n")
 side = 3
-text = "SPEED X2"
+text = "PLAY X2"
 
 [node name="Speed3" type="Button" parent="GridContainer"]
 layout_mode = 2
@@ -104,7 +104,7 @@ script = ExtResource("4_l6lj3")
 [node name="DisplayTooltip" type="Node" parent="GridContainer/Speed3"]
 script = ExtResource("5_4o10n")
 side = 3
-text = "SPEED X3"
+text = "PLAY X3"
 
 [node name="Frame" type="Control" parent="."]
 layout_mode = 1
