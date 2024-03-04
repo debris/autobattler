@@ -8,6 +8,9 @@
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
 script = ExtResource("1_yhfnt")
 
 [node name="Icon" type="TextureRect" parent="."]
@@ -28,3 +31,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_p8ucu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0, 0, 0, 0.705882)
+
+[node name="Frame" type="Control" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_p8ucu")
+
+[node name="IndexLabel" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 14
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

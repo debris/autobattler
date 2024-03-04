@@ -26,16 +26,25 @@ func _update_queue(old_queue):
 	
 	for i in queue.size():
 		# NEW entry
+		var entry_scale = Vector2.ONE
+
+		if i == 0:
+			entry_scale = Vector2(1.2, 1.2)
+
 		if old_indexes[i] == -1:
 			var entry = preload("res://UI/QueueEntry.tscn").instantiate()
 			entry.position = _position_for_index(i, true)
 			entry.unit = queue[i].unit
+			entry.index = i + 1
+			entry.scale = entry_scale
 			grid.add_child(entry)
 			_move_to_index(entry, i)
 		else:
 			var entry = preload("res://UI/QueueEntry.tscn").instantiate()
 			entry.position = _position_for_index(old_indexes[i])
 			entry.unit = queue[i].unit
+			entry.index = i + 1
+			entry.scale = entry_scale
 			grid.add_child(entry)
 			_move_to_index(entry, i)
 
@@ -44,7 +53,9 @@ func _position_for_index(index: int, is_new: bool = false) -> Vector2:
 	const SIZE: float = 64.0
 	const SPACE: float = 8.0
 
-	var position_y = OFFSET + (SIZE + SPACE) * index
+	var scale_offset = min(1, index) * 8.0
+
+	var position_y = OFFSET + (SIZE + SPACE) * index + scale_offset
 	var entry_position = Vector2(4.0, position_y)
 	if is_new:
 		entry_position.x += 80
