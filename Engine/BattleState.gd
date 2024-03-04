@@ -111,16 +111,16 @@ func _display_none(schedule_pointer):
 	# point at the next battle_round (?)
 	#schedule_pointer.battle_round += 1
 
-func queue() -> Array[BattleUnit]:
+func queue() -> Array[QueuePosition]:
 	const QUEUE_MIN_SIZE: int = 7
-	var new_queue: Array[BattleUnit] = []
+	var new_queue: Array[QueuePosition] = []
 	var virtual_pointer = pointer.copy()
 
 	while new_queue.size() < QUEUE_MIN_SIZE:
 		var battle_unit = _battle_unit_at(virtual_pointer)
 		if battle_unit != null:
 			if battle_unit.schedules[virtual_pointer.battle_phase].at(virtual_pointer.battle_round):
-				new_queue.push_back(battle_unit)
+				new_queue.push_back(QueuePosition.new(battle_unit, virtual_pointer.battle_round, virtual_pointer.battle_phase))
 		virtual_pointer.advance()
 	
 	return new_queue

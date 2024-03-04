@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c13deqh1oar6d" path="res://UI/PlayPanel.tscn" id="17_kh1bd"]
 [ext_resource type="PackedScene" uid="uid://duy835eqc4m4n" path="res://UI/Queue.tscn" id="18_6skwp"]
 
-[sub_resource type="Shader" id="Shader_qs8aj"]
+[sub_resource type="Shader" id="Shader_nydv1"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -37,7 +37,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3531"]
 resource_local_to_scene = true
-shader = SubResource("Shader_qs8aj")
+shader = SubResource("Shader_nydv1")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -107,8 +107,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 184.0
-offset_right = -128.0
+offset_left = 152.0
+offset_right = -160.0
 offset_bottom = -368.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -159,9 +159,9 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 512.0
+offset_left = 480.0
 offset_top = -324.0
-offset_right = -464.0
+offset_right = -496.0
 offset_bottom = -260.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -174,9 +174,9 @@ text = "ENEMY HEALTH"
 
 [node name="TeamA" parent="." instance=ExtResource("2_w07n4")]
 layout_mode = 2
-offset_left = 200.0
+offset_left = 168.0
 offset_top = 72.0
-offset_right = 1008.0
+offset_right = 976.0
 offset_bottom = 264.0
 tooltip_side = 3
 
@@ -192,12 +192,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 184.0
+offset_left = 160.0
 offset_top = 368.0
-offset_right = -128.0
+offset_right = -152.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.705882)
+metadata/_edit_group_ = true
 
 [node name="FrameB" type="Control" parent="AreaB"]
 anchors_preset = 0
@@ -245,9 +246,9 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 512.0
+offset_left = 488.0
 offset_top = 260.0
-offset_right = -464.0
+offset_right = -488.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -260,12 +261,11 @@ text = "OUR HEALTH"
 
 [node name="TeamB" parent="." instance=ExtResource("2_w07n4")]
 layout_mode = 2
-offset_left = 200.0
+offset_left = 176.0
 offset_top = 384.0
-offset_right = 1008.0
+offset_right = 984.0
 offset_bottom = 576.0
 pivot_offset = Vector2(424, 96)
-metadata/_edit_lock_ = true
 
 [node name="StacksControlB" parent="." instance=ExtResource("9_xnqrc")]
 offset_left = 72.0
@@ -274,6 +274,7 @@ offset_right = 184.0
 offset_bottom = 576.0
 
 [node name="ChangeGrid" type="GridContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
 layout_mode = 0
 offset_left = 200.0
@@ -353,9 +354,9 @@ script = ExtResource("9_d1yxv")
 
 [node name="PlayPanel" parent="." instance=ExtResource("17_kh1bd")]
 layout_mode = 1
-offset_left = 472.0
+offset_left = 440.0
 offset_top = 296.0
-offset_right = -416.0
+offset_right = -448.0
 offset_bottom = -296.0
 
 [node name="Queue" parent="." instance=ExtResource("18_6skwp")]

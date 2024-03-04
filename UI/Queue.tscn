@@ -35,37 +35,57 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p3uus")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -40.0
+[node name="Grid" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -16.0
+offset_right = 72.0
+offset_bottom = 656.0
+
+[node name="QueueEntry" parent="Grid" instance=ExtResource("2_eqsat")]
+layout_mode = 2
+offset_left = 4.0
 offset_top = 72.0
-offset_right = 16.0
-offset_bottom = 448.0
-grow_horizontal = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 8
-metadata/_edit_group_ = true
+offset_right = 68.0
+offset_bottom = 136.0
 
-[node name="QueueEntry" parent="GridContainer" instance=ExtResource("2_eqsat")]
+[node name="QueueEntry2" parent="Grid" instance=ExtResource("2_eqsat")]
 layout_mode = 2
+offset_left = 4.0
+offset_top = 144.0
+offset_right = 68.0
+offset_bottom = 208.0
 
-[node name="QueueEntry2" parent="GridContainer" instance=ExtResource("2_eqsat")]
+[node name="QueueEntry3" parent="Grid" instance=ExtResource("2_eqsat")]
 layout_mode = 2
+offset_left = 4.0
+offset_top = 216.0
+offset_right = 68.0
+offset_bottom = 280.0
 
-[node name="QueueEntry3" parent="GridContainer" instance=ExtResource("2_eqsat")]
+[node name="QueueEntry4" parent="Grid" instance=ExtResource("2_eqsat")]
 layout_mode = 2
+offset_left = 4.0
+offset_top = 288.0
+offset_right = 68.0
+offset_bottom = 352.0
 
-[node name="QueueEntry4" parent="GridContainer" instance=ExtResource("2_eqsat")]
+[node name="QueueEntry5" parent="Grid" instance=ExtResource("2_eqsat")]
 layout_mode = 2
+offset_left = 4.0
+offset_top = 360.0
+offset_right = 68.0
+offset_bottom = 424.0
 
-[node name="QueueEntry5" parent="GridContainer" instance=ExtResource("2_eqsat")]
+[node name="QueueEntry6" parent="Grid" instance=ExtResource("2_eqsat")]
 layout_mode = 2
+offset_left = 4.0
+offset_top = 432.0
+offset_right = 68.0
+offset_bottom = 496.0
 
-[node name="QueueEntry6" parent="GridContainer" instance=ExtResource("2_eqsat")]
+[node name="QueueEntry7" parent="Grid" instance=ExtResource("2_eqsat")]
 layout_mode = 2
-
-[node name="QueueEntry7" parent="GridContainer" instance=ExtResource("2_eqsat")]
-layout_mode = 2
+offset_left = 4.0
+offset_top = 504.0
+offset_right = 68.0
+offset_bottom = 568.0
