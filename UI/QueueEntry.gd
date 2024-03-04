@@ -12,5 +12,5 @@ func _ready():
 	_update_icon()
 
 func _update_icon():
-	return
-	#icon.texture = unit.texture
+	if unit != null:
+		icon.texture = unit.texture

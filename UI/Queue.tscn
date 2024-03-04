@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://duy835eqc4m4n"]
+[gd_scene load_steps=4 format=3 uid="uid://duy835eqc4m4n"]
 
+[ext_resource type="Script" path="res://UI/Queue.gd" id="1_1j4ao"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="1_p3uus"]
 [ext_resource type="PackedScene" uid="uid://jwvtuhvmml5l" path="res://UI/QueueEntry.tscn" id="2_eqsat"]
 
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 offset_right = -1088.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1j4ao")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -47,5 +49,23 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 8
 metadata/_edit_group_ = true
 
-[node name="Control" parent="GridContainer" instance=ExtResource("2_eqsat")]
+[node name="QueueEntry" parent="GridContainer" instance=ExtResource("2_eqsat")]
+layout_mode = 2
+
+[node name="QueueEntry2" parent="GridContainer" instance=ExtResource("2_eqsat")]
+layout_mode = 2
+
+[node name="QueueEntry3" parent="GridContainer" instance=ExtResource("2_eqsat")]
+layout_mode = 2
+
+[node name="QueueEntry4" parent="GridContainer" instance=ExtResource("2_eqsat")]
+layout_mode = 2
+
+[node name="QueueEntry5" parent="GridContainer" instance=ExtResource("2_eqsat")]
+layout_mode = 2
+
+[node name="QueueEntry6" parent="GridContainer" instance=ExtResource("2_eqsat")]
+layout_mode = 2
+
+[node name="QueueEntry7" parent="GridContainer" instance=ExtResource("2_eqsat")]
 layout_mode = 2

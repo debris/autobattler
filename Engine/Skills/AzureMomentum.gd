@@ -14,7 +14,7 @@ func _execute(query: BattleQuery) -> Array[Log]:
 		.limit(2)\
 		.filter(Filters.phase_skill(query))\
 		.for_each(func(battle_unit):
-			result.push_back(LogSkillCastBonus.new(battle_unit, 1))\
+			result.push_back(LogSkillCastBonus.new(battle_unit, 2))\
 		)
 
 	return result

@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c13deqh1oar6d" path="res://UI/PlayPanel.tscn" id="17_kh1bd"]
 [ext_resource type="PackedScene" uid="uid://duy835eqc4m4n" path="res://UI/Queue.tscn" id="18_6skwp"]
 
-[sub_resource type="Shader" id="Shader_4b3gy"]
+[sub_resource type="Shader" id="Shader_qs8aj"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -37,7 +37,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3531"]
 resource_local_to_scene = true
-shader = SubResource("Shader_4b3gy")
+shader = SubResource("Shader_qs8aj")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3

@@ -35,6 +35,7 @@ signal battle_finished(result)
 @onready var center_rect = $CenterRect
 
 @onready var play_panel = $PlayPanel
+@onready var queue = $Queue
 
 var battle_state: BattleState
 var battle_controller: BattleController
@@ -133,6 +134,7 @@ func _ready():
 
 	memorized_power_a = battle_state.team_a.power
 	memorized_power_b = battle_state.team_b.power
+	queue.queue = battle_state.queue()
 
 # private
 func _wait_for_display():
@@ -159,6 +161,7 @@ func _wait_for_display():
 	
 	if !paused:
 		battle_state.proceed()
+		queue.queue = battle_state.queue()
 
 func on_battle_end(battle_result):
 	result = battle_result
