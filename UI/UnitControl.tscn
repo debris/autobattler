@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://btopitt5e6n1" path="res://UI/Tiers.tscn" id="10_mv4ke"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="11_4isk2"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wu2ho"]
+shader = ExtResource("2_1v1rc")
+
 [sub_resource type="Resource" id="Resource_mwdfb"]
 script = ExtResource("8_lr2qc")
 data = Array[bool]([true, false, false, false, true, true, false, false])
@@ -35,10 +38,7 @@ script = ExtResource("8_lr2qc")
 data = Array[bool]([false, true, false])
 kind = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wu2ho"]
-shader = ExtResource("2_1v1rc")
-
-[sub_resource type="Shader" id="Shader_evqpe"]
+[sub_resource type="Shader" id="Shader_8v2fi"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -56,7 +56,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8eri"]
 resource_local_to_scene = true
-shader = SubResource("Shader_evqpe")
+shader = SubResource("Shader_8v2fi")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -111,52 +111,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="Schedules" type="GridContainer" parent="Content"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 160.0
-offset_right = -56.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/v_separation = 0
-metadata/_edit_group_ = true
-
-[node name="ScheduleControl" type="Control" parent="Content/Schedules"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-script = ExtResource("7_qpxt1")
-schedule = SubResource("Resource_mwdfb")
-schedule_pointer = SubResource("Resource_tnkqx")
-
-[node name="ScheduleControl2" type="Control" parent="Content/Schedules"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-script = ExtResource("7_qpxt1")
-schedule = SubResource("Resource_fiv12")
-schedule_pointer = SubResource("Resource_tnkqx")
-
-[node name="ScheduleControl3" type="Control" parent="Content/Schedules"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-script = ExtResource("7_qpxt1")
-schedule = SubResource("Resource_do5gq")
-schedule_pointer = SubResource("Resource_tnkqx")
-
-[node name="DisplayTooltip" type="Node" parent="Content/Schedules"]
-script = ExtResource("6_l0tov")
-side = 0
-text = "SCHEDULE"
 
 [node name="Avatar" type="TextureRect" parent="Content"]
 material = SubResource("ShaderMaterial_wu2ho")
@@ -236,6 +190,52 @@ vertical_alignment = 1
 [node name="DisplayTooltip" type="Node" parent="Content/Def"]
 script = ExtResource("6_l0tov")
 text = "DEFENSE"
+
+[node name="Schedules" type="GridContainer" parent="Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 160.0
+offset_right = -56.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 0
+metadata/_edit_group_ = true
+
+[node name="ScheduleControl" type="Control" parent="Content/Schedules"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("7_qpxt1")
+schedule = SubResource("Resource_mwdfb")
+schedule_pointer = SubResource("Resource_tnkqx")
+
+[node name="ScheduleControl2" type="Control" parent="Content/Schedules"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("7_qpxt1")
+schedule = SubResource("Resource_fiv12")
+schedule_pointer = SubResource("Resource_tnkqx")
+
+[node name="ScheduleControl3" type="Control" parent="Content/Schedules"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("7_qpxt1")
+schedule = SubResource("Resource_do5gq")
+schedule_pointer = SubResource("Resource_tnkqx")
+
+[node name="DisplayTooltip" type="Node" parent="Content/Schedules"]
+script = ExtResource("6_l0tov")
+side = 0
+text = "SCHEDULE"
 
 [node name="Tiers" parent="Content" instance=ExtResource("10_mv4ke")]
 layout_mode = 1

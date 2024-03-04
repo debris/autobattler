@@ -16,11 +16,11 @@ func get_this_unit() -> BattleUnit:
 	return root
 
 func get_round() -> int:
-	return battle_state.battle_round
+	return battle_state.pointer.battle_round
 
 func get_phase() -> int:
-	return battle_state.phase
-#
+	return battle_state.pointer.battle_phase
+
 func is_active() -> bool:
 	return root.schedule_pointer.active
 

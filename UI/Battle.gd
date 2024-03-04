@@ -29,7 +29,7 @@ signal battle_finished(result)
 @onready var level_b_label = $LevelB
 @onready var stacks_control_a = $StacksControlA
 @onready var stacks_control_b = $StacksControlB
-@onready var round_phase_label = $RoundPhaseLabel
+#@onready var round_phase_label = $RoundPhaseLabel
 
 @onready var global_overlay = $GlobalOverlay
 @onready var center_rect = $CenterRect
@@ -172,10 +172,10 @@ func on_battle_end(battle_result):
 	paused = true
 
 func _process(_delta):
-	round_phase_label.text = tr("ROUND_PHASE").format({
-		"round": str(battle_state.battle_round + 1),
-		"phase": str(battle_state.phase + 1)
-	})
+	#round_phase_label.text = tr("ROUND_PHASE").format({
+	#	"round": str(battle_state.pointer.battle_round + 1),
+	#	"phase": str(battle_state.pointer.battle_phase + 1)
+	#})
 	level_a_label.text = tr("LEVEL").format({"level": enemy_team_level + 1})
 	level_b_label.text = tr("LEVEL").format({"level": player_team_level + 1})
 	
@@ -211,8 +211,7 @@ func _on_start_pressed():
 	paused = false
 	change_grid.visible = false
 
-	while true:
-		await battle_state.execute_round()
+	battle_state.execute_game()
 
 func _on_proceed_button_pressed():
 	if result == Result.DEFEAT:
