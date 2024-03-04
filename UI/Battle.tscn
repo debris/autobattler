@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c13deqh1oar6d" path="res://UI/PlayPanel.tscn" id="17_kh1bd"]
 [ext_resource type="PackedScene" uid="uid://duy835eqc4m4n" path="res://UI/Queue.tscn" id="18_6skwp"]
 
-[sub_resource type="Shader" id="Shader_mc8lr"]
+[sub_resource type="Shader" id="Shader_axm8f"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -37,7 +37,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3531"]
 resource_local_to_scene = true
-shader = SubResource("Shader_mc8lr")
+shader = SubResource("Shader_axm8f")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -335,12 +335,19 @@ Phase 1 of 3
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PlayPanel" parent="." instance=ExtResource("17_kh1bd")]
+layout_mode = 1
+offset_left = 440.0
+offset_top = 296.0
+offset_right = -448.0
+offset_bottom = -296.0
+
 [node name="ProceedButton" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 544.0
+offset_left = 512.0
 offset_top = 296.0
-offset_right = 664.0
+offset_right = 632.0
 offset_bottom = 352.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
@@ -351,13 +358,6 @@ theme_override_font_sizes/font_size = 24
 text = "PROCEED"
 script = ExtResource("9_d1yxv")
 
-[node name="PlayPanel" parent="." instance=ExtResource("17_kh1bd")]
-layout_mode = 1
-offset_left = 440.0
-offset_top = 296.0
-offset_right = -448.0
-offset_bottom = -296.0
-
 [node name="Queue" parent="." instance=ExtResource("18_6skwp")]
 layout_mode = 1
 offset_left = 1088.0
@@ -367,6 +367,6 @@ offset_bottom = 8.0
 [connection signal="pressed" from="TeamA" to="." method="_on_team_pressed"]
 [connection signal="pressed" from="TeamB" to="." method="_on_team_pressed"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="ProceedButton" to="." method="_on_proceed_button_pressed"]
 [connection signal="pause" from="PlayPanel" to="." method="_on_play_panel_pause"]
 [connection signal="play" from="PlayPanel" to="." method="_on_play_panel_play"]
+[connection signal="pressed" from="ProceedButton" to="." method="_on_proceed_button_pressed"]
