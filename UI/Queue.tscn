@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://duy835eqc4m4n"]
+[gd_scene load_steps=7 format=3 uid="uid://duy835eqc4m4n"]
 
 [ext_resource type="Script" path="res://UI/Queue.gd" id="1_1j4ao"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="1_p3uus"]
 [ext_resource type="PackedScene" uid="uid://jwvtuhvmml5l" path="res://UI/QueueEntry.tscn" id="2_eqsat"]
+[ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_xygtp"]
+[ext_resource type="Shader" path="res://UI/Shine.gdshader" id="4_euwv0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8sgij"]
+resource_local_to_scene = true
+shader = ExtResource("4_euwv0")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
+shader_parameter/x_offset = 0.0
 
 [node name="Queue" type="Control"]
 layout_mode = 3
@@ -34,6 +44,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p3uus")
+
+[node name="Shine" parent="." instance=ExtResource("3_xygtp")]
+material = SubResource("ShaderMaterial_8sgij")
+layout_mode = 1
+offset_top = 0.0
+offset_bottom = 0.0
 
 [node name="Grid" type="Control" parent="."]
 anchors_preset = 0

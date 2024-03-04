@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://jwvtuhvmml5l"]
+[gd_scene load_steps=8 format=3 uid="uid://jwvtuhvmml5l"]
 
 [ext_resource type="Script" path="res://UI/QueueEntry.gd" id="1_yhfnt"]
 [ext_resource type="Texture2D" uid="uid://cbexshp3x74r" path="res://Assets/Units/azure_dragon.png" id="1_yu5he"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_p8ucu"]
 [ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="4_81ne6"]
+[ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="4_wg4hg"]
+[ext_resource type="Shader" path="res://UI/Shine.gdshader" id="5_h508m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tj12b"]
+resource_local_to_scene = true
+shader = ExtResource("5_h508m")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
+shader_parameter/x_offset = 0.0
 
 [node name="QueueEntry" type="Control"]
 custom_minimum_size = Vector2(64, 64)
@@ -68,6 +78,12 @@ theme_override_font_sizes/font_size = 14
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Shine" parent="." instance=ExtResource("4_wg4hg")]
+material = SubResource("ShaderMaterial_tj12b")
+layout_mode = 1
+offset_top = 0.0
+offset_bottom = 0.0
 
 [node name="DisplayTooltip" type="Node" parent="."]
 script = ExtResource("4_81ne6")

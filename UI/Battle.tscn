@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c13deqh1oar6d" path="res://UI/PlayPanel.tscn" id="17_kh1bd"]
 [ext_resource type="PackedScene" uid="uid://duy835eqc4m4n" path="res://UI/Queue.tscn" id="18_6skwp"]
 
-[sub_resource type="Shader" id="Shader_nydv1"]
+[sub_resource type="Shader" id="Shader_mc8lr"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -37,7 +37,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3531"]
 resource_local_to_scene = true
-shader = SubResource("Shader_nydv1")
+shader = SubResource("Shader_mc8lr")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -274,12 +274,11 @@ offset_right = 184.0
 offset_bottom = 576.0
 
 [node name="ChangeGrid" type="GridContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
 layout_mode = 0
-offset_left = 200.0
+offset_left = 176.0
 offset_top = 384.0
-offset_right = 1008.0
+offset_right = 984.0
 offset_bottom = 576.0
 mouse_filter = 2
 theme_override_constants/h_separation = 8
