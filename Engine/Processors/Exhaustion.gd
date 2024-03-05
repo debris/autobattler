@@ -1,7 +1,7 @@
 extends Processor
 class_name ProcessorExhaustion
 
-const ROUND: int = 1
+const ROUND: int = 7
 
 var time_of_last_move_by_unit = {}
 
@@ -14,7 +14,8 @@ func _process_logs(pl_iterator: ProcessedLogs):
 			var value = pl.get_value()
 			var last_move_time = time_of_last_move_by_unit.get(value.unit.get_instance_id())
 			if last_move_time == null || query.get_round() > last_move_time:
-				var el = LogExhaustion.new(value.unit, query.get_round() - ROUND)
+				var ex_level = query.get_round() - ROUND
+				var el = LogExhaustion.new(value.unit, ex_level * ex_level)
 				pl.reply_next_move(el)
 			time_of_last_move_by_unit[value.unit.get_instance_id()] = query.get_round()\
 		)
