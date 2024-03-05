@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://s2jgylbybeg2"]
+
+[ext_resource type="PackedScene" uid="uid://cfmudqbhxragu" path="res://UI/Background.tscn" id="1_2pv3s"]
+[ext_resource type="Script" path="res://UI/SelectAvatar.gd" id="1_qv2bf"]
+[ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="2_hq8fd"]
+[ext_resource type="PackedScene" uid="uid://glyid2gmv680" path="res://UI/Avatars.tscn" id="4_tyqms"]
+
+[node name="SelectAvatar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qv2bf")
+
+[node name="Concrete0" parent="." instance=ExtResource("1_2pv3s")]
+region_rect = Rect2(256, 537219, 2304, 1296)
+
+[node name="GlobalOverlay" parent="." instance=ExtResource("2_hq8fd")]
+
+[node name="Avatars" parent="." instance=ExtResource("4_tyqms")]
+offset_left = 376.0
+offset_right = 776.0

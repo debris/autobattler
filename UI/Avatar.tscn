@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://btj30o8klqss2"]
+
+[ext_resource type="Script" path="res://UI/Avatar.gd" id="1_l4ymg"]
+[ext_resource type="Texture2D" uid="uid://crbo8g4mkw6r" path="res://Assets/UnitsTransparent/father_piet.png" id="1_r4ajh"]
+[ext_resource type="Script" path="res://UI/Frame.gd" id="2_wyj4j"]
+[ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_8qnj4"]
+[ext_resource type="Shader" path="res://UI/Shine.gdshader" id="4_gwfy6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mq13u"]
+resource_local_to_scene = true
+shader = ExtResource("4_gwfy6")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_size = 0.3
+shader_parameter/x_offset = 0.0
+
+[node name="Avatar" type="Control"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1024.0
+offset_bottom = -520.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l4ymg")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r4ajh")
+expand_mode = 1
+
+[node name="Frame" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_wyj4j")
+
+[node name="Shine" parent="." instance=ExtResource("3_8qnj4")]
+material = SubResource("ShaderMaterial_mq13u")
+layout_mode = 1
+offset_top = 0.0
+offset_bottom = 0.0
