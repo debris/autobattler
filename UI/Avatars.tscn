@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://glyid2gmv680"]
+[gd_scene load_steps=3 format=3 uid="uid://glyid2gmv680"]
 
 [ext_resource type="PackedScene" uid="uid://btj30o8klqss2" path="res://UI/Avatar.tscn" id="1_dnd6a"]
 [ext_resource type="Script" path="res://UI/Avatars.gd" id="1_yuwww"]
-[ext_resource type="Script" path="res://UI/Frame.gd" id="2_1xcpl"]
 
 [node name="Avatars" type="Control"]
 layout_mode = 3
@@ -11,45 +10,23 @@ offset_right = 400.0
 offset_bottom = 648.0
 script = ExtResource("1_yuwww")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 296)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.705882)
-
-[node name="Frame" type="Control" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_1xcpl")
-
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 16.0
-offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
 metadata/_edit_group_ = true
 
 [node name="Avatars" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/h_separation = 8
-theme_override_constants/v_separation = 8
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
 columns = 3
 
 [node name="Avatar" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]

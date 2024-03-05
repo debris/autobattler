@@ -97,6 +97,19 @@ func loadgame_screen():
 				save = Save.new()
 				save_name = select_name_action.selected_name
 				# dont save here, as the team is incomplete, save only after selecting starting units
+
+			var select_avatar = preload("res://UI/SelectAvatar.tscn").instantiate()
+			present_view(select_avatar)
+			var select_avatar_action = await select_avatar.action_selected
+
+			if select_avatar_action is SelectAvatarActionCancel:
+				save = null
+				save_name = ""
+				continue
+
+			if select_avatar_action is SelectAvatarActionProceed:
+				# TODO: here read and save the avatar
+				pass
 	
 		if action is LoadgameActionLoad:
 			save = action.save

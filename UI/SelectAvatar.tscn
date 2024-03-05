@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://s2jgylbybeg2"]
+[gd_scene load_steps=9 format=3 uid="uid://s2jgylbybeg2"]
 
 [ext_resource type="PackedScene" uid="uid://cfmudqbhxragu" path="res://UI/Background.tscn" id="1_2pv3s"]
+[ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="1_6x03n"]
 [ext_resource type="Script" path="res://UI/SelectAvatar.gd" id="1_qv2bf"]
 [ext_resource type="PackedScene" uid="uid://rnhm1enuxv6q" path="res://UI/GlobalOverlay.tscn" id="2_hq8fd"]
 [ext_resource type="PackedScene" uid="uid://glyid2gmv680" path="res://UI/Avatars.tscn" id="4_tyqms"]
+[ext_resource type="Script" path="res://UI/Frame.gd" id="5_82lnk"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="6_rvyti"]
+[ext_resource type="Script" path="res://UI/GameButton.gd" id="7_sdl54"]
 
 [node name="SelectAvatar" type="Control"]
 layout_mode = 3
@@ -12,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_6x03n")
 script = ExtResource("1_qv2bf")
 
 [node name="Concrete0" parent="." instance=ExtResource("1_2pv3s")]
@@ -19,6 +24,119 @@ region_rect = Rect2(256, 537219, 2304, 1296)
 
 [node name="GlobalOverlay" parent="." instance=ExtResource("2_hq8fd")]
 
-[node name="Avatars" parent="." instance=ExtResource("4_tyqms")]
-offset_left = 376.0
-offset_right = 776.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 656)
+layout_mode = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="Frame" type="Control" parent="CenterContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_82lnk")
+
+[node name="Control" type="Control" parent="CenterContainer/ColorRect"]
+clip_contents = true
+anchors_preset = 0
+offset_top = 132.0
+offset_right = 400.0
+offset_bottom = 532.0
+mouse_filter = 2
+
+[node name="Avatars" parent="CenterContainer/ColorRect/Control" instance=ExtResource("4_tyqms")]
+offset_left = 8.0
+offset_top = 8.0
+offset_bottom = 392.0
+
+[node name="Label" type="Label" parent="CenterContainer/ColorRect"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 132.0
+theme_override_fonts/font = ExtResource("6_rvyti")
+theme_override_font_sizes/font_size = 40
+text = "SELECT AVATAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/ColorRect"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -524.0
+offset_right = 399.0
+offset_bottom = -523.0
+grow_vertical = 0
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/ColorRect"]
+custom_minimum_size = Vector2(2.08165e-12, 64)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -124.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 2
+metadata/_edit_group_ = true
+
+[node name="CancelButton" type="Button" parent="CenterContainer/ColorRect/GridContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CANCEL"
+script = ExtResource("7_sdl54")
+
+[node name="ProceedButton" type="Button" parent="CenterContainer/ColorRect/GridContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PROCEED"
+script = ExtResource("7_sdl54")
+
+[node name="ColorRect2" type="ColorRect" parent="CenterContainer/ColorRect"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -124.0
+offset_right = 399.0
+offset_bottom = -123.0
+grow_vertical = 0
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="CenterContainer/ColorRect"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -60.0
+offset_right = 399.0
+offset_bottom = -59.0
+grow_vertical = 0
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[connection signal="pressed" from="CenterContainer/ColorRect/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="CenterContainer/ColorRect/GridContainer/ProceedButton" to="." method="_on_proceed_button_pressed"]

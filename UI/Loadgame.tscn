@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
 [ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="10_ck0pt"]
 
-[sub_resource type="Shader" id="Shader_tc6qw"]
+[sub_resource type="Shader" id="Shader_4bhcn"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -30,12 +30,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
 resource_local_to_scene = true
-shader = SubResource("Shader_tc6qw")
+shader = SubResource("Shader_4bhcn")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_omdk5"]
+[sub_resource type="Shader" id="Shader_lqw5d"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -53,12 +53,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
 resource_local_to_scene = true
-shader = SubResource("Shader_omdk5")
+shader = SubResource("Shader_lqw5d")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_dk55j"]
+[sub_resource type="Shader" id="Shader_bqd6c"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -76,7 +76,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_dk55j")
+shader = SubResource("Shader_bqd6c")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -140,7 +140,7 @@ metadata/_edit_group_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 0
-columns = 2
+columns = 3
 
 [node name="DeleteButton" type="Button" parent="BottomPanel/GridContainer"]
 custom_minimum_size = Vector2(0, 64)
@@ -149,6 +149,11 @@ size_flags_horizontal = 3
 text = "DELETE"
 script = ExtResource("3_uvtvc")
 
+[node name="ColorRect" type="ColorRect" parent="BottomPanel/GridContainer"]
+custom_minimum_size = Vector2(1, 2.08165e-12)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
 [node name="LoadButton" type="Button" parent="BottomPanel/GridContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
@@ -156,12 +161,22 @@ size_flags_horizontal = 3
 text = "CONTINUE"
 script = ExtResource("3_uvtvc")
 
+[node name="ColorRect" type="ColorRect" parent="BottomPanel"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
 [node name="NewGameButton" type="Button" parent="BottomPanel"]
 custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "NEW_GAME"
 script = ExtResource("3_uvtvc")
+
+[node name="ColorRect2" type="ColorRect" parent="BottomPanel"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -369,7 +384,7 @@ offset_left = 205.5
 offset_top = -1.0
 offset_right = 602.5
 grow_vertical = 0
-color = Color(0.745098, 0.745098, 0.745098, 1)
+color = Color(0.235294, 0.235294, 0.235294, 1)
 
 [connection signal="pressed" from="BottomPanel/GridContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="pressed" from="BottomPanel/GridContainer/LoadButton" to="." method="_on_start_button_pressed"]

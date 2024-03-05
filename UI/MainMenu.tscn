@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://UI/GameButton.gd" id="5_uw5ga"]
 [ext_resource type="FontVariation" uid="uid://cfurrex4by3bf" path="res://Assets/Fonts/PunktumItalic.tres" id="6_5e7re"]
 
-[sub_resource type="Shader" id="Shader_o4p2m"]
+[sub_resource type="Shader" id="Shader_rmfp8"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -26,7 +26,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pq5l2"]
 resource_local_to_scene = true
-shader = SubResource("Shader_o4p2m")
+shader = SubResource("Shader_rmfp8")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -75,11 +75,16 @@ offset_bottom = 0.0
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 689.5
+offset_left = 689.0
 offset_top = 408.0
-offset_right = 1086.5
-offset_bottom = 544.0
+offset_right = 1087.0
+offset_bottom = 537.0
 theme_override_constants/v_separation = 0
+
+[node name="ColorRect3" type="ColorRect" parent="GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
 
 [node name="PlayButton" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 64)
@@ -88,12 +93,22 @@ size_flags_horizontal = 3
 text = "PLAY"
 script = ExtResource("5_uw5ga")
 
+[node name="ColorRect4" type="ColorRect" parent="GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
 [node name="Quit" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "QUIT"
 script = ExtResource("5_uw5ga")
+
+[node name="ColorRect2" type="ColorRect" parent="GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
