@@ -76,10 +76,11 @@
 "SKILL_CORRUPTION_DESC","Decrease direct opponent's *defense* by 20%.","Zmniejsz obrazenia jednostki na przeciwko o 20%.",,"Verringert die *Verteidigung* des direkten Gegners um 20%."
 "SKILL_DEFENCE_RITUAL_DESC","Increase *defence* of all other orcs in the team by 10%.","Zwieksz obrone wszystkich innych orkow w druzynie o 20%.",,"Erhoeht die *Verteidigung* aller anderen Orks im Team um 10%."
 "SKILL_DIRECT_ATTACK_DESC","Direct units on both sides to attack the enemy.","Nakaz jednostka po lewej i prawej atak.",,"Einheiten beider Seiten zum Angriff auf den Feind fuehren."
+"SKILL_DIRTY_LAUGH_DESC","Rooney's dirty and loud laugh confuses her enemies so much that their next attack hits themselves.","Smiech Rooney'a dezorientuje przeciwnikow przez co w ich nastepnym ataku samookaleczaja sie.",,
+"SKILL_DIVINE_BLESSING_DESC","Receive blessing and increase team power by 10% for every god on the battlefield.",,,
 "SKILL_DOUBLE_CROSS_DESC","Swap places with the enemy unit with the highest defence.","Zamien sie miejscami z jednostka przecinika, ktora ma najwiecej obrony.",,"Tauscht den Platz mit einem Kaempfer des Gegners, der die hoechste Verteidigung hat."
 "SKILL_ECLIPSE_SENTINEL_DESC","Add 1 stack of vigilance.","Dodaj 1 poziom czujnosci.",,"Füge 1 Stapel Wachsamkeit hinzu."
 "SKILL_GHOUL_BITE_DESC","Add 1 stack of poison to enemy team.","Dodaj 1 poziom zatrucia przeciwnikowi.",,"Fuegt dem gegnerischen Team 1 Stapel Gift zu."
-"SKILL_DIRTY_LAUGH_DESC","Rooney's dirty and loud laugh confuses her enemies so much that their next attack hits themselves.","Smiech Rooney'a dezorientuje przeciwnikow przez co w ich nastepnym ataku samookaleczaja sie.",,
 "SKILL_GREEN_RANKS_DESC","Add 'orc' tag to the first unit that doesn't have it. Start with enemy team.","Dodaj tag 'orc' pierwszemu przeciwnikowi, ktory go nie ma. Zacznij od druzyny przeciwnika.",,"Der erste Kaempfer, der kein ""Ork"" ist, erhält den Zusatz ""Ork"". Beginne mit dem gegnerischen Team."
 "SKILL_LOKI_SWAP_DESC","Swap skills of the units with the highest dmg in each team.","Zamien umiejetnosci jednostek z najwyzszym atakiem w kazdej z druzyn.","skill_loki_swap_desc_fr","Tausche die Faehigkeiten der Karten mit dem hoechsten Schaden in jedem Team."
 "SKILL_MIMICRY_DESC","Jester Thylocron mimics the last ability used by an enemy.","Uzyj ostatniej umiejetnosci uzytej przez przeciwnika.",,"Jester Thylocron imitiert die letzte Faehigkeit eines Gegners."
