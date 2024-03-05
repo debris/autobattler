@@ -65,6 +65,8 @@
 ,,,,
 "DIALOG_0003_0","Congrats! You won your first battle! Proceed to collect rewards.","Gratulacje! Wygrales swoja pierwsza bitwe! Przejdz dalej aby odebrac nagrody.","dialog_0003_0_fr","Glueckwunsch, du hast deinen ersten kampf gewonnen. Fahre fort um deine Belohnung zu erhalten."
 ,,,,
+"SKILL_ANTI_HACK_DESC","All your units of the cyborg type get an upgrade and receive 10% of this units defense. 
+",,,
 "SKILL_ARCHER_TRAINING_DESC","Increase damage by 10% for every other archer on the team.","Zwieksz obrazenia o 10% za kazdego pozostalego lucznika w druzynie.","skill_archer_training_desc_fr","Erhoeht den Schaden fuer jeden anderen Bogenschuetzen im Team um 10%."
 "SKILL_ARROW_BARRAGE_DESC","Rain down a barrage of arrows upon all enemies and reduce their defense by 10%.","Zasyp przeciwnikow strzalami i zmniejsz ich obrone o 10%.","skill_arrow_barrage_desc_fr","Lass eine Flut von Pfeilen auf alle gegnerischen kaempfer niederregnen und reduziere ihre Verteidigung um 10%."
 "SKILL_AZURE_MOMENTUM_DESC","Next two units activate their active skills two more times in this phase.","Nastepne dwie jednostki aktywuja swoj skill dodatkowe dwa razy w tej fazie.","skill_azure_momentum_fr","Die naechsten zwei karten aktivieren ihre aktiven Faehigkeiten noch zweimal in dieser Phase."
