@@ -34,6 +34,7 @@ func _init(a: BattleTeam, b: BattleTeam):
 		ProcessorRetribution.new(),
 		ProcessorCyberstrike.new(),
 		ProcessorScheduledSkills.new(),
+		ProcessorSuicideAttempt.new(),
 		ProcessorPoison.new(),
 		ProcessorSelfharm.new(),
 		ProcessorExhaustion.new(),
