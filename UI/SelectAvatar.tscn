@@ -138,5 +138,6 @@ offset_bottom = -59.0
 grow_vertical = 0
 color = Color(0.235294, 0.235294, 0.235294, 1)
 
+[connection signal="selected" from="CenterContainer/ColorRect/Control/Avatars" to="." method="_on_avatars_selected"]
 [connection signal="pressed" from="CenterContainer/ColorRect/GridContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="CenterContainer/ColorRect/GridContainer/ProceedButton" to="." method="_on_proceed_button_pressed"]

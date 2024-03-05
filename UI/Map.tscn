@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="4_lego7"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="5_g67ud"]
 
-[sub_resource type="Shader" id="Shader_fsebv"]
+[sub_resource type="Shader" id="Shader_24pbc"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -26,7 +26,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wpwi3"]
 resource_local_to_scene = true
-shader = SubResource("Shader_fsebv")
+shader = SubResource("Shader_24pbc")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3

@@ -34,7 +34,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.705882)
+
+[node name="OnHover" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+mouse_filter = 2
+color = Color(0.431373, 0.431373, 0.392157, 1)
+
+[node name="OnSelect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+mouse_filter = 2
+color = Color(0.745098, 0.745098, 0.745098, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -43,6 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("1_r4ajh")
 expand_mode = 1
 
@@ -53,6 +71,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("2_wyj4j")
 
 [node name="Shine" parent="." instance=ExtResource("3_8qnj4")]
