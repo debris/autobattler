@@ -73,6 +73,7 @@
 "SKILL_BEARS_MIGHT_DESC","If unit on the right is defending this phase, it defends for extra defence equal to this characters defence.","Jesli jednostka po prawej broni w tej fazie, jej obrona jest zwiekszona o obrone tej jednostki.","skill_bears_might_fr","Wenn eine Kaempfer in dieser Phase auf der rechten Seite verteidigt wird, erhaelt er einen zusaetzlichen Verteidigungswert, der der Verteidigung dieser Figur entspricht."
 "SKILL_BLOOD_RAGE_DESC","Increase damage by 20%.","Zwieksz obrazenia o 20%.","skill_blood_rage_fr","Schaden um 20% erhoehen."
 "SKILL_BLUE_42_DESC","Increase *defence* by 10% for every other defender on the team.","Zwieksz obrazenia o 10% za kazdego innego 'defender' w druzynie.",,"Erhöht die *Verteidigung* um 10% für jeden anderen Verteidiger im Team."
+"SKILL_BRIMSTONE_CURSE_DESC","Cast a brimstone curse, reducing damage and defense to all units on the battlefield by 10%.",,,
 "SKILL_CORRUPTION_DESC","Decrease direct opponent's *defense* by 20%.","Zmniejsz obrazenia jednostki na przeciwko o 20%.",,"Verringert die *Verteidigung* des direkten Gegners um 20%."
 "SKILL_DEFENCE_RITUAL_DESC","Increase *defence* of all other orcs in the team by 10%.","Zwieksz obrone wszystkich innych orkow w druzynie o 20%.",,"Erhoeht die *Verteidigung* aller anderen Orks im Team um 10%."
 "SKILL_DIRECT_ATTACK_DESC","Direct units on both sides to attack the enemy.","Nakaz jednostka po lewej i prawej atak.",,"Einheiten beider Seiten zum Angriff auf den Feind fuehren."

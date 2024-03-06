@@ -37,7 +37,8 @@ static var all: Array[Unit] = [
 	UnitBaldBarney.new(),
 	UnitNova.new(),
 	UnitLowW8.new(),
-	UnitArzog.new()
+	UnitArzog.new(),
+	UnitGreenscale.new()
 ]
 
 static var orcs: Array[Unit] = [
@@ -83,5 +84,6 @@ static var gods: Array[Unit] = [
 	UnitLoki.new(),
 	UnitOtis.new(),
 	UnitNova.new(),
-	UnitArzog.new()
+	UnitArzog.new(),
+	UnitGreenscale.new()
 ]
