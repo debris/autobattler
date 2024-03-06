@@ -86,6 +86,7 @@
 "SKILL_LOKI_SWAP_DESC","Swap skills of the units with the highest dmg in each team.","Zamien umiejetnosci jednostek z najwyzszym atakiem w kazdej z druzyn.","skill_loki_swap_desc_fr","Tausche die Faehigkeiten der Karten mit dem hoechsten Schaden in jedem Team."
 "SKILL_MIMICRY_DESC","Jester Thylocron mimics the last ability used by an enemy.","Uzyj ostatniej umiejetnosci uzytej przez przeciwnika.",,"Jester Thylocron imitiert die letzte Faehigkeit eines Gegners."
 "SKILL_PAINT_DESC","Paints current phase as active for all units on the battlefield.","Zmien obecna faze na aktywna dla wszystkich jednostek na polu walki.",,"Setzt die aktuelle Phase für alle Kaempfer auf dem Schlachtfeld auf aktiv."
+"SKILL_PONY_TRICK_DESC","Pony trick swaps this units damage and defense.",,,
 "SKILL_CLEANUP_DESC","Cleans current phase for all units on the battlefield.","Zmien obecna faze na nieaktywna dla wszystkich jednostek na polu walki.",,"Die aktuelle Phase wird für alle Kaempfer auf dem Schlachtfeld auf inaktiv gesetzt."
 "SKILL_SELFCARE_DESC","Turn 50% of this unit's current bonuses into pernament improvements.","Zamien 50% obecnych bonusow tej jednostki na stale ulepszenia.",,"Tausche 50% des aktuellen Bonus dieses Kaempfers gegen permanente Upgrades."
 "SKILL_SELFISH_EXCHANGE_DESC","Swap your power with your opponent's power if it is higher than yours.",,,
