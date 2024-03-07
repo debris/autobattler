@@ -8,7 +8,7 @@ func _init(u, v):
 	value = v
 
 func _finalize(battle_state: BattleState):
-	battle_state.battle_round = max(0, battle_state.battle_round + value)
+	battle_state.pointer.battle_round = max(0, battle_state.pointer.battle_round + value)
 
 func _to_string() -> String:
 	return unit.name + " changes the round number by " + str(value)

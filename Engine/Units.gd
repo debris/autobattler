@@ -78,7 +78,8 @@ static var tricksters: Array[Unit] = [
 	UnitLoki.new(),
 	UnitJesterThylocron.new(),
 	UnitRooney.new(),
-	UnitBaldBarney.new()
+	UnitBaldBarney.new(),
+	UnitOneTrickPony.new()
 ]
 
 static var gods: Array[Unit] = [

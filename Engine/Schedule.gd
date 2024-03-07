@@ -53,12 +53,6 @@ func copy() -> Schedule:
 	result.kind = kind
 	return result
 
-func as_string() -> String:
-	var number = 0
-	for i in data.size():
-		number = number | (int(data[i]) << i)
-	return "%x%x%02x" % [kind as int, data.size(), number]
-
 func tier() -> String:
 	var ok = 0
 	var s = data.size()
@@ -86,3 +80,11 @@ func tier() -> String:
 		return "D"
 	
 	return "F"
+
+static func compare_tier(a: String, b: String) -> bool:
+	if a == "S":
+		return true
+	if b == "S":
+		return false
+	
+	return a < b
