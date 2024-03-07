@@ -73,6 +73,7 @@ func display_preview():
 	var unit_controls = team_list.get_children()
 	for i in 6:
 		var unit = save_preview.team.members[i]
+		unit_controls[i].get_node("DisplayTooltip").enabled = unit != null
 		if unit != null:
 			unit_controls[i].unit = BattleUnit.new(unit, save_preview.player_team_level)
 		else:
