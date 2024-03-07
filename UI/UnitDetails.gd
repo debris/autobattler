@@ -1,7 +1,7 @@
 # Control capable of displaying unit types: `OwnedUnit` and `BattleUnit`
 extends Control
 
-@export var unit: Resource:
+@export var unit: BattleUnit:
 	set(value):
 		unit = value
 		if is_node_ready():

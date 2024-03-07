@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
 [ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="10_ck0pt"]
 
-[sub_resource type="Shader" id="Shader_rg2a1"]
+[sub_resource type="Shader" id="Shader_qv444"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -30,12 +30,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
 resource_local_to_scene = true
-shader = SubResource("Shader_rg2a1")
+shader = SubResource("Shader_qv444")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_dredt"]
+[sub_resource type="Shader" id="Shader_0oepd"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -53,12 +53,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
 resource_local_to_scene = true
-shader = SubResource("Shader_dredt")
+shader = SubResource("Shader_0oepd")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_chptg"]
+[sub_resource type="Shader" id="Shader_jqbst"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -76,7 +76,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_chptg")
+shader = SubResource("Shader_jqbst")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -222,12 +222,18 @@ offset_bottom = 0.0
 [node name="SaveName" type="Label" parent="CenterContainer/Preview"]
 layout_mode = 0
 offset_left = 16.0
-offset_right = 256.0
+offset_right = 192.0
 offset_bottom = 72.0
+mouse_filter = 1
 theme_override_fonts/font = ExtResource("6_fe43y")
 theme_override_font_sizes/font_size = 36
 text = "save name"
 vertical_alignment = 1
+
+[node name="DisplayTooltip" type="Node" parent="CenterContainer/Preview/SaveName"]
+script = ExtResource("10_ck0pt")
+side = 0
+text = "SAVE NAME"
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/Preview"]
 layout_mode = 0
