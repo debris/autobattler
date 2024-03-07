@@ -38,7 +38,7 @@ func update_display():
 	unit_control.unit = unit
 	
 	tags_content.text = ", ".join(unit.tags.keys())
-	skill_name.text = "Active: " + unit.skill.name
+	skill_name.text = "Activated: " + unit.skill.name
 	skill_description.text = tr(unit.skill.description)
 	passive_name.text = "Passive: " + unit.passive.name
 	passive_description.text = tr(unit.passive.description)

@@ -8,5 +8,5 @@ func _init():
 	def = 1
 	skill = SkillPonyTrick.new()
 	passive = PassiveEmpty.new()
-	tags = ["horse"]
+	tags = ["horse", "trickster"]
 	reroll = 70
