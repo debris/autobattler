@@ -9,11 +9,21 @@ extends Control
 
 
 @onready var unit_control = $CenterContainer/Control/UnitControl
+
 @onready var tags_content = $Control/TagsContent
+@onready var tag_underline = $Control/TagsUnderline
+
 @onready var skill_name = $Control/SkillName
 @onready var skill_description = $Control/SkillDescription
+@onready var skill_underline = $Control/SkillUnderline
+
 @onready var passive_name = $Control/PassiveName
 @onready var passive_description = $Control/PassiveDescription
+@onready var passive_underline = $Control/PassiveUnderline
+
+@onready var empowered_name = $Control/EmpoweredName
+@onready var empowered_counter = $Control/EmpoweredCounter
+@onready var empowered_underline = $Control/EmpoweredUnderline
 
 func _ready():
 	update_display()
@@ -30,10 +40,19 @@ func update_display():
 	if unit.skill is SkillEmpty:
 		skill_name.visible = false
 		skill_description.visible = false
+		skill_underline.visible = false
 	
 	if unit.passive is PassiveEmpty:
 		passive_name.visible = false
 		passive_description.visible = false
+		passive_underline.visible = false
+
+	var display_empowered = unit.empowered > 0
+	empowered_name.visible = display_empowered
+	empowered_counter.visible = display_empowered
+	empowered_underline.visible = display_empowered
+
+
 
 func _gui_input(event):
 	var mouse_position = get_global_mouse_position()

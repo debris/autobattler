@@ -1,16 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmqmsbr11cdeb"]
+[gd_scene load_steps=5 format=3 uid="uid://cmqmsbr11cdeb"]
 
 [ext_resource type="Script" path="res://UI/UnitDetails.gd" id="1_28edc"]
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="3_bbnrl"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="3_vb625"]
+[ext_resource type="Script" path="res://UI/GamePanel.gd" id="4_n7wx1"]
 
 [node name="BattleUnitDetails" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
 script = ExtResource("1_28edc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -28,13 +27,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -576.0
+offset_left = 64.0
+offset_right = -464.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="Control" type="Control" parent="CenterContainer"]
-custom_minimum_size = Vector2(256, 384)
+custom_minimum_size = Vector2(400, 600)
 layout_mode = 2
 mouse_filter = 2
 
@@ -45,19 +45,29 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 offset_right = 128.0
 offset_bottom = 192.0
-scale = Vector2(2, 2)
+scale = Vector2(3.125, 3.125)
 details_tooltips_enabled = true
+
+[node name="GamePanel" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 688.0
+offset_top = -8.0
+offset_right = 1088.0
+offset_bottom = 656.0
+script = ExtResource("4_n7wx1")
+shine = false
 
 [node name="Control" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 576.0
-offset_top = 88.0
-offset_right = 1076.0
-offset_bottom = 568.0
+offset_left = 704.0
+offset_top = 24.0
+offset_right = 1072.0
+offset_bottom = 624.0
 mouse_filter = 2
+metadata/_edit_group_ = true
 
 [node name="Tags" type="Label" parent="Control"]
-custom_minimum_size = Vector2(2.08165e-12, 20)
+custom_minimum_size = Vector2(368, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.5, 0.25, 1)
 theme_override_fonts/font = ExtResource("3_vb625")
@@ -65,15 +75,20 @@ theme_override_font_sizes/font_size = 28
 text = "Tags"
 
 [node name="TagsContent" type="Label" parent="Control"]
-custom_minimum_size = Vector2(500, 20)
+custom_minimum_size = Vector2(368, 20)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vb625")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "TAGS CONTENT"
 autowrap_mode = 2
 
+[node name="TagsUnderline" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
 [node name="PassiveName" type="Label" parent="Control"]
-custom_minimum_size = Vector2(2.08165e-12, 20)
+custom_minimum_size = Vector2(368, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
 theme_override_fonts/font = ExtResource("3_vb625")
@@ -81,16 +96,21 @@ theme_override_font_sizes/font_size = 28
 text = "Passive Name"
 
 [node name="PassiveDescription" type="Label" parent="Control"]
-custom_minimum_size = Vector2(500, 20)
+custom_minimum_size = Vector2(368, 20)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vb625")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Passive
 "
 autowrap_mode = 2
 
+[node name="PassiveUnderline" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
 [node name="SkillName" type="Label" parent="Control"]
-custom_minimum_size = Vector2(2.08165e-12, 20)
+custom_minimum_size = Vector2(368, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
 theme_override_fonts/font = ExtResource("3_vb625")
@@ -98,10 +118,36 @@ theme_override_font_sizes/font_size = 28
 text = "Skill Name"
 
 [node name="SkillDescription" type="Label" parent="Control"]
-custom_minimum_size = Vector2(500, 20)
+custom_minimum_size = Vector2(368, 20)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vb625")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Skill
 "
 autowrap_mode = 2
+
+[node name="SkillUnderline" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="EmpoweredName" type="Label" parent="Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 28
+text = "EMPOWERED LEVEL"
+
+[node name="EmpoweredCounter" type="Label" parent="Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 20
+text = "1"
+autowrap_mode = 2
+
+[node name="EmpoweredUnderline" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)

@@ -22,6 +22,8 @@ var skill_bonus_casts: int
 var tags: Dictionary
 # memorized team_level
 var team_level: int
+# empowered
+var empowered: int
 
 func increase_by_x_percent(value: float, x: float):
 	return value * (1.0 + x / 100.0)
@@ -31,6 +33,7 @@ func _init(u: OwnedUnit, tl: int = 0):
 	unit = u
 	name = u.base.name
 	texture = u.base.texture
+	empowered = u.empowered
 	var multiplier = team_level + u.empowered
 	dmg = int(increase_by_x_percent(u.dmg, multiplier * 10.0))
 	def = int(increase_by_x_percent(u.def, multiplier * 10.0))
