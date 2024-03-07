@@ -67,7 +67,11 @@ func _on_sacrifice_button_pressed():
 		animation_player.play("sacrifice")
 		await animation_player.animation_finished
 		if empowered_unit != null:
-			empowered_unit.unit.empowered += 1
+			# transfer empowerment level if level > 0
+			if sacrificed_unit.unit.empowered > 0:
+				empowered_unit.unit.empowered += sacrificed_unit.unit.empowered
+			else:
+				empowered_unit.unit.empowered += 1
 			empowered_unit_control.unit = BattleUnit.new(empowered_unit.unit, save.player_team_level)
 			save.delete_unit(sacrificed_unit.unit)
 			proceed_button.text = "PROCEED"

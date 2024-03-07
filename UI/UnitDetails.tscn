@@ -75,7 +75,7 @@ mouse_filter = 1
 theme_override_colors/font_color = Color(0.501961, 0.501961, 0.25098, 1)
 theme_override_fonts/font = ExtResource("3_vb625")
 theme_override_font_sizes/font_size = 28
-text = "EMPOWERED LEVEL"
+text = "POWER LEVEL"
 
 [node name="DisplayTooltip" type="Node" parent="Control/EmpoweredName"]
 script = ExtResource("5_fa22v")

@@ -56,6 +56,7 @@ func update_display():
 	var display_empowered = unit.empowered > 0
 	empowered_name.visible = display_empowered
 	empowered_counter.visible = display_empowered
+	empowered_counter.text = str(unit.empowered)
 	empowered_underline.visible = display_empowered
 
 	damage_value.text = str(unit.dmg) 
