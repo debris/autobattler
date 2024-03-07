@@ -25,6 +25,12 @@ extends Control
 @onready var empowered_counter = $Control/EmpoweredCounter
 @onready var empowered_underline = $Control/EmpoweredUnderline
 
+@onready var damage_value = $Control/DamageValue
+@onready var defense_value = $Control/DefenseValue
+
+@onready var damage_per_round_value = $Control/DamagePerRoundValue
+@onready var defense_per_round_value = $Control/DefensePerRoundValue
+
 func _ready():
 	update_display()
 
@@ -52,6 +58,10 @@ func update_display():
 	empowered_counter.visible = display_empowered
 	empowered_underline.visible = display_empowered
 
+	damage_value.text = str(unit.dmg) 
+	defense_value.text = str(unit.def)
+	damage_per_round_value.text = "%.1f" % unit.damage_per_round()
+	defense_per_round_value.text = "%.1f" % unit.defense_per_round()
 
 
 func _gui_input(event):

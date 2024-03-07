@@ -40,9 +40,3 @@ func _ready():
 	shine_control.visible = shine
 
 	add_child(shine_control)
-
-	print("size: ", size)
-
-
-func _process(_delta):
-	print("size p: ", size)

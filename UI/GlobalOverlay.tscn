@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://ju1q54ovnocy" path="res://UI/GameTheme.tres" id="4_aoywr"]
 [ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="6_6rfcr"]
 
-[sub_resource type="Shader" id="Shader_jpa04"]
+[sub_resource type="Shader" id="Shader_lokd6"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -25,7 +25,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_itegs"]
 resource_local_to_scene = true
-shader = SubResource("Shader_jpa04")
+shader = SubResource("Shader_lokd6")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -72,6 +72,7 @@ theme_override_constants/v_separation = 0
 visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+focus_mode = 0
 text = "x"
 script = ExtResource("3_0d3qd")
 
@@ -83,6 +84,7 @@ text = "Exit"
 visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+focus_mode = 0
 text = "*"
 script = ExtResource("3_0d3qd")
 
@@ -94,6 +96,7 @@ text = "Settings"
 visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+focus_mode = 0
 text = "?"
 script = ExtResource("3_0d3qd")
 
@@ -105,6 +108,7 @@ text = "Help"
 visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+focus_mode = 0
 text = "C"
 script = ExtResource("3_0d3qd")
 
@@ -116,6 +120,7 @@ text = "Character"
 visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+focus_mode = 0
 text = "T"
 script = ExtResource("3_0d3qd")
 
@@ -127,6 +132,7 @@ text = "Team"
 visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+focus_mode = 0
 text = "'"
 script = ExtResource("3_0d3qd")
 

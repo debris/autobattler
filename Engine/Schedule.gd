@@ -53,17 +53,21 @@ func copy() -> Schedule:
 	result.kind = kind
 	return result
 
-func tier() -> String:
+func frequency() -> float:
 	var ok = 0
 	var s = data.size()
 	for i in s:
 		if data[i]:
 			ok += 1
 	
+	return float(ok) / float(s)
+
+func tier() -> String:
 	var is_float_greater_or_equal = func(a, b):
 		return a > b || is_zero_approx(a - b)
 
-	var percent: float = float(ok) / float(s)
+	var percent = frequency()
+
 	if is_float_greater_or_equal.call(percent, 3.0 / 7.0):
 		return "S"
 

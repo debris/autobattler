@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmqmsbr11cdeb"]
+[gd_scene load_steps=6 format=3 uid="uid://cmqmsbr11cdeb"]
 
 [ext_resource type="Script" path="res://UI/UnitDetails.gd" id="1_28edc"]
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="3_bbnrl"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="3_vb625"]
 [ext_resource type="Script" path="res://UI/GamePanel.gd" id="4_n7wx1"]
+[ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="5_fa22v"]
 
 [node name="BattleUnitDetails" type="Control"]
 layout_mode = 3
@@ -54,6 +55,7 @@ offset_left = 688.0
 offset_top = -8.0
 offset_right = 1088.0
 offset_bottom = 656.0
+mouse_filter = 2
 script = ExtResource("4_n7wx1")
 shine = false
 
@@ -66,10 +68,38 @@ offset_bottom = 624.0
 mouse_filter = 2
 metadata/_edit_group_ = true
 
+[node name="EmpoweredName" type="Label" parent="Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.501961, 0.501961, 0.25098, 1)
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 28
+text = "EMPOWERED LEVEL"
+
+[node name="DisplayTooltip" type="Node" parent="Control/EmpoweredName"]
+script = ExtResource("5_fa22v")
+side = 0
+text = "EACH LEVEL GRANTS +10% DAMAGE AND DEFENSE"
+
+[node name="EmpoweredCounter" type="Label" parent="Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="EmpoweredUnderline" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
 [node name="Tags" type="Label" parent="Control"]
 custom_minimum_size = Vector2(368, 20)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.5, 0.25, 1)
+theme_override_colors/font_color = Color(0.501961, 0.501961, 0.25098, 1)
 theme_override_fonts/font = ExtResource("3_vb625")
 theme_override_font_sizes/font_size = 28
 text = "Tags"
@@ -80,9 +110,99 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vb625")
 theme_override_font_sizes/font_size = 20
 text = "TAGS CONTENT"
+horizontal_alignment = 2
 autowrap_mode = 2
 
 [node name="TagsUnderline" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="Damage" type="Label" parent="Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.25, 0.25, 1)
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 28
+text = "DAMAGE
+"
+
+[node name="DamageValue" type="Label" parent="Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="DamageUnderline" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="DamagePerRound" type="Label" parent="Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.25, 0.25, 1)
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 28
+text = "DAMAGE PER ROUND"
+
+[node name="DamagePerRoundValue" type="Label" parent="Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="DamagePerRoundUnderline" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="Defense" type="Label" parent="Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.501961, 0.25098, 1)
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 28
+text = "DEFENSE"
+
+[node name="DefenseValue" type="Label" parent="Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="DefenseUnderline" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="DefensePerRound" type="Label" parent="Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.501961, 0.25098, 1)
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 28
+text = "DEFENSE PER ROUND"
+
+[node name="DefensePerRoundValue" type="Label" parent="Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vb625")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="DefensePerRoundUnderline" type="ColorRect" parent="Control"]
 custom_minimum_size = Vector2(2.08165e-12, 1)
 layout_mode = 2
 color = Color(0.235294, 0.235294, 0.235294, 1)
@@ -127,27 +247,6 @@ text = "Skill
 autowrap_mode = 2
 
 [node name="SkillUnderline" type="ColorRect" parent="Control"]
-custom_minimum_size = Vector2(2.08165e-12, 1)
-layout_mode = 2
-color = Color(0.235294, 0.235294, 0.235294, 1)
-
-[node name="EmpoweredName" type="Label" parent="Control"]
-custom_minimum_size = Vector2(368, 20)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
-theme_override_fonts/font = ExtResource("3_vb625")
-theme_override_font_sizes/font_size = 28
-text = "EMPOWERED LEVEL"
-
-[node name="EmpoweredCounter" type="Label" parent="Control"]
-custom_minimum_size = Vector2(368, 20)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vb625")
-theme_override_font_sizes/font_size = 20
-text = "1"
-autowrap_mode = 2
-
-[node name="EmpoweredUnderline" type="ColorRect" parent="Control"]
 custom_minimum_size = Vector2(2.08165e-12, 1)
 layout_mode = 2
 color = Color(0.235294, 0.235294, 0.235294, 1)

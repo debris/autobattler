@@ -71,3 +71,17 @@ func skill_at(phase: int) -> Skill:
 		Schedule.Kind.DMG: return SkillAttack.new()
 	assert(false)
 	return null
+
+func damage_per_round() -> float:
+	var phase = 0
+	while schedules[phase].kind != Schedule.Kind.DMG:
+		phase += 1
+
+	return schedules[phase].frequency() * dmg
+
+func defense_per_round() -> float:
+	var phase = 0
+	while schedules[phase].kind != Schedule.Kind.DEF:
+		phase += 1
+
+	return schedules[phase].frequency() * def
