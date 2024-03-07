@@ -32,7 +32,7 @@ func _on_text_edit_text_changed():
 	name_already_exists.visible = false
 
 func proceed(text):
-	if Save.exists(text):
+	if text == "" || Save.exists(text):
 		return
 
 	action_selected.emit(SelectNameActionProceed.new(text))
