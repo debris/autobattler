@@ -57,7 +57,6 @@ offset_right = 1088.0
 offset_bottom = 656.0
 mouse_filter = 2
 script = ExtResource("4_n7wx1")
-shine = false
 
 [node name="Control" type="GridContainer" parent="."]
 layout_mode = 0

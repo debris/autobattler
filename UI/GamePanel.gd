@@ -33,6 +33,7 @@ func _ready():
 
 	shine_control = preload("res://UI/Shine.tscn").instantiate()
 	shine_control.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	shine_control.set_anchors_preset(PRESET_TOP_LEFT)
 	shine_control.size = size
 	shine_control.position = Vector2.ZERO
 	shine_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
