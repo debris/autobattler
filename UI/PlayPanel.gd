@@ -6,6 +6,7 @@ const SPEED_3 = 0.1
 
 signal play
 signal pause
+signal step
 
 func _on_speed_1_pressed():
 	_set_speed(SPEED_1)
@@ -23,3 +24,6 @@ func _set_speed(speed: float):
 
 func _on_pause_pressed():
 	pause.emit()
+
+func _on_step_pressed():
+	step.emit()

@@ -22,7 +22,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -896.0
+offset_right = -832.0
 offset_bottom = -584.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -48,7 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
-columns = 4
+columns = 5
 
 [node name="Pause" type="Button" parent="GridContainer"]
 layout_mode = 2
@@ -63,6 +63,20 @@ script = ExtResource("4_l6lj3")
 script = ExtResource("5_4o10n")
 side = 3
 text = "PAUSE"
+
+[node name="Step" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_vhjf8")
+theme_override_font_sizes/font_size = 24
+text = " >|"
+script = ExtResource("4_l6lj3")
+
+[node name="DisplayTooltip" type="Node" parent="GridContainer/Step"]
+script = ExtResource("5_4o10n")
+side = 3
+text = "STEP"
 
 [node name="Speed1" type="Button" parent="GridContainer"]
 layout_mode = 2
@@ -121,6 +135,7 @@ material = SubResource("ShaderMaterial_3ksoe")
 layout_mode = 1
 
 [connection signal="pressed" from="GridContainer/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="GridContainer/Step" to="." method="_on_step_pressed"]
 [connection signal="pressed" from="GridContainer/Speed1" to="." method="_on_speed_1_pressed"]
 [connection signal="pressed" from="GridContainer/Speed2" to="." method="_on_speed_2_pressed"]
 [connection signal="pressed" from="GridContainer/Speed3" to="." method="_on_speed_3_pressed"]

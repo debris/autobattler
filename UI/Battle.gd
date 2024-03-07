@@ -208,6 +208,7 @@ func _on_logs_button_pressed():
 	global_overlay.present_subview(console_logs)
 
 func _on_step_pressed():
+	paused = true
 	battle_state.proceed()
 
 func _on_start_pressed():
@@ -242,6 +243,14 @@ func _on_play_panel_play():
 		battle_state.proceed()
 	paused = false
 
-
 func _on_play_panel_pause():
 	paused = true
+
+func _on_play_panel_step():
+	if !started:
+		started = true
+		_on_start_pressed()
+		paused = true
+		return
+	paused = true
+	battle_state.proceed()
