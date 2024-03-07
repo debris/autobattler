@@ -64,10 +64,10 @@ func get_my_position() -> BattleUnitPosition:
 	var index = team.iterator().until(Filters.this_unit(root)).count()
 	return BattleUnitPosition.new(team, index)
 
-func get_opposite_unit() -> Option:
+func get_opposite_unit() -> OptionIterator:
 	var position = get_my_position()
 	var enemy_team = get_enemy_team()
-	return Option.new(enemy_team.members[position.index])
+	return OptionIterator.new(enemy_team.members[position.index])
 
 func get_next_units() -> Iterator:
 	return get_my_team().iterator()\

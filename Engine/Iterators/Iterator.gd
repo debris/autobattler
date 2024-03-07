@@ -31,8 +31,8 @@ func alternate(other_iterator: Iterator) -> AlternateIterator:
 func zip(other_iterator: Iterator) -> ZipIterator:
 	return ZipIterator.new(self, other_iterator)
 
-func first() -> Option:
-	return Option.new(next())
+func first() -> OptionIterator:
+	return OptionIterator.new(next())
 
 func for_each(for_each_function):
 	var item = next()
@@ -47,7 +47,7 @@ func reduce(accumulator, callable):
 		item = next()
 	return accumulator
 
-func find(pattern) -> Option:
+func find(pattern) -> OptionIterator:
 	return skip_until(pattern).first()
 
 func count(pattern = null) -> int:

@@ -1,5 +1,5 @@
 extends Iterator
-class_name Option
+class_name OptionIterator
 
 var value
 
@@ -22,7 +22,7 @@ func get_value():
 
 func map(callable):
 	if value != null:
-		return Option.new(callable.call(value))
+		return OptionIterator.new(callable.call(value))
 	return self
 
 func unwrap_or(or_value):

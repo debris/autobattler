@@ -56,10 +56,10 @@ func test_azure_dragon_skill():
 	assert_true(logs[0].skill is SkillAzureMomentum)
 	assert_true(logs[1] is LogSkillCastBonus)
 	assert_eq(logs[1].unit, battle_state.team_a.members[1])
-	assert_eq(logs[1].value, 1)
+	assert_eq(logs[1].value, 2)
 	assert_true(logs[2] is LogSkillCastBonus)
 	assert_eq(logs[2].unit, battle_state.team_a.members[2])
-	assert_eq(logs[2].value, 1)
+	assert_eq(logs[2].value, 2)
 
 func test_azure_dragon_skill_different_schedules():
 	battle_state.team_a.members[0] = azure_dragon
@@ -86,4 +86,4 @@ func test_azure_dragon_skill_null_ally():
 	assert_eq(logs[0].unit, azure_dragon)
 	assert_true(logs[1] is LogSkillCastBonus)
 	assert_eq(logs[1].unit, battle_state.team_a.members[2])
-	assert_eq(logs[1].value, 1)
+	assert_eq(logs[1].value, 2)
