@@ -2,18 +2,23 @@ extends Control
 
 signal selected(index)
 
-@export var texture: Texture2D:
+@export var avatar: Avatar:
 	set(value):
-		texture = value
+		avatar = value
 		if is_node_ready():
 			_update_avatar()
 
 @onready var texture_rect = $TextureRect
 @onready var on_hover = $OnHover
 @onready var on_select = $OnSelect
+@onready var name_label = $NameLabel
+@onready var ability_label = $AbilityLabel
 
 func _update_avatar():
-	texture_rect.texture = texture
+	if avatar != null:
+		texture_rect.texture = avatar.texture
+		ability_label.text = avatar.ability
+		name_label.text = avatar.name
 
 func _ready():
 	_update_avatar()

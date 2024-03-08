@@ -19,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 metadata/_edit_group_ = true
 
 [node name="Avatars" type="GridContainer" parent="ScrollContainer"]
@@ -27,7 +28,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 12
-columns = 3
 
 [node name="Avatar" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
 layout_mode = 2
@@ -42,43 +42,4 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Avatar5" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar6" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar7" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar8" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar9" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar10" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar11" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar12" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar13" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar14" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar15" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar16" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar17" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
-layout_mode = 2
-
-[node name="Avatar18" parent="ScrollContainer/Avatars" instance=ExtResource("1_dnd6a")]
 layout_mode = 2

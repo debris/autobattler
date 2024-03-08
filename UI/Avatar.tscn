@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://btj30o8klqss2"]
+[gd_scene load_steps=10 format=3 uid="uid://btj30o8klqss2"]
 
 [ext_resource type="Script" path="res://UI/Avatar.gd" id="1_l4ymg"]
 [ext_resource type="Texture2D" uid="uid://crbo8g4mkw6r" path="res://Assets/UnitsTransparent/father_piet.png" id="1_r4ajh"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="2_wyj4j"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="3_8qnj4"]
 [ext_resource type="Shader" path="res://UI/Shine.gdshader" id="4_gwfy6"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="6_m1y2g"]
+[ext_resource type="FontVariation" uid="uid://cfurrex4by3bf" path="res://Assets/Fonts/PunktumItalic.tres" id="6_ndcid"]
+[ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="8_a578g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mq13u"]
 resource_local_to_scene = true
@@ -15,23 +18,23 @@ shader_parameter/shine_size = 0.3
 shader_parameter/x_offset = 0.0
 
 [node name="Avatar" type="Control"]
-custom_minimum_size = Vector2(120, 120)
+custom_minimum_size = Vector2(400, 120)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1032.0
+offset_right = -752.0
 offset_bottom = -528.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l4ymg")
-metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -40,7 +43,8 @@ color = Color(0, 0, 0, 0.705882)
 [node name="OnHover" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_right = 120.0
+offset_top = 16.0
+offset_right = 400.0
 offset_bottom = 120.0
 mouse_filter = 2
 color = Color(0.431373, 0.431373, 0.392157, 1)
@@ -48,34 +52,64 @@ color = Color(0.431373, 0.431373, 0.392157, 1)
 [node name="OnSelect" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_right = 120.0
+offset_top = 16.0
+offset_right = 400.0
 offset_bottom = 120.0
 mouse_filter = 2
 color = Color(0.745098, 0.745098, 0.745098, 1)
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("1_r4ajh")
-expand_mode = 1
 
 [node name="Frame" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_wyj4j")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -272.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_r4ajh")
+expand_mode = 1
 
 [node name="Shine" parent="." instance=ExtResource("3_8qnj4")]
 material = SubResource("ShaderMaterial_mq13u")
 layout_mode = 1
 offset_top = 0.0
 offset_bottom = 0.0
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 16.0
+offset_right = 384.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("6_ndcid")
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AbilityLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 56.0
+offset_right = 384.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("6_m1y2g")
+theme_override_font_sizes/font_size = 16
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="DisplayTooltip" type="Node" parent="."]
+script = ExtResource("8_a578g")
+side = 0
+text = "SELECT"
