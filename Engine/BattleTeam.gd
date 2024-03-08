@@ -6,8 +6,10 @@ const START_POWER_MULTIPLIER: int = 3
 var power: int
 var members: Array[BattleUnit]
 var stacks: Stacks
+var avatar: Avatar
 
-func _init(team: Team, team_level: int = 0):
+func _init(team: Team, team_level: int = 0, a: Avatar = null):
+	avatar = a
 	power = 0
 	members = []
 	for unit in team.members:

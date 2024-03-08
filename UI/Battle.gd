@@ -12,6 +12,7 @@ signal battle_finished(result)
 @export var enemy_team: Team
 @export var player_team_level: int
 @export var enemy_team_level: int
+@export var avatar: Avatar
 @export var bench: Array[OwnedUnit]
 @export var dialog_progress: DialogProgress
 
@@ -115,7 +116,7 @@ func _ready():
 		global_overlay.present_subview(list)
 	)
 
-	battle_state = BattleState.new(BattleTeam.new(enemy_team, enemy_team_level), BattleTeam.new(player_team, player_team_level))
+	battle_state = BattleState.new(BattleTeam.new(enemy_team, enemy_team_level), BattleTeam.new(player_team, player_team_level, avatar))
 	team_a_control.battle_team_query = battle_state.team_a_query()
 	team_b_control.battle_team_query = battle_state.team_b_query()
 	team_a_power.battle_team = battle_state.team_a

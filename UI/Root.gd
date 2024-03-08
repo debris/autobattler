@@ -121,14 +121,15 @@ func loadgame_screen():
 	# should always be initialized to 6 items
 	# TODO: avatars should predefine 'OwnedUnits' with their schedules
 	# its important for the proper introduction to the game for a new player
-	save.team.members = [
-		save.avatar.starting_units[0],
-		save.avatar.starting_units[1],
-		null,
-		null,
-		null,
-		null
-	]
+	if save.count_units() == 0:
+		save.team.members = [
+			save.avatar.starting_units[0],
+			save.avatar.starting_units[1],
+			null,
+			null,
+			null,
+			null
+		]
 
 	# OBSOLETE
 	while save.count_units() == 0:
@@ -191,6 +192,7 @@ func display_battle(collection: Array[Unit]):
 	var battle = preload("res://UI/Battle.tscn").instantiate()
 	battle.player_team_level = save.player_team_level
 	battle.enemy_team_level = enemy_team_level(save.chapter)
+	battle.avatar = save.avatar
 	# TODO refactor so team and bench are not modified internally
 	battle.player_team = save.team
 	battle.bench = save.bench

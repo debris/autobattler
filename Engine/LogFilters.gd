@@ -32,6 +32,10 @@ static func enemy_team_stacks_not_zero(kind: Stacks.Kind):
 	return func(pl: ProcessedLog):
 		return pl.query().get_enemy_team().stacks.get_value(kind) > 0
 
+static func my_team_avatar(avatar_type):
+	return func(pl: ProcessedLog):
+		return is_instance_of(pl.query().get_my_team().avatar, avatar_type)
+
 static func round_greater_than(number):
 	return func(pl: ProcessedLog):
 		return pl.query().get_round() > number

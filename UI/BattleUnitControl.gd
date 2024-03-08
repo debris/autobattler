@@ -95,6 +95,11 @@ func _process_log(action: Log):
 		_display_notification(str(action.skill.name), GameColors.blue())
 		_skill_animation()
 		Sounds.play_action()
+
+	#if action is LogAvatarPassive:
+	#	_display_notification(str("AVATAR PASSIVE"), GameColors.blue())
+	#	_skill_animation()
+	#	Sounds.play_action()
 	
 	if action is LogExhaustion:
 		_display_notification("EXHAUSTED", GameColors.red())

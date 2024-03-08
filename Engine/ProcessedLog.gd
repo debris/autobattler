@@ -43,3 +43,6 @@ func reply_next_exe(env: ExecutionEnv):
 
 func passive_activated(passive: Passive):
 	reply_same_move(LogPassiveActivated.new(get_unit(), passive))
+
+func avatar_passive_activated(avatar: Avatar):
+	reply_same_move(LogAvatarPassive.new(get_unit(), avatar))
