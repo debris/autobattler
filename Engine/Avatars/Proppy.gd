@@ -7,5 +7,6 @@ func _init():
 	bio = "Progress above all."
 	ability = "TODO"
 	starting_units = [
-
+		OwnedUnit.new(UnitCaptainBlaze.new()),
+		OwnedUnit.new(UnitPrime.new())
 	]

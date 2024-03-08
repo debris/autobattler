@@ -6,6 +6,7 @@ func _init():
 	texture = load("res://Assets/UnitsTransparent/father_piet.png")
 	bio = "For those who sin."
 	ability = "TODO"
-	# TODO: some gods
 	starting_units = [
+		OwnedUnit.new(UnitNova.new()),
+		OwnedUnit.new(UnitOtis.new())
 	]

@@ -32,6 +32,17 @@ enum Tier {
 
 @export var kind = Kind.SKILL
 
+# default schedule should be used to create units at the start of the new game
+static func default_schedule(k: Kind) -> Schedule:
+	var result = Schedule.new()
+	# D tier schedule
+	result.kind = k
+	result.data.assign([false, false, false, true])
+	return result
+
+static func default_schedules() -> Array[Schedule]:
+	return [Schedule.default_schedule(Kind.DEF), Schedule.default_schedule(Kind.DMG), Schedule.default_schedule(Kind.SKILL)]
+
 func is_skill() -> bool:
 	return kind == Schedule.Kind.SKILL
 

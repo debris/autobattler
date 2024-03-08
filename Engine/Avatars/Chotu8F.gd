@@ -8,6 +8,6 @@ func _init():
 	ability = "Whenever allied unit activates a skill, get 10 percent of units defense as power."
 	# TODO: consider owned units with predefined schedules
 	starting_units = [
-		UnitAzureDragon.new(),
-		UnitArzog.new()
+		OwnedUnit.new(UnitAzureDragon.new()),
+		OwnedUnit.new(UnitArzog.new())
 	]

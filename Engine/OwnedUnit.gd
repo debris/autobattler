@@ -14,7 +14,7 @@ class_name OwnedUnit
 @export var empowered: int
 
 # the empty constructor should not be used, but is REQUIRED by godots serializer
-func _init(b: Unit = Unit.new(), ss: Array[Schedule] = []):
+func _init(b: Unit = Unit.new(), ss: Array[Schedule] = Schedule.default_schedules()):
 	base = b
 	name = b.name
 	texture = b.texture

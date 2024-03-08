@@ -117,6 +117,20 @@ func loadgame_screen():
 
 	# SELECT STARTING UNITS
 	generator = Generator.new(save_name.hash())
+
+	# should always be initialized to 6 items
+	# TODO: avatars should predefine 'OwnedUnits' with their schedules
+	# its important for the proper introduction to the game for a new player
+	save.team.members = [
+		save.avatar.starting_units[0],
+		save.avatar.starting_units[1],
+		null,
+		null,
+		null,
+		null
+	]
+
+	# OBSOLETE
 	while save.count_units() == 0:
 		# if there is no team to load, select new
 		var select_units = preload("res://UI/SelectUnits.tscn").instantiate()
