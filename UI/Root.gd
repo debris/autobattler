@@ -108,8 +108,7 @@ func loadgame_screen():
 				continue
 
 			if select_avatar_action is SelectAvatarActionProceed:
-				# TODO: here read and save the avatar
-				pass
+				save.avatar = select_avatar_action.selected_avatar
 	
 		if action is LoadgameActionLoad:
 			save = action.save

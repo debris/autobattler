@@ -1,17 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq3mbpv7c6stc"]
+[gd_scene load_steps=7 format=3 uid="uid://dq3mbpv7c6stc"]
 
 [ext_resource type="Script" path="res://UI/LoadgameEntry.gd" id="1_f6wms"]
 [ext_resource type="Script" path="res://UI/Frame.gd" id="1_gl6t4"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="2_ggrs7"]
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="3_0bj3j"]
 [ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="5_u4fqb"]
+[ext_resource type="Texture2D" uid="uid://crbo8g4mkw6r" path="res://Assets/UnitsTransparent/father_piet.png" id="6_swvm8"]
 
 [node name="LoadgameEntry" type="Control"]
-custom_minimum_size = Vector2(400, 64)
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 400.0
-offset_bottom = 64.0
+offset_bottom = 80.0
 script = ExtResource("1_f6wms")
 
 [node name="OnHover" type="ColorRect" parent="."]
@@ -20,17 +21,18 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.745098, 0.745098, 0.745098, 0.745098)
 
 [node name="Frame" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -38,10 +40,10 @@ script = ExtResource("1_gl6t4")
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
+offset_left = 80.0
+offset_top = 32.0
 offset_right = 384.0
-offset_bottom = 48.0
+offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("3_0bj3j")
 theme_override_font_sizes/font_size = 24
 text = "Savefile #1"
@@ -65,3 +67,10 @@ vertical_alignment = 1
 script = ExtResource("5_u4fqb")
 side = 0
 text = "LOAD"
+
+[node name="AvatarIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("6_swvm8")
+expand_mode = 1

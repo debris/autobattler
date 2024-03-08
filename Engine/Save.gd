@@ -1,6 +1,7 @@
 extends Resource
 class_name Save
 
+@export var avatar: Avatar
 @export var team: Team
 @export var bench: Array[OwnedUnit]
 @export var chapter: int
@@ -9,6 +10,7 @@ class_name Save
 @export var dialog_progress: DialogProgress
 
 func _init():
+	avatar = Avatar.new()
 	team = Team.new()
 	bench = []
 	chapter = 0

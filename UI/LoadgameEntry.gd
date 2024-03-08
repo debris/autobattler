@@ -14,9 +14,16 @@ signal selected
 		if is_node_ready():
 			update_display()
 
+@export var avatar: Avatar:
+	set(value):
+		avatar = value
+		if is_node_ready:
+			update_display
+
 @onready var name_label = $NameLabel
 @onready var date_label = $DateLabel
 @onready var on_hover = $OnHover
+@onready var avatar_icon = $AvatarIcon
 
 func _ready():
 	update_display()
@@ -35,6 +42,9 @@ func update_display():
 	# TODO: convert utc time to local time
 	# TODO: pretty print
 	date_label.text = utc_time
+
+	# Avatar added post 0.6, so some savefiles do not have this property
+	avatar_icon.texture = avatar.texture
 
 func _gui_input(event):
 	if event.is_action_pressed("LeftClick"):

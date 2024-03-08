@@ -34,6 +34,7 @@ func _ready():
 		var label = preload("res://UI/LoadgameEntry.tscn").instantiate()
 		
 		label.text = save_tuple.a
+		label.avatar = save_tuple.b.avatar
 		label.utc_time = save_tuple.b.utc_savetime
 		label.selected.connect(func():
 			save_name = save_tuple.a

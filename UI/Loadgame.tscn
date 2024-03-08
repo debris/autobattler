@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="8_wtwe6"]
 [ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="10_ck0pt"]
 
-[sub_resource type="Shader" id="Shader_00ld4"]
+[sub_resource type="Shader" id="Shader_038gg"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -30,12 +30,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snoq0"]
 resource_local_to_scene = true
-shader = SubResource("Shader_00ld4")
+shader = SubResource("Shader_038gg")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_sal0k"]
+[sub_resource type="Shader" id="Shader_b0ddu"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -53,12 +53,12 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8r3g"]
 resource_local_to_scene = true
-shader = SubResource("Shader_sal0k")
+shader = SubResource("Shader_b0ddu")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
 
-[sub_resource type="Shader" id="Shader_1vctv"]
+[sub_resource type="Shader" id="Shader_c53br"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -76,7 +76,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx87t"]
 resource_local_to_scene = true
-shader = SubResource("Shader_1vctv")
+shader = SubResource("Shader_c53br")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -378,7 +378,7 @@ vertical_scroll_mode = 3
 [node name="Saves" type="GridContainer" parent="Border/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
+theme_override_constants/v_separation = 8
 
 [node name="ColorRect" type="ColorRect" parent="Border"]
 custom_minimum_size = Vector2(2.08165e-12, 1)
