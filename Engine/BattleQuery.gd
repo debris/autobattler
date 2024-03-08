@@ -61,7 +61,12 @@ func get_my_position() -> BattleUnitPosition:
 	var team = get_my_team()
 	if team == null:
 		return null
-	var index = team.iterator().until(Filters.this_unit(root)).count()
+
+	var index = 0
+	for member in team.members:
+		if member != null && member.get_instance_id() == root.get_instance_id():
+			break
+		index += 1
 	return BattleUnitPosition.new(team, index)
 
 func get_opposite_unit() -> OptionIterator:
