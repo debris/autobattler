@@ -70,7 +70,8 @@ text = "LOAD"
 
 [node name="AvatarIcon" type="TextureRect" parent="."]
 layout_mode = 0
+offset_top = -1.0
 offset_right = 80.0
-offset_bottom = 80.0
+offset_bottom = 79.0
 texture = ExtResource("6_swvm8")
 expand_mode = 1

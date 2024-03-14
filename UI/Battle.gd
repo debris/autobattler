@@ -255,3 +255,4 @@ func _on_play_panel_step():
 		return
 	paused = true
 	battle_state.proceed()
+	queue.queue = battle_state.queue()

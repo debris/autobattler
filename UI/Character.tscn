@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlgqwefasl0ew"]
+[gd_scene load_steps=6 format=3 uid="uid://dlgqwefasl0ew"]
 
 [ext_resource type="Script" path="res://UI/Character.gd" id="1_4mqsc"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_d56co"]
+[ext_resource type="Script" path="res://UI/GamePanel.gd" id="2_hpwlc"]
+[ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="3_2lcc7"]
+[ext_resource type="Texture2D" uid="uid://crbo8g4mkw6r" path="res://Assets/UnitsTransparent/father_piet.png" id="3_xg6or"]
 
 [node name="Character" type="Control"]
 layout_mode = 3
@@ -22,7 +25,18 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.901961)
 
+[node name="GamePanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 168.0
+offset_top = -8.0
+offset_right = 568.0
+offset_bottom = 656.0
+mouse_filter = 2
+script = ExtResource("2_hpwlc")
+
 [node name="CharacterLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 832.0
 offset_top = 8.0
 offset_right = 1136.0
@@ -41,11 +55,32 @@ offset_right = 496.0
 offset_bottom = 632.0
 theme_override_constants/v_separation = 8
 
-[node name="NameLabel" type="Label" parent="GridContainer"]
+[node name="Control" type="Control" parent="GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 80)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_d56co")
-theme_override_font_sizes/font_size = 40
+
+[node name="NameLabel" type="Label" parent="GridContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_2lcc7")
+theme_override_font_sizes/font_size = 24
 text = "name"
+vertical_alignment = 1
+
+[node name="AvatarIcon" type="TextureRect" parent="GridContainer/Control"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("3_xg6or")
+expand_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="GridContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 1)
@@ -70,3 +105,8 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_d56co")
 theme_override_font_sizes/font_size = 24
 text = "UNITS"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

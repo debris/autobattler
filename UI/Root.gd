@@ -119,7 +119,6 @@ func loadgame_screen():
 	generator = Generator.new(save_name.hash())
 
 	# should always be initialized to 6 items
-	# TODO: avatars should predefine 'OwnedUnits' with their schedules
 	# its important for the proper introduction to the game for a new player
 	if save.count_units() == 0:
 		save.team.members = [

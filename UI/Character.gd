@@ -12,7 +12,8 @@ extends Control
 		if is_node_ready():
 			display_character()
 
-@onready var name_label = $GridContainer/NameLabel
+@onready var name_label = $GridContainer/Control/NameLabel
+@onready var avatar_icon = $GridContainer/Control/AvatarIcon
 @onready var chapter_label = $GridContainer/ChapterLabel
 @onready var level_label = $GridContainer/LevelLabel
 @onready var units_label = $GridContainer/UnitsLabel
@@ -24,6 +25,7 @@ func display_character():
 	chapter_label.text = tr("CHAPTER").format({"chapter": str(save.chapter)})
 	level_label.text = tr("LEVEL").format({"level": str(save.player_team_level)})
 	units_label.text = tr("UNITS").format({"units": str(save.count_units())})
+	avatar_icon.texture = save.avatar.texture
 
 func _ready():
 	display_character_name()
