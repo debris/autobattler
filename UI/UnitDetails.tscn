@@ -1,10 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmqmsbr11cdeb"]
+[gd_scene load_steps=14 format=3 uid="uid://cmqmsbr11cdeb"]
 
 [ext_resource type="Script" path="res://UI/UnitDetails.gd" id="1_28edc"]
 [ext_resource type="PackedScene" uid="uid://dmn414tgvv43c" path="res://UI/UnitControl.tscn" id="3_bbnrl"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="3_vb625"]
+[ext_resource type="Script" path="res://UI/ScheduleControl.gd" id="4_kagw4"]
 [ext_resource type="Script" path="res://UI/GamePanel.gd" id="4_n7wx1"]
 [ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="5_fa22v"]
+[ext_resource type="Script" path="res://Engine/Schedule.gd" id="5_nvo3b"]
+[ext_resource type="Script" path="res://Engine/SchedulePointer.gd" id="6_474vy"]
+[ext_resource type="PackedScene" uid="uid://btopitt5e6n1" path="res://UI/Tiers.tscn" id="8_a2tjr"]
+
+[sub_resource type="Resource" id="Resource_5a4ff"]
+script = ExtResource("5_nvo3b")
+data = Array[bool]([true, false, false, false, true, true, false, false])
+kind = 0
+
+[sub_resource type="Resource" id="Resource_6gd66"]
+script = ExtResource("6_474vy")
+battle_round = 0
+phase = 0
+active = false
+
+[sub_resource type="Resource" id="Resource_qajkl"]
+script = ExtResource("5_nvo3b")
+data = Array[bool]([false, true, false])
+kind = 1
+
+[sub_resource type="Resource" id="Resource_8tta6"]
+script = ExtResource("5_nvo3b")
+data = Array[bool]([false, true, false])
+kind = 2
 
 [node name="BattleUnitDetails" type="Control"]
 layout_mode = 3
@@ -59,14 +84,82 @@ offset_bottom = 656.0
 mouse_filter = 2
 script = ExtResource("4_n7wx1")
 
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 688.0
+offset_right = 1088.0
+offset_bottom = 648.0
+
 [node name="Control" type="GridContainer" parent="."]
 layout_mode = 0
 offset_left = 704.0
 offset_top = 24.0
 offset_right = 1072.0
-offset_bottom = 624.0
+offset_bottom = 641.0
 mouse_filter = 2
 metadata/_edit_group_ = true
+
+[node name="Schedules" type="Control" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 60)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Schedules" type="GridContainer" parent="Control/Schedules"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -196.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 0
+metadata/_edit_group_ = true
+
+[node name="ScheduleControl" type="Control" parent="Control/Schedules/Schedules"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("4_kagw4")
+schedule = SubResource("Resource_5a4ff")
+schedule_pointer = SubResource("Resource_6gd66")
+
+[node name="ScheduleControl2" type="Control" parent="Control/Schedules/Schedules"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("4_kagw4")
+schedule = SubResource("Resource_qajkl")
+schedule_pointer = SubResource("Resource_6gd66")
+
+[node name="ScheduleControl3" type="Control" parent="Control/Schedules/Schedules"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("4_kagw4")
+schedule = SubResource("Resource_8tta6")
+schedule_pointer = SubResource("Resource_6gd66")
+
+[node name="DisplayTooltip" type="Node" parent="Control/Schedules/Schedules"]
+script = ExtResource("5_fa22v")
+side = 0
+text = "SCHEDULE"
+
+[node name="Tiers" parent="Control/Schedules" instance=ExtResource("8_a2tjr")]
+layout_mode = 1
+offset_right = -352.0
+offset_bottom = 0.0
+mouse_filter = 2
+font_size = 16
+
+[node name="SchedulesUnderline" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
 
 [node name="EmpoweredName" type="Label" parent="Control"]
 custom_minimum_size = Vector2(368, 20)

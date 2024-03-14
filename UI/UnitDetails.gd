@@ -31,6 +31,9 @@ extends Control
 @onready var damage_per_round_value = $Control/DamagePerRoundValue
 @onready var defense_per_round_value = $Control/DefensePerRoundValue
 
+@onready var schedules = $Control/Schedules/Schedules
+@onready var tiers = $Control/Schedules/Tiers
+
 func _ready():
 	update_display()
 
@@ -64,6 +67,10 @@ func update_display():
 	damage_per_round_value.text = "%.1f" % unit.damage_per_round()
 	defense_per_round_value.text = "%.1f" % unit.defense_per_round()
 
+	var schedule_controls = schedules.get_children()
+	for i in 3:
+		schedule_controls[i].schedule = unit.schedules[i]
+	tiers.schedules = unit.schedules
 
 func _gui_input(event):
 	var mouse_position = get_global_mouse_position()
