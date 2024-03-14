@@ -50,7 +50,10 @@ func update_display():
 	assert(out_of.members.size() == 6, "for now only 6 is supported")
 	var unit_controls = team_list.get_children()
 	for i in 6:
-		unit_controls[i].unit = out_of.members[i]
+		if out_of.members[i] != null:
+			unit_controls[i].unit = BattleUnit.new(out_of.members[i], player_team_level)
+		else:
+			unit_controls[i].unit = null
 
 func _on_select_button_pressed(button):
 	var index = button.get_index()
