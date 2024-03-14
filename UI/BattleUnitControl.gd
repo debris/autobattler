@@ -14,6 +14,8 @@ func should_display_as_enemy() -> bool:
 
 func _ready():
 	display_settings = DisplaySettings.default()
+
+
 	unit_control.pressed.connect(func(_unit):
 		pressed.emit(battle_unit)
 	)
@@ -33,12 +35,12 @@ func _process(_delta):
 		return
 
 	# always 3 schedules, let's grab them in reverse because of the rotation
-	for i in 3:
-		var index = i
-		var schedule_control = unit_control.schedules.get_child(index)
-		schedule_control.schedule = battle_unit.schedules[i]
-		schedule_control.phase = i
-		schedule_control.schedule_pointer = battle_unit.schedule_pointer
+	#for i in 3:
+	#	var index = i
+	#	var schedule_control = unit_control.schedules.get_child(index)
+	#	schedule_control.schedule = battle_unit.schedules[i]
+	#	schedule_control.phase = i
+	#	schedule_control.schedule_pointer = battle_unit.schedule_pointer
 
 	# TODO: REDO
 	#_display_bonuses()

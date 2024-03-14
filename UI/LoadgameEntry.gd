@@ -17,8 +17,8 @@ signal selected
 @export var avatar: Avatar:
 	set(value):
 		avatar = value
-		if is_node_ready:
-			update_display
+		if is_node_ready():
+			update_display()
 
 @onready var name_label = $NameLabel
 @onready var date_label = $DateLabel

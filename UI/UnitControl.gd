@@ -21,13 +21,13 @@ signal pressed(unit)
 @onready var avatar = $Content/Avatar
 @onready var dmg_label = $Content/Dmg
 @onready var def_label = $Content/Def
-@onready var schedules = $Content/Schedules
-@onready var tiers = $Content/Tiers
 
-@onready var tooltip_schedule = $Content/Schedules/DisplayTooltip
 @onready var tooltip_name = $Content/Name/DisplayTooltip
 @onready var tooltip_dmg = $Content/Dmg/DisplayTooltip
 @onready var tooltip_def = $Content/Def/DisplayTooltip
+
+@onready var details = $Content/Details
+@onready var details_list = $Content/Details/UnitDetailsList
 
 func display_unit():
 	if unit == null:
@@ -35,18 +35,13 @@ func display_unit():
 		on_hover.visible = false
 		return
 
+	details_list.unit = unit
 	content.visible = true
 	name_label.text = unit.name
 	avatar.texture = unit.texture
 	dmg_label.text = str(unit.dmg)
 	def_label.text = str(unit.def)
 	
-	var schedule_controls = schedules.get_children()
-	for i in 3:
-		schedule_controls[i].schedule = unit.schedules[i]
-	tiers.schedules = unit.schedules
-
-	tooltip_schedule.enabled = details_tooltips_enabled
 	tooltip_name.enabled = details_tooltips_enabled
 	tooltip_dmg.enabled = details_tooltips_enabled
 	tooltip_def.enabled = details_tooltips_enabled
@@ -57,11 +52,13 @@ func _ready():
 		if content.visible && pressed.get_connections().size() > 0:
 			on_hover.visible = true
 			z_index = 1
+			details.visible = true
 			Sounds.play_hover()
 	)
 
 	mouse_exited.connect(func():
 		on_hover.visible = false
+		details.visible = false
 		z_index = 0
 	)
 

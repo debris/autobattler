@@ -1,0 +1,307 @@
+[gd_scene load_steps=12 format=3 uid="uid://2vfuaqaex1b2"]
+
+[ext_resource type="Script" path="res://UI/UnitDetailsList.gd" id="1_744bk"]
+[ext_resource type="Script" path="res://UI/ScheduleControl.gd" id="1_oxcvw"]
+[ext_resource type="Script" path="res://Engine/Schedule.gd" id="2_xpymb"]
+[ext_resource type="Script" path="res://Engine/SchedulePointer.gd" id="3_lxesq"]
+[ext_resource type="Script" path="res://UI/DisplayTooltip.gd" id="4_xwose"]
+[ext_resource type="PackedScene" uid="uid://btopitt5e6n1" path="res://UI/Tiers.tscn" id="5_3j4qp"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="6_ptijr"]
+
+[sub_resource type="Resource" id="Resource_5a4ff"]
+script = ExtResource("2_xpymb")
+data = Array[bool]([true, false, false, false, true, true, false, false])
+kind = 0
+
+[sub_resource type="Resource" id="Resource_6gd66"]
+script = ExtResource("3_lxesq")
+battle_round = 0
+phase = 0
+active = false
+
+[sub_resource type="Resource" id="Resource_qajkl"]
+script = ExtResource("2_xpymb")
+data = Array[bool]([false, true, false])
+kind = 1
+
+[sub_resource type="Resource" id="Resource_8tta6"]
+script = ExtResource("2_xpymb")
+data = Array[bool]([false, true, false])
+kind = 2
+
+[node name="UnitDetailsList" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 648.0
+mouse_filter = 2
+script = ExtResource("1_744bk")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 384.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="Control" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+mouse_filter = 2
+metadata/_edit_group_ = true
+
+[node name="Schedules" type="Control" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(2.08165e-12, 80)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Schedules" type="GridContainer" parent="ScrollContainer/Control/Schedules"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -196.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/v_separation = 0
+metadata/_edit_group_ = true
+
+[node name="ScheduleControl" type="Control" parent="ScrollContainer/Control/Schedules/Schedules"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_oxcvw")
+schedule = SubResource("Resource_5a4ff")
+schedule_pointer = SubResource("Resource_6gd66")
+
+[node name="ScheduleControl2" type="Control" parent="ScrollContainer/Control/Schedules/Schedules"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_oxcvw")
+schedule = SubResource("Resource_qajkl")
+schedule_pointer = SubResource("Resource_6gd66")
+
+[node name="ScheduleControl3" type="Control" parent="ScrollContainer/Control/Schedules/Schedules"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_oxcvw")
+schedule = SubResource("Resource_8tta6")
+schedule_pointer = SubResource("Resource_6gd66")
+
+[node name="DisplayTooltip" type="Node" parent="ScrollContainer/Control/Schedules/Schedules"]
+script = ExtResource("4_xwose")
+side = 0
+text = "SCHEDULE"
+
+[node name="Tiers" parent="ScrollContainer/Control/Schedules" instance=ExtResource("5_3j4qp")]
+layout_mode = 1
+offset_right = -352.0
+offset_bottom = -20.0
+mouse_filter = 2
+font_size = 16
+
+[node name="SchedulesUnderline" type="ColorRect" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="EmpoweredName" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.501961, 0.501961, 0.25098, 1)
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 28
+text = "POWER LEVEL"
+
+[node name="DisplayTooltip" type="Node" parent="ScrollContainer/Control/EmpoweredName"]
+script = ExtResource("4_xwose")
+side = 0
+text = "EACH LEVEL GRANTS +10% DAMAGE AND DEFENSE"
+
+[node name="EmpoweredCounter" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="EmpoweredUnderline" type="ColorRect" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="Tags" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.501961, 0.501961, 0.25098, 1)
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 28
+text = "Tags"
+
+[node name="TagsContent" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 20
+text = "TAGS CONTENT"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="TagsUnderline" type="ColorRect" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="Damage" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.25, 0.25, 1)
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 28
+text = "DAMAGE
+"
+
+[node name="DamageValue" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="DamageUnderline" type="ColorRect" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="DamagePerRound" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.25, 0.25, 1)
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 28
+text = "DAMAGE PER ROUND"
+
+[node name="DamagePerRoundValue" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="DamagePerRoundUnderline" type="ColorRect" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="Defense" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.501961, 0.25098, 1)
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 28
+text = "DEFENSE"
+
+[node name="DefenseValue" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="DefenseUnderline" type="ColorRect" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="DefensePerRound" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.501961, 0.25098, 1)
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 28
+text = "DEFENSE PER ROUND"
+
+[node name="DefensePerRoundValue" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="DefensePerRoundUnderline" type="ColorRect" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="PassiveName" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 28
+text = "Passive Name"
+
+[node name="PassiveDescription" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 20
+text = "Passive
+"
+autowrap_mode = 2
+
+[node name="PassiveUnderline" type="ColorRect" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="SkillName" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 28
+text = "Skill Name"
+
+[node name="SkillDescription" type="Label" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_ptijr")
+theme_override_font_sizes/font_size = 20
+text = "Skill
+"
+autowrap_mode = 2
+
+[node name="SkillUnderline" type="ColorRect" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
