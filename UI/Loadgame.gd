@@ -51,6 +51,7 @@ func _ready():
 
 func _on_unit_control_pressed(unit):
 	var details = load("res://UI/UnitDetails.tscn").instantiate()
+	Sounds.play_button_press()
 	details.unit = unit
 	global_overlay.present_subview(details)
 

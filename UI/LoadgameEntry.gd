@@ -50,6 +50,7 @@ func update_display():
 func _gui_input(event):
 	if event.is_action_pressed("LeftClick"):
 		if on_hover.visible:
+			Sounds.play_button_press()
 			mark_selected()
 			accept_event()
 		
