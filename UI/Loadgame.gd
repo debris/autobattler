@@ -39,6 +39,10 @@ func _ready():
 		label.selected.connect(func():
 			save_name = save_tuple.a
 			save_preview = save_tuple.b
+
+			for save_control in saves_list.get_children():
+				if save_control != label:
+					save_control.mark_unselected()
 		)
 		saves_list.add_child(label)
 

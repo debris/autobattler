@@ -23,6 +23,7 @@ signal selected
 @onready var name_label = $NameLabel
 @onready var date_label = $DateLabel
 @onready var on_hover = $OnHover
+@onready var on_select = $OnSelect
 @onready var avatar_icon = $AvatarIcon
 
 func _ready():
@@ -49,6 +50,12 @@ func update_display():
 func _gui_input(event):
 	if event.is_action_pressed("LeftClick"):
 		if on_hover.visible:
-			selected.emit()
+			mark_selected()
 			accept_event()
 		
+func mark_selected():
+	on_select.visible = true
+	selected.emit()
+
+func mark_unselected():
+	on_select.visible = false
