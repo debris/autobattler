@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/orc_shaman.png")
 	dmg = 8
 	def = 12
-	skill = SkillDefenceRitual.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillDefenceRitual.new()
+	]
 	tags = ["orc", "shaman"]
 	reroll = 0

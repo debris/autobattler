@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8xw643l2jpgw"]
+
+[ext_resource type="Script" path="res://UI/AbilityEntry.gd" id="1_ellla"]
+[ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="1_iqmvg"]
+
+[node name="Ability" type="GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 57)
+offset_right = 368.0
+offset_bottom = 57.0
+mouse_filter = 2
+script = ExtResource("1_ellla")
+
+[node name="Name" type="Label" parent="."]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
+theme_override_fonts/font = ExtResource("1_iqmvg")
+theme_override_font_sizes/font_size = 28
+text = "Skill Name"
+
+[node name="Description" type="Label" parent="."]
+custom_minimum_size = Vector2(368, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iqmvg")
+theme_override_font_sizes/font_size = 20
+text = "Skill
+"
+autowrap_mode = 2
+
+[node name="Underline" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)

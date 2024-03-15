@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/bee_mech.png")
 	dmg = 10
 	def = 10
-	skill = SkillEmpty.new()
-	passive = PassiveAutoHive.new()
+	abilities = [
+		PassiveAutoHive.new()
+	]
 	tags = ["bee", "mech"]
 	reroll = 0

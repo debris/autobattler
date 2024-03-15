@@ -6,8 +6,9 @@ func _init():
 	texture = load("res://Assets/Units/mystique.png")
 	dmg = 10
 	def = 10
-	skill = SkillShapeshift.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillShapeshift.new()
+	]
 	tags = ["elf", "druid"]
 	reroll = 0
 	# TODO, extra casts dont work properly

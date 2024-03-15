@@ -7,8 +7,7 @@ class_name OwnedUnit
 @export var texture: Texture2D
 @export var dmg: int
 @export var def: int
-@export var skill: Skill
-@export var passive: Passive
+@export var abilities: Array[Ability]
 @export var tags: Dictionary
 @export var schedules: Array[Schedule]
 @export var empowered: int
@@ -20,8 +19,8 @@ func _init(b: Unit = Unit.new(), ss: Array[Schedule] = Schedule.default_schedule
 	texture = b.texture
 	dmg = b.dmg
 	def = b.def
-	skill = b.skill
-	passive = b.passive
+	abilities = []
+	abilities.assign(b.abilities)
 
 	tags = {}
 	for tag in b.tags:

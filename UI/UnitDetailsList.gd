@@ -6,16 +6,9 @@ extends Control
 		if is_node_ready():
 			update_display()
 
+@onready var entries = $ScrollContainer/Control
 @onready var tags_content = $ScrollContainer/Control/TagsContent
 @onready var tag_underline = $ScrollContainer/Control/TagsUnderline
-
-@onready var skill_name = $ScrollContainer/Control/SkillName
-@onready var skill_description = $ScrollContainer/Control/SkillDescription
-@onready var skill_underline = $ScrollContainer/Control/SkillUnderline
-
-@onready var passive_name = $ScrollContainer/Control/PassiveName
-@onready var passive_description = $ScrollContainer/Control/PassiveDescription
-@onready var passive_underline = $ScrollContainer/Control/PassiveUnderline
 
 @onready var empowered_name = $ScrollContainer/Control/EmpoweredName
 @onready var empowered_counter = $ScrollContainer/Control/EmpoweredCounter
@@ -30,6 +23,8 @@ extends Control
 @onready var schedules = $ScrollContainer/Control/Schedules/Schedules
 @onready var tiers = $ScrollContainer/Control/Schedules/Tiers
 
+var ability_controls = []
+
 func _ready():
 	update_display()
 
@@ -38,20 +33,6 @@ func update_display():
 		return
 
 	tags_content.text = ", ".join(unit.tags.keys())
-	skill_name.text = "Activated: " + unit.skill.name
-	skill_description.text = tr(unit.skill.description)
-	passive_name.text = "Passive: " + unit.passive.name
-	passive_description.text = tr(unit.passive.description)
-	
-	if unit.skill is SkillEmpty:
-		skill_name.visible = false
-		skill_description.visible = false
-		skill_underline.visible = false
-	
-	if unit.passive is PassiveEmpty:
-		passive_name.visible = false
-		passive_description.visible = false
-		passive_underline.visible = false
 
 	var display_empowered = unit.empowered > 0
 	empowered_name.visible = display_empowered
@@ -68,3 +49,11 @@ func update_display():
 	for i in 3:
 		schedule_controls[i].schedule = unit.schedules[i]
 	tiers.schedules = unit.schedules
+
+	for ability in ability_controls:
+		ability.queue_free()
+
+	for ability in unit.abilities:
+		var entry = preload("res://UI/AbilityEntry.tscn").instantiate()
+		entry.ability = ability
+		entries.add_child(entry)

@@ -8,8 +8,7 @@ var name: String
 var texture: Texture2D
 var dmg: int
 var def: int
-var skill: Skill
-var passive: Passive
+var abilities: Array[Ability]
 var schedules: Array[Schedule]
 var schedule_pointer: SchedulePointer
 # bonus dmg is set to zero once it's used
@@ -37,8 +36,8 @@ func _init(u: OwnedUnit, tl: int = 0):
 	var multiplier = team_level + u.empowered
 	dmg = int(increase_by_x_percent(u.dmg, multiplier * 10.0))
 	def = int(increase_by_x_percent(u.def, multiplier * 10.0))
-	skill = u.skill
-	passive = u.passive
+	abilities = []
+	abilities.assign(u.abilities)
 	
 	# we may need a deep copy here if there are cards that modify the schedule
 	# during the battle
@@ -63,14 +62,17 @@ func turn_into(other: BattleUnit):
 	var tmp = inst_to_dict(other)
 	copy_fields.call(self, tmp)
 
-func skill_at(phase: int) -> Skill:
+func skills_at(phase: int) -> Array[Skill]:
 	assert(phase >= 0 && phase <= 2, "there are only 3 phases")
 	match schedules[phase].kind:
-		Schedule.Kind.SKILL: return skill
-		Schedule.Kind.DEF: return SkillDefend.new()
-		Schedule.Kind.DMG: return SkillAttack.new()
+		Schedule.Kind.SKILL:
+			var result: Array[Skill] = []
+			result.assign(abilities.filter(func(ability): return ability is Skill))
+			return result
+		Schedule.Kind.DEF: return [SkillDefend.new()]
+		Schedule.Kind.DMG: return [SkillAttack.new()]
 	assert(false)
-	return null
+	return []
 
 func damage_per_round() -> float:
 	var phase = 0

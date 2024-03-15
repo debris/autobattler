@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/horned_owl.png")
 	dmg = 10
 	def = 10
-	skill = SkillEclipseSentinel.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillEclipseSentinel.new()
+	]
 	tags = ["owl"]
 	reroll = 0

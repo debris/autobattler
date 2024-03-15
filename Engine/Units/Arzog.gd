@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/arzog.png")
 	dmg = 10
 	def = 10
-	skill = SkillDivineBlessing.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillDivineBlessing.new()
+	]
 	tags = ["god"]
 	reroll = 80

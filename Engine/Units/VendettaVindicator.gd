@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/vendetta_vindicator.png")
 	dmg = 12
 	def = 8
-	skill = SkillEmpty.new()
-	passive = PassiveRetribution.new()
+	abilities = [
+		PassiveRetribution.new()
+	]
 	tags = ["cyborg"]
 	reroll = 0

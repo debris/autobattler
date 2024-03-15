@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/orc_recruiter.png")
 	dmg = 11
 	def = 9
-	skill = SkillGreenRanks.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillGreenRanks.new()
+	]
 	tags = ["orc"]
 	reroll = 0

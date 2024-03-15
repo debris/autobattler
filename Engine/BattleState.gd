@@ -60,8 +60,10 @@ func execute_step():
 	if battle_unit != null:
 		if battle_unit.schedules[pointer.battle_phase].at(pointer.battle_round):
 			
-			var skill = battle_unit.skill_at(pointer.battle_phase)
-			var to_execute: Array[ExecutionEnv] = [ExecutionEnv.new(battle_unit, skill)]
+			var skills = battle_unit.skills_at(pointer.battle_phase)
+			var to_execute: Array[ExecutionEnv] = []
+			to_execute.assign(skills.map(func(skill): return ExecutionEnv.new(battle_unit, skill)))
+
 			var executed = 0
 					
 			while executed < to_execute.size():

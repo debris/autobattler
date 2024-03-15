@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/low_w8.png")
 	dmg = 8
 	def = 12
-	skill = SkillAntiHack.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillAntiHack.new()
+	]
 	tags = ["robot", "cyborg"]
 	reroll = 0

@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/otis.png")
 	dmg = 6
 	def = 14
-	skill = SkillSelfishExchange.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillSelfishExchange.new()
+	]
 	tags = ["god"]
 	reroll = 70

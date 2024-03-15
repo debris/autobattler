@@ -8,5 +8,6 @@ var dmg: int
 var def: int
 var skill: Skill
 var passive: Passive
+var abilities: Array[Ability]
 var tags: Array[String]
 var reroll: int

@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/rooney.png")
 	dmg = 10
 	def = 10	
-	skill = SkillDirtyLaugh.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillDirtyLaugh.new()
+	]
 	tags = ["trickster"]
 	reroll = 0

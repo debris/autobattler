@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/jack_cross.png")
 	dmg = 13
 	def = 7
-	skill = SkillDoubleCross.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillDoubleCross.new()
+	]
 	tags = ["trickster"]
 	reroll = 0

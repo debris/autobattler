@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/azure_dragon.png")
 	dmg = 9
 	def = 11
-	skill = SkillAzureMomentum.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillAzureMomentum.new()
+	]
 	tags = ["dragon"]
 	reroll = 0

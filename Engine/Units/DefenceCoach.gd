@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/defence_coach.png")
 	dmg = 9
 	def = 11
-	skill = SkillSubDefence.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillSubDefence.new()
+	]
 	tags = ["coach", "human"]
 	reroll = 0

@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/greenscale.png")
 	dmg = 10
 	def = 10
-	skill = SkillBrimstoneCurse.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillBrimstoneCurse.new()
+	]
 	tags = ["dragon", "god"]
 	reroll = 30

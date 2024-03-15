@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/poison_ghoul.png")
 	dmg = 8
 	def = 12
-	skill = SkillGhoulBite.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillGhoulBite.new()
+	]
 	tags = ["ghoul"]
 	reroll = 0

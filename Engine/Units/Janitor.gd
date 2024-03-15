@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/janitor.png")
 	dmg = 9
 	def = 11
-	skill = SkillPaint.new(false)
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillPaint.new(false)
+	]
 	tags = []
 	reroll = 0

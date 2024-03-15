@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/lesser_demon.png")
 	dmg = 10
 	def = 10
-	skill = SkillCorruption.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillCorruption.new()
+	]
 	tags = ["demon"]
 	reroll = 0

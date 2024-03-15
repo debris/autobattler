@@ -2,8 +2,6 @@
 # 
 # This class doesn't have an interface and is merely a marker for processors
 # to alter the rules of the game accordingly
-extends Resource
+extends Ability
 class_name Passive
 
-var name: String
-var description: String

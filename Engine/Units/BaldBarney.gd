@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/bald_barney.png")
 	dmg = 10
 	def = 10
-	skill = SkillEmpty.new()
-	passive = PassiveSuicideAttempt.new()
+	abilities = [
+		PassiveSuicideAttempt.new()
+	]
 	tags = ["trickster"]
 	reroll = 0

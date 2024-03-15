@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/viking_warrior.png")
 	dmg = 10
 	def = 10
-	skill = SkillWarcry.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillWarcry.new()
+	]
 	tags = ["viking", "warrior"]
 	reroll = 0

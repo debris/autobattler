@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/ruby_assassin.png")
 	dmg = 16
 	def = 4
-	skill = SkillEmpty.new()
-	passive = PassiveShadowStrike.new()
+	abilities = [
+		PassiveShadowStrike.new()
+	]
 	tags = ["assassin"]
 	reroll = 0

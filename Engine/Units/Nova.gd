@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/nova.png")
 	dmg = 8
 	def = 12
-	skill = SkillEmpty.new()
-	passive = PassivePowerOfRenewal.new()
+	abilities = [
+		PassivePowerOfRenewal.new()
+	]
 	tags = ["god"]
 	reroll = 40

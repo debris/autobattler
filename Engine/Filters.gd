@@ -36,4 +36,4 @@ static func no_tag(t: String):
 
 static func passive(passive_type):
 	return func(battle_unit):
-		return is_instance_of(battle_unit.unit.base.passive, passive_type)
+		return battle_unit.abilities.any(func(ability): is_instance_of(ability, passive_type))

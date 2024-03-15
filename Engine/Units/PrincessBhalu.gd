@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/princess_bhalu.png")
 	dmg = 7
 	def = 13
-	skill = SkillBearsMight.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillBearsMight.new()
+	]
 	tags = ["human", "princess"]
 	reroll = 0

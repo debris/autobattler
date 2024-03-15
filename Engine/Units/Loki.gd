@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/loki.png")
 	dmg = 13
 	def = 7
-	skill = SkillLokiSwap.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillLokiSwap.new()
+	]
 	tags = ["viking", "trickster", "god"]
 	reroll = 50

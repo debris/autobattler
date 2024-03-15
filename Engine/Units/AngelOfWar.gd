@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/angel_of_war.png")
 	dmg = 12
 	def = 8
-	skill = SkillEmpty.new()
-	passive = PassiveDoubleStrike.new()
+	abilities = [
+		PassiveDoubleStrike.new()
+	]
 	tags = ["demon"]
 	reroll = 0

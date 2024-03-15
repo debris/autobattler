@@ -8,7 +8,8 @@ func _init():
 	texture = load("res://Assets/Units/jester_thylocron.png")
 	dmg = 11
 	def = 9
-	skill = SkillMimicry.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillMimicry.new()
+	]
 	tags = ["trickster"]
 	reroll = 0

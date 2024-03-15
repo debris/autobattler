@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/prime.png")
 	dmg = 5
 	def = 15
-	skill = SkillSelfcare.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillSelfcare.new()
+	]
 	tags = ["cyborg", "defender"]
 	reroll = 0

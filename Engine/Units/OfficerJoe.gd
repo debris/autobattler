@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/officer_joe.png")
 	dmg = 12
 	def = 8
-	skill = SkillEmpty.new()
-	passive = PassiveTricksterDetainment.new()
+	abilities = [
+		PassiveTricksterDetainment. new()
+	]
 	tags = ["police", "officer"]
 	reroll = 0

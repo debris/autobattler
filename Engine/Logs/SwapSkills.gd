@@ -8,9 +8,9 @@ func _init(u, o):
 	other_unit = o
 
 func _finalize(_battle_state: BattleState):
-	var tmp = unit.skill
-	unit.skill = other_unit.skill
-	other_unit.skill = tmp
+	var tmp = unit.abilities
+	unit.abilities = other_unit.abilities
+	other_unit.abilities = tmp
 
 func _to_string() -> String:
 	return unit.name + " swaps skills with " + other_unit.name

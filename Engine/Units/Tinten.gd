@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/tinten.png")
 	dmg = 9
 	def = 11
-	skill = SkillPaint.new(true)
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillPaint.new(true)
+	]
 	tags = ["water"]
 	reroll = 50

@@ -68,8 +68,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_right = -196.0
+offset_left = 16.0
+offset_right = -200.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -261,52 +261,6 @@ horizontal_alignment = 2
 autowrap_mode = 2
 
 [node name="DefensePerRoundUnderline" type="ColorRect" parent="ScrollContainer/Control"]
-custom_minimum_size = Vector2(2.08165e-12, 1)
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.235294, 0.235294, 0.235294, 1)
-
-[node name="PassiveName" type="Label" parent="ScrollContainer/Control"]
-custom_minimum_size = Vector2(368, 20)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
-theme_override_fonts/font = ExtResource("6_ptijr")
-theme_override_font_sizes/font_size = 28
-text = "Passive Name"
-
-[node name="PassiveDescription" type="Label" parent="ScrollContainer/Control"]
-custom_minimum_size = Vector2(368, 20)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_ptijr")
-theme_override_font_sizes/font_size = 20
-text = "Passive
-"
-autowrap_mode = 2
-
-[node name="PassiveUnderline" type="ColorRect" parent="ScrollContainer/Control"]
-custom_minimum_size = Vector2(2.08165e-12, 1)
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.235294, 0.235294, 0.235294, 1)
-
-[node name="SkillName" type="Label" parent="ScrollContainer/Control"]
-custom_minimum_size = Vector2(368, 20)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.25, 0.25, 0.5, 1)
-theme_override_fonts/font = ExtResource("6_ptijr")
-theme_override_font_sizes/font_size = 28
-text = "Skill Name"
-
-[node name="SkillDescription" type="Label" parent="ScrollContainer/Control"]
-custom_minimum_size = Vector2(368, 20)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_ptijr")
-theme_override_font_sizes/font_size = 20
-text = "Skill
-"
-autowrap_mode = 2
-
-[node name="SkillUnderline" type="ColorRect" parent="ScrollContainer/Control"]
 custom_minimum_size = Vector2(2.08165e-12, 1)
 layout_mode = 2
 mouse_filter = 2

@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/orc_warrior.png")
 	dmg = 10
 	def = 10
-	skill = SkillBloodRage.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillBloodRage.new()
+	]
 	tags = ["orc", "warrior"]
 	reroll = 0

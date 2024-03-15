@@ -72,5 +72,5 @@ func _on_reroll_button_pressed():
 
 func _on_unit_control_pressed(unit):
 	var details = load("res://UI/UnitDetails.tscn").instantiate()
-	details.unit = BattleUnit.new(unit, player_team_level)
+	details.unit = unit
 	global_overlay.present_subview(details)

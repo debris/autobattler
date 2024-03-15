@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/harmony.png")
 	dmg = 5
 	def = 15
-	skill = SkillUnionize.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillUnionize.new()
+	]
 	tags = ["cyborg", "defender"]
 	reroll = 0

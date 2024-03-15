@@ -6,7 +6,8 @@ func _init():
 	texture = load("res://Assets/Units/captain_blaze.png")
 	dmg = 10
 	def = 10
-	skill = SkillDirectAttack.new()
-	passive = PassiveEmpty.new()
+	abilities = [
+		SkillDirectAttack.new()
+	]
 	tags = ["cyborg", "commander"]
 	reroll = 0
