@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnkmc23o7l0gg"]
+[gd_scene load_steps=11 format=3 uid="uid://dnkmc23o7l0gg"]
 
 [ext_resource type="Script" path="res://UI/Map.gd" id="1_kaxd2"]
 [ext_resource type="PackedScene" uid="uid://cfmudqbhxragu" path="res://UI/Background.tscn" id="2_ax5x7"]
@@ -7,8 +7,9 @@
 [ext_resource type="FontFile" uid="uid://bvbg07t7t33co" path="res://Assets/Fonts/Punktum.ttf" id="4_c2i7u"]
 [ext_resource type="FontFile" uid="uid://j71bxuhfo0u7" path="res://Assets/Fonts/data-latin.ttf" id="4_lego7"]
 [ext_resource type="PackedScene" uid="uid://bs3h81vxfexrp" path="res://UI/Shine.tscn" id="5_g67ud"]
+[ext_resource type="Texture2D" uid="uid://drclwfg3cxb5o" path="res://Assets/UnitsTransparent/chotu_4_f.png" id="8_7ko2a"]
 
-[sub_resource type="Shader" id="Shader_24pbc"]
+[sub_resource type="Shader" id="Shader_p68at"]
 resource_local_to_scene = true
 code = "// based on
 // https://godotshaders.com/shader/2d-shine-highlight/
@@ -26,7 +27,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wpwi3"]
 resource_local_to_scene = true
-shader = SubResource("Shader_24pbc")
+shader = SubResource("Shader_p68at")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 0.3
 shader_parameter/shine_size = 0.3
@@ -131,3 +132,13 @@ anchor_bottom = 0.0
 offset_top = 0.0
 offset_right = 400.0
 offset_bottom = 688.0
+
+[node name="Avatar" type="TextureRect" parent="."]
+modulate = Color(2, 2, 2, 1)
+layout_mode = 0
+offset_left = 512.0
+offset_top = 552.0
+offset_right = 636.0
+offset_bottom = 676.0
+texture = ExtResource("8_7ko2a")
+expand_mode = 1
