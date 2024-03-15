@@ -58,8 +58,8 @@ func _ready():
 
 	mouse_exited.connect(func():
 		on_hover.visible = false
-		details.visible = false
 		z_index = 0
+		details.visible = false
 	)
 
 func _gui_input(event):
