@@ -76,6 +76,8 @@ func _ready():
 				player_team.members[i - 1] = members[i - 1].unit
 			else:
 				player_team.members[i - 1] = null
+
+			update_change_grid()
 	)
 	battle_controller.move_unit_right.connect(func(i): 
 		var members = battle_state.team_b.members
@@ -94,6 +96,8 @@ func _ready():
 				player_team.members[i + 1] = members[i + 1].unit
 			else:
 				player_team.members[i + 1] = null
+
+			update_change_grid()
 	)
 	battle_controller.change_pressed.connect(func(i):
 		var list = preload("res://UI/UnitList.tscn").instantiate()
@@ -112,6 +116,8 @@ func _ready():
 
 			player_team.members[i] = tmp
 			list.queue_free()
+
+			update_change_grid()
 		)
 		global_overlay.present_subview(list)
 	)
@@ -136,6 +142,12 @@ func _ready():
 	memorized_power_a = battle_state.team_a.power
 	memorized_power_b = battle_state.team_b.power
 	queue.queue = battle_state.queue()
+	update_change_grid()
+
+func update_change_grid():
+	for i in 6:
+		pass
+		#change_grid.get_child(i).enabled = battle_state.team_b.members[i] != null
 
 # private
 func _wait_for_display():
