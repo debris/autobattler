@@ -53,7 +53,10 @@ func update_display():
 	for ability in ability_controls:
 		ability.queue_free()
 
+	ability_controls.clear()
+
 	for ability in unit.abilities:
 		var entry = preload("res://UI/AbilityEntry.tscn").instantiate()
 		entry.ability = ability
+		ability_controls.push_back(entry)
 		entries.add_child(entry)

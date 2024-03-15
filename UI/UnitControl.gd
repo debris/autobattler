@@ -35,7 +35,8 @@ func display_unit():
 		on_hover.visible = false
 		return
 
-	details_list.unit = unit
+	# do not update details_list on every frame, only when presented
+
 	content.visible = true
 	name_label.text = unit.name
 	avatar.texture = unit.texture
@@ -52,6 +53,7 @@ func _ready():
 		if content.visible && pressed.get_connections().size() > 0:
 			on_hover.visible = true
 			z_index = 1
+			details_list.unit = unit
 			details.visible = true
 			Sounds.play_hover()
 	)
